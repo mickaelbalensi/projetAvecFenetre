@@ -102,13 +102,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BL\BL.csproj">
-      <Project>{3da663df-8610-4a4d-aad0-97e6e0d9d565}</Project>
-      <Name>BL</Name>
+    <ProjectReference Include="..\BE1\BE1.csproj">
+      <Project>{65ea9be3-1f6f-4247-b137-c55921f4fa37}</Project>
+      <Name>BE1</Name>
     </ProjectReference>
-    <ProjectReference Include="..\projetAvecFenetre\BE.csproj">
-      <Project>{c15e4e0d-dacf-4f97-85c3-2d973751f770}</Project>
-      <Name>BE</Name>
+    <ProjectReference Include="..\BL1\BL1.csproj">
+      <Project>{c2749d11-e2b8-4cfb-b6bb-47312ab059b5}</Project>
+      <Name>BL1</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

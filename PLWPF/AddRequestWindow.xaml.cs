@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BE;
-using BL;
+using BE1;
+using BL1;
 
 namespace PLWPF
 {
@@ -36,7 +37,7 @@ namespace PLWPF
             currentRequest = new GuestRequest();
             bl = FactoryBL.getBL();
 
-            this.AreaComboBox.ItemsSource = Enum.GetValues(typeof(BE.TypeAreaOfTheCountry));
+            this.AreaComboBox.ItemsSource = Enum.GetValues(typeof(BE1.TypeAreaOfTheCountry));
 
             EntryDateCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.Now, DateTime.Parse("01/01/3000")));
             EntryDateCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.Parse("01/01/1111"), DateTime.Parse("01/01/2000")));

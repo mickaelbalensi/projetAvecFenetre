@@ -31,16 +31,18 @@ namespace PLWPF
             addRequestWindow.Show();
         }
 
-        /*private void addUnitButton_Click(object sender, RoutedEventArgs e)
+
+
+        private void addUnitButton_Click(object sender, RoutedEventArgs e)
         {
-            Window addUnitWindow = new AddUnitWindow();
-            addUnitWindow.Show();
+            //Window addUnitWindow = new AddUnitWindow();
+            //addUnitWindow.Show();
         }
 
         private void addOrderButton_Click(object sender, RoutedEventArgs e)
         {
-            Window addOrderWindow = new AddOrderWindow();
-            addOrderWindow.Show();
-        }*/
+            //Window addOrderWindow = new AddOrderWindow();
+            //addOrderWindow.Show();
+        }
     }
 }
