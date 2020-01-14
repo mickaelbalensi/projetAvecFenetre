@@ -41,8 +41,8 @@ namespace PLWPF
 
         private void addOrderButton_Click(object sender, RoutedEventArgs e)
         {
-            //Window addOrderWindow = new AddOrderWindow();
-            //addOrderWindow.Show();
+            Window addOrderWindow = new AddOrderWindow();
+            addOrderWindow.Show();
         }
     }
 }

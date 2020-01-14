@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1114.463" Width="1490.845">
+        Title="MainWindow" Height="500.463" Width="700.845">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
