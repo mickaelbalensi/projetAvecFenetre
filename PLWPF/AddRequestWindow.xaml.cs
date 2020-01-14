@@ -38,10 +38,11 @@ namespace PLWPF
             bl = FactoryBL.getBL();
 
             this.AreaComboBox.ItemsSource = Enum.GetValues(typeof(BE1.TypeAreaOfTheCountry));
+            this.UnitComboBox.ItemsSource = Enum.GetValues(typeof(BE1.TypeOfHostingUnit));
 
             EntryDateCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.Now, DateTime.Parse("01/01/3000")));
-            EntryDateCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.Parse("01/01/1111"), DateTime.Parse("01/01/2000")));
-            EntryDateCalendar.SelectedDate = DateTime.Parse("01/01/2012");
+            //EntryDateCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.Parse("01/01/1111"), DateTime.Parse("01/01/2000")));
+           // EntryDateCalendar.SelectedDate = DateTime.Parse("01/01/2012");
             #region commentaire du calendar
             //myCalendar = CreateCalendar();
             //EntryDateCalendar.Child = null;
@@ -76,6 +77,16 @@ namespace PLWPF
             {
 
             }
+        }
+
+        private void ChildrenTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void AreaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

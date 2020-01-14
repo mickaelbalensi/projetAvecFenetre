@@ -5,26 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="AddRequestWindow" Height="1050" Width="500.263">
+        Title="AddRequestWindow" Height="1029.333" Width="500">
 
     <Grid Margin="0,0,4.2,0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="900"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
-        <!--#region ligne 0 -->
-        <Label Content="Add New Guest Request"
-               Margin="0,0,-0.6,5.6"
-               FontSize="30"  Grid.Row="0"
-               />
-        <!--#endregion-->
 
+        <Label Content="Add New Guest Request"
+               Grid.Row="0"
+               Margin="78,0,73.133,6"
+               FontSize="30" RenderTransformOrigin="0.705,0.659"
+               />
         <!--#region ligne 1-->
         <Grid x:Name="requestDetailsGrid"
-              Grid.Row="1" Margin="0,2.4,-0.6,7" Grid.RowSpan="3">
+              Grid.Row="1" Margin="-11,0,10.133,9" Grid.RowSpan="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
@@ -45,7 +44,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+
             </Grid.RowDefinitions>
             <!--#region who-->
             <Label Content="Who ?"
@@ -61,9 +60,9 @@
             <TextBox 
                 x:Name="familyTextBox"
                     Text="{Binding familyName, Mode=TwoWay}"
-                   Grid.Column="1"
                    Grid.Row="1"
-                   Margin="15"
+                   Margin="10,9.667,0,19.667" Grid.Column="1"
+                HorizontalAlignment="Left" Width="274"
                 />
 
             <Label Content="Private Name :"
@@ -73,10 +72,11 @@
             <TextBox 
                 x:Name="privateTextBox"
                     Text="{Binding privateName, Mode=TwoWay}"
-                   Grid.Column="1"
                    Grid.Row="2"
-                   Margin="15" 
-                />
+                   Margin="14,15.333,0,15" Grid.Column="1" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="270" 
+                >
+
+            </TextBox>
 
             <Label Content="Mail Address :"
                   Grid.Column="0"
@@ -84,10 +84,12 @@
                    Margin="15"/>
             <TextBox 
                  x:Name="mailTextBox"
-                    Text="{Binding mailAddress, Mode=TwoWay}"
+                   Text="{Binding mailAddress, Mode=TwoWay}"
                    Grid.Column="1"
                    Grid.Row="3"
-                   Margin="15"
+                   Margin="14,15.333,0,15"  
+                RenderTransformOrigin="0.5,0.5" 
+                HorizontalAlignment="Left" Width="270"
                 />
             <!--#endregion-->
             <!--#region When-->
@@ -104,8 +106,9 @@
             <DatePicker Name="EntryDateCalendar"
                    Grid.Column="1"
                    Grid.Row="5"
-                   Margin="15"
+                   Margin="15,15.333,0,14.333"
                    SelectedDate="{Binding entryDate, Mode=TwoWay}"
+                        HorizontalAlignment="Left" Width="269"
                 />
             <Label Content="Release-Date :"
                    Grid.Column="0"
@@ -114,8 +117,9 @@
             <DatePicker Name="ReleaseDateCalendar"
                    Grid.Column="1"
                    Grid.Row="6"
-                   Margin="15"
+                   Margin="15,15.667,0,15"
                    SelectedDate="{Binding releaseDate, Mode=TwoWay}"
+                        HorizontalAlignment="Left" Width="269"
                 />
             <!--#endregion-->
             <!--#region person-->
@@ -132,8 +136,9 @@
                  x:Name="AdultsTextBox"
                   Grid.Column="1"
                    Grid.Row="8"
-                   Margin="15" 
+                   Margin="15,15.333,0,14.333" 
                 Text="{Binding adults, Mode=TwoWay}"
+                HorizontalAlignment="Left" Width="269"
                 />
 
             <Label Content="Children :"
@@ -144,8 +149,10 @@
                   x:Name="ChildrenTextBox"
                   Grid.Column="1"
                    Grid.Row="9"
-                   Margin="15"
-                Text="{Binding children, Mode=TwoWay}"
+                   Margin="15,15.667,0,15"
+                Text="{Binding children, Mode=TwoWay}" 
+                TextChanged="ChildrenTextBox_TextChanged"
+                HorizontalAlignment="Left" Width="269"
                 />
             <!--#endregion-->
             <!--#region where-->
@@ -164,7 +171,9 @@
                    Grid.Column="1"               
                    Grid.Row="11"
                    SelectedItem="{Binding TypeAreaOfTheCountry}"
-                   Margin="15"
+                   Margin="15,15.333,0,15.333" 
+                SelectionChanged="AreaComboBox_SelectionChanged"
+                HorizontalAlignment="Left" Width="269"
                 />
 
             <!--#endregion-->
@@ -182,8 +191,9 @@
                    x:Name="UnitComboBox"                   
                    Grid.Column="1"               
                    Grid.Row="13"
-                   SelectedItem="{Binding TypeAreaOfTheCountry}"
-                   Margin="15"
+                   SelectedItem="{Binding TypeOfHostingUnit}"
+                   Margin="15,15,0,14.667"
+                HorizontalAlignment="Left" Width="269"
                 />
             <CheckBox 
                 x:Name="JacuzziCheckBox"
@@ -192,7 +202,7 @@
                    Grid.Row="14"
                    IsChecked="False"
                    IsThreeState="False"
-                   Margin="15,14.8,41.6,15.2"
+                   Margin="15"
                 />
 
             <CheckBox  x:Name="PoolCheckBox"
@@ -208,18 +218,20 @@
                 Content="Garden"
                    Grid.Column="1"
                    Grid.Row="14"
-                   Margin="20.4,14.8,249.4,15.2"
+                   Margin="15,14.333,0,15.333"
                    IsChecked="False"
-                   IsThreeState="False"
+                   IsThreeState="False" RenderTransformOrigin="0.365,0.275"
+                      HorizontalAlignment="Left" Width="103"
                 />
 
             <CheckBox x:Name="ChildrenAttractionsCheckBox"
-                Content="ChildrenAttractions"
+                Content="ChildrenAttractions :"
                    Grid.Column="1"
                    Grid.Row="14"
-                   Margin="150.4,14.8,62.4,15.2"
+                   Margin="150,15.333,0,5.333"
                    IsChecked="False"
                    IsThreeState="False"
+                      HorizontalAlignment="Left" Width="134"
                 />
             <!--#endregion-->
         </Grid>
@@ -228,8 +240,11 @@
         <!--#region ligne 2-->
         <Button x:Name="buttonRequest"
                 Content="Add your request" 
-                Grid.Row="3"
-                FontSize="30" Click="buttonRequest_Click"/>
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                Margin="0,0,0,0" Grid.RowSpan="2" HorizontalAlignment="Left" Width="489">
+
+        </Button>
         <!--#endregion-->
     </Grid>
 </Window>
