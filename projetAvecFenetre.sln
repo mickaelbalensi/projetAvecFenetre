@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DS", "DS\DS.csproj", "{8430F0CC-2922-48DB-A1D7-4977BACE2C85}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL", "PL\PL.csproj", "{CBB5AE60-45FD-45AF-911C-B431D68CB72F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PLWPF", "PLWPF\PLWPF.csproj", "{B794C7FA-1BDA-4588-AADA-6189FE2CF785}"
@@ -23,10 +21,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8430F0CC-2922-48DB-A1D7-4977BACE2C85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8430F0CC-2922-48DB-A1D7-4977BACE2C85}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8430F0CC-2922-48DB-A1D7-4977BACE2C85}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8430F0CC-2922-48DB-A1D7-4977BACE2C85}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CBB5AE60-45FD-45AF-911C-B431D68CB72F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CBB5AE60-45FD-45AF-911C-B431D68CB72F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBB5AE60-45FD-45AF-911C-B431D68CB72F}.Release|Any CPU.ActiveCfg = Release|Any CPU

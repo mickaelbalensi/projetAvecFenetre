@@ -59,12 +59,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AddUnitWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="AddRequestWindow.xaml.cs">
       <DependentUpon>AddRequestWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AddUnitWindow.xaml.cs">
+      <DependentUpon>AddUnitWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>

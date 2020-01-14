@@ -21,6 +21,7 @@ namespace BE1
         public bool childrenAttractions { get; set; }
 
         public TypeAreaOfTheCountry typeArea { get; set; }
+        public TypeOfHostingUnit typeOfUnit { get; set; }
 
         //number of order the room received
         public int countOrder { get; set; }

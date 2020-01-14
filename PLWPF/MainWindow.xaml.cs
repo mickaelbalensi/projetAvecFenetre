@@ -35,8 +35,8 @@ namespace PLWPF
 
         private void addUnitButton_Click(object sender, RoutedEventArgs e)
         {
-            //Window addUnitWindow = new AddUnitWindow();
-            //addUnitWindow.Show();
+            Window addUnitWindow = new AddUnitWindow();
+            addUnitWindow.Show();
         }
 
         private void addOrderButton_Click(object sender, RoutedEventArgs e)
