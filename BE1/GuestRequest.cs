@@ -40,7 +40,7 @@ namespace BE1
         //doit onn laisser le ctor, sinon attention au compte de Configuration.guestRequestCount++;
         public GuestRequest()
         {
-
+/*
             guestRequestKey = Configuration.guestRequestCount;
             privateName = "";
             familyName = "";
@@ -56,7 +56,7 @@ namespace BE1
             pool = Options.optional;
             garden = Options.optional;
             childrenAttractions = Options.optional;
-
+            */
 
         }
         public override string ToString()

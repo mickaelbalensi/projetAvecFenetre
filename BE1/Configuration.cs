@@ -10,14 +10,14 @@ namespace BE1
     {
         //changement nom en minuscule
 
-        public static long hostKeyCount { get; set; }
-        public static long hostingUnitCount = 10000000;
+        public static long hostKeyCount = 0;
+        public static long hostingUnitCount = 0;
 
 
 
 
 
-        public static long guestRequestCount = 10000000;
+        public static long guestRequestCount = 0;
 
 
     }

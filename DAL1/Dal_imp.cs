@@ -11,12 +11,15 @@ namespace DAL1
 {
     public class Dal_imp : IDAL
     {
+        static DataSource d = new DataSource();
+
         #region guestRequestFunctions
         public void addRequest(GuestRequest request)
         {
             GuestRequest requestLocal = getRequest(request.guestRequestKey);
             if (requestLocal != null)
                 throw new Exception("there is already a request with the same guestRequestKey");
+            Configuration.guestRequestCount++;
             DataSource.guestRequestList.Add(request);
         }
         public GuestRequest getRequest(long key)

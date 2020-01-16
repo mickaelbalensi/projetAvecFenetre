@@ -13,7 +13,16 @@ namespace BL1
 
     {
 
-        DAL1.IDAL dal = FactoryDal.GetDal();
+        // DAL1.IDAL dal = FactoryDal.GetDal();
+        DAL1.IDAL dal;
+
+        public BL_imp()
+        {
+            dal = new Dal_imp();
+            initList();
+
+        }
+
 
         #region essai 
         void initList()
@@ -163,7 +172,8 @@ namespace BL1
 
         //hostingUnit
 
-        public void addHostingUnit(HostingUnit unit) { }
+        public void addHostingUnit(HostingUnit unit) {
+        }
         public void deleteHostingUnit(HostingUnit unit) { }
         public void updateHostingUnit(HostingUnit unit) { }
         public void printAllHostingUnit(HostingUnit unit) { }

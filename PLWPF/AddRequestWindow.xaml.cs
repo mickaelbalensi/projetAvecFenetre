@@ -29,12 +29,15 @@ namespace PLWPF
 
         public AddRequestWindow()
         {
-            if (currentRequest == null)
-                currentRequest = new GuestRequest();
-            DataContext = currentRequest;
-
             InitializeComponent();
-            currentRequest = new GuestRequest();
+            if (currentRequest == null)
+                currentRequest = new GuestRequest {
+                    guestRequestKey = Configuration.guestRequestCount + 1
+                };
+            firstGrid.DataContext = currentRequest;
+
+          //  InitializeComponent();
+           // currentRequest = new GuestRequest();
             bl = FactoryBL.getBL();
 
             this.AreaComboBox.ItemsSource = Enum.GetValues(typeof(BE1.TypeAreaOfTheCountry));
@@ -65,17 +68,21 @@ namespace PLWPF
 
         private void buttonRequest_Click(object sender, RoutedEventArgs e)
         {
-            //try
+            try
             {
+
                 currentRequest.registrationDate = DateTime.Now;
                 currentRequest.jacuzzi = JacuzziCheckBox.IsThreeState ? Options.optional : JacuzziCheckBox.IsChecked == true ? Options.yes : Options.no;
                 currentRequest.pool = PoolCheckBox.IsThreeState ? Options.optional : PoolCheckBox.IsChecked == true ? Options.yes : Options.no;
                 currentRequest.garden = GardenCheckBox.IsThreeState ? Options.optional : GardenCheckBox.IsChecked == true ? Options.yes : Options.no;
                 currentRequest.childrenAttractions = ChildrenAttractionsCheckBox.IsThreeState ? Options.optional : ChildrenAttractionsCheckBox.IsChecked == true ? Options.yes : Options.no;
+                bl.addRequest(currentRequest);
+                currentRequest = new GuestRequest();
+                DataContext = currentRequest;
             }
-            // catch ()
+             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -85,6 +92,11 @@ namespace PLWPF
         }
 
         private void AreaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void buttonRequest_Click_1(object sender, RoutedEventArgs e)
         {
 
         }
