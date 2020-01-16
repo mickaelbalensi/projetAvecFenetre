@@ -16,10 +16,10 @@ namespace DAL1
         #region guestRequestFunctions
         public void addRequest(GuestRequest request)
         {
+            Configuration.guestRequestCount++;
             GuestRequest requestLocal = getRequest(request.guestRequestKey);
             if (requestLocal != null)
                 throw new Exception("there is already a request with the same guestRequestKey");
-            Configuration.guestRequestCount++;
             DataSource.guestRequestList.Add(request);
         }
         public GuestRequest getRequest(long key)

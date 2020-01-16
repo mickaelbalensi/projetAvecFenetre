@@ -60,7 +60,7 @@
                    Margin="15,15,15,10"/>
             <TextBox 
                 x:Name="idBox"
-                    Text="{Binding guestRequestKey, Mode=TwoWay}"
+                   Text="{Binding guestRequestKey, Mode=TwoWay}"
                    Grid.Row="1"
                    Margin="15,10,0,20" Grid.Column="1"
                 HorizontalAlignment="Left" Width="59"
@@ -149,9 +149,9 @@
                  x:Name="AdultsTextBox"
                   Grid.Column="1"
                    Grid.Row="9"
-                   Margin="15,15.333,0,14.333" 
+                   Margin="15,15,0,14" 
                 Text="{Binding adults, Mode=TwoWay}"
-                HorizontalAlignment="Left" Width="269"
+                HorizontalAlignment="Left" Width="59"
                 />
 
             <Label Content="Children :"
@@ -162,10 +162,10 @@
                   x:Name="ChildrenTextBox"
                   Grid.Column="1"
                    Grid.Row="10"
-                   Margin="15,15.667,0,15"
+                   Margin="15,16,0,15"
                 Text="{Binding children, Mode=TwoWay}" 
                 TextChanged="ChildrenTextBox_TextChanged"
-                HorizontalAlignment="Left" Width="269"
+                HorizontalAlignment="Left" Width="59"
                 />
             <!--#endregion-->
             <!--#region where-->
@@ -183,9 +183,9 @@
                    x:Name="AreaComboBox"                   
                    Grid.Column="1"               
                    Grid.Row="12"
-                   SelectedItem="{Binding TypeAreaOfTheCountry, Mode=TwoWay}"
+                   SelectedValue="{Binding TypeAreaOfTheCountry, Mode=TwoWay}"
                    Margin="15,15.333,0,15.333" 
-                SelectionChanged="AreaComboBox_SelectionChanged"
+                
                 HorizontalAlignment="Left" Width="269"
                 />
 

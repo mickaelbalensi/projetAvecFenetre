@@ -26,7 +26,6 @@ namespace PLWPF
         public GuestRequest currentRequest { get; set; }
         IBL bl;
 
-
         public AddRequestWindow()
         {
             InitializeComponent();
