@@ -22,6 +22,7 @@ namespace PLWPF
         public OrderPage()
         {
             InitializeComponent();
+
         }
 
         private void UpdateRequest_Click(object sender, RoutedEventArgs e)
@@ -35,5 +36,6 @@ namespace PLWPF
             Window addOrder = new AddOrderWindow();
             addOrder.Show();
         }
+
     }
 }

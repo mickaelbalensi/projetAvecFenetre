@@ -25,6 +25,7 @@ namespace PLWPF
     {
         public GuestRequest currentRequest { get; set; }
         IBL bl;
+        
 
         public AddRequestWindow()
         {
@@ -71,10 +72,10 @@ namespace PLWPF
             {
 
                 currentRequest.registrationDate = DateTime.Now;
-                currentRequest.jacuzzi = JacuzziCheckBox.IsThreeState ? Options.optional : JacuzziCheckBox.IsChecked == true ? Options.yes : Options.no;
-                currentRequest.pool = PoolCheckBox.IsThreeState ? Options.optional : PoolCheckBox.IsChecked == true ? Options.yes : Options.no;
-                currentRequest.garden = GardenCheckBox.IsThreeState ? Options.optional : GardenCheckBox.IsChecked == true ? Options.yes : Options.no;
-                currentRequest.childrenAttractions = ChildrenAttractionsCheckBox.IsThreeState ? Options.optional : ChildrenAttractionsCheckBox.IsChecked == true ? Options.yes : Options.no;
+                currentRequest.jacuzzi = JacuzziCheckBox.IsChecked == true ? Options.yes :  JacuzziCheckBox.IsChecked == false ? Options.no : Options.optional;
+                currentRequest.pool = PoolCheckBox.IsChecked == true ? Options.yes : PoolCheckBox.IsChecked == false ? Options.no : Options.optional;
+                currentRequest.garden = GardenCheckBox.IsChecked == true ? Options.yes : GardenCheckBox.IsChecked == false ? Options.no : Options.optional;
+                currentRequest.childrenAttractions = ChildrenAttractionsCheckBox.IsChecked == true ? Options.yes : ChildrenAttractionsCheckBox.IsChecked == false ? Options.no : Options.optional;
                 bl.addRequest(currentRequest);
                 currentRequest = new GuestRequest();
                 DataContext = currentRequest;

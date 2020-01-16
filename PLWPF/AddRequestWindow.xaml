@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="AddRequestWindow" Height="929.333" Width="500">
-
-    <Grid x:Name="firstGrid" Margin="0,0,4.2,0">
+        Title="AddRequestWindow" Height="529.333" Width="500">
+    <ScrollViewer>
+        <Grid x:Name="firstGrid" Margin="0,0,4.2,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
             <RowDefinition Height="800"/>
@@ -22,6 +22,7 @@
         <!--#region ligne 1-->
         <Grid x:Name="requestDetailsGrid"
               Grid.Row="1" Margin="-11,0,10.133,9" Grid.RowSpan="2">
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
@@ -131,6 +132,7 @@
                    Grid.Column="1"
                    Grid.Row="7"
                    Margin="15,16,0,10"
+                   Visibility="{Binding ElementName=EntryDateCalendar, Path=SelectedDate}"
                    SelectedDate="{Binding releaseDate, Mode=TwoWay}"
                         HorizontalAlignment="Left" Width="269"
                 />
@@ -214,7 +216,7 @@
                    Grid.Column="0"
                    Grid.Row="15"
                    IsChecked="False"
-                   IsThreeState="False"
+                   IsThreeState="True"
                    Margin="15"
                 />
 
@@ -222,31 +224,58 @@
                    Content="Pool"
                    Grid.Column="0"
                    Grid.Row="15"
-                   Margin="100,15,0,0"
+                   Margin="90,15,10,0"
                    IsChecked="False"
-                   IsThreeState="False"
+                   IsThreeState="True"
                 />
 
             <CheckBox x:Name="GardenCheckBox"
                 Content="Garden"
                    Grid.Column="1"
                    Grid.Row="15"
-                   Margin="15,14.333,0,15.333"
+                   Margin="0,15"
                    IsChecked="False"
-                   IsThreeState="False" RenderTransformOrigin="0.365,0.275"
-                      HorizontalAlignment="Left" Width="103"
+                   IsThreeState="True" RenderTransformOrigin="0.365,0.275"
+                      HorizontalAlignment="Left" Width="74"
                 />
 
             <CheckBox x:Name="ChildrenAttractionsCheckBox"
                 Content="ChildrenAttractions :"
                    Grid.Column="1"
                    Grid.Row="15"
-                   Margin="150,15.333,0,5.333"
+                   Margin="79,15,0,6"
                    IsChecked="False"
-                   IsThreeState="False"
+                   IsThreeState="True"
                       HorizontalAlignment="Left" Width="134"
                 />
-            <ScrollBar Grid.Column="1" HorizontalAlignment="Left" Margin="329,-74,0,29" Grid.RowSpan="16" Width="14"/>
+            <CheckBox  x:Name="yesBox"
+                   Content="Yes"
+                   Grid.Column="1"
+                   Grid.Row="15"
+                   Margin="257,3,46,27"
+                   IsChecked="True"
+                   IsThreeState="True"
+                   IsEnabled="False"
+                />
+            <CheckBox  x:Name="noBox"
+                   Content="No"
+                   Grid.Column="1"
+                   Grid.Row="15"
+                   Margin="257,18,46,12"
+                   IsChecked="False"
+                   IsThreeState="True"
+                   IsEnabled="False"
+               />
+            <CheckBox  x:Name="optionalBox"
+                   Content="Optional"
+                   Grid.Column="1"
+                   Grid.Row="15"
+                   Margin="257,34,10,0"
+                   IsChecked="{x:Null}"
+                   IsThreeState="True"
+                   IsEnabled="False"
+               />
+
             <!--#endregion-->
         </Grid>
         <!--#endregion-->
@@ -259,6 +288,9 @@
                 Margin="0,0,0,0" Grid.RowSpan="2" HorizontalAlignment="Left" Width="489" Click="buttonRequest_Click">
 
         </Button>
+
         <!--#endregion-->
     </Grid>
+    </ScrollViewer>
+
 </Window>
