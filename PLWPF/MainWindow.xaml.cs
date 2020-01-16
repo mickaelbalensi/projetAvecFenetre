@@ -44,5 +44,10 @@ namespace PLWPF
             Window  orderPage = new OrderPage();
             orderPage.Show();
         }
+
+        private void ConsultData_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

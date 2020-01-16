@@ -5,32 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500.463" Width="700.845">
+        Title="MainWindow" Height="300.463" Width="800.845">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Grid x:Name="requestDetailsGrid"
+              Grid.Row="0" Margin="0,3.667,-0.667,6.667">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+        
         <Button x:Name="addRequestButton"
                 Content="Request's options"
                 Margin="10"
                 FontSize="30"
-                Grid.Row="0" Click="addRequestButton_Click"
+                Grid.Row="0" 
+                Grid.Column="0"
+                Click="addRequestButton_Click"
                 />
         <Button x:Name="addHostingUnit"
                 Content="Unit's options"
                 Margin="10"
                 FontSize="30"
-                Grid.Row="1" Click="addUnitButton_Click"
+                Grid.Row="1" 
+                 Grid.Column="1"
+                Click="addUnitButton_Click"
                 />
-        <Button x:Name="addOrder"
+            <Button x:Name="addOrder"
                 Content="Order's options"
                 Margin="10"
                 FontSize="30"
-                Grid.Row="2" Click="addOrderButton_Click"
+                Grid.Row="0" 
+                Grid.Column="2"
+                Click="addOrderButton_Click"
                 />
-
-
+        </Grid>
+        <Button x:Name="ConsultData"
+              Content="Consult and manage data"
+              Grid.Row="1" Click="ConsultData_Click">
+            
+        </Button>
     </Grid>
 </Window>
