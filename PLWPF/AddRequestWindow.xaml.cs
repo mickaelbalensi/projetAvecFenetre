@@ -30,13 +30,16 @@ namespace PLWPF
         public AddRequestWindow()
         {
             InitializeComponent();
-            
-            currentRequest = new GuestRequest();
-            this.DataContext = currentRequest;
+            if (currentRequest == null)
+                currentRequest = new GuestRequest {
+                    guestRequestKey = Configuration.guestRequestCount + 1
+                };
+            firstGrid.DataContext = currentRequest;
 
-            
+          //  InitializeComponent();
            // currentRequest = new GuestRequest();
             bl = FactoryBL.getBL();
+
             this.AreaComboBox.ItemsSource = Enum.GetValues(typeof(BE1.TypeAreaOfTheCountry));
             this.UnitComboBox.ItemsSource = Enum.GetValues(typeof(BE1.TypeOfHostingUnit));
 
@@ -65,8 +68,9 @@ namespace PLWPF
 
         private void buttonRequest_Click(object sender, RoutedEventArgs e)
         {
-            //try
+            try
             {
+
                 currentRequest.registrationDate = DateTime.Now;
                 currentRequest.jacuzzi = JacuzziCheckBox.IsThreeState ? Options.optional : JacuzziCheckBox.IsChecked == true ? Options.yes : Options.no;
                 currentRequest.pool = PoolCheckBox.IsThreeState ? Options.optional : PoolCheckBox.IsChecked == true ? Options.yes : Options.no;
@@ -74,11 +78,11 @@ namespace PLWPF
                 currentRequest.childrenAttractions = ChildrenAttractionsCheckBox.IsThreeState ? Options.optional : ChildrenAttractionsCheckBox.IsChecked == true ? Options.yes : Options.no;
                 bl.addRequest(currentRequest);
                 currentRequest = new GuestRequest();
-                this.requestDetailsGrid.DataContext = currentRequest;
+                DataContext = currentRequest;
             }
-            // catch ()
+             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -92,6 +96,9 @@ namespace PLWPF
 
         }
 
-        
+        private void buttonRequest_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
