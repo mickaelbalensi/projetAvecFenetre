@@ -1,0 +1,32 @@
+﻿<Window x:Class="PLWPF.UnitPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d"
+        Title="UnitPage" Height="750" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="250"/>
+            <RowDefinition Height="250"/>
+            <RowDefinition Height="250"/>
+        </Grid.RowDefinitions>
+
+        <Button x:Name="AddUnit"
+               Grid.Row="0"
+                Content="Add Unit" Click="AddUnit_Click" 
+                >
+        </Button>
+        <Button x:Name="UpdateUnit"
+               Grid.Row="1"
+                Content="Update Unit" Click="UpdateUnit_Click" 
+                >
+        </Button>
+        <Button x:Name="DeleteUnit"
+               Grid.Row="2"
+                Content="Delete Unit" Click="DeleteUnit_Click" 
+                >
+        </Button>
+    </Grid>
+</Window>

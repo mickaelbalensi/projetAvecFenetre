@@ -13,19 +13,19 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Button x:Name="addRequestButton"
-                Content="Add Guest Request"
+                Content="Request's options"
                 Margin="10"
                 FontSize="30"
                 Grid.Row="0" Click="addRequestButton_Click"
                 />
         <Button x:Name="addHostingUnit"
-                Content="Add Hosting Unit"
+                Content="Unit's options"
                 Margin="10"
                 FontSize="30"
                 Grid.Row="1" Click="addUnitButton_Click"
                 />
         <Button x:Name="addOrder"
-                Content="Add Order"
+                Content="Order's options"
                 Margin="10"
                 FontSize="30"
                 Grid.Row="2" Click="addOrderButton_Click"

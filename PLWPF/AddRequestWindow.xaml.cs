@@ -29,14 +29,14 @@ namespace PLWPF
 
         public AddRequestWindow()
         {
-            if (currentRequest == null)
-                currentRequest = new GuestRequest();
-            DataContext = currentRequest;
-
             InitializeComponent();
+            
             currentRequest = new GuestRequest();
-            bl = FactoryBL.getBL();
+            this.DataContext = currentRequest;
 
+            
+           // currentRequest = new GuestRequest();
+            bl = FactoryBL.getBL();
             this.AreaComboBox.ItemsSource = Enum.GetValues(typeof(BE1.TypeAreaOfTheCountry));
             this.UnitComboBox.ItemsSource = Enum.GetValues(typeof(BE1.TypeOfHostingUnit));
 
@@ -72,6 +72,9 @@ namespace PLWPF
                 currentRequest.pool = PoolCheckBox.IsThreeState ? Options.optional : PoolCheckBox.IsChecked == true ? Options.yes : Options.no;
                 currentRequest.garden = GardenCheckBox.IsThreeState ? Options.optional : GardenCheckBox.IsChecked == true ? Options.yes : Options.no;
                 currentRequest.childrenAttractions = ChildrenAttractionsCheckBox.IsThreeState ? Options.optional : ChildrenAttractionsCheckBox.IsChecked == true ? Options.yes : Options.no;
+                bl.addRequest(currentRequest);
+                currentRequest = new GuestRequest();
+                this.requestDetailsGrid.DataContext = currentRequest;
             }
             // catch ()
             {
@@ -88,5 +91,7 @@ namespace PLWPF
         {
 
         }
+
+        
     }
 }

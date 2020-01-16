@@ -11,7 +11,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <!--#endregion-->
         <Label Content="ADD New Hosting Unit"
@@ -62,6 +62,7 @@
             <TextBox x:Name="familyName" 
                      Grid.Row="2"
                      Margin="47.6,0.4,-187,32" Grid.RowSpan="2" Grid.Column="1"  
+                     
                      />
             <Label Content="Phone Number :"
                    Margin="60,33.4,24,0"
@@ -102,13 +103,17 @@
                    Grid.Row="8" Grid.ColumnSpan="2"/>
             <TextBox x:Name="numBranch"
                      Grid.Row="8"
-                     Margin="47.6,0.4,-59,33" Grid.RowSpan="2" Grid.Column="1"/>
+                     Margin="47.6,0.4,-59,33" Grid.RowSpan="2" Grid.Column="1"
+                     Text="{Binding privateName, Mode=TwoWay}"
+                     />
             <Label Content="Num's Bank Account :"
                    Margin="60,32.4,24,0"
                    Grid.Row="8" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
             <TextBox x:Name="numBankAccount"
                      Grid.Row="8"
-                     Margin="47.6,32.4,-187,0" Grid.RowSpan="2" Grid.Column="1"/>
+                     Margin="47.6,32.4,-187,0" Grid.RowSpan="2" Grid.Column="1"
+                     Text="{Binding privateName, Mode=TwoWay}"
+                     />
             <Label Content="Collection Clearance :"
                    Margin="60,0,24,33.2"
                    Grid.Row="10" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
@@ -124,19 +129,25 @@
                    Grid.Row="11" Grid.RowSpan="3" Grid.ColumnSpan="2"/>
             <TextBox x:Name="nameHotel"
                      Grid.Row="11"
-                     Margin="47.6,33.4,-187,32.6" Grid.RowSpan="3" Grid.Column="1"/>
+                     Margin="47.6,33.4,-187,32.6" Grid.RowSpan="3" Grid.Column="1"
+                     Text="{Binding privateName, Mode=TwoWay}"
+                     />
             <Label Content="Number of adults :"
                    Margin="60,0.2,24,33.2"
                    Grid.Row="13" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
             <TextBox x:Name="numAdults"
                      Grid.Row="13"
-                     Margin="47.6,0.2,-59,33.2" Grid.RowSpan="2" Grid.Column="1"/>
+                     Margin="47.6,0.2,-59,33.2" Grid.RowSpan="2" Grid.Column="1"
+                     Text="{Binding privateName, Mode=TwoWay}"
+                     />
             <Label Content="Number of children :"
                    Margin="60,0.4,24,0.2"
                    Grid.Row="14" Grid.ColumnSpan="2"/>
             <TextBox x:Name="numChildren"
                      Grid.Row="14"
-                     Margin="47.6,0.4,-59,32.8" Grid.RowSpan="2" Grid.Column="1"/>
+                     Margin="47.6,0.4,-59,32.8" Grid.RowSpan="2" Grid.Column="1"
+                     Text="{Binding privateName, Mode=TwoWay}"
+                     />
             <CheckBox 
                 x:Name="JacuzziCheckBox"
                 Content="Jacuzzi"
@@ -171,5 +182,14 @@
             <!--#endregion-->
 
         </Grid>
+        <Button x:Name="buttonUnit"
+                Content="Add your unit" 
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                Margin="0,0,0,0" Grid.RowSpan="2" HorizontalAlignment="Left" Width="489"
+                Click="butoun_addUnit">
+        </Button>
+
+
     </Grid>
 </Window>
