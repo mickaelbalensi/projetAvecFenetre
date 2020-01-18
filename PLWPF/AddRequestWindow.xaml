@@ -298,13 +298,13 @@
                             <DataTrigger Binding="{Binding ElementName=mailTextBox, Path=Text}" Value="">
                                 <Setter Property="Button.IsEnabled" Value="False"/>
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding ElementName=privateTextBox, Path=Text}" Value="-1">
+                            <DataTrigger Binding="{Binding ElementName=privateTextBox, Path=Text}" Value="">
                                 <Setter Property="Button.IsEnabled" Value="False"/>
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding ElementName=EntryDateCalendar, Path=SelectedDate}" Value="-1">
+                            <DataTrigger Binding="{Binding ElementName=EntryDateCalendar, Path=SelectedDate}" Value="">
                                 <Setter Property="Button.IsEnabled" Value="False"/>
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding ElementName=ReleaseDateCalendar, Path=SelectedDate}" Value="-1">
+                            <DataTrigger Binding="{Binding ElementName=ReleaseDateCalendar, Path=SelectedDate}" Value="">
                                 <Setter Property="Button.IsEnabled" Value="False"/>
                             </DataTrigger>
                             <DataTrigger Binding="{Binding ElementName=AdultsTextBox, Path=Text}" Value="">
@@ -313,22 +313,10 @@
                             <DataTrigger Binding="{Binding ElementName=ChildrenTextBox, Path=Text}" Value="">
                                 <Setter Property="Button.IsEnabled" Value="False"/>
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding ElementName=AreaComboBox, Path=SelectedValue}" Value="-1">
+                            <DataTrigger Binding="{Binding ElementName=AreaComboBox, Path=SelectedValue}" Value="">
                                 <Setter Property="Button.IsEnabled" Value="False"/>
                             </DataTrigger>
-                            <DataTrigger Binding="{Binding ElementName=UnitComboBox, Path=SelectedItem}" Value="-1">
-                                <Setter Property="Button.IsEnabled" Value="False"/>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding ElementName=MotherComboBox, Path=SelectedIndex}" Value="-1">
-                                <Setter Property="Button.IsEnabled" Value="False"/>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding ElementName=MotherComboBox, Path=SelectedIndex}" Value="-1">
-                                <Setter Property="Button.IsEnabled" Value="False"/>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding ElementName=MotherComboBox, Path=SelectedIndex}" Value="-1">
-                                <Setter Property="Button.IsEnabled" Value="False"/>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding ElementName=MotherComboBox, Path=SelectedIndex}" Value="-1">
+                            <DataTrigger Binding="{Binding ElementName=UnitComboBox, Path=SelectedItem}" Value="">
                                 <Setter Property="Button.IsEnabled" Value="False"/>
                             </DataTrigger>
                         </Style.Triggers>
