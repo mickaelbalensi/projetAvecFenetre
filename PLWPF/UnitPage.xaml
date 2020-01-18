@@ -8,9 +8,8 @@
         Title="UnitPage" Height="750" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="250"/>
-            <RowDefinition Height="250"/>
-            <RowDefinition Height="250"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Button x:Name="AddUnit"
@@ -18,15 +17,11 @@
                 Content="Add Unit" Click="AddUnit_Click" 
                 >
         </Button>
-        <Button x:Name="UpdateUnit"
+        <Button x:Name="PersonnalArea"
                Grid.Row="1"
-                Content="Update Unit" Click="UpdateUnit_Click" 
+                Content="Personnal Area" Click="PersonnalArea_Click" 
                 >
         </Button>
-        <Button x:Name="DeleteUnit"
-               Grid.Row="2"
-                Content="Delete Unit" Click="DeleteUnit_Click" 
-                >
-        </Button>
+        
     </Grid>
 </Window>

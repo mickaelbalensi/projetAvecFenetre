@@ -286,8 +286,55 @@
                 Grid.Row="2"
                 Grid.ColumnSpan="2"
                 Margin="0,0,0,0" Grid.RowSpan="2" HorizontalAlignment="Left" Width="489" Click="buttonRequest_Click">
-
-        </Button>
+                <Button.Style>
+                    <Style>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=idBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=familyTextBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=mailTextBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=privateTextBox, Path=Text}" Value="-1">
+                                <Setter Property="Button.IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=EntryDateCalendar, Path=SelectedDate}" Value="-1">
+                                <Setter Property="Button.IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=ReleaseDateCalendar, Path=SelectedDate}" Value="-1">
+                                <Setter Property="Button.IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=AdultsTextBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=ChildrenTextBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=AreaComboBox, Path=SelectedValue}" Value="-1">
+                                <Setter Property="Button.IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=UnitComboBox, Path=SelectedItem}" Value="-1">
+                                <Setter Property="Button.IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=MotherComboBox, Path=SelectedIndex}" Value="-1">
+                                <Setter Property="Button.IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=MotherComboBox, Path=SelectedIndex}" Value="-1">
+                                <Setter Property="Button.IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=MotherComboBox, Path=SelectedIndex}" Value="-1">
+                                <Setter Property="Button.IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=MotherComboBox, Path=SelectedIndex}" Value="-1">
+                                <Setter Property="Button.IsEnabled" Value="False"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
 
         <!--#endregion-->
     </Grid>

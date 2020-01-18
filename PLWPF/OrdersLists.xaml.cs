@@ -15,24 +15,18 @@ using System.Windows.Shapes;
 namespace PLWPF
 {
     /// <summary>
-    /// Interaction logic for UnitPage.xaml
+    /// Interaction logic for OrdersLists.xaml
     /// </summary>
-    public partial class UnitPage : Window
+    public partial class OrdersLists : Window
     {
-        public UnitPage()
+        public OrdersLists()
         {
             InitializeComponent();
         }
 
-        private void AddUnit_Click(object sender, RoutedEventArgs e)
+        private void buttonRequest_Click(object sender, RoutedEventArgs e)
         {
-            Window addUnit = new AddUnitWindow();
-            addUnit.Show();
-        }
-        private void PersonnalArea_Click(object sender, RoutedEventArgs e)
-        {
-            Window personnalAccount = new PersonnalAccount();
-            personnalAccount.Show();
+
         }
     }
 }
