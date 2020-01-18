@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="300.463" Width="800.845">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
