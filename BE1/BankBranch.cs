@@ -9,7 +9,7 @@ namespace BE1
     //changement nom en minuscule
     public class BankBranch //: Clonable
     {
-
+        //ESSAI GIT HUB 
         public Bank bankNumber { get; set; }
         public string bankName { get; set; }
         public int branchNumber { get; set; }
