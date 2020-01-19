@@ -15,19 +15,33 @@ using System.Windows.Shapes;
 namespace PLWPF
 {
     /// <summary>
-    /// Interaction logic for PersonnalAccount.xaml
+    /// Interaction logic for DataList.xaml
     /// </summary>
-    public partial class PersonnalAccount : Window
+    public partial class DataList : Window
     {
-        public PersonnalAccount()
+        public DataList()
         {
             InitializeComponent();
         }
 
-        private void buttonPersonnal_Click(object sender, RoutedEventArgs e)
+        private void RequestList_Click(object sender, RoutedEventArgs e)
         {
-            Window hostPage = new HostPage();
-            hostPage.Show();
+
+        }
+
+        private void UnitList_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void OrdersList_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MoreOptions_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

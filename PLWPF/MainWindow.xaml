@@ -17,7 +17,6 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
         
         <Button x:Name="addRequestButton"
@@ -28,21 +27,13 @@
                 Grid.Column="0"
                 Click="addRequestButton_Click"
                 />
-        <Button x:Name="addHostingUnit"
+            <Button x:Name="addHostingUnit"
                 Content="Unit's options"
                 Margin="10"
                 FontSize="30"
                 Grid.Row="1" 
                  Grid.Column="1"
                 Click="addUnitButton_Click"
-                />
-            <Button x:Name="addOrder"
-                Content="Order's options"
-                Margin="10"
-                FontSize="30"
-                Grid.Row="0" 
-                Grid.Column="2"
-                Click="addOrderButton_Click"
                 />
         </Grid>
         <Button x:Name="ConsultData"

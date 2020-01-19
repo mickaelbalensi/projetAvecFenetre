@@ -26,7 +26,7 @@
                 x:Name="fisrtNameTextBox"
                    Grid.Column="1"
                    Grid.Row="0"
-                   Margin="15,15,103,39"
+                   Margin="15,15,103,39" Text="xx"
                 />
         <Label Content="Last Name"
                    Grid.Column="0"
@@ -36,7 +36,7 @@
                 x:Name="LastNameTextBox"
                    Grid.Column="1"
                    Grid.Row="1"
-                   Margin="15,15,103,39"
+                   Margin="15,15,103,39" Text="xx"
                 />
         <Label Content="Mail Adress"
                    Grid.Column="0"
@@ -46,7 +46,7 @@
                 x:Name="mailAdressTextBox"
                    Grid.Column="1"
                    Grid.Row="2"
-                   Margin="15,19,103,36"
+                   Margin="15,19,103,36" Text="xx"
                 />
         <Label Content="password"
                    Grid.Column="0"
@@ -56,13 +56,13 @@
                 x:Name="Password"
                    Grid.Column="1"
                    Grid.Row="3"
-                   Margin="15,15,0,41" HorizontalAlignment="Left" Width="272"
+                   Margin="15,15,0,41" HorizontalAlignment="Left" Width="272" Text="xx"
                 />
         <Button x:Name="buttonRequest"
                 Content="Connect to your account" 
                 Grid.Row="4"
                 Grid.ColumnSpan="2"
-                Margin="0,0,0,0" HorizontalAlignment="Left" Width="489" Click="buttonRequest_Click">
+                Margin="0,0,0,0" HorizontalAlignment="Left" Width="489" Click="buttonPersonnal_Click">
             <Button.Style>
                 <Style>
                     <Style.Triggers>

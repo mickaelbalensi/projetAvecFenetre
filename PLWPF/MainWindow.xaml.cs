@@ -47,7 +47,8 @@ namespace PLWPF
 
         private void ConsultData_Click(object sender, RoutedEventArgs e)
         {
-
+            Window dataList = new DataList();
+            dataList.Show();
         }
     }
 }

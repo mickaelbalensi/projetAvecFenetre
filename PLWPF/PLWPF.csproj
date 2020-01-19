@@ -59,8 +59,14 @@
     <Compile Include="ConsultData.xaml.cs">
       <DependentUpon>ConsultData.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataList.xaml.cs">
+      <DependentUpon>DataList.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DeleteUnit.xaml.cs">
       <DependentUpon>DeleteUnit.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="HostPage.xaml.cs">
+      <DependentUpon>HostPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="OrderPage.xaml.cs">
       <DependentUpon>OrderPage.xaml</DependentUpon>
@@ -102,7 +108,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="DataList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DeleteUnit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HostPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
