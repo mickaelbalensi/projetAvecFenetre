@@ -70,16 +70,16 @@ namespace PLWPF
         {
             try
             {
-                bool flag = false;
-                string word = (string)mailTextBox.Text;
-                string aro = "@";
-                for (int i=0; i < mailTextBox.Text.Count();i++)
-                {
-                //    if (word[i] == "@")
-                  //      flag = true;
-                }
-                if (!flag)
-                    throw new Exception("Your email isn't valid,please try again");
+                //bool flag = false;
+                //string word = (string)mailTextBox.Text;
+                //string aro = "@";
+                //for (int i=0; i < mailTextBox.Text.Count();i++)
+                //{
+                ////    if (word[i] == "@")
+                //  //      flag = true;
+                //}
+                //if (!flag)
+                //    throw new Exception("Your email isn't valid,please try again");
                 currentRequest.registrationDate = DateTime.Now;
                 currentRequest.jacuzzi = JacuzziCheckBox.IsChecked == true ? Options.yes :  JacuzziCheckBox.IsChecked == false ? Options.no : Options.optional;
                 currentRequest.pool = PoolCheckBox.IsChecked == true ? Options.yes : PoolCheckBox.IsChecked == false ? Options.no : Options.optional;

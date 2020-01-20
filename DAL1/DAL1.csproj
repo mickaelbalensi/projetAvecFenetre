@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Cloning.cs" />
     <Compile Include="Dal_imp.cs" />
     <Compile Include="DAL_XML.cs" />
     <Compile Include="Factory.cs" />
