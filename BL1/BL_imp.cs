@@ -173,12 +173,14 @@ namespace BL1
         //hostingUnit
 
         public void addHostingUnit(HostingUnit unit) {
-          //  dal.
-
+            dal.addHostingUnit(unit);
         }
-        public void deleteHostingUnit(HostingUnit unit) { }
-        public void updateHostingUnit(HostingUnit unit) { }
-        public void printAllHostingUnit(HostingUnit unit) { }
+        public void deleteHostingUnit(HostingUnit unit) {
+            dal.deleteHostingUnit(unit);
+        }
+        public void updateHostingUnit(HostingUnit unit) {
+            dal.updateHostingUnit(unit);
+        }
         public IEnumerable<HostingUnit> getAllHostingUnit(Func<HostingUnit, bool> predicate = null)
         {
             return dal.getAllHostingUnit(predicate);
@@ -223,19 +225,13 @@ namespace BL1
         }
         public void updateOrder(Order order)
         {
-
+            dal.updateOrder(order);
         }
         public IEnumerable<Order> getAllOrder(Func<Order, bool> predicate = null)
         {
-            //if (predicate == null)
             return dal.getAllOrder(predicate);
         }
-        //prints 
-
-        //public void printAllOrder(Order order) { }
         #endregion
-        // public void printAllBranchesOfBank(BankBranch bank) { }
-        // New Itshak2
         #region functions
 
         public IEnumerable<HostingUnit> getFreeUnitList(DateTime entrydate, DateTime releasedate)
@@ -275,20 +271,6 @@ namespace BL1
             return orderMailWasSentList.Count();
         }
 
-
-        //prints 
-
-        //   public void printAllOrder(Order order) { }
-        #endregion
-        //    public void printAllBranchesOfBank(BankBranch bank) { }
-        // New Itshak2
-        #region functions
-
-
-
-
-
-
         public bool checkTransactionSigned(Order order)
         {
             GuestRequest req = getAllGuestRequest().FirstOrDefault(x => x.guestRequestKey == order.guestRequestKey);
@@ -300,15 +282,7 @@ namespace BL1
                    group unit.Copy() by unit.typeArea;
         }
 
-        public void printAllOrder(Order order)
-        {
-            throw new NotImplementedException();
-        }
 
-        public void printAllBranchesOfBank(BankBranch bank)
-        {
-            throw new NotImplementedException();
-        }
 
         /*      public IEnumerable<IGrouping<TypeAreaOfTheCountry, GuestRequest>> groupRequestByAreaList()
               {
@@ -319,5 +293,6 @@ namespace BL1
               }*/
 
         #endregion
+
     }
 }
