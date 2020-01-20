@@ -59,15 +59,22 @@
                    Grid.Column="0"
                    Grid.Row="1"
                    Margin="15,15,15,10"/>
-            <TextBox 
+                <TextBox 
                 x:Name="idBox"
                    Text="{Binding guestRequestKey, Mode=TwoWay}"
                    Grid.Row="1"
                    Margin="15,10,0,20" Grid.Column="1"
-                HorizontalAlignment="Left" Width="59"
-                />
-
-            <Label Content="Family Name :"
+                HorizontalAlignment="Left" Width="59"                    
+/>
+                <Label x:Name="idError"
+                       Foreground="Red"
+                    Content="Your ID isn't valid"
+                       Visibility="Hidden"
+                       Grid.Column="1"
+                       Margin="10,25,0,0"
+                       Grid.Row="1">
+                </Label>
+                <Label Content="Family Name :"
                    Grid.Column="0"
                    Grid.Row="2"
                    Margin="15,15,15,10"/>

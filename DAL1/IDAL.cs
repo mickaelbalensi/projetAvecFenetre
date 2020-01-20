@@ -32,6 +32,7 @@ namespace DAL1
         IEnumerable<Order> getAllOrder(Func<Order, bool> predicate = null);
 
         #endregion
+        void addHost(Host host);
     }
 
 }

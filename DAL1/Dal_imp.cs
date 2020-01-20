@@ -116,6 +116,10 @@ namespace DAL1
                    select ord.Copy();
         }
         #endregion
+        public void addHost(Host host)
+        {
+            DataSource.HostList.Add(host.Copy());
+        }
         public List<BankBranch> getAllBankBranch()
         {
             List<BankBranch> bankBranchList = new List<BankBranch>

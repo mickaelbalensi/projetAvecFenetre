@@ -29,12 +29,13 @@ namespace PLWPF
 
         public AddRequestWindow()
         {
-            InitializeComponent();
+            
             if (currentRequest == null)
                 currentRequest = new GuestRequest {
                     guestRequestKey = Configuration.guestRequestCount + 1
                 };
-            firstGrid.DataContext = currentRequest;
+            InitializeComponent();
+            this.DataContext = currentRequest;
 
           //  InitializeComponent();
            // currentRequest = new GuestRequest();
@@ -42,10 +43,14 @@ namespace PLWPF
 
             this.AreaComboBox.ItemsSource = Enum.GetValues(typeof(BE1.TypeAreaOfTheCountry));
             this.UnitComboBox.ItemsSource = Enum.GetValues(typeof(BE1.TypeOfHostingUnit));
-
             EntryDateCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.Now, DateTime.Parse("01/01/3000")));
+            EntryDateCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.Parse("01/01/1111"), DateTime.Parse("01/01/2000")));
+            EntryDateCalendar.SelectedDate = DateTime.Parse("01/01/2012");
+            ReleaseDateCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.Now, DateTime.Parse("01/01/3000")));
+            ReleaseDateCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.Parse("01/01/1111"), DateTime.Parse("01/01/2000")));
+            ReleaseDateCalendar.SelectedDate = DateTime.Parse("01/01/2012");
             //EntryDateCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.Parse("01/01/1111"), DateTime.Parse("01/01/2000")));
-           // EntryDateCalendar.SelectedDate = DateTime.Parse("01/01/2012");
+            // EntryDateCalendar.SelectedDate = DateTime.Parse("01/01/2012");
 
             #region commentaire du calendar
             //myCalendar = CreateCalendar();
@@ -81,6 +86,7 @@ namespace PLWPF
                 bl.addRequest(currentRequest);
                 currentRequest = new GuestRequest();
                 DataContext = currentRequest;
+                
             }
              catch (Exception ex)
             {
@@ -93,31 +99,32 @@ namespace PLWPF
             for (int i = 0; i < familyTextBox.Text.Count(); i++)
             {
                 if (family[i] < 65 || (family[i] > 90 && family[i] < 96) || family[i] > 123)
-                    throw new Exception("Your family name isn't valid");
+                    idError.Visibility=Visibility.Visible;
+              //  throw new Exception("rien");
             }
-            for (int i = 0; i < privateTextBox.Text.Count(); i++)
-            {
-                if (privateTextBox.Text[i]<65 || (privateTextBox.Text[i] >90 && privateTextBox.Text[i] < 96) || privateTextBox.Text[i] > 123)
-                    throw new Exception("Your private name isn't valid");
-            }
-            for (int i = 0; i < AdultsTextBox.Text.Count(); i++)
-            {
-                if (AdultsTextBox.Text[i] < 48 || AdultsTextBox.Text[i] > 57)
-                    throw new Exception("Your number of adults must be a number !");
-            }
-            /*for (int i = 0; i < childrenTextBox.Text.Count(); i++)
-            {
-                if (childrenTextBox.Text[i] < 48 || childrenTextBox.Text[i] > 57)
-                    throw new Exception("Your number of adults must be a number !");
-            }*/
-            bool flag = false;
-            for (int i = 0; i < mailTextBox.Text.Count(); i++)
-            {
-                if (mailTextBox.Text[i] == '@')
-                    flag = true;
-            }
-            if (!flag)
-                throw new Exception("Your mail address isn't valid");
+            //for (int i = 0; i < privateTextBox.Text.Count(); i++)
+            //{
+            //    if (privateTextBox.Text[i]<65 || (privateTextBox.Text[i] >90 && privateTextBox.Text[i] < 96) || privateTextBox.Text[i] > 123)
+            //        throw new Exception("Your private name isn't valid");
+            //}
+            //for (int i = 0; i < AdultsTextBox.Text.Count(); i++)
+            //{
+            //    if (AdultsTextBox.Text[i] < 48 || AdultsTextBox.Text[i] > 57)
+            //        throw new Exception("Your number of adults must be a number !");
+            //}
+            ///*for (int i = 0; i < childrenTextBox.Text.Count(); i++)
+            //{
+            //    if (childrenTextBox.Text[i] < 48 || childrenTextBox.Text[i] > 57)
+            //        throw new Exception("Your number of adults must be a number !");
+            //}*/
+            //bool flag = false;
+            //for (int i = 0; i < mailTextBox.Text.Count(); i++)
+            //{
+            //    if (mailTextBox.Text[i] == '@')
+            //        flag = true;
+            //}
+            //if (!flag)
+            //    throw new Exception("Your mail address isn't valid");
 
         }
         private void ChildrenTextBox_TextChanged(object sender, TextChangedEventArgs e)

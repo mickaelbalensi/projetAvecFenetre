@@ -11,6 +11,11 @@ namespace DAL1
 {
     public class DAL_XML : IDAL
     {
+        public void addHost(Host host)
+        {
+            throw new NotImplementedException();
+        }
+
         public void addHostingUnit(HostingUnit unit)
         {
             throw new NotImplementedException();

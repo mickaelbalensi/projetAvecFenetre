@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="PersonnalAccount" Height="200" Width="497.497">
+        Title="PersonnalAccount" Height="202.302" Width="558.504">
     <Grid Margin="-3,-18,58,-3.333" HorizontalAlignment="Right" Width="435" Height="192" VerticalAlignment="Top">
         <Grid.RowDefinitions>
             <RowDefinition Height="19*"/>

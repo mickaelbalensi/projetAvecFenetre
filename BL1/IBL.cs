@@ -30,6 +30,7 @@ namespace BL1
 
 
         #endregion
+        void addHost(Host host);
 
 
  //       void printAllBranchesOfBank(BankBranch bank);

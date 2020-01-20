@@ -193,6 +193,11 @@ namespace BL1
 
 
         #endregion
+        public void addHost(Host host)
+        {
+            dal.addHost(host);
+        }
+
         #region order
         public void addOrder(GuestRequest request)
         {
