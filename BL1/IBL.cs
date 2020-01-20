@@ -34,6 +34,8 @@ namespace BL1
 
         #endregion
         List<HostingUnit> getSuggestionList(long guestRequestKey);
+        void addHost(Host host);
+
 
         //       void printAllBranchesOfBank(BankBranch bank);
 

@@ -33,7 +33,9 @@ namespace PLWPF
 
         private void SignUP_Click(object sender, RoutedEventArgs e)
         {
-
+            Window subscriptionAsHost = new SubscriptionAsHost();
+            subscriptionAsHost.Show();
+            this.Close();
         }
     }
 }

@@ -14,6 +14,8 @@ namespace DS1
         public static List<Order> orderList { get; set; }
         public static List<BankBranch> bankBranchList;
 
+        public static List<Host> HostList { get; set; }
+
         public DataSource()
         {
 
@@ -24,7 +26,9 @@ namespace DS1
             hostingUnitList = new List<HostingUnit>();
             guestRequestList = new List<GuestRequest>();
             orderList = new List<Order>();
+            HostList = new List<Host>();
             bankBranchList = new List<BankBranch>
+
             {
                 new BankBranch{
                     bankNumber = Bank.bankHapoalim,

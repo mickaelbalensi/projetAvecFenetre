@@ -5,126 +5,110 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="AddUnitWindow" Height="322.686" Width="500.643">
-    <Grid>
+        Title="AddUnitWindow" Height="429.333" Width="474.429">
+    <Grid Margin="0,0,3,-52.667" Height="400" VerticalAlignment="Top">
         <!--#region ligne et colonne-->
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <!--#endregion-->
         <Label Content="ADD New Hosting Unit"
                Grid.Row="0"
-               Margin="58,0,63.6,0.4"
+               Margin="58,0,64,0"
                FontSize="30"/>
         <Grid x:Name="details"
-              Grid.Row="1" Height="493" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,-249.667" Grid.RowSpan="2" Width="494">
+              Grid.Row="1" HorizontalAlignment="Left" Width="465" Margin="0,0,0,50" Grid.RowSpan="2">
             <!--#region ligne et colonne-->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
-            <!--#endregion-->
-            <!--#region host's information-->
-            <StackPanel x:Name="collone1"
-            Grid.Column="0" Margin="0,0,0.333,364">
-
-                <Label Content="Name of the Hotel :"
-                   />
-                <Label Content="Number of adults :"
-                  />
-                <Label Content="Number of children :"
-                   />
-
-
-            </StackPanel>
-
-            <StackPanel x:Name="collone2" Grid.ColumnSpan="2" Margin="123,0,10,364">
-
-                <TextBox x:Name="nameHotel"
-                     Text="{Binding privateName, Mode=TwoWay}" Height="25" Margin="0,0,203.667,0"
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label x:Name="nameHotel"
+                   Content="Name Hotel"
+                   FontSize="15"
+                   Grid.Column="0"
+                   Grid.Row="0" Margin="0,15,0.333,0" RenderTransformOrigin="0.5,0.5" Height="36" VerticalAlignment="Top">
+            </Label>
+            <TextBox x:Name="NameHotelBox"
+                     Grid.Row="0"
+                     Margin="7,15,167.333,0" Height="36" VerticalAlignment="Top" Grid.Column="1"
                      />
-                <TextBox x:Name="numAdults"             
-                     Text="{Binding privateName, Mode=TwoWay}" Margin="-10,0,344.667,0" Height="24" HorizontalAlignment="Right" Width="26"
+            <Label x:Name="Adultsplaces"
+                Content="Adults places"
+                   Grid.Row="1"
+                   Grid.Column="0" Margin="0,10.333,0,0.333"
+                   >
+            </Label>
+            <TextBox x:Name="AdultsplacesBbox"
+                     Grid.Row="1" Margin="7,10.333,312.333,24.333" Grid.Column="1"
+                    />
+            <Label x:Name="Childrenplaces"
+                Content="Children places"
+                   Grid.Row="2"
+                   Grid.Column="0"
+                   >
+            </Label>
+            <TextBox x:Name="ChildrenplacesBox"
+                     Grid.Row="2" Margin="0,3.667,312.333,31.333"
+                    Grid.Column="1" HorizontalAlignment="Right" Width="30"
                      />
-                <TextBox x:Name="numChildren"
-                     Text="{Binding privateName, Mode=TwoWay}" Height="26" Margin="0,0,344.667,0"
-                     />
+            <Label Content="TypeArea :"
+                   Grid.Column="0"
+                   Grid.Row="3"
+                   Margin="15,15,15,0"/>
+            <ComboBox 
+                   x:Name="AreaComboBox"                   
+                   Grid.Column="1"               
+                   Grid.Row="3"
+                   SelectedValue="{Binding TypeAreaOfTheCountry, Mode=TwoWay}"
+                   Margin="15,15.333,0,15.333" 
                 
-
-            </StackPanel>
-            <CheckBox  x:Name="PoolCheckBox"
-                   Content="Pool"
-                   IsChecked="False"
-                   IsThreeState="False" 
-                       Grid.Row="3"
+                HorizontalAlignment="Left" Width="269"
                 />
-            <CheckBox x:Name="GardenCheckBox"
-                Content="Garden"
-                   IsChecked="False"
-                   IsThreeState="False"
-                      Grid.Row="3"
+            <Label Content="Type Of Unit :"
+                   Grid.Column="0"
+                   Grid.Row="4"
+                   Margin="15,15,15,0"/>
+            <ComboBox 
+                   x:Name="UnitComboBox"                   
+                   Grid.Column="1"               
+                   Grid.Row="4"
+                   SelectedItem="{Binding TypeOfHostingUnit, Mode=TwoWay}"
+                   Margin="15,15,0,14.667"
+                HorizontalAlignment="Left" Width="269"
                 />
-            <CheckBox x:Name="ChildrenAttractionCheckBox"
-                      Content="ChildrenAttraction"
-                      Grid.Row="3"
-                      />
-            <CheckBox 
-                x:Name="JacuzziCheckBox"
-                Content="Jacuzzi"
-                   IsChecked="False"
-                   IsThreeState="False"
-/>
-            <!--#endregion-->
-
         </Grid>
+
+
         <Button x:Name="buttonUnit"
                 Content="Add your unit" 
-                Grid.Row="3"
-                Grid.ColumnSpan="2"
-                Margin="0,0,0,0" Grid.RowSpan="2" HorizontalAlignment="Left" Width="489"
-                Click="butoun_addUnit">
+                Grid.Row="2" HorizontalAlignment="Left" Width="465"
+                Click="butoun_addUnit" Margin="0,124.667,0,0">
             <Button.Style>
                 <Style>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding ElementName=firstName, Path=Text}" Value="">
+                        <DataTrigger Binding="{Binding ElementName=NameHotelBox, Path=Text}" Value="">
                             <Setter Property="Button.IsEnabled" Value="False"/>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=familyName, Path=Text}" Value="">
+                        <DataTrigger Binding="{Binding ElementName=AdultsplacesBbox, Path=Text}" Value="">
                             <Setter Property="Button.IsEnabled" Value="False"/>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=phoneNumber, Path=Text}" Value="">
+                        <DataTrigger Binding="{Binding ElementName=ChildrenplacesBox, Path=Text}" Value="">
                             <Setter Property="Button.IsEnabled" Value="False"/>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=mailAddress, Path=Text}" Value="-1">
+                        <DataTrigger Binding="{Binding ElementName=AreaComboBox, Path=SelectedValue}" Value="">
                             <Setter Property="Button.IsEnabled" Value="False"/>
                         </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=hostKey, Path=Text}" Value="-1">
-                            <Setter Property="Button.IsEnabled" Value="False"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=BankComboBox, Path=SelectedItem}" Value="-1">
-                            <Setter Property="Button.IsEnabled" Value="False"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=numBranch, Path=Text}" Value="">
-                            <Setter Property="Button.IsEnabled" Value="False"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=numBankAccount, Path=Text}" Value="">
-                            <Setter Property="Button.IsEnabled" Value="False"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=numAdults, Path=Text}" Value="">
-                            <Setter Property="Button.IsEnabled" Value="False"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=nameHotel, Path=Text}" Value="">
-                            <Setter Property="Button.IsEnabled" Value="False"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=CollectionClearance, Path=CheckBox}" Value="">
-                            <Setter Property="Button.IsEnabled" Value="False"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=numChildren, Path=Text}" Value="">
-                            <Setter Property="Button.IsEnabled" Value="False"/>
-                        </DataTrigger>
+
                     </Style.Triggers>
                 </Style>
             </Button.Style>
