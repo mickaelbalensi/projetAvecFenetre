@@ -238,5 +238,12 @@
       <Name>BL1</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\photo2.jpg" />
+    <Resource Include="Images\photo3.jpg" />
+    <Resource Include="Images\photo4.jpg" />
+    <Content Include="Images\photo5.jfif" />
+    <Resource Include="Images\photo6.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
