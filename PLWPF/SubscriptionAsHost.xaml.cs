@@ -34,7 +34,7 @@ namespace PLWPF
 
         }
 
-        private void butoun_addUnit(object sender, RoutedEventArgs e)
+        private void Subscribe_Click(object sender, RoutedEventArgs e)
 
         {
             try
@@ -88,14 +88,6 @@ namespace PLWPF
                  throw new Exception("Your mail address isn't valid");
 
          }
-        private void Subscribe_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
-
-        private void butoun_addUnit(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

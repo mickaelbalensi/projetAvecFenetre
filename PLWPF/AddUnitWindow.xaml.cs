@@ -40,6 +40,8 @@ namespace PLWPF
         private void butoun_addUnit(object sender, RoutedEventArgs e)
 
         {
+            Window sendmail = new SendMail();
+            sendmail.Show();
             try
             {
                 //checkExceptions();

@@ -182,7 +182,6 @@
                    Grid.Row="10"
                    Margin="15,16,0,15"
                 Text="{Binding children, Mode=TwoWay}" 
-                TextChanged="ChildrenTextBox_TextChanged"
                 HorizontalAlignment="Left" Width="59"
                 />
             <!--#endregion-->
