@@ -45,11 +45,11 @@ namespace BL1
 
             try
             {
-                this.addRequest(request1);
+                this.addRequest(request1.Copy());
             }
             catch (Exception)
             {
-                this.updateRequest(request1);
+                this.updateRequest(request1.Copy());
             }
 
             GuestRequest request2 = new GuestRequest
@@ -72,11 +72,11 @@ namespace BL1
 
             try
             {
-                this.addRequest(request2);
+                this.addRequest(request2.Copy());
             }
             catch (Exception)
             {
-                this.updateRequest(request2);
+                this.updateRequest(request2.Copy());
             }
 
             GuestRequest request3 = new GuestRequest
@@ -99,11 +99,11 @@ namespace BL1
 
             try
             {
-                this.addRequest(request3);
+                this.addRequest(request3.Copy());
             }
             catch (Exception)
             {
-                this.updateRequest(request3);
+                this.updateRequest(request3.Copy());
             }
             HostingUnit s4 = new HostingUnit
             {
@@ -124,16 +124,16 @@ namespace BL1
         public void addRequest(GuestRequest request)
         {
             checkDate(request);
-            dal.addRequest(request);
+            dal.addRequest(request.Copy());
 
-            addOrder(request);
+            addOrder(request.Copy());
         }
-        public void updateRequest(GuestRequest request) { }
+        public void updateRequest(GuestRequest request) {
+            dal.updateRequest(request);
+        }
 
-        // public void printAllCustomer(GuestRequest request) { }
         public IEnumerable<GuestRequest> getAllGuestRequest(Func<GuestRequest, bool> predicate = null)
         {
-            //if (predicate == null)
             return dal.getAllGuestRequest(predicate);
         }
         public bool isRoomFree(HostingUnit unit, GuestRequest request)
@@ -173,10 +173,14 @@ namespace BL1
         //hostingUnit
 
         public void addHostingUnit(HostingUnit unit) {
+            dal.addHostingUnit(unit);
         }
-        public void deleteHostingUnit(HostingUnit unit) { }
-        public void updateHostingUnit(HostingUnit unit) { }
-        public void printAllHostingUnit(HostingUnit unit) { }
+        public void deleteHostingUnit(HostingUnit unit) {
+            dal.deleteHostingUnit(unit);
+        }
+        public void updateHostingUnit(HostingUnit unit) {
+            dal.updateHostingUnit(unit);
+        }
         public IEnumerable<HostingUnit> getAllHostingUnit(Func<HostingUnit, bool> predicate = null)
         {
             return dal.getAllHostingUnit(predicate);
@@ -214,26 +218,20 @@ namespace BL1
                         guestRequestKey = request.guestRequestKey,
                         status = OrderStatus.notYetAddressed,
                         createDate = request.entryDate
-                    });
+                    }.Copy());
                 }
             }
 
         }
         public void updateOrder(Order order)
         {
-
+            dal.updateOrder(order);
         }
         public IEnumerable<Order> getAllOrder(Func<Order, bool> predicate = null)
         {
-            //if (predicate == null)
             return dal.getAllOrder(predicate);
         }
-        //prints 
-
-        //public void printAllOrder(Order order) { }
         #endregion
-        // public void printAllBranchesOfBank(BankBranch bank) { }
-        // New Itshak2
         #region functions
 
         public IEnumerable<HostingUnit> getFreeUnitList(DateTime entrydate, DateTime releasedate)
@@ -243,9 +241,9 @@ namespace BL1
                 entryDate = entrydate,
                 releaseDate = releasedate,
             };
-            return from n in getAllHostingUnit()
-                   where isRoomFree(n, request)
-                   select n;
+            return from unit in getAllHostingUnit()
+                   where isRoomFree(unit, request)
+                   select unit.Copy();
         }
         public int numOrderForGuestRequest(GuestRequest request)
         {
@@ -273,20 +271,6 @@ namespace BL1
             return orderMailWasSentList.Count();
         }
 
-
-        //prints 
-
-        //   public void printAllOrder(Order order) { }
-        #endregion
-        //    public void printAllBranchesOfBank(BankBranch bank) { }
-        // New Itshak2
-        #region functions
-
-
-
-
-
-
         public bool checkTransactionSigned(Order order)
         {
             GuestRequest req = getAllGuestRequest().FirstOrDefault(x => x.guestRequestKey == order.guestRequestKey);
@@ -295,18 +279,10 @@ namespace BL1
         public IEnumerable<IGrouping<TypeAreaOfTheCountry, HostingUnit>> groupUnitByAreaList(bool flag)
         {
             return from unit in getAllHostingUnit()
-                   group unit by unit.typeArea;
+                   group unit.Copy() by unit.typeArea;
         }
 
-        public void printAllOrder(Order order)
-        {
-            throw new NotImplementedException();
-        }
 
-        public void printAllBranchesOfBank(BankBranch bank)
-        {
-            throw new NotImplementedException();
-        }
 
         /*      public IEnumerable<IGrouping<TypeAreaOfTheCountry, GuestRequest>> groupRequestByAreaList()
               {
@@ -317,5 +293,6 @@ namespace BL1
               }*/
 
         #endregion
+
     }
 }

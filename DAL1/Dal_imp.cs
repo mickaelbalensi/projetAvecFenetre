@@ -20,7 +20,7 @@ namespace DAL1
             GuestRequest requestLocal = getRequest(request.guestRequestKey);
             if (requestLocal != null)
                 throw new Exception("there is already a request with the same guestRequestKey");
-            DataSource.guestRequestList.Add(request);
+            DataSource.guestRequestList.Add(request.Copy());
         }
         public GuestRequest getRequest(long key)
         {
@@ -31,19 +31,18 @@ namespace DAL1
             int index = DS1.DataSource.guestRequestList.FindIndex(req => req.guestRequestKey == request.guestRequestKey);
             if (index == -1)
                 throw new Exception("request with this number was not found...");
-            DS1.DataSource.guestRequestList[index] = request;
+            DS1.DataSource.guestRequestList[index] = request.Copy();
 
             //request.status = CustomerRequirementStatus.transactionClosed;
         }
 
         public IEnumerable<GuestRequest> getAllGuestRequest(Func<GuestRequest, bool> predicate = null)
-
         {
             if (predicate == null)
                 return DataSource.guestRequestList.AsEnumerable();
             return from req in DataSource.guestRequestList
                    where predicate(req)
-                   select req;
+                   select req.Copy();
         }
 
         #endregion
@@ -56,7 +55,7 @@ namespace DAL1
             HostingUnit unitLocal = getHostingUnit(unit.hostingUnitKey);
             if (unitLocal != null)
                 throw new Exception("there is already an unit with the same hostingUnitKey");
-            DataSource.hostingUnitList.Add(unit);
+            DataSource.hostingUnitList.Add(unit.Copy());
 
         }
         public HostingUnit getHostingUnit(long key)
@@ -68,7 +67,7 @@ namespace DAL1
             int index = DS1.DataSource.hostingUnitList.FindIndex(hostUnit => hostUnit.hostingUnitKey == unit.hostingUnitKey);
             if (index == -1)
                 throw new Exception("hostingUnit with this number was not found...");
-            DS1.DataSource.hostingUnitList[index] = unit;
+            DS1.DataSource.hostingUnitList[index] = unit.Copy();
         }
 
         public void deleteHostingUnit(HostingUnit unit)
@@ -76,7 +75,7 @@ namespace DAL1
             HostingUnit unitLocal = getHostingUnit(unit.hostingUnitKey);
             if (unitLocal == null)
                 throw new Exception("there isn't such hostingUnit to remove");
-            DataSource.hostingUnitList.Remove(unit);
+            DataSource.hostingUnitList.Remove(unit.Copy());
         }
         public IEnumerable<HostingUnit> getAllHostingUnit(Func<HostingUnit, bool> predicate = null)
         {
@@ -84,7 +83,7 @@ namespace DAL1
                 return DataSource.hostingUnitList.AsEnumerable();
             return from unit in DataSource.hostingUnitList
                    where predicate(unit)
-                   select unit;
+                   select unit.Copy();
         }
 
         #endregion
@@ -95,7 +94,7 @@ namespace DAL1
             Order orderLocal = getOrder(order.orderKey);
             if (orderLocal != null)
                 throw new Exception("there is already an order with the same orderKey");
-            DataSource.orderList.Add(order);
+            DataSource.orderList.Add(order.Copy());
         }
         public Order getOrder(long key)
         {
@@ -106,7 +105,7 @@ namespace DAL1
             int index = DS1.DataSource.orderList.FindIndex(ord => ord.orderKey == order.orderKey);
             if (index == -1)
                 throw new Exception("Order with this number was not found...");
-            DS1.DataSource.orderList[index] = order;
+            DS1.DataSource.orderList[index] = order.Copy();
         }
         public IEnumerable<Order> getAllOrder(Func<Order, bool> predicate = null)
         {
@@ -114,7 +113,7 @@ namespace DAL1
                 return DataSource.orderList.AsEnumerable();
             return from ord in DataSource.orderList
                    where predicate(ord)
-                   select ord;
+                   select ord.Copy();
         }
         #endregion
         public List<BankBranch> getAllBankBranch()

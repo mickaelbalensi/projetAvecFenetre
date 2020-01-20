@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+//using DAL1;
 namespace BE1
 {
     //changement nom en minuscule
-    public class GuestRequest //: Clonable
+    [Serializable]
+    public class GuestRequest 
     {
 
         public long guestRequestKey;
@@ -37,6 +38,8 @@ namespace BE1
         public Options jacuzzi { get; set; }
         public Options garden { get; set; }
         public Options childrenAttractions { get; set; }
+
+
         //doit onn laisser le ctor, sinon attention au compte de Configuration.guestRequestCount++;
         public GuestRequest()
         {

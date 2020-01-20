@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BE1
 {
-    public class Host //: Clonable
+    [Serializable]
+    public class Host 
 
     {
         public long hostKey { get; set; }

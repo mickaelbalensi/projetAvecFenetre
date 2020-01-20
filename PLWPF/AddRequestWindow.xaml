@@ -105,7 +105,16 @@
                 RenderTransformOrigin="0.5,0.5" 
                 HorizontalAlignment="Left" Width="270"
                 />
-            <!--#endregion-->
+                <Label x:Name="mailError"
+                    Content="Your Address may to content @ :"
+                   Grid.Column="1"
+                   Grid.Row="4"
+                   FontStyle="Italic"
+                   FontSize="10"
+                   Foreground="Red"
+                   Visibility="Hidden"
+                   Margin="15,27,15,0"/>
+                <!--#endregion-->
             <!--#region When-->
             <Label Content="When ?"
                    Grid.Column="0"

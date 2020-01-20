@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BE1
 {
+    [Serializable]
     public class HostingUnit
     {
         //doit on ajouter { get; set; } au champs hostingUnitKey ?
