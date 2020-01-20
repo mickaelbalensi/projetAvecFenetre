@@ -11,7 +11,7 @@ namespace BE1
         //changement nom en minuscule
 
         public static long hostKeyCount = 0;
-        public static long hostingUnitCount = 0;
+        public static long hostingUnitCount = 00;
 
 
 
