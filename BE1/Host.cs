@@ -18,9 +18,8 @@ namespace BE1
         BankBranch bankBranchDetails { get; set; }
         public long bankAccountNumber { get; set; }
         public bool collectionClearance { get; set; }
-
-        public int countHostingUnit { get; set; }// number of rooms he owns 
-
+        public string password { get; set; }
+        public static int  countHostingUnit { get; set; }// number of rooms he owns 
         public Host()
         {
             hostKey = Configuration.hostKeyCount;

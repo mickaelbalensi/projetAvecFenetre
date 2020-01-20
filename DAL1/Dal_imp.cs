@@ -32,7 +32,6 @@ namespace DAL1
             if (index == -1)
                 throw new Exception("request with this number was not found...");
             DS1.DataSource.guestRequestList[index] = request.Copy();
-
             //request.status = CustomerRequirementStatus.transactionClosed;
         }
 

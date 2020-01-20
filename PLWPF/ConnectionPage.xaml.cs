@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BE1;
+using BL1;
 
 namespace PLWPF
 {
@@ -19,6 +21,7 @@ namespace PLWPF
     /// </summary>
     public partial class ConnectionPage : Window
     {
+        public Host currentHost { get; set; }
         public ConnectionPage()
         {
             InitializeComponent();
@@ -26,6 +29,15 @@ namespace PLWPF
 
         private void SignIn_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                //il faut verifier que le password et le mailaddress existent
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
             Window personnalAccount = new PersonnalAccount();
             personnalAccount.Show();
             this.Close();

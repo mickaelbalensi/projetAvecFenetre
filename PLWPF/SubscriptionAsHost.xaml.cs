@@ -86,7 +86,8 @@ namespace PLWPF
              }
              if (!flag)
                  throw new Exception("Your mail address isn't valid");
-
+            if (passwordBox.Text != checkPasswordBox.Text)
+                throw new Exception("You didn't enter the well password");
          }
 
     }
