@@ -83,6 +83,9 @@
     <Compile Include="RequestPage.xaml.cs">
       <DependentUpon>RequestPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SendMail.xaml.cs">
+      <DependentUpon>SendMail.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SubscriptionAsHost.xaml.cs">
       <DependentUpon>SubscriptionAsHost.xaml</DependentUpon>
     </Compile>
@@ -170,6 +173,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RequestPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SendMail.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
