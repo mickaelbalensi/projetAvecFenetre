@@ -14,6 +14,8 @@ namespace BL1
         //request
         #region request
         void addRequest(GuestRequest request);
+        GuestRequest getRequest(long key);
+
         void updateRequest(GuestRequest request);
         IEnumerable<GuestRequest> getAllGuestRequest(Func<GuestRequest, bool> predicate = null);
         #endregion
@@ -21,18 +23,19 @@ namespace BL1
         void addHostingUnit(HostingUnit unit);
         void updateHostingUnit(HostingUnit unit);
         void deleteHostingUnit(HostingUnit unit);
+        HostingUnit getHostingUnit(long key);
         IEnumerable<HostingUnit> getAllHostingUnit(Func<HostingUnit, bool> predicate = null);
         #endregion
         #region order
         void addOrder(GuestRequest request);
         void updateOrder(Order order);
         IEnumerable<Order> getAllOrder(Func<Order, bool> predicate = null);
-
+        Order getOrder(long key);
 
         #endregion
+        List<HostingUnit> getSuggestionList(long guestRequestKey);
 
-
- //       void printAllBranchesOfBank(BankBranch bank);
+        //       void printAllBranchesOfBank(BankBranch bank);
 
 
 

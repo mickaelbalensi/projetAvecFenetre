@@ -79,8 +79,10 @@ namespace PLWPF
                 currentRequest.garden = GardenCheckBox.IsChecked == true ? Options.yes : GardenCheckBox.IsChecked == false ? Options.no : Options.optional;
                 currentRequest.childrenAttractions = ChildrenAttractionsCheckBox.IsChecked == true ? Options.yes : ChildrenAttractionsCheckBox.IsChecked == false ? Options.no : Options.optional;
                 bl.addRequest(currentRequest);
+                long key = currentRequest.guestRequestKey;
                 currentRequest = new GuestRequest();
                 DataContext = currentRequest;
+                Window suggestion = new SuggestionWindow(key);
             }
              catch (Exception ex)
             {
@@ -120,19 +122,6 @@ namespace PLWPF
                 throw new Exception("Your mail address isn't valid");
 
         }
-        private void ChildrenTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
 
-        }
-
-        private void AreaComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void buttonRequest_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

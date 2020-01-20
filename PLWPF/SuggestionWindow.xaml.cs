@@ -11,22 +11,23 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BE1;
+using BL1;
 
 namespace PLWPF
 {
     /// <summary>
-    /// Logique d'interaction pour SubscriptionAsHost.xaml
+    /// Logique d'interaction pour SuggestionWindow.xaml
     /// </summary>
-    public partial class SubscriptionAsHost : Window
+    public partial class SuggestionWindow : Window
     {
-        public SubscriptionAsHost()
+        IBL bl;
+
+        public SuggestionWindow(long key)
         {
             InitializeComponent();
-        }
-
-        private void butoun_addUnit(object sender, RoutedEventArgs e)
-        {
-
+            bl = FactoryBL.getBL();
+            bl.getSuggestionList(key);
         }
     }
 }

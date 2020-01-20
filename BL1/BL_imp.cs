@@ -223,6 +223,8 @@ namespace BL1
             }
 
         }
+
+
         public void updateOrder(Order order)
         {
             dal.updateOrder(order);
@@ -231,6 +233,7 @@ namespace BL1
         {
             return dal.getAllOrder(predicate);
         }
+
         #endregion
         #region functions
 
@@ -276,13 +279,39 @@ namespace BL1
             GuestRequest req = getAllGuestRequest().FirstOrDefault(x => x.guestRequestKey == order.guestRequestKey);
             return req.transactionSigned;
         }
+
+
         public IEnumerable<IGrouping<TypeAreaOfTheCountry, HostingUnit>> groupUnitByAreaList(bool flag)
         {
             return from unit in getAllHostingUnit()
                    group unit.Copy() by unit.typeArea;
         }
 
+        public List<HostingUnit> getSuggestionList(long guestRequestKey)
+        {
+            List<HostingUnit> listSuggestion = new List<HostingUnit>();
+            foreach (Order order in getAllOrder())
+            {
+                if (guestRequestKey == order.guestRequestKey)
+                    listSuggestion.Add(getHostingUnit(order.hostingUnitKey));
+            }
+            return listSuggestion;
+        }
 
+        public GuestRequest getRequest(long key)
+        {
+            return dal.getRequest(key); ;
+        }
+
+        public HostingUnit getHostingUnit(long key)
+        {
+            return dal.getHostingUnit(key);
+        }
+
+        public Order getOrder(long key)
+        {
+           return dal.getOrder(key);
+        }
 
         /*      public IEnumerable<IGrouping<TypeAreaOfTheCountry, GuestRequest>> groupRequestByAreaList()
               {
