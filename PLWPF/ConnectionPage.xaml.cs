@@ -15,28 +15,23 @@ using System.Windows.Shapes;
 namespace PLWPF
 {
     /// <summary>
-    /// Interaction logic for HostPage.xaml
+    /// Logique d'interaction pour ConnectionPage.xaml
     /// </summary>
-    public partial class HostPage : Window
+    public partial class ConnectionPage : Window
     {
-        public HostPage()
+        public ConnectionPage()
         {
             InitializeComponent();
         }
 
-        private void butonAddUnit_Click(object sender, RoutedEventArgs e)
+        private void SignIn_Click(object sender, RoutedEventArgs e)
         {
-            Window unitPage = new UnitPage();
-            unitPage.Show();
+            Window personnalAccount = new PersonnalAccount();
+            personnalAccount.Show();
+            this.Close();
         }
 
-        private void Order_Click(object sender, RoutedEventArgs e)
-        {
-            Window orderPage = new OrderPage();
-            orderPage.Show();
-        }
-
-        private void butonDeleteUnit_Click(object sender, RoutedEventArgs e)
+        private void SignUP_Click(object sender, RoutedEventArgs e)
         {
 
         }

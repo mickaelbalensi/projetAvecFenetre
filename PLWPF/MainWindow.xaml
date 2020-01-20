@@ -20,20 +20,20 @@
             </Grid.ColumnDefinitions>
         
         <Button x:Name="addRequestButton"
-                Content="Request's options"
+                Content="Guest"
                 Margin="10"
                 FontSize="30"
                 Grid.Row="0" 
                 Grid.Column="0"
                 Click="addRequestButton_Click"
                 />
-            <Button x:Name="addHostingUnit"
-                Content="Unit's options"
+            <Button x:Name="PersonnalAccount"
+                Content="Host"
                 Margin="10"
                 FontSize="30"
                 Grid.Row="1" 
                  Grid.Column="1"
-                Click="addUnitButton_Click"
+                Click="PersonnalAccount_Click"
                 />
         </Grid>
         <Button x:Name="ConsultData"

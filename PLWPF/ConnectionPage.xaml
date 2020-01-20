@@ -1,25 +1,27 @@
-﻿<Window x:Class="PLWPF.HostPage"
+﻿<Window x:Class="PLWPF.ConnectionPage"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="HostPage" Height="500" Width="500">
+        Title="ConnectionPage" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="butonAddUnit"
-                Content="Units"
-                Grid.Row="0" Click="butonAddUnit_Click"
-                FontSize="35">
+        <Button x:Name="SignIn"
+                Content="Sign in"
+                FontSize="45"
+                Grid.Row="0" Click="SignIn_Click"                
+                >
         </Button>
-        <Button x:Name="Order"
-                Content="Orders"
-                 Grid.Row="1" Click="Order_Click"
-                FontSize="35">
+        <Button x:Name="SignUP"
+                Content="Sign up"
+                FontSize="45"
+                Grid.Row="1" Click="SignUP_Click"                
+                >
         </Button>
     </Grid>
 </Window>

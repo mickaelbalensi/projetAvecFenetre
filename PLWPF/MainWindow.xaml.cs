@@ -33,10 +33,10 @@ namespace PLWPF
 
 
 
-        private void addUnitButton_Click(object sender, RoutedEventArgs e)
+        private void PersonnalAccount_Click(object sender, RoutedEventArgs e)
         {
-            Window addUnitWindow = new UnitPage();
-            addUnitWindow.Show();              
+            Window personnalAccount = new PersonnalAccount();
+            personnalAccount.Show();              
         }
 
         private void addOrderButton_Click(object sender, RoutedEventArgs e)

@@ -10,18 +10,22 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
-        <Button x:Name="AddUnit"
+        <Button x:Name="UpdateOrder"
                Grid.Row="0"
-                Content="Add Unit" Click="AddUnit_Click" 
+                Content="Add unit" Click="AddUnit_Click" 
                 >
         </Button>
-        <Button x:Name="PersonnalArea"
+        <Button x:Name="UpdateUnit"
                Grid.Row="1"
-                Content="Personnal Area" Click="PersonnalArea_Click" 
+                Content="Update unit" Click="UpdateUnit_Click" 
                 >
         </Button>
-        
+        <Button x:Name="DeleteUnit"
+               Grid.Row="2"
+                Content="Delete unit" Click="DeleteUnit_Click" 
+                >
+        </Button>
     </Grid>
 </Window>

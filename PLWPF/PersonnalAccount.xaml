@@ -5,64 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="PersonnalAccount" Height="400" Width="500">
-    <Grid>
+        Title="PersonnalAccount" Height="200" Width="497.497">
+    <Grid Margin="-3,-18,58,-3.333" HorizontalAlignment="Right" Width="435" Height="192" VerticalAlignment="Top">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="19*"/>
+            <RowDefinition Height="45*"/>
+            <RowDefinition Height="64*"/>
+            <RowDefinition Height="0*"/>
+            <RowDefinition Height="64*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" MinWidth="102"/>
-            <ColumnDefinition Width="auto" MinWidth="390"/>
+            <ColumnDefinition Width="auto" MinWidth="334.667"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Fisrt name"
-                   Grid.Column="0"
-                   Grid.Row="0"
-                   Margin="15"/>
-        <TextBox 
-                x:Name="fisrtNameTextBox"
-                   Grid.Column="1"
-                   Grid.Row="0"
-                   Margin="15,15,103,39" Text="xx"
-                />
-        <Label Content="Last Name"
-                   Grid.Column="0"
-                   Grid.Row="1"
-                   Margin="15"/>
-        <TextBox 
-                x:Name="LastNameTextBox"
-                   Grid.Column="1"
-                   Grid.Row="1"
-                   Margin="15,15,103,39" Text="xx"
-                />
         <Label Content="Mail Adress"
                    Grid.Column="0"
-                   Grid.Row="2"
-                   Margin="15"/>
+                   Grid.Row="0"
+                   Margin="15,15,12,14" Grid.RowSpan="2"/>
         <TextBox 
                 x:Name="mailAdressTextBox"
                    Grid.Column="1"
-                   Grid.Row="2"
-                   Margin="15,19,103,36" Text="xx"
+                   Grid.Row="1"
+                   Margin="18,2.333,101.667,14" Text="xx"
                 />
         <Label Content="password"
                    Grid.Column="0"
-                   Grid.Row="3"
-                   Margin="15,15,0,15"/>
+                   Grid.Row="2"
+                   Margin="15,16,1,2"/>
         <TextBox 
                 x:Name="Password"
                    Grid.Column="1"
-                   Grid.Row="3"
-                   Margin="15,15,0,41" HorizontalAlignment="Left" Width="272" Text="xx"
+                   Grid.Row="2"
+                   Margin="18,16,101.667,24" Text="xx"
                 />
         <Button x:Name="buttonRequest"
                 Content="Connect to your account" 
                 Grid.Row="4"
                 Grid.ColumnSpan="2"
-                Margin="0,0,0,0" HorizontalAlignment="Left" Width="489" Click="buttonPersonnal_Click">
+                Margin="0,3,0,0" HorizontalAlignment="Left" Width="435" Click="buttonPersonnal_Click">
             <Button.Style>
                 <Style>
                     <Style.Triggers>

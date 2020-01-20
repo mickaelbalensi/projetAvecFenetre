@@ -46,6 +46,7 @@ namespace PLWPF
             EntryDateCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.Now, DateTime.Parse("01/01/3000")));
             //EntryDateCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.Parse("01/01/1111"), DateTime.Parse("01/01/2000")));
            // EntryDateCalendar.SelectedDate = DateTime.Parse("01/01/2012");
+
             #region commentaire du calendar
             //myCalendar = CreateCalendar();
             //EntryDateCalendar.Child = null;
@@ -70,16 +71,8 @@ namespace PLWPF
         {
             try
             {
-                bool flag = false;
-                string word = (string)mailTextBox.Text;
-                string aro = "@";
-                for (int i=0; i < mailTextBox.Text.Count();i++)
-                {
-                //    if (word[i] == "@")
-                  //      flag = true;
-                }
-                if (!flag)
-                    throw new Exception("Your email isn't valid,please try again");
+                checkExceptions();
+                currentRequest.status = GuestRequestStatus.active;
                 currentRequest.registrationDate = DateTime.Now;
                 currentRequest.jacuzzi = JacuzziCheckBox.IsChecked == true ? Options.yes :  JacuzziCheckBox.IsChecked == false ? Options.no : Options.optional;
                 currentRequest.pool = PoolCheckBox.IsChecked == true ? Options.yes : PoolCheckBox.IsChecked == false ? Options.no : Options.optional;
@@ -94,7 +87,39 @@ namespace PLWPF
                 MessageBox.Show(ex.Message);
             }
         }
+        private void checkExceptions()
+        {
+            string family = familyTextBox.Text;
+            for (int i = 0; i < familyTextBox.Text.Count(); i++)
+            {
+                if (family[i] < 65 || (family[i] > 90 && family[i] < 96) || family[i] > 123)
+                    throw new Exception("Your family name isn't valid");
+            }
+            for (int i = 0; i < privateTextBox.Text.Count(); i++)
+            {
+                if (privateTextBox.Text[i]<65 || (privateTextBox.Text[i] >90 && privateTextBox.Text[i] < 96) || privateTextBox.Text[i] > 123)
+                    throw new Exception("Your private name isn't valid");
+            }
+            for (int i = 0; i < AdultsTextBox.Text.Count(); i++)
+            {
+                if (AdultsTextBox.Text[i] < 48 || AdultsTextBox.Text[i] > 57)
+                    throw new Exception("Your number of adults must be a number !");
+            }
+            /*for (int i = 0; i < childrenTextBox.Text.Count(); i++)
+            {
+                if (childrenTextBox.Text[i] < 48 || childrenTextBox.Text[i] > 57)
+                    throw new Exception("Your number of adults must be a number !");
+            }*/
+            bool flag = false;
+            for (int i = 0; i < mailTextBox.Text.Count(); i++)
+            {
+                if (mailTextBox.Text[i] == '@')
+                    flag = true;
+            }
+            if (!flag)
+                throw new Exception("Your mail address isn't valid");
 
+        }
         private void ChildrenTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 

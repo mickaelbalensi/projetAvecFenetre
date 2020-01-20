@@ -15,20 +15,13 @@ using System.Windows.Shapes;
 namespace PLWPF
 {
     /// <summary>
-    /// Interaction logic for PersonnalAccount.xaml
+    /// Logique d'interaction pour SubscriptionAsHost.xaml
     /// </summary>
-    public partial class PersonnalAccount : Window
+    public partial class SubscriptionAsHost : Window
     {
-        public PersonnalAccount()
+        public SubscriptionAsHost()
         {
             InitializeComponent();
-        }
-
-        private void buttonPersonnal_Click(object sender, RoutedEventArgs e)
-        {
-            Window hostPage = new HostPage();
-            hostPage.Show();
-            this.Close();
         }
     }
 }

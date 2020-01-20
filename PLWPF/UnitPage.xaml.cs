@@ -26,13 +26,20 @@ namespace PLWPF
 
         private void AddUnit_Click(object sender, RoutedEventArgs e)
         {
-            Window addUnit = new AddUnitWindow();
-            addUnit.Show();
+            Window addUnitWindow = new AddUnitWindow();
+            addUnitWindow.Show();
         }
-        private void PersonnalArea_Click(object sender, RoutedEventArgs e)
+
+        private void UpdateUnit_Click(object sender, RoutedEventArgs e)
         {
-            Window personnalAccount = new PersonnalAccount();
-            personnalAccount.Show();
+            Window updateUnit = new UpdateUnit();
+            updateUnit.Show();
+        }
+
+        private void DeleteUnit_Click(object sender, RoutedEventArgs e)
+        {
+            Window deleteUnit = new DeleteUnit();
+            deleteUnit.Show();
         }
     }
 }
