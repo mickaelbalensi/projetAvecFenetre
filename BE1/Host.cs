@@ -15,7 +15,7 @@ namespace BE1
         public string familyName { get; set; }
         public long phoneNumber { get; set; }
         public string mailAddress { get; set; }
-        BankBranch bankBranchDetails { get; set; }
+        public BankBranch bankBranchDetails { get; set; }
         public long bankAccountNumber { get; set; }
         public bool collectionClearance { get; set; }
 

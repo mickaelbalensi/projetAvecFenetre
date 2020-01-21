@@ -9,7 +9,6 @@ namespace BE1
     [Serializable]
     public class Order 
     {
-
         public long hostingUnitKey { get; set; }
         public long guestRequestKey { get; set; }
         public long orderKey { get; set; }

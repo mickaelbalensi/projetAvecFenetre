@@ -11,16 +11,16 @@ namespace DAL1
 {
     public interface IDAL
     {
-        //request
+        
         #region request
         void addRequest(GuestRequest guest);
-        GuestRequest getRequest(long key);
+        //GuestRequest getRequest(long key);
         void updateRequest(GuestRequest guest);
         IEnumerable<GuestRequest> getAllGuestRequest(Func<GuestRequest, bool> predicate = null);
         #endregion
         #region hostingUnit
         void addHostingUnit(HostingUnit unit);
-        HostingUnit getHostingUnit(long key);
+        //HostingUnit getHostingUnit(long key);
         void updateHostingUnit(HostingUnit unit);
         void deleteHostingUnit(HostingUnit hosting);
         IEnumerable<HostingUnit> getAllHostingUnit(Func<HostingUnit, bool> predicate = null);
@@ -28,11 +28,11 @@ namespace DAL1
         #region order
         void addOrder(Order order);
         void updateOrder(Order order);
-        Order getOrder(long key);
+        //Order getOrder(long key);
         IEnumerable<Order> getAllOrder(Func<Order, bool> predicate = null);
 
         #endregion
-        void addHost(Host host);
+        //void addHost(Host host);
     }
 
 }

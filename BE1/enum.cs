@@ -50,12 +50,12 @@ namespace BE1
     {
         bankHapoalim,
         bankLeumi,
-        bankMizrahiTefahot,
-        firstInternationalBankOfIsrael,
-        israelDiscountBank,
-        mercantile,
+        //bankMizrahiTefahot,
+        //firstInternationalBankOfIsrael,
+        //israelDiscountBank,
+        //mercantile,
         BNP,
-        citibank,
+        //citibank,
         HSBC
     }
 
