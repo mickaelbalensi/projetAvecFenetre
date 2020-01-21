@@ -26,6 +26,7 @@ namespace BE1
 
         //number of order the room received
         public int countOrder { get; set; }
+        public List<string> uris { get; set; }
         public HostingUnit()
         {
             hostingUnitKey = Configuration.hostingUnitCount;

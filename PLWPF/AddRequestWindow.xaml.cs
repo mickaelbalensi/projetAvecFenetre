@@ -86,15 +86,19 @@ namespace PLWPF
                 currentRequest.pool = PoolCheckBox.IsChecked == true ? Options.yes : PoolCheckBox.IsChecked == false ? Options.no : Options.optional;
                 currentRequest.garden = GardenCheckBox.IsChecked == true ? Options.yes : GardenCheckBox.IsChecked == false ? Options.no : Options.optional;
                 currentRequest.childrenAttractions = ChildrenAttractionsCheckBox.IsChecked == true ? Options.yes : ChildrenAttractionsCheckBox.IsChecked == false ? Options.no : Options.optional;
+                
+                
                 bl.addRequest(currentRequest);
-                long key = currentRequest.guestRequestKey;
-                currentRequest = new GuestRequest();
-                DataContext = currentRequest;
                 //Window suggestion = new SuggestionWindow(key);
-                sendMail(currentRequest.mailAddress, bl.getSuggestionList(key));
+               
             }
              catch (Exception ex)
             {              
+               
+                long key = currentRequest.guestRequestKey;
+                currentRequest = new GuestRequest();
+                DataContext = currentRequest;
+                sendMail(currentRequest.mailAddress, bl.getSuggestionList(key));
                 this.Close();
                 MessageBox.Show(ex.Message);               
             }
@@ -129,7 +133,7 @@ namespace PLWPF
             //{
             //    if (mailTextBox.Text[i] == '@')
             //        flag = true;
-            //}
+            //
             //if (!flag)
             //    throw new Exception("Your mail address isn't valid");
 
@@ -138,8 +142,12 @@ namespace PLWPF
         {
             foreach (HostingUnit unit in suggestionList)
             {
+                string unitName = unit.hostingUnitName;
                 Outlook.Application App = new Outlook.Application();
                 Outlook.MailItem msg = (Outlook.MailItem)App.CreateItem(Outlook.OlItemType.olMailItem);
+
+                msg.HTMLBody = unitName;
+
                 msg.Subject = "Choose this room !!!!!";
                 Outlook.Recipients recips = (Outlook.Recipients)msg.Recipients;
                 Outlook.Recipient recip = (Outlook.Recipient)recips.Add("bibasitshak@gmail.com");
@@ -150,6 +158,7 @@ namespace PLWPF
                 App = null;
                 MessageBox.Show("regarde ton mail");
             }
+            //throw new Exception("Your request has been registred, check your mail to look at your options");
         }
 
     }

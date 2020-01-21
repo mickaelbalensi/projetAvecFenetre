@@ -23,7 +23,6 @@ namespace PLWPF
         {
             InitializeComponent();
         }
-
         private void buttonRequest_Click(object sender, RoutedEventArgs e)
         {
 
