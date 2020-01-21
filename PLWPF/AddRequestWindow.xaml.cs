@@ -13,6 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Net.Mail;
+using Outlook = Microsoft.Office.Interop.Outlook;
+using System.Net;
 using BE1;
 using BL1;
 
@@ -83,17 +86,24 @@ namespace PLWPF
                 currentRequest.pool = PoolCheckBox.IsChecked == true ? Options.yes : PoolCheckBox.IsChecked == false ? Options.no : Options.optional;
                 currentRequest.garden = GardenCheckBox.IsChecked == true ? Options.yes : GardenCheckBox.IsChecked == false ? Options.no : Options.optional;
                 currentRequest.childrenAttractions = ChildrenAttractionsCheckBox.IsChecked == true ? Options.yes : ChildrenAttractionsCheckBox.IsChecked == false ? Options.no : Options.optional;
+                
+                
                 bl.addRequest(currentRequest);
+                //Window suggestion = new SuggestionWindow(key);
+               
+            }
+             catch (Exception ex)
+            {              
+               
                 long key = currentRequest.guestRequestKey;
                 currentRequest = new GuestRequest();
                 DataContext = currentRequest;
-                Window suggestion = new SuggestionWindow(key);
-            }
-             catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                sendMail(currentRequest.mailAddress, bl.getSuggestionList(key));
+                this.Close();
+                MessageBox.Show(ex.Message);               
             }
         }
+
         private void checkExceptions()
         {
             string family = familyTextBox.Text;
@@ -123,10 +133,32 @@ namespace PLWPF
             //{
             //    if (mailTextBox.Text[i] == '@')
             //        flag = true;
-            //}
+            //
             //if (!flag)
             //    throw new Exception("Your mail address isn't valid");
 
+        }
+        public void sendMail(string mail,List<HostingUnit>suggestionList)
+        {
+            foreach (HostingUnit unit in suggestionList)
+            {
+                string unitName = unit.hostingUnitName;
+                Outlook.Application App = new Outlook.Application();
+                Outlook.MailItem msg = (Outlook.MailItem)App.CreateItem(Outlook.OlItemType.olMailItem);
+
+                msg.HTMLBody = unitName;
+
+                msg.Subject = "Choose this room !!!!!";
+                Outlook.Recipients recips = (Outlook.Recipients)msg.Recipients;
+                Outlook.Recipient recip = (Outlook.Recipient)recips.Add("bibasitshak@gmail.com");
+                recip.Resolve();
+                msg.Send();
+                recips = null;
+                recip = null;
+                App = null;
+                MessageBox.Show("regarde ton mail");
+            }
+            //throw new Exception("Your request has been registred, check your mail to look at your options");
         }
 
     }

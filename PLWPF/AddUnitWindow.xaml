@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
         Title="AddUnitWindow" Height="429.333" Width="474.429">
-    <Grid Margin="0,0,3,-52.667" Height="400" VerticalAlignment="Top">
+    <Grid x:Name="UnitControlGrid" Margin="0,0,3,-52.667" Height="400" VerticalAlignment="Top">
         <!--#region ligne et colonne-->
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="33*"/>
+            <RowDefinition Height="37*"/>
         </Grid.RowDefinitions>
         <!--#endregion-->
         <Label Content="ADD New Hosting Unit"
@@ -31,6 +31,7 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Label x:Name="nameHotel"
                    Content="Name Hotel"
@@ -40,7 +41,8 @@
             </Label>
             <TextBox x:Name="NameHotelBox"
                      Grid.Row="0"
-                     Margin="7,15,167.333,0" Height="36" VerticalAlignment="Top" Grid.Column="1"
+                     Margin="7,15,167.333,10" Grid.Column="1"
+                     Text="{Binding hostingUnitName, Mode=TwoWay}"
                      />
             <Label x:Name="Adultsplaces"
                 Content="Adults places"
@@ -50,6 +52,7 @@
             </Label>
             <TextBox x:Name="AdultsplacesBbox"
                      Grid.Row="1" Margin="7,10.333,312.333,24.333" Grid.Column="1"
+                      Text="{Binding adultPlaces, Mode=TwoWay}"                     
                     />
             <Label x:Name="Childrenplaces"
                 Content="Children places"
@@ -58,8 +61,9 @@
                    >
             </Label>
             <TextBox x:Name="ChildrenplacesBox"
-                     Grid.Row="2" Margin="0,3.667,312.333,31.333"
-                    Grid.Column="1" HorizontalAlignment="Right" Width="30"
+                     Grid.Row="2" Margin="0,0,312.333,31"
+                    Grid.Column="1" HorizontalAlignment="Right" Width="30" Height="15" VerticalAlignment="Bottom"
+                      Text="{Binding childrenPlaces, Mode=TwoWay}"
                      />
             <Label Content="TypeArea :"
                    Grid.Column="0"
@@ -86,6 +90,35 @@
                    Margin="15,15,0,14.667"
                 HorizontalAlignment="Left" Width="269"
                 />
+            <Label Content="Enter the links for your unit'spictures :"
+                   Grid.Column="0"
+                   Grid.Row="5"
+                   Margin="15,15,15,0"/>
+            <TextBox 
+                   x:Name="unitPictures"                   
+                   Grid.Column="1"               
+                   Grid.Row="5"
+                   Text="{Binding uris, Mode=TwoWay}"
+                   Margin="15,15,0,10"
+                HorizontalAlignment="Left" Width="130"
+                />
+            <TextBox 
+                   x:Name="unitPictures1"                   
+                   Grid.Column="1"               
+                   Grid.Row="5"
+                   Text="{Binding uris, Mode=TwoWay}"
+                   Margin="0,15,32.333,10"
+                HorizontalAlignment="Right" Width="122" RenderTransformOrigin="0.5,0.5"
+                >
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
         </Grid>
 
 

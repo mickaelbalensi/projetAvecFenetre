@@ -126,8 +126,8 @@ namespace BL1
         {
             checkDate(request);
             dal.addRequest(request.Copy());
-
             addOrder(request.Copy());
+            throw new Exception("Your request has been registred, check your mail to look at your options");
         }
         public void updateRequest(GuestRequest request) {
             dal.updateRequest(request);
@@ -179,7 +179,7 @@ namespace BL1
         public void deleteHostingUnit(HostingUnit unit) {
             dal.deleteHostingUnit(unit);
         }
-        public void updateHostingUnit(HostingUnit unit) {
+        public void updateHostingUnit(HostingUnit unit) {            
             dal.updateHostingUnit(unit);
         }
         public IEnumerable<HostingUnit> getAllHostingUnit(Func<HostingUnit, bool> predicate = null)
@@ -191,12 +191,27 @@ namespace BL1
             return from request in getAllGuestRequest()
                    group request by request.adults + request.children;
         }
-
-
         #endregion
         public void addHost(Host host)
         {
             dal.addHost(host);
+        }
+        public void reservePlaces(Order order)
+        {
+            HostingUnit unit = getHostingUnit(order.hostingUnitKey);
+            GuestRequest request = getRequest(order.guestRequestKey);
+            int firstDay = request.entryDate.Day;
+            int firstMonth = request.entryDate.Month;
+            int lastDay = request.entryDate.Day;
+            int lastMonth = request.entryDate.Month;
+            firstDay -= 1;
+            firstMonth -= 1;
+            while (firstDay != lastDay || firstMonth != lastMonth)
+            {
+                unit.diary[firstMonth, firstDay++]=true;
+                if (firstDay == 31) { firstMonth++; firstDay = 0; }//if we got to the end of the month               //
+            }
+            dal.updateHostingUnit(unit);
         }
 
         #region order
@@ -218,13 +233,15 @@ namespace BL1
             {
                 if (isRoomFree(unit, request))//check if the room is free 
                 {
+                    Configuration.orderKey++;
                     dal.addOrder(new Order
                     {
+                        orderKey = Configuration.orderKey,
                         hostingUnitKey = unit.hostingUnitKey,
                         guestRequestKey = request.guestRequestKey,
                         status = OrderStatus.notYetAddressed,
                         createDate = request.entryDate
-                    }.Copy());
+                    }.Copy()); ;
                 }
             }
 
@@ -233,8 +250,15 @@ namespace BL1
 
         public void updateOrder(Order order)
         {
-            dal.updateOrder(order);
+            foreach (Order orders in getAllOrder(x => x.guestRequestKey == order.guestRequestKey))
+            {
+                orders.status = OrderStatus.expired;
+                dal.updateOrder(orders);
+            }
+            order.status = OrderStatus.reserved;
+            dal.updateOrder(order);     
         }
+        
         public IEnumerable<Order> getAllOrder(Func<Order, bool> predicate = null)
         {
             return dal.getAllOrder(predicate);
@@ -299,10 +323,14 @@ namespace BL1
             foreach (Order order in getAllOrder())
             {
                 if (guestRequestKey == order.guestRequestKey)
+                {
+                    order.status = OrderStatus.mailWasSent;
                     listSuggestion.Add(getHostingUnit(order.hostingUnitKey));
+                }
             }
             return listSuggestion;
         }
+        
 
         public GuestRequest getRequest(long key)
         {

@@ -246,6 +246,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\photo2.jpg" />
+    <Resource Include="Images\photo3.jpg" />
+    <Resource Include="Images\photo4.jpg" />
+    <Content Include="Images\photo5.jfif" />
+    <Resource Include="Images\photo6.jpg" />
+  </ItemGroup>
+  <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">
       <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
       <VersionMajor>2</VersionMajor>
