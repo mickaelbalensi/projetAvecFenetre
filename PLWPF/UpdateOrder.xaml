@@ -6,7 +6,39 @@
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
         Title="UpdateOrder" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Margin="0,0,0.333,-0.333">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Grid x:Name="requestDetailsGrid"
+              Grid.Row="1" Margin="-11,0.333,10.333,0.333">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" MinWidth="366"/>
+                <ColumnDefinition Width="9*"/>
+                <ColumnDefinition Width="419*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label Content="Enter the OrderKey to modifie:"
+                   Grid.Column="0"
+                   Grid.Row="0"
+                   Margin="15,15,15,10"/>
+            <TextBox 
+                x:Name="idBox"
+                   Text="{Binding orderKey, Mode=TwoWay}"
+                   Grid.Row="0"
+                   Grid.Column="2"
+                   Margin="0,10,42,0"
+                HorizontalAlignment="Right" Width="376"                    
+/>
+
+        </Grid>
+        <Button x:Name="ButtonOrder"
+                Content="UpdateOrder"
+            Grid.Row="1" Margin="0,50.333,0.333,-169.667" Click="ButtonOrder_Click">
+        </Button>
     </Grid>
 </Window>

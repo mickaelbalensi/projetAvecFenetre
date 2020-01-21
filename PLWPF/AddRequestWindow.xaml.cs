@@ -13,6 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Net.Mail;
+using Outlook = Microsoft.Office.Interop.Outlook;
+using System.Net;
 using BE1;
 using BL1;
 
@@ -87,13 +90,16 @@ namespace PLWPF
                 long key = currentRequest.guestRequestKey;
                 currentRequest = new GuestRequest();
                 DataContext = currentRequest;
-                Window suggestion = new SuggestionWindow(key);
+                //Window suggestion = new SuggestionWindow(key);
+                sendMail(currentRequest.mailAddress, bl.getSuggestionList(key));
             }
              catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+            {              
+                this.Close();
+                MessageBox.Show(ex.Message);               
             }
         }
+
         private void checkExceptions()
         {
             string family = familyTextBox.Text;
@@ -127,6 +133,23 @@ namespace PLWPF
             //if (!flag)
             //    throw new Exception("Your mail address isn't valid");
 
+        }
+        public void sendMail(string mail,List<HostingUnit>suggestionList)
+        {
+            foreach (HostingUnit unit in suggestionList)
+            {
+                Outlook.Application App = new Outlook.Application();
+                Outlook.MailItem msg = (Outlook.MailItem)App.CreateItem(Outlook.OlItemType.olMailItem);
+                msg.Subject = "Choose this room !!!!!";
+                Outlook.Recipients recips = (Outlook.Recipients)msg.Recipients;
+                Outlook.Recipient recip = (Outlook.Recipient)recips.Add("bibasitshak@gmail.com");
+                recip.Resolve();
+                msg.Send();
+                recips = null;
+                recip = null;
+                App = null;
+                MessageBox.Show("regarde ton mail");
+            }
         }
 
     }

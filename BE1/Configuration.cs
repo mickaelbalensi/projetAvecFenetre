@@ -13,7 +13,7 @@ namespace BE1
         public static long hostKeyCount = 0;
         public static long hostingUnitCount = 0;
         public static long guestRequestCount = 0;
-
+        public static long orderKey = 0;
 
     }
 }

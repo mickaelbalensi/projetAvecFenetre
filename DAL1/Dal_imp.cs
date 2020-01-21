@@ -21,6 +21,7 @@ namespace DAL1
             if (requestLocal != null)
                 throw new Exception("there is already a request with the same guestRequestKey");
             DataSource.guestRequestList.Add(request.Copy());
+            throw new Exception("Your request has been registred, check your mail to look at your options");
         }
         public GuestRequest getRequest(long key)
         {
@@ -55,6 +56,7 @@ namespace DAL1
             if (unitLocal != null)
                 throw new Exception("there is already an unit with the same hostingUnitKey");
             DataSource.hostingUnitList.Add(unit.Copy());
+            throw new Exception("Your Unit has been succesfully registred !");
 
         }
         public HostingUnit getHostingUnit(long key)
@@ -94,6 +96,7 @@ namespace DAL1
             if (orderLocal != null)
                 throw new Exception("there is already an order with the same orderKey");
             DataSource.orderList.Add(order.Copy());
+            
         }
         public Order getOrder(long key)
         {

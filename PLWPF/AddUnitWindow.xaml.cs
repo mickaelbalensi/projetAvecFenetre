@@ -51,11 +51,12 @@ namespace PLWPF
                 //currentUnit.childrenAttractions =  ChildrenAttractionCheckBox.IsChecked == true ? true :false;
                 bl.addHostingUnit(currentUnit);
                 currentUnit = new HostingUnit();
-                this.DataContext = currentUnit;
+                this.DataContext = currentUnit;               
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                this.Close();
             }
         }
 

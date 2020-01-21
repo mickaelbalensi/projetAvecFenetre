@@ -17,7 +17,8 @@ namespace BE1
         notYetAddressed,
         mailWasSent,
         closedDueLackOfCustomersResponse,
-        reserved
+        reserved,
+        expired
     }
 
     public enum TypeOfHostingUnit

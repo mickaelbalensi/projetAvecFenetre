@@ -29,5 +29,6 @@ namespace PLWPF
             bl = FactoryBL.getBL();
             bl.getSuggestionList(key);
         }
+
     }
 }

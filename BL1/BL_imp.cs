@@ -126,7 +126,7 @@ namespace BL1
         {
             checkDate(request);
             dal.addRequest(request.Copy());
-
+            Configuration.orderKey++;
             addOrder(request.Copy());
         }
         public void updateRequest(GuestRequest request) {
@@ -220,11 +220,12 @@ namespace BL1
                 {
                     dal.addOrder(new Order
                     {
+                        orderKey = Configuration.orderKey,
                         hostingUnitKey = unit.hostingUnitKey,
                         guestRequestKey = request.guestRequestKey,
                         status = OrderStatus.notYetAddressed,
                         createDate = request.entryDate
-                    }.Copy());
+                    }.Copy()); ;
                 }
             }
 
@@ -233,6 +234,10 @@ namespace BL1
 
         public void updateOrder(Order order)
         {
+            foreach (Order orders in getAllOrder(x => x.orderKey == order.orderKey))
+                orders.status = OrderStatus.expired;
+                
+            order.status = OrderStatus.reserved;
             dal.updateOrder(order);
         }
         public IEnumerable<Order> getAllOrder(Func<Order, bool> predicate = null)
@@ -299,7 +304,10 @@ namespace BL1
             foreach (Order order in getAllOrder())
             {
                 if (guestRequestKey == order.guestRequestKey)
+                {
+                    order.status = OrderStatus.mailWasSent;
                     listSuggestion.Add(getHostingUnit(order.hostingUnitKey));
+                }
             }
             return listSuggestion;
         }
