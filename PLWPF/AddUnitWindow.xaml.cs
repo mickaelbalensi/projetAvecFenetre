@@ -57,9 +57,9 @@ namespace PLWPF
         {
             //Window sendmail = new SendMail();
             //sendmail.Show();
-            //try
+            try
             {
-                //checkExceptions();
+                checkExceptions();
                 //currentUnit.jacuzzi =  JacuzziCheckBox.IsChecked == true ? true : false;
                 //currentUnit.pool =  PoolCheckBox.IsChecked == true ? true : false;
                 //currentUnit.garden =  GardenCheckBox.IsChecked == true ? true : false;
@@ -69,13 +69,14 @@ namespace PLWPF
                 currentUnit.uris.Add(unitPictures1.Text);
                 bl.addHostingUnit(currentUnit);
                 currentUnit = new HostingUnit();
-                this.DataContext = currentUnit;               
-            }
-            /*catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                this.DataContext = currentUnit;
                 this.Close();
-            }*/
+            }
+            catch(Exception ex)
+            {               
+                MessageBox.Show(ex.Message);
+                if (ex.Message== "your unit has been registred sucessfully") this.Close();
+            }
         }
 
         private void AdultsPlacesBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -111,6 +112,27 @@ namespace PLWPF
             MyImage = CreateViewImage();
             vbImage.Child = MyImage;
         }
+        private void checkExceptions()
+        {
+                bool flag1 = false;
+                for (int i = 0; i < NameHotelBox.Text.Count(); i++)
+                {
+                    if (NameHotelBox.Text[i] < 65 || (NameHotelBox.Text[i] > 90 && NameHotelBox.Text[i] < 96) || NameHotelBox.Text[i] > 123)
+                    { nameError.Visibility = Visibility.Visible; flag1 = true; }
+                }
+            for (int i = 0; i < AdultsplacesBbox.Text.Count(); i++)
+            {
+                if (AdultsplacesBbox.Text[i] < 48 || AdultsplacesBbox.Text[i] > 57)
+                { AdultsplacesBbox.Visibility = Visibility.Visible; flag1 = true; }
+            }
+            for (int i = 0; i < ChildrenplacesBox.Text.Count(); i++)
+            {
+                if (ChildrenplacesBox.Text[i] < 48 || ChildrenplacesBox.Text[i] > 57)
+                { ChildrenplacesBox.Visibility = Visibility.Visible; flag1 = true; }
+            }
 
+            if (flag1) throw new Exception("please check your items and try again");
+
+        }
     }
 }

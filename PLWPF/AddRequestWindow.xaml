@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="AddRequestWindow" Height="529.333" Width="500">
+        Title="AddRequestWindow" Height="506" Width="500">
     <ScrollViewer>
         <Grid x:Name="firstGrid" Margin="0,0,4.2,0">
         <Grid.RowDefinitions>
@@ -66,14 +66,7 @@
                    Margin="15,10,0,20" Grid.Column="1"
                 HorizontalAlignment="Left" Width="59"                    
 />
-                <Label x:Name="idError"
-                       Foreground="Red"
-                    Content="Your ID isn't valid"
-                       Visibility="Hidden"
-                       Grid.Column="1"
-                       Margin="10,25,0,0"
-                       Grid.Row="1">
-                </Label>
+
                 <Label Content="Family Name :"
                    Grid.Column="0"
                    Grid.Row="2"
@@ -85,21 +78,37 @@
                    Margin="15,10,0,20" Grid.Column="1"
                 HorizontalAlignment="Left" Width="269"
                 />
+                <Label x:Name="familyerror"
+                       Foreground="Red"
+                    Content="Your family name  isn't valid"
+                       Visibility="Hidden"
+                       Grid.Column="1"
+                       Margin="10,25,0,0"
+                       Grid.Row="2">
+                </Label>
 
-            <Label Content="Private Name :"
+                    <Label Content="Private Name :"
                    Grid.Column="0"
                    Grid.Row="3"
-                   Margin="15,15,15,10" />
-            <TextBox 
+                   Margin="15,15,15,10" RenderTransformOrigin="0.5,0.507" />
+                <TextBox 
                 x:Name="privateTextBox"
                     Text="{Binding Path=privateName , Mode=TwoWay}"
                    Grid.Row="3"
                    Margin="14,15.333,0,15" Grid.Column="1" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="270" 
-                >
+                />
+                <Label x:Name="privateerror"
+                       Foreground="Red"
+                    Content="Your private name  isn't valid"
+                       Visibility="Hidden"
+                       Grid.Column="1"
+                       Margin="10,25,0,0"
+                       Grid.Row="3">
+                </Label>
 
-            </TextBox>
 
-            <Label Content="Mail Address :"
+
+                <Label Content="Mail Address :"
                   Grid.Column="0"
                    Grid.Row="4"
                    Margin="15,15,15,0"/>
@@ -113,7 +122,7 @@
                 HorizontalAlignment="Left" Width="270"
                 />
                 <Label x:Name="mailError"
-                    Content="Your Address may to content @ :"
+                    Content="Your Address must content @ :"
                    Grid.Column="1"
                    Grid.Row="4"
                    FontStyle="Italic"
@@ -171,8 +180,16 @@
                 Text="{Binding adults, Mode=TwoWay}"
                 HorizontalAlignment="Left" Width="59"
                 />
+                <Label x:Name="adultserror"
+                       Foreground="Red"
+                    Content="Your number of adults must be  numbers "
+                       Visibility="Hidden"
+                       Grid.Column="1"
+                       Margin="10,25,0,0"
+                       Grid.Row="9">
+                </Label>
 
-            <Label Content="Children :"
+                <Label Content="Children :"
                    Grid.Column="0"
                    Grid.Row="10"
                    Margin="15,15,15,0"/>
@@ -184,7 +201,15 @@
                 Text="{Binding children, Mode=TwoWay}" 
                 HorizontalAlignment="Left" Width="59"
                 />
-            <!--#endregion-->
+                <Label x:Name="childrenerror"
+                       Foreground="Red"
+                    Content="Your number of children must be  numbers "
+                       Visibility="Hidden"
+                       Grid.Column="10"
+                       Margin="10,25,0,0"
+                       Grid.Row="1">
+                </Label>
+                <!--#endregion-->
             <!--#region where-->
             <Label Content="Where ?"
                    Grid.Column="0"
