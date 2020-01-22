@@ -19,6 +19,7 @@ namespace BL1
 
         public BL_imp()
         {
+            //dal = FactoryDal.Instance;
             dal = new Dal_imp();
             initList();
 

@@ -31,7 +31,10 @@ namespace DAL1
         XElement configRoot;
         string configPath = @"config.xml";
 
-        int orderKey;
+        long orderCount;
+        long guestRequestCount;
+        long hostingUnitCount;
+
         public DAL_XML()
         {
             if (!File.Exists(guestRequestPath)
@@ -64,7 +67,7 @@ namespace DAL1
 
 
             configRoot = new XElement("configuration",
-                new XElement("orderKey", "1"),
+                new XElement("orderCount", "1"),
                 new XElement("hostingUnitCount", "1"),
                 new XElement("guestRequestCount", "1")); 
             configRoot.Save(configPath);
@@ -86,6 +89,7 @@ namespace DAL1
                 throw new Exception("File upload problem");
             }
         }
+
         #region Conversion regions
 
         XElement ConvertGuestRequestToXAML(GuestRequest request)
@@ -420,9 +424,24 @@ namespace DAL1
             if (guest.guestRequestKey == 0)
                 throw new Exception("Please select a valid key for the guestRequest (not 0)");
 
+            guestRequestCount = (from g in configRoot.Elements()
+                                 select long.Parse(g.Element("configuration").Element("guestRequestCount").Value)).FirstOrDefault();
+
+            guest.guestRequestKey = guestRequestCount;
 
             guestRequestRoot.Add(ConvertGuestRequestToXAML(guest));
             guestRequestRoot.Save(guestRequestPath);
+
+            XElement toRemove = (from x in configRoot.Elements()
+                                 where x.Name == "guestRequestCount"
+                                 select x).FirstOrDefault();
+            toRemove.Remove();
+
+            guestRequestCount++;
+            configRoot.Add(new XElement("guestRequestCount", guestRequestCount.ToString()));
+            configRoot.Save(configPath);
+
+
         }
         //public GuestRequest getRequest(long key)
         //{
@@ -466,9 +485,22 @@ namespace DAL1
             if (unit.hostingUnitKey == 0)
                 throw new Exception("Please select a valid key for the HostingUnit (not 0)");
 
+            hostingUnitCount = (from g in configRoot.Elements()
+                                 select long.Parse(g.Element("configuration").Element("hostingUnitCount").Value)).FirstOrDefault();
+
+            unit.hostingUnitKey = hostingUnitCount;
 
             hostingUnitRoot.Add(ConvertHostingUnitToXAML(unit));
             hostingUnitRoot.Save(hostingUnitPath);
+
+            XElement toRemove = (from x in configRoot.Elements()
+                                 where x.Name == "hostingUnitCount"
+                                 select x).FirstOrDefault();
+            toRemove.Remove();
+
+            hostingUnitCount++;
+            configRoot.Add(new XElement("hostingUnitCount", hostingUnitCount.ToString()));
+            configRoot.Save(configPath);
         }
         public void updateHostingUnit(HostingUnit unit)
         {
@@ -516,32 +548,32 @@ namespace DAL1
         #region order region
         public void addOrder(Order order)
         {
-            //if a such guestRequest or/and HostingUnit or/and order already exists
+            //if a such guestRequest or/and HostingUnit  already exists
             if (getAllGuestRequest(x => x.guestRequestKey == order.guestRequestKey).FirstOrDefault() != null)
                 throw new Exception("A Request with the same key already exists.");
             if (getAllHostingUnit(x => x.hostingUnitKey == order.hostingUnitKey).FirstOrDefault() != null)
                 throw new Exception("A hostingUnit with the same key already exists.");
             //if (getAllOrder(x => x.orderKey == order.orderKey).FirstOrDefault() != null)
             //    throw new Exception("An order with the same key already exists.");
+            orderCount = (from x in configRoot.Elements()
+                          where x.Name == "orderCount"
+                          select Convert.ToInt32(x.Value)).FirstOrDefault();
 
-            //orderKey == (from x in configRoot.Elements()
-            //             where x.Name == "orderKey"
-            //             select Convert.ToInt32(x.Value)).FirstOrDefault();
-            orderKey = (from x in configRoot.Elements()
-                          where x.Name == "orderKey"
-                        select Convert.ToInt32(x.Value)).FirstOrDefault();
-
-            order.orderKey = orderKey;
-
-            if (order.orderKey == 0)
-                throw new Exception("Please select a valid key for the order (not 0)");
-
-            orderKey++;
-            configRoot.Add(new XElement("orderKey", orderKey.ToString()));
-            configRoot.Save(configPath);
+            order.orderKey = orderCount;
 
             orderRoot.Add(ConvertOrderToXAML(order));
             orderRoot.Save(orderPath);
+
+            XElement toRemove = (from x in configRoot.Elements()
+                                 where x.Name == "orderKey"
+                                 select x).FirstOrDefault();
+            toRemove.Remove();
+
+            orderCount++;
+
+            configRoot.Add(new XElement("orderKey", orderCount.ToString()));
+            configRoot.Save(configPath);
+
 
         }
         //public Order getOrder(long key)
@@ -580,7 +612,17 @@ namespace DAL1
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Host> getAllHost(Func<Host, bool> predicate = null)
+        public GuestRequest getRequest(long key)
+        {
+            throw new NotImplementedException();
+        }
+
+        public HostingUnit getHostingUnit(long key)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Order getOrder(long key)
         {
             throw new NotImplementedException();
         }
