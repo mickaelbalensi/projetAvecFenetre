@@ -309,27 +309,34 @@ namespace DAL1
             Host host = new Host();
 
             host.hostKey = (from ost in element.Elements()
-                            select long.Parse(ost.Element("Host").Element("hostKey").Value)).FirstOrDefault();
+                            where ost.Name=="hostKey"
+                            select long.Parse(ost.Value)).FirstOrDefault();
 
             host.privateName = (from ost in element.Elements()
-                            select (ost.Element("Host").Element("privateName").Value)).FirstOrDefault();
+                                where ost.Name== "privateName"
+                                select (ost.Value)).FirstOrDefault();
 
             host.familyName = (from ost in element.Elements()
-                            select (ost.Element("Host").Element("familyName").Value)).FirstOrDefault();
+                               where ost.Name=="familyName"
+                               select (ost.Value)).FirstOrDefault();
 
             host.phoneNumber = (from ost in element.Elements()
-                            select long.Parse(ost.Element("Host").Element("phoneNumber").Value)).FirstOrDefault();
+                                where ost.Name== "phoneNumber"
+                                select long.Parse(ost.Value)).FirstOrDefault();
 
             host.mailAddress = (from ost in element.Elements()
-                            select (ost.Element("Host").Element("mailAddress").Value)).FirstOrDefault();
+                                where ost.Name=="mailAddress"
+                                select (ost.Value)).FirstOrDefault();
 
             host.bankBranchDetails = ConvertXAMLToBankBranch(element);
 
             host.bankAccountNumber = (from ost in element.Elements()
-                            select long.Parse(ost.Element("Host").Element("bankAccountNumber").Value)).FirstOrDefault();
+                                      where ost.Name== "bankAccountNumber"
+                                      select long.Parse(ost.Value)).FirstOrDefault();
 
             host.collectionClearance = (from ost in element.Elements()
-                            select bool.Parse(ost.Element("Host").Element("hostKey").Value)).FirstOrDefault();
+                                        where ost.Name=="hostKey"
+                                        select bool.Parse(ost.Value)).FirstOrDefault();
 
             return host;
         }
@@ -348,7 +355,8 @@ namespace DAL1
             BankBranch branch = new BankBranch();
 
             string bankNumber = (from bank in element.Elements()
-                                 select bank.Element("BankBranch").Element("bankNumber").Value).FirstOrDefault();
+                                 where bank.Name=="bankNumber"
+                                 select bank.Value).FirstOrDefault();
 
             branch.bankNumber =
                 bankNumber == "bankHapoalim" ? Bank.bankHapoalim :
@@ -357,16 +365,20 @@ namespace DAL1
                 Bank.HSBC;
 
             branch.bankName = (from bank in element.Elements()
-                               select bank.Element("BankBranch").Element("bankName").Value).FirstOrDefault();
+                               where bank.Name== "bankName"
+                               select bank.Value).FirstOrDefault();
 
             branch.branchNumber = (from bank in element.Elements()
-                               select int.Parse(bank.Element("BankBranch").Element("branchNumber").Value)).FirstOrDefault();
+                                   where bank.Name== "branchNumber"
+                                   select int.Parse(bank.Value)).FirstOrDefault();
 
             branch.branchAddress = (from bank in element.Elements()
-                               select bank.Element("BankBranch").Element("branchAddress").Value).FirstOrDefault();
+                                    where bank.Name=="branchNumber"
+                                    select bank.Value).FirstOrDefault();
 
             branch.branchCity = (from bank in element.Elements()
-                               select bank.Element("BankBranch").Element("branchCity").Value).FirstOrDefault();
+                                 where bank.Name=="branchCity"
+                                 select bank.Value).FirstOrDefault();
 
             return branch;
         }
@@ -386,16 +398,20 @@ namespace DAL1
             Order order = new Order();
 
             order.hostingUnitKey = (from ord in element.Elements()
-                                    select long.Parse(ord.Element("Order").Element("hostingUnitKey").Value)).FirstOrDefault();
+                                    where ord.Name== "hostingUnitKey"
+                                    select long.Parse(ord.Value)).FirstOrDefault();
 
             order.guestRequestKey = (from ord in element.Elements()
-                                    select long.Parse(ord.Element("Order").Element("guestRequestKey").Value)).FirstOrDefault();
+                                     where ord.Name== "guestRequestKey"
+                                     select long.Parse(ord.Value)).FirstOrDefault();
 
             order.orderKey = (from ord in element.Elements()
-                                    select long.Parse(ord.Element("Order").Element("orderKey").Value)).FirstOrDefault();
+                              where ord.Name== "orderKey"
+                              select long.Parse(ord.Value)).FirstOrDefault();
 
             string status= (from ord in element.Elements()
-                             select (ord.Element("Order").Element("status").Value)).FirstOrDefault();
+                            where ord.Name=="status"
+                            select (ord.Value)).FirstOrDefault();
 
             order.status =
                 status == "closedDueLackOfCustomersResponse" ? OrderStatus.closedDueLackOfCustomersResponse :
@@ -404,10 +420,12 @@ namespace DAL1
                 OrderStatus.reserved;
 
             order.createDate = (from ord in element.Elements()
-                                    select DateTime.Parse(ord.Element("Order").Element("createDate").Value)).FirstOrDefault();
+                                where ord.Name== "createDate"
+                                select DateTime.Parse(ord.Value)).FirstOrDefault();
 
             order.orderDate = (from ord in element.Elements()
-                                    select DateTime.Parse(ord.Element("Order").Element("orderDate").Value)).FirstOrDefault();
+                               where ord.Name== "orderDate"
+                               select DateTime.Parse(ord.Value)).FirstOrDefault();
 
             return order;
         }
