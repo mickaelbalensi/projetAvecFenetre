@@ -606,6 +606,26 @@ namespace DAL1
                    where predicate(ord)
                    select ord;
         }
+
+        public void addHost(Host host)
+        {
+            throw new NotImplementedException();
+        }
+
+        public GuestRequest getRequest(long key)
+        {
+            throw new NotImplementedException();
+        }
+
+        public HostingUnit getHostingUnit(long key)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Order getOrder(long key)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
 
         //public void addHost(Host host)

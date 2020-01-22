@@ -22,7 +22,7 @@ namespace BE1
         public static int  countHostingUnit { get; set; }// number of rooms he owns 
         public Host()
         {
-            hostKey = Configuration.hostKeyCount;
+            hostKey = Configuration.hostCount;
             privateName = "";
             familyName = "";
             phoneNumber = 000000000;

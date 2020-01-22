@@ -19,6 +19,7 @@ namespace BL1
 
         public BL_imp()
         {
+            //dal = FactoryDal.Instance;
             dal = new Dal_imp();
             initList();
 
@@ -247,10 +248,10 @@ namespace BL1
             {
                 if (isRoomFree(unit, request))//check if the room is free 
                 {
-                    Configuration.orderKey++;
+                    Configuration.orderCount++;
                     dal.addOrder(new Order
                     {
-                        orderKey = Configuration.orderKey,
+                        orderKey = Configuration.orderCount,
                         hostingUnitKey = unit.hostingUnitKey,
                         guestRequestKey = request.guestRequestKey,
                         status = OrderStatus.notYetAddressed,
