@@ -165,8 +165,7 @@ namespace BL1
         {
             checkDate(request);
             dal.addRequest(request.Copy());
-            addOrder(request.Copy());
-            throw new Exception("Your request has been registred, check your mail to look at your options");
+            addOrder(request.Copy());          
         }
         public void updateRequest(GuestRequest request) {
             dal.updateRequest(request);
@@ -214,6 +213,7 @@ namespace BL1
 
         public void addHostingUnit(HostingUnit unit) {
             dal.addHostingUnit(unit);
+            throw new Exception("your unit has been registred sucessfully");
         }
         public void deleteHostingUnit(HostingUnit unit) {
             dal.deleteHostingUnit(unit);

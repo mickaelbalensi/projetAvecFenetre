@@ -89,60 +89,60 @@ namespace PLWPF
                 
                 
                 bl.addRequest(currentRequest);
+                sendMail(currentRequest.mailAddress, bl.getSuggestionList(currentRequest.guestRequestKey));
                 //Window suggestion = new SuggestionWindow(key);
-               
+                // this.Close();
             }
              catch (Exception ex)
             {              
-               
-                long key = currentRequest.guestRequestKey;
-                sendMail(currentRequest.mailAddress, bl.getSuggestionList(key));
+                MessageBox.Show(ex.Message);
+                
 
-                currentRequest = new GuestRequest();
-                DataContext = currentRequest;
-                this.Close();
-                MessageBox.Show(ex.Message);               
             }
         }
-
         private void checkExceptions()
         {
             string family = familyTextBox.Text;
+            bool flag1 = false;
             for (int i = 0; i < familyTextBox.Text.Count(); i++)
             {
                 if (family[i] < 65 || (family[i] > 90 && family[i] < 96) || family[i] > 123)
-                    idError.Visibility=Visibility.Visible;
-              //  throw new Exception("rien");
+                { familyerror.Visibility = Visibility.Visible; flag1 = true; }
             }
-            //for (int i = 0; i < privateTextBox.Text.Count(); i++)
-            //{
-            //    if (privateTextBox.Text[i]<65 || (privateTextBox.Text[i] >90 && privateTextBox.Text[i] < 96) || privateTextBox.Text[i] > 123)
-            //        throw new Exception("Your private name isn't valid");
-            //}
-            //for (int i = 0; i < AdultsTextBox.Text.Count(); i++)
-            //{
-            //    if (AdultsTextBox.Text[i] < 48 || AdultsTextBox.Text[i] > 57)
-            //        throw new Exception("Your number of adults must be a number !");
-            //}
-            ///*for (int i = 0; i < childrenTextBox.Text.Count(); i++)
-            //{
-            //    if (childrenTextBox.Text[i] < 48 || childrenTextBox.Text[i] > 57)
-            //        throw new Exception("Your number of adults must be a number !");
-            //}*/
-            //bool flag = false;
-            //for (int i = 0; i < mailTextBox.Text.Count(); i++)
-            //{
-            //    if (mailTextBox.Text[i] == '@')
-            //        flag = true;
-            //
-            //if (!flag)
-            //    throw new Exception("Your mail address isn't valid");
+            for (int i = 0; i < privateTextBox.Text.Count(); i++)
+            {
+                if (privateTextBox.Text[i] < 65 || (privateTextBox.Text[i] > 90 && privateTextBox.Text[i] < 96) || privateTextBox.Text[i] > 123)
+                { privateerror.Visibility = Visibility.Visible; flag1 = true; }
 
+            }
+            for (int i = 0; i < AdultsTextBox.Text.Count(); i++)
+            {
+                if (AdultsTextBox.Text[i] < 48 || AdultsTextBox.Text[i] > 57)
+                { adultserror.Visibility = Visibility.Visible; flag1 = true; }
+            }
+            for (int i = 0; i < ChildrenTextBox.Text.Count(); i++)
+            {
+                if (ChildrenTextBox.Text[i] < 48 || ChildrenTextBox.Text[i] > 57)
+                { childrenerror.Visibility = Visibility.Visible; flag1 = true; }
+            }
+            bool flag = false;
+            for (int i = 0; i < mailTextBox.Text.Count(); i++)
+            {
+                if (mailTextBox.Text[i] == '@')
+                    flag = true;
+            }
+                if (!flag)
+                { mailError.Visibility = Visibility.Visible; flag1 = true; }
+                
+            if (flag1) throw new Exception("please check your items and try again");
+                
         }
         public void sendMail(string mail,List<HostingUnit>suggestionList)
         {
+            int count = 0;
             foreach (HostingUnit unit in suggestionList)
             {
+                count++;
                 string unitName = unit.hostingUnitName;
                 Outlook.Application App = new Outlook.Application();
                 Outlook.MailItem msg = (Outlook.MailItem)App.CreateItem(Outlook.OlItemType.olMailItem);
@@ -157,8 +157,13 @@ namespace PLWPF
                 recips = null;
                 recip = null;
                 App = null;
-                MessageBox.Show("regarde ton mail");
+                MessageBox.Show("Your request has been registred, check your mail to look at your options");
+                this.Close();
+                currentRequest = new GuestRequest();
+                DataContext = currentRequest;
             }
+            if (count == 0) throw new Exception("sorry there is no available room try others options");
+
             //throw new Exception("Your request has been registred, check your mail to look at your options");
         }
 

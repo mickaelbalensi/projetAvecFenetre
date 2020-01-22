@@ -37,13 +37,20 @@
                    Content="Name Hotel"
                    FontSize="15"
                    Grid.Column="0"
-                   Grid.Row="0" Margin="0,15,0.333,0" RenderTransformOrigin="0.5,0.5" Height="36" VerticalAlignment="Top">
-            </Label>
+                   Grid.Row="0" Margin="0,15,0,49" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2"/>
             <TextBox x:Name="NameHotelBox"
                      Grid.Row="0"
                      Margin="7,15,167.333,10" Grid.Column="1"
                      Text="{Binding hostingUnitName, Mode=TwoWay}"
                      />
+            <Label x:Name="nameError"
+                       Foreground="Red"
+                    Content="Your name hotel can't be numbers !"
+                       Visibility="Hidden"
+                       Grid.Column="1"
+                       Margin="10,25,0,0"
+                       Grid.Row="0">
+            </Label>
             <Label x:Name="Adultsplaces"
                 Content="Adults places"
                    Grid.Row="1"
@@ -51,9 +58,17 @@
                    >
             </Label>
             <TextBox x:Name="AdultsplacesBbox"
-                     Grid.Row="1" Margin="7,10.333,312.333,24.333" Grid.Column="1"
-                      Text="{Binding adultPlaces, Mode=TwoWay}"                     
+                     Grid.Row="1" Margin="7,10,312.333,0" Grid.Column="1"
+                      Text="{Binding adultPlaces, Mode=TwoWay}" Height="16" VerticalAlignment="Top"                     
                     />
+            <Label x:Name="adultError"
+                       Foreground="Red"
+                    Content="Your number of adults must be numbers"
+                       Visibility="Hidden"
+                       Grid.Column="1"
+                       Margin="10,25,0,0"
+                       Grid.Row="1">
+            </Label>
             <Label x:Name="Childrenplaces"
                 Content="Children places"
                    Grid.Row="2"
@@ -65,6 +80,14 @@
                     Grid.Column="1" HorizontalAlignment="Right" Width="30" Height="15" VerticalAlignment="Bottom"
                       Text="{Binding childrenPlaces, Mode=TwoWay}"
                      />
+            <Label x:Name="childrenError"
+                       Foreground="Red"
+                    Content="Your number of children must be numbers !"
+                       Visibility="Hidden"
+                       Grid.Column="1"
+                       Margin="10,25,0,0"
+                       Grid.Row="2">
+            </Label>
             <Label Content="TypeArea :"
                    Grid.Column="0"
                    Grid.Row="3"
@@ -125,7 +148,7 @@
         <Button x:Name="buttonUnit"
                 Content="Add your unit" 
                 Grid.Row="2" HorizontalAlignment="Left" Width="465"
-                Click="butoun_addUnit" Margin="0,124.667,0,0">
+                Click="butoun_addUnit" Margin="0,134.667,0,0">
             <Button.Style>
                 <Style>
                     <Style.Triggers>
