@@ -246,10 +246,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\virus.jpg" />
     <Resource Include="Images\photo2.jpg" />
     <Resource Include="Images\photo3.jpg" />
     <Resource Include="Images\photo4.jpg" />
     <Resource Include="Images\login.jpg" />
+    <Resource Include="Images\creer-virus.png" />
     <Content Include="Images\photo5.jfif" />
     <Resource Include="Images\photo6.jpg" />
   </ItemGroup>
