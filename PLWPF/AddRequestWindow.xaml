@@ -68,7 +68,7 @@
 />
                 <Label x:Name="idError"
                        Foreground="Red"
-                    Content="Your ID isn't valid"
+                       Content="Your ID isn't valid"
                        Visibility="Hidden"
                        Grid.Column="1"
                        Margin="10,25,0,0"
