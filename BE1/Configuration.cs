@@ -9,11 +9,9 @@ namespace BE1
     public class Configuration
     {
         //changement nom en minuscule
-
-        public static long hostKeyCount = 0;
+        public static long hostCount = 0;
         public static long hostingUnitCount = 0;
         public static long guestRequestCount = 0;
-        public static long orderKey=0;
-
+        public static long orderCount=0;
     }
 }

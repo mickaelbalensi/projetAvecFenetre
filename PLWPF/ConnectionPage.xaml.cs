@@ -22,6 +22,7 @@ namespace PLWPF
     public partial class ConnectionPage : Window
     {
         public Host currentHost { get; set; }
+        IBL bl;
         public ConnectionPage()
         {
             InitializeComponent();
@@ -31,6 +32,7 @@ namespace PLWPF
         {
             try
             {
+               
                 //il faut verifier que le password et le mailaddress existent
             }
             catch (Exception ex)

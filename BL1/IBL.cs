@@ -33,6 +33,12 @@ namespace BL1
         //Order getOrder(long key);
 
         #endregion
+        #region host
+        void addHost(Host host);
+        //void getHost(long key);
+        IEnumerable<Host> getAllHost(Func<Host, bool> predicate = null);
+        #endregion
+
         List<HostingUnit> getSuggestionList(long guestRequestKey);
         //void addHost(Host host);
 

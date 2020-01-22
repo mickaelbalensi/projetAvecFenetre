@@ -574,6 +574,16 @@ namespace DAL1
                    where predicate(ord)
                    select ord;
         }
+
+        public void addHost(Host host)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Host> getAllHost(Func<Host, bool> predicate = null)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
 
         //public void addHost(Host host)

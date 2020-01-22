@@ -192,11 +192,24 @@ namespace BL1
                    group request by request.adults + request.children;
         }
         #endregion
+        #region host
         public void addHost(Host host)
         {
             dal.addHost(host);
         }
-        public void reservePlaces(Order order)
+        public IEnumerable<Host> getAllHhost(Func<Host, bool> predicate = null)
+        {
+            return dal.getAllHost(predicate);
+        }
+        public Host getHost(long key)
+        {
+        return dal.getHost(key);
+        }
+    
+
+    #endregion
+
+    public void reservePlaces(Order order)
         {
             HostingUnit unit = getHostingUnit(order.hostingUnitKey);
             GuestRequest request = getRequest(order.guestRequestKey);
@@ -247,10 +260,10 @@ namespace BL1
             {
                 if (isRoomFree(unit, request))//check if the room is free 
                 {
-                    Configuration.orderKey++;
+                    
                     dal.addOrder(new Order
                     {
-                        orderKey = Configuration.orderKey,
+                        orderKey = Configuration.orderCount++,
                         hostingUnitKey = unit.hostingUnitKey,
                         guestRequestKey = request.guestRequestKey,
                         status = OrderStatus.notYetAddressed,

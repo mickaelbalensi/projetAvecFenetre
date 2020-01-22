@@ -90,5 +90,9 @@ namespace PLWPF
                 throw new Exception("You didn't enter the well password");
          }
 
+        private void BankComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

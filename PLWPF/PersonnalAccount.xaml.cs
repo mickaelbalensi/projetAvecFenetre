@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BE1;
+using BL1;
+
 
 namespace PLWPF
 {
@@ -19,6 +22,8 @@ namespace PLWPF
     /// </summary>
     public partial class PersonnalAccount : Window
     {
+        public Host currentHost { get; set; }
+        IBL bl;
         public PersonnalAccount()
         {
             InitializeComponent();
@@ -26,9 +31,17 @@ namespace PLWPF
 
         private void buttonPersonnal_Click(object sender, RoutedEventArgs e)
         {
-            Window hostPage = new HostPage();
-            hostPage.Show();
-            this.Close();
+            try
+            {
+                Host host=bl.getHost()
+                Window hostPage = new HostPage();
+                hostPage.Show();
+                this.Close();
+            }
+            catch ()
+            {
+
+            }
         }
     }
 }

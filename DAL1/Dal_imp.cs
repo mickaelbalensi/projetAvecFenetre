@@ -117,11 +117,28 @@ namespace DAL1
                    select ord.Copy();
         }
         #endregion
+        #region hostFunctions
         public void addHost(Host host)
         {
-            
+
             DataSource.HostList.Add(host.Copy());
         }
+        public IEnumerable<Host> getAllHost(Func<Host, bool> predicate = null)
+        {
+            if (predicate == null)
+                return DataSource.HostList.AsEnumerable();
+            return from host in DataSource.HostList
+                   where predicate(host)
+                   select host.Copy();
+        }
+        public Host getHost(long key)
+        {
+            return DataSource.HostList.FirstOrDefault(unit => unit.hostKey == key);
+        }
+
+        #endregion
+
+
         public List<BankBranch> getAllBankBranch()
         {
             List<BankBranch> bankBranchList = new List<BankBranch>

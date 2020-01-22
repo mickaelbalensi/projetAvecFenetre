@@ -19,13 +19,15 @@
                Margin="58,0,63.6,0.4"
                FontSize="30"/>
         <Grid x:Name="details"
-              Grid.Row="1">
+              Grid.Row="1" Margin="0,0,0,0.333">
             <!--#region ligne et colonne-->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="189.6"/>
                 <ColumnDefinition Width="50"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
@@ -57,28 +59,28 @@
             <TextBox x:Name="familyName" 
                      Grid.Row="2"
                      Margin="48,0.667,-187.333,9.667" Grid.Column="1"  
-                     Text="{Binding privateName, Mode=TwoWay}"
+                     Text="{Binding familyName, Mode=TwoWay}"
                      />
             <Label Content="Phone Number :"
                    Margin="60,0.667,0,0"
                    Grid.Row="3"/>
             <TextBox x:Name="phoneNumber" 
                      Grid.Row="3" Margin="48,0.333,-187.333,5.333" Grid.Column="1"  
-                     Text="{Binding privateName, Mode=TwoWay}"
+                     Text="{Binding phoneNumber, Mode=TwoWay}"
                      />
             <Label Content="Mail Address :"
                    Margin="60,4,0,4.333"
                    Grid.Row="4"/>
             <TextBox x:Name="mailAddress" 
                      Grid.Row="3" Margin="48,44.333,-187.333,4.667" Grid.RowSpan="2" Grid.Column="1" 
-                     Text="{Binding privateName, Mode=TwoWay}"
+                     Text="{Binding mailAddress, Mode=TwoWay}"
                      />
             <Label Content="Enter a password "
                    Margin="60,2.667,0,5"
                    Grid.Row="5"/>
             <TextBox x:Name="passwordBox" 
                      Grid.Row="4" Margin="48,44.333,-187.333,4.667" Grid.RowSpan="2" Grid.Column="1" 
-                    Text="{Binding privateName, Mode=TwoWay}"
+                    Text="{Binding password, Mode=TwoWay}"
                      />
             <Label Content="Confirm your password"
                    Margin="60,4,0,4.333"
@@ -91,20 +93,22 @@
             <Label Content="Bank's Information"
                    Grid.Row="7" Margin="0,0.4,24,0.2" Grid.ColumnSpan="2"/>
             <Label Content="Host ID :"
-                   Margin="60,10,23.667,43.333"
+                   Margin="60,9.667,23.667,35"
                    Grid.Row="8" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
             <TextBox x:Name="hostKey" 
                      Grid.Row="8" Margin="48,0,-187.333,44.333" Grid.RowSpan="2" Grid.Column="1" 
-                     Text="{Binding privateName, Mode=TwoWay}"
+                     Text="{Binding hostKey, Mode=TwoWay}"
                      />
             <Label Content="Bank's Name :"
-                   Margin="60,1,24,32.4"
-                   Grid.Row="9" Grid.RowSpan="2" Grid.ColumnSpan="2" />
+                   Margin="60,0.667,23.667,32"
+                   Grid.Row="9" Grid.RowSpan="2" Grid.ColumnSpan="2" 
+                   
+                   />
             <ComboBox              
                    x:Name="BankComboBox"               
                    Grid.Row="9"
-                   SelectedItem="{Binding Bank}"
-                   Margin="48,1.333,-187.333,0.333" Grid.Column="1"
+                   SelectedItem="{Binding Bank,Mode=TwoWay}"
+                   Margin="48,1.333,-187.333,0.333" Grid.Column="1" SelectionChanged="BankComboBox_SelectionChanged"
                 />
             <Label Content="Num's Branch :"
                    Margin="60,0.4,24,0.4"
@@ -112,6 +116,7 @@
             <TextBox x:Name="numBranch"
                      Grid.Row="10"
                      Margin="48,0.667,-59.333,0" Grid.Column="1"
+                     Text="{Binding bankName ,Mode=TwoWay}"
                      />
             <Label Content="Num's Bank Account :"
                    Margin="60,0,23.667,44.333"
@@ -119,13 +124,14 @@
             <TextBox x:Name="numBankAccount"
                      Grid.Row="11"
                      Margin="48,0,-187.333,44.333" Grid.RowSpan="2" Grid.Column="1"
+                     
                      />
             <Label Content="Collection Clearance :"
                    Margin="60,0,24,33.2"
-                   Grid.Row="13" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+                   Grid.Row="12" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
             <CheckBox x:Name="CollectionClearance" 
                 IsChecked="False"
-                      Grid.Row="13"
+                      Grid.Row="12"
                       Margin="47.6,7,-24,33.2" Grid.RowSpan="2" Grid.Column="1"/>
             <!--#endregion-->
             <!--#region Hosting Unit information-->
