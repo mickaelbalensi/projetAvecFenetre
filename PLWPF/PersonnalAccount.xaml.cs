@@ -33,12 +33,12 @@ namespace PLWPF
         {
             try
             {
-                Host host=bl.getHost()
+                //Host host = bl.getHost(hostKeyBox.Text());
                 Window hostPage = new HostPage();
                 hostPage.Show();
                 this.Close();
             }
-            catch ()
+            catch (Exception ex)
             {
 
             }

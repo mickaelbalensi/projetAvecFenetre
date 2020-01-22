@@ -19,7 +19,7 @@ namespace BE1
         public bool garden { get; set; }
         public bool pool { get; set; }
         public bool childrenAttractions { get; set; }
-        public List<string> Uris { get; set; }
+        public List<string> uris { get; set; }
         public TypeAreaOfTheCountry typeArea { get; set; }
         public TypeOfHostingUnit typeOfUnit { get; set; }
 

@@ -46,9 +46,9 @@
     <Compile Include="Cloning.cs" />
     <Compile Include="Dal_imp.cs" />
     <Compile Include="DAL_XML.cs" />
-    <Compile Include="Factory.cs" />
+    <Compile Include="FactoryDal.cs" />
     <Compile Include="IDAL.cs" />
-    <Compile Include="IDAL1.cs" />
+    <Compile Include="IDAL1 a ne plus utiliser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

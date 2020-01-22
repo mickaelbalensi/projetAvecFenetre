@@ -19,9 +19,9 @@ namespace BL1
 
         public BL_imp()
         {
-            //dal = FactoryDal.Instance;
-            dal = new Dal_imp();
-            initList();
+            dal = FactoryDal.Instance;
+            //dal = new Dal_imp();
+            //initList();
 
         }
 
@@ -198,7 +198,7 @@ namespace BL1
         {
             dal.addHost(host);
         }
-        public IEnumerable<Host> getAllHhost(Func<Host, bool> predicate = null)
+        public IEnumerable<Host> getAllHost(Func<Host, bool> predicate = null)
         {
             return dal.getAllHost(predicate);
         }

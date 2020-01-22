@@ -56,7 +56,7 @@ namespace PLWPF
         {
             //Window sendmail = new SendMail();
             //sendmail.Show();
-            try
+            //try
             {
                 //checkExceptions();
                 //currentUnit.jacuzzi =  JacuzziCheckBox.IsChecked == true ? true : false;
@@ -70,11 +70,11 @@ namespace PLWPF
                 currentUnit = new HostingUnit();
                 this.DataContext = currentUnit;               
             }
-            catch(Exception ex)
+            /*catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
                 this.Close();
-            }
+            }*/
         }
 
         private void AdultsPlacesBox_TextChanged(object sender, TextChangedEventArgs e)

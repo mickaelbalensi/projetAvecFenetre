@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.IO;
 
+
 namespace DAL1
 {
     public class DAL_XML : IDAL
@@ -50,19 +51,19 @@ namespace DAL1
 
         private void CreateFiles()
         {
-            guestRequestRoot = new XElement("guestRequest");
+            guestRequestRoot = new XElement("Request");
             guestRequestRoot.Save(guestRequestPath);
 
-            hostRoot = new XElement("nannies");
+            hostRoot = new XElement("Host");
             hostRoot.Save(hostPath);
 
-            hostingUnitRoot = new XElement("nannies");
+            hostingUnitRoot = new XElement("HostingUnit");
             hostingUnitRoot.Save(hostingUnitPath);
 
-            orderRoot = new XElement("mothers");
+            orderRoot = new XElement("Order");
             orderRoot.Save(orderPath);
 
-            bankBranchRoot = new XElement("contracts");
+            bankBranchRoot = new XElement("BankBranch");
             bankBranchRoot.Save(bankBranchPath);
 
 
@@ -97,46 +98,46 @@ namespace DAL1
             return 
                 new XElement("Request",
                 new XElement("GuestRequestKey", request.guestRequestKey.ToString()),
-                new XElement("Name",
                 new XElement("PrivateName", request.privateName),
-                new XElement("FamilyName", request.familyName)),
+                new XElement("FamilyName", request.familyName),
                 new XElement("MailAddress", request.mailAddress),
                 new XElement("Status", request.status.ToString()),
                 new XElement("RegistrationDate", request.registrationDate.ToShortDateString()),
-                new XElement("DateOfHollydays",
                 new XElement("EntryDate", request.entryDate.ToShortDateString()),
-                new XElement("ReleaseDate", request.releaseDate.ToShortDateString())),
+                new XElement("ReleaseDate", request.releaseDate.ToShortDateString()),
                 new XElement("TransactionSigned", request.transactionSigned.ToString()),
-                new XElement("CriterionOnHostingUnit",
                 new XElement("TypeArea", request.typeArea.ToString()),
                 new XElement("Type", request.type.ToString()),
-                new XElement("NumSleeping",
                 new XElement("Adults", request.adults.ToString()),
-                new XElement("Children", request.children.ToString())),
-                new XElement("Options",
+                new XElement("Children", request.children.ToString()),
                 new XElement("Pool", request.pool.ToString()),
                 new XElement("Jacuzzi", request.jacuzzi.ToString()),
                 new XElement("Garden", request.garden.ToString()),
-                new XElement("ChildrenAttractions", request.childrenAttractions.ToString()))));
+                new XElement("ChildrenAttractions", request.childrenAttractions.ToString()));
         }
         GuestRequest ConvertXAMLToGuestRequest(XElement element)
         {
             GuestRequest request = new GuestRequest();
 
             request.guestRequestKey = (from req in element.Elements()
-                                       select long.Parse(req.Element("Request").Element("GuestRequestKey").Value)).FirstOrDefault();
+                                       where req.Name== "GuestRequestKey"
+                                       select long.Parse(req.Value)).FirstOrDefault();
 
             request.privateName = (from req in element.Elements()
-                                   select req.Element("Request").Element("Name").Element("PrivateName").Value).FirstOrDefault();
+                                   where req.Name == "PrivateName"
+                                   select req.Value).FirstOrDefault();
 
             request.familyName = (from req in element.Elements()
-                                  select req.Element("Request").Element("Name").Element("FamilyName").Value.ToString()).FirstOrDefault();
+                                  where req.Name == "FamilyName"
+                                  select req.Value).FirstOrDefault();
 
             request.mailAddress = (from req in element.Elements()
-                                   select req.Element("Request").Element("MailAddress").Value.ToString()).FirstOrDefault();
+                                   where req.Name == "MailAddress"
+                                   select req.Value).FirstOrDefault();
             
             string status= (from req in element.Elements()
-                            select req.Element("Request").Element("Status").Value).FirstOrDefault();
+                            where req.Name == "Status"
+                            select req.Value).FirstOrDefault();
 
             request.status = 
                 status == "active" ?
@@ -146,19 +147,24 @@ namespace DAL1
                 GuestRequestStatus.transactionClosed);
 
             request.registrationDate = (from req in element.Elements()
-                                   select DateTime.Parse(req.Element("Request").Element("RegistrationDate").Value.ToString())).FirstOrDefault();
+                                        where req.Name == "RegistrationDate"
+                                        select DateTime.Parse(req.Value)).FirstOrDefault();
 
             request.entryDate = (from req in element.Elements()
-                                   select DateTime.Parse(req.Element("Request").Element("DateOfHollydays").Element("EntryDate").Value.ToString())).FirstOrDefault();
+                                 where req.Name == "EntryDate"
+                                 select DateTime.Parse(req.Value)).FirstOrDefault();
 
             request.releaseDate = (from req in element.Elements()
-                                   select DateTime.Parse(req.Element("Request").Element("DateOfHollydays").Element("ReleaseDate").Value.ToString())).FirstOrDefault();
+                                   where req.Name == "ReleaseDate"
+                                   select DateTime.Parse(req.Value)).FirstOrDefault();
 
             request.transactionSigned = (from req in element.Elements()
-                                 select Boolean.Parse(req.Element("Request").Element("TransactionSigned").Value)).FirstOrDefault();
+                                         where req.Name == "TransactionSigned"
+                                         select Boolean.Parse(req.Value)).FirstOrDefault();
             
             string typeArea = (from req in element.Elements()
-                               select req.Element("Request").Element("CriterionOnHostingUnit").Element("TypeArea").Value.ToString()).FirstOrDefault();
+                               where req.Name == "TypeArea"
+                               select req.Value).FirstOrDefault();
 
             request.typeArea =
                 typeArea == "all" ?
@@ -169,7 +175,8 @@ namespace DAL1
                 TypeAreaOfTheCountry.jerusalem;
                 
             string type = (from req in element.Elements()
-                           select req.Element("Request").Element("CriterionOnHostingUnit").Element("Type").Value.ToString()).FirstOrDefault();
+                           where req.Name == "Type"
+                           select req.Value.ToString()).FirstOrDefault();
 
             request.type =
                 type == "all" ? TypeOfHostingUnit.all :
@@ -179,13 +186,16 @@ namespace DAL1
                 TypeOfHostingUnit.zimmer;
 
             request.adults = (from req in element.Elements()
-                                         select int.Parse(req.Element("Request").Element("NumSleeping").Element("Adults").Value)).FirstOrDefault();
+                              where req.Name == "Adults"
+                              select int.Parse(req.Value)).FirstOrDefault();
 
             request.children = (from req in element.Elements()
-                                         select int.Parse(req.Element("Request").Element("NumSleeping").Element("Children").Value)).FirstOrDefault();
+                                where req.Name == "Children"
+                                select int.Parse(req.Value)).FirstOrDefault();
 
             string pool = (from req in element.Elements()
-                           select (req.Element("Request").Element("Options").Element("Pool").Value)).FirstOrDefault();
+                           where req.Name == "Pool"
+                           select (req.Value)).FirstOrDefault();
 
             request.pool =
                 pool == "yes" ? Options.yes :
@@ -193,7 +203,8 @@ namespace DAL1
                 Options.optional;
 
             string jacuzzi = (from req in element.Elements()
-                           select (req.Element("Request").Element("Options").Element("Jacuzzi").Value)).FirstOrDefault();
+                              where req.Name == "Jacuzzi"
+                              select (req.Value)).FirstOrDefault();
 
             request.jacuzzi =
                 jacuzzi == "yes" ? Options.yes :
@@ -201,7 +212,8 @@ namespace DAL1
                 Options.optional;
 
             string garden = (from req in element.Elements()
-                           select (req.Element("Request").Element("Options").Element("Garden").Value)).FirstOrDefault();
+                             where req.Name == "Garden"
+                             select (req.Value)).FirstOrDefault();
 
             request.garden=
                 garden == "yes" ? Options.yes :
@@ -209,7 +221,8 @@ namespace DAL1
                 Options.optional;
 
             string childrenAttractions = (from req in element.Elements()
-                                          select (req.Element("Request").Element("Options").Element("ChildrenAttractions").Value)).FirstOrDefault();
+                                          where req.Name == "ChildrenAttractions"
+                                          select (req.Value)).FirstOrDefault();
 
             request.childrenAttractions =
                 childrenAttractions == "yes" ? Options.yes :
@@ -240,33 +253,42 @@ namespace DAL1
             HostingUnit unit = new HostingUnit();
 
             unit.hostingUnitKey = (from hosting in element.Elements()
-                                   select int.Parse(hosting.Element("HostingUnit").Element("hostingUnitKey").Value)).FirstOrDefault();
+                                   where hosting.Name== "hostingUnitKey"
+                                   select long.Parse(hosting.Value)).FirstOrDefault();
 
             unit.hostingUnitName = (from hosting in element.Elements()
-                                   select (hosting.Element("HostingUnit").Element("hostingUnitName").Value)).FirstOrDefault();
+                                    where hosting.Name == "hostingUnitName"
+                                    select (hosting.Value)).FirstOrDefault();
 
             unit.owner = ConvertXAMLToHost(element);
                 
             unit.adultPlaces = (from hosting in element.Elements()
-                                   select int.Parse(hosting.Element("HostingUnit").Element("adultPlaces").Value)).FirstOrDefault();
+                                where hosting.Name == "adultPlaces"
+                                select int.Parse(hosting.Value)).FirstOrDefault();
 
             unit.childrenPlaces = (from hosting in element.Elements()
-                                   select int.Parse(hosting.Element("HostingUnit").Element("childrenPlaces").Value)).FirstOrDefault();
+                                   where hosting.Name == "childrenPlaces"
+                                   select int.Parse(hosting.Value)).FirstOrDefault();
 
             unit.jacuzzi = (from hosting in element.Elements()
-                           select bool.Parse(hosting.Element("HostingUnit").Element("jacuzzi").Value)).FirstOrDefault();
+                            where hosting.Name == "jacuzzi"
+                            select bool.Parse(hosting.Value)).FirstOrDefault();
 
             unit.garden = (from hosting in element.Elements()
-                           select bool.Parse(hosting.Element("HostingUnit").Element("garden").Value)).FirstOrDefault();
+                           where hosting.Name == "garden"
+                           select bool.Parse(hosting.Value)).FirstOrDefault();
 
             unit.pool = (from hosting in element.Elements()
-                         select bool.Parse(hosting.Element("HostingUnit").Element("pool").Value)).FirstOrDefault();
+                         where hosting.Name == "pool"
+                         select bool.Parse(hosting.Value)).FirstOrDefault();
 
             unit.childrenAttractions = (from hosting in element.Elements()
-                                        select bool.Parse(hosting.Element("HostingUnit").Element("childrenAttractions").Value)).FirstOrDefault();
+                                        where hosting.Name == "childrenAttractions"
+                                        select bool.Parse(hosting.Value)).FirstOrDefault();
  
             string typeArea = (from hosting in element.Elements()
-                               select hosting.Element("HostingUnit").Element("typeArea").Value.ToString()).FirstOrDefault();
+                               where hosting.Name == "typeArea"
+                               select hosting.Value).FirstOrDefault();
 
             unit.typeArea =
                 typeArea == "all" ?
@@ -277,7 +299,8 @@ namespace DAL1
                 TypeAreaOfTheCountry.jerusalem;
 
             string typeOfUnit = (from hosting in element.Elements()
-                           select hosting.Element("HostingUnit").Element("typeOfUnit").Value.ToString()).FirstOrDefault();
+                                 where hosting.Name == "typeOfUnit"
+                                 select hosting.Value).FirstOrDefault();
 
             unit.typeOfUnit =
                 typeOfUnit == "all" ? TypeOfHostingUnit.all :
@@ -287,7 +310,8 @@ namespace DAL1
                 TypeOfHostingUnit.zimmer;
 
             unit.tempDiary = (from hosting in element.Elements()
-                              select (hosting.Element("HostingUnit").Element("tempDiary").Value)).FirstOrDefault();
+                              where hosting.Name == "tempDiary"
+                              select (hosting.Value)).FirstOrDefault();
 
             return unit;
         }
@@ -425,7 +449,8 @@ namespace DAL1
                 throw new Exception("Please select a valid key for the guestRequest (not 0)");
 
             guestRequestCount = (from g in configRoot.Elements()
-                                 select long.Parse(g.Element("configuration").Element("guestRequestCount").Value)).FirstOrDefault();
+                                 where g.Name== "guestRequestCount"
+                                 select long.Parse(g.Value)).FirstOrDefault();
 
             guest.guestRequestKey = guestRequestCount;
 
@@ -482,11 +507,12 @@ namespace DAL1
             if (getAllHostingUnit(x => x.hostingUnitKey == unit.hostingUnitKey).FirstOrDefault() != null)
                 throw new Exception("A HostingUnit with the same key already exists.");
 
-            if (unit.hostingUnitKey == 0)
-                throw new Exception("Please select a valid key for the HostingUnit (not 0)");
+//            if (unit.hostingUnitKey == 0)
+ //               throw new Exception("Please select a valid key for the HostingUnit (not 0)");
 
             hostingUnitCount = (from g in configRoot.Elements()
-                                 select long.Parse(g.Element("configuration").Element("hostingUnitCount").Value)).FirstOrDefault();
+                                where g.Name== "hostingUnitCount"
+                                select long.Parse(g.Value)).FirstOrDefault();
 
             unit.hostingUnitKey = hostingUnitCount;
 
@@ -555,9 +581,10 @@ namespace DAL1
                 throw new Exception("A hostingUnit with the same key already exists.");
             //if (getAllOrder(x => x.orderKey == order.orderKey).FirstOrDefault() != null)
             //    throw new Exception("An order with the same key already exists.");
+            
             orderCount = (from x in configRoot.Elements()
                           where x.Name == "orderCount"
-                          select Convert.ToInt32(x.Value)).FirstOrDefault();
+                          select long.Parse(x.Value)).FirstOrDefault();
 
             order.orderKey = orderCount;
 
@@ -623,6 +650,16 @@ namespace DAL1
         }
 
         public Order getOrder(long key)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Host getHost(long key)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Host> getAllHost(Func<Host, bool> predicate = null)
         {
             throw new NotImplementedException();
         }
