@@ -213,6 +213,20 @@ namespace BL1
             }
             dal.updateHostingUnit(unit);
         }
+        public int cashMoneyFromHost(HostingUnit unit)
+        {
+            int sum = 0;
+            int month = 0;
+            int day = 0;
+            while (month != 11 || day!= 30)
+            {
+                if (unit.diary[month, day++])//if one's of the day is already taken 
+                    sum += 10;
+                if (day == 31) { day++; day = 0; }//if we got to the end of the month               //
+            }
+            return sum;
+        }
+        
 
         #region order
         public void addOrder(GuestRequest request)

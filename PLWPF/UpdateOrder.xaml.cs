@@ -40,5 +40,10 @@ namespace PLWPF
                 MessageBox.Show(ex.Message);
             }
         }
+
+        //    .ItemsSource = App.bl.getAllOrder(x => x != null);
+        //PersonDetails.Visibility = Visibility.Visible;
+        //ContractDetails.Visibility = Visibility.Hidden;
+        //ContractDetails.SelectedItem = null;
     }
 }
