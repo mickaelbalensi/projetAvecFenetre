@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.IO;
 
-
 namespace DAL1
 {
     public class DAL_XML : IDAL
@@ -46,7 +45,7 @@ namespace DAL1
                 || !File.Exists(bankBranchPath))
                 CreateFiles();
             else
-                LoadData();
+                CreateFiles();
         }
 
         private void CreateFiles()
@@ -70,8 +69,10 @@ namespace DAL1
             configRoot = new XElement("configuration",
                 new XElement("orderCount", "1"),
                 new XElement("hostingUnitCount", "1"),
-                new XElement("guestRequestCount", "1")); 
-            configRoot.Save(configPath);
+                new XElement("guestRequestCount", "1"));
+            String path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+
+            configRoot.Save(path + configPath);
         }
 
         private void LoadData()
@@ -248,7 +249,7 @@ namespace DAL1
                 new XElement("typeOfUnit", unit.typeOfUnit.ToString()),
                 new XElement("tempDiary", unit.tempDiary));
         }
-        HostingUnit ConvertXAMLToHostingUnit(XElement element)
+        HostingUnit ConvertXAMLToHostingUnit(XElement element)//vérifié, lire eara ds func
         {
             HostingUnit unit = new HostingUnit();
 
@@ -260,7 +261,7 @@ namespace DAL1
                                     where hosting.Name == "hostingUnitName"
                                     select (hosting.Value)).FirstOrDefault();
 
-            unit.owner = ConvertXAMLToHost(element);
+            unit.owner = ConvertXAMLToHost(element);//attention type du param
                 
             unit.adultPlaces = (from hosting in element.Elements()
                                 where hosting.Name == "adultPlaces"
@@ -324,7 +325,7 @@ namespace DAL1
                 new XElement("familyName", host.familyName),
                 new XElement("phoneNumber", host.phoneNumber.ToString()),
                 new XElement("mailAddress", host.mailAddress),
-                new XElement("bankBranchDetails", ConvertBankBranchToXAML(host.bankBranchDetails)),
+                //new XElement("bankBranchDetails", ConvertBankBranchToXAML(host.bankBranchDetails)),
                 new XElement("bankAccountNumber", host.bankAccountNumber.ToString()),
                 new XElement("collectionClearance", host.collectionClearance.ToString()));
         }
@@ -352,7 +353,7 @@ namespace DAL1
                                 where ost.Name=="mailAddress"
                                 select (ost.Value)).FirstOrDefault();
 
-            host.bankBranchDetails = ConvertXAMLToBankBranch(element);
+            //host.bankBranchDetails = ConvertXAMLToBankBranch(element);
 
             host.bankAccountNumber = (from ost in element.Elements()
                                       where ost.Name== "bankAccountNumber"
@@ -513,6 +514,10 @@ namespace DAL1
                    where predicate(req)
                    select req;
         }
+        public GuestRequest getRequest(long key)
+        {
+            return getAllGuestRequest().FirstOrDefault(x=>x.guestRequestKey==key);
+        }
 
         #endregion
         #region hostingUnit region
@@ -573,26 +578,22 @@ namespace DAL1
                 return from item in hostingUnitRoot.Elements()
                        select ConvertXAMLToHostingUnit(item);
             }
-            return from item in guestRequestRoot.Elements()
+            return from item in hostingUnitRoot.Elements()
                    let hos = ConvertXAMLToHostingUnit(item)
                    where predicate(hos)
                    select hos;
         }
-        //public HostingUnit getHostingUnit(long key)
-        //{
-        //    throw new NotImplementedException();
-        //}
+
+
+        public HostingUnit getHostingUnit(long key)
+        {
+            return getAllHostingUnit().FirstOrDefault(x=> x.hostingUnitKey==key);
+        }
+
         #endregion
         #region order region
         public void addOrder(Order order)
         {
-            //if a such guestRequest or/and HostingUnit  already exists
-            if (getAllGuestRequest(x => x.guestRequestKey == order.guestRequestKey).FirstOrDefault() != null)
-                throw new Exception("A Request with the same key already exists.");
-            if (getAllHostingUnit(x => x.hostingUnitKey == order.hostingUnitKey).FirstOrDefault() != null)
-                throw new Exception("A hostingUnit with the same key already exists.");
-            //if (getAllOrder(x => x.orderKey == order.orderKey).FirstOrDefault() != null)
-            //    throw new Exception("An order with the same key already exists.");
             
             orderCount = (from x in configRoot.Elements()
                           where x.Name == "orderCount"
@@ -615,10 +616,6 @@ namespace DAL1
 
 
         }
-        //public Order getOrder(long key)
-        //{
-        //    throw new NotImplementedException();
-        //}
         public void updateOrder(Order order)
         {
             if (getAllOrder(x => x.orderKey == order.orderKey).FirstOrDefault() == null)
@@ -645,26 +642,18 @@ namespace DAL1
                    where predicate(ord)
                    select ord;
         }
+        public Order getOrder(long key)
+        {
+            return getAllOrder().FirstOrDefault(x=> x.orderKey==key);
+        }
 
         public void addHost(Host host)
         {
             throw new NotImplementedException();
         }
 
-        public GuestRequest getRequest(long key)
-        {
-            throw new NotImplementedException();
-        }
 
-        public HostingUnit getHostingUnit(long key)
-        {
-            throw new NotImplementedException();
-        }
 
-        public Order getOrder(long key)
-        {
-            throw new NotImplementedException();
-        }
 
         public Host getHost(long key)
         {

@@ -46,7 +46,6 @@ namespace DAL1
         }
 
         #endregion
-
         #region hostingUnitFunctions
 
 
@@ -87,7 +86,6 @@ namespace DAL1
         }
 
         #endregion
-
         #region orderFunctions
         public void addOrder(Order order)
         {
@@ -138,51 +136,50 @@ namespace DAL1
 
         #endregion
 
-
         public List<BankBranch> getAllBankBranch()
         {
-            List<BankBranch> bankBranchList = new List<BankBranch>
-            {
-                new BankBranch{
-                    bankNumber = Bank.bankHapoalim,
-                    bankName = Bank.bankHapoalim.ToString(),
-                    branchNumber = 1,
-                    branchAddress = "21 street bayit-vegan",
-                    branchCity = "jerusalem"
-                },
-                new BankBranch
-                {
-                    bankNumber = Bank.bankHapoalim,
-                    bankName = Bank.bankHapoalim.ToString(),
-                    branchNumber = 2,
-                    branchAddress = "52 street uziel",
-                    branchCity = "jerusalem"
-                },
-                new BankBranch
-                {
-                    bankNumber = Bank.bankHapoalim,
-                    bankName = Bank.bankHapoalim.ToString(),
-                    branchNumber = 3,
-                    branchAddress = "25 street rotshild",
-                    branchCity = "tel-aviv"
-                },
-                new BankBranch
-                {
-                    bankNumber = Bank.bankLeumi,
-                    bankName = Bank.bankLeumi.ToString(),
-                    branchNumber = 1,
-                    branchAddress = "15 street shtraus",
-                    branchCity = "jerusalem"
-                },
-                new BankBranch
-                {
-                    bankNumber = Bank.bankLeumi,
-                    bankName = Bank.bankLeumi.ToString(),
-                    branchNumber = 2,
-                    branchAddress = "19 street ben-yehuda ",
-                    branchCity = "jerusalem"
-                }
-            };
+            //List<BankBranch> bankBranchList = new List<BankBranch>
+            //{
+            //    new BankBranch{
+            //        bankNumber = Bank.bankHapoalim,
+            //        bankName = Bank.bankHapoalim.ToString(),
+            //        branchNumber = 1,
+            //        branchAddress = "21 street bayit-vegan",
+            //        branchCity = "jerusalem"
+            //    },
+            //    new BankBranch
+            //    {
+            //        bankNumber = Bank.bankHapoalim,
+            //        bankName = Bank.bankHapoalim.ToString(),
+            //        branchNumber = 2,
+            //        branchAddress = "52 street uziel",
+            //        branchCity = "jerusalem"
+            //    },
+            //    new BankBranch
+            //    {
+            //        bankNumber = Bank.bankHapoalim,
+            //        bankName = Bank.bankHapoalim.ToString(),
+            //        branchNumber = 3,
+            //        branchAddress = "25 street rotshild",
+            //        branchCity = "tel-aviv"
+            //    },
+            //    new BankBranch
+            //    {
+            //        bankNumber = Bank.bankLeumi,
+            //        bankName = Bank.bankLeumi.ToString(),
+            //        branchNumber = 1,
+            //        branchAddress = "15 street shtraus",
+            //        branchCity = "jerusalem"
+            //    },
+            //    new BankBranch
+            //    {
+            //        bankNumber = Bank.bankLeumi,
+            //        bankName = Bank.bankLeumi.ToString(),
+            //        branchNumber = 2,
+            //        branchAddress = "19 street ben-yehuda ",
+            //        branchCity = "jerusalem"
+            //    }
+            //};
 
             return bankBranchList;
         }

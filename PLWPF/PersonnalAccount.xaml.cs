@@ -26,15 +26,20 @@ namespace PLWPF
         IBL bl;
         public PersonnalAccount()
         {
+            if (currentHost == null)
+                currentHost = new Host();
             InitializeComponent();
+            this.DataContext = currentHost;
+
+            bl = FactoryBL.getBL();
         }
 
         private void buttonPersonnal_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                //Host host = bl.getHost(hostKeyBox.Text());
-                Window hostPage = new HostPage();
+                currentHost=bl.checkParameters(currentHost);
+                Window hostPage = new HostPage(currentHost);
                 hostPage.Show();
                 this.Close();
             }

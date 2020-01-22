@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using BE1;
 namespace PLWPF
 {
     /// <summary>
@@ -19,14 +19,16 @@ namespace PLWPF
     /// </summary>
     public partial class UnitPage : Window
     {
-        public UnitPage()
+        public Host currentHost { get; set; }
+        public UnitPage(Host host)
         {
             InitializeComponent();
+            currentHost = host;
         }
 
         private void AddUnit_Click(object sender, RoutedEventArgs e)
         {
-            Window addUnitWindow = new AddUnitWindow();
+            Window addUnitWindow = new AddUnitWindow(currentHost);
             addUnitWindow.Show();
         }
 

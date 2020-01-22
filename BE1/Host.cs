@@ -15,11 +15,11 @@ namespace BE1
         public string familyName { get; set; }
         public long phoneNumber { get; set; }
         public string mailAddress { get; set; }
-        public BankBranch bankBranchDetails { get; set; }
+        //public BankBranch bankBranchDetails { get; set; }
         public long bankAccountNumber { get; set; }
         public bool collectionClearance { get; set; }
         public string password { get; set; }
-        public static int  countHostingUnit { get; set; }// number of rooms he owns 
+        //public static int  countHostingUnit { get; set; }// number of rooms he owns 
         public Host()
         {
             hostKey = Configuration.hostCount;
@@ -29,8 +29,8 @@ namespace BE1
             mailAddress = privateName + familyName + "@" + "gmail.com";
             bankAccountNumber = 12345678;
             collectionClearance = false;
-            bankBranchDetails = new BankBranch();
-            countHostingUnit = 0;
+            //bankBranchDetails = new BankBranch();
+            //countHostingUnit = 0;
         }
         public override string ToString()
         {
@@ -40,9 +40,9 @@ namespace BE1
                 " phoneNumber : " + phoneNumber + "\n" +
                 "mailAddress : " + mailAddress + "\n" +
                 "bankAccountNumber : " + bankAccountNumber + "\n" +
-                "collectionClearance : " + collectionClearance + "\n" +
-                "bankBranchDetails : " + bankBranchDetails + "\n" +
-                "countHostingUnit : " + countHostingUnit;
+                "collectionClearance : " + collectionClearance + "\n"; //+
+               // "bankBranchDetails : " + bankBranchDetails + "\n" +
+                //"countHostingUnit : " + countHostingUnit;
         }
 
     }

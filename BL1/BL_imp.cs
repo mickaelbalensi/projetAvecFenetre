@@ -16,10 +16,48 @@ namespace BL1
 
         // DAL1.IDAL dal = FactoryDal.GetDal();
         DAL1.IDAL dal;
-
+        public List<Host> HostList;
         public BL_imp()
         {
             dal = FactoryDal.Instance;
+
+            HostList = new List<Host> {
+            new Host
+            {
+                hostKey=123,
+                privateName = "itshak",
+                familyName="bibas",
+                phoneNumber=123,
+                mailAddress="bib@gmail.com",
+                bankAccountNumber=123,
+                collectionClearance=true,
+                password="123",
+
+            },
+            new Host
+            {
+                hostKey=456,
+                privateName = "micka",
+                familyName="balensi",
+                phoneNumber=456,
+                mailAddress="micka@gmail.com",
+                bankAccountNumber=456,
+                collectionClearance=true,
+                password="456",
+            },
+            new Host
+            {
+                hostKey=789,
+                privateName = "chmoul",
+                familyName="illouz",
+                phoneNumber=789,
+                mailAddress="chmoul@gmail.com",
+                bankAccountNumber=789,
+                collectionClearance=false,
+                password="789",
+            }
+            };
+
             //dal = new Dal_imp();
             //initList();
 
@@ -198,19 +236,29 @@ namespace BL1
         {
             dal.addHost(host);
         }
+
+        public Host checkParameters(Host host)
+        {
+            Host h=HostList.FirstOrDefault(ho => ho.hostKey == host.hostKey);
+            if (h==null)
+                throw new Exception("Wrong Id or password");
+            return h;
+        }
+
+
         public IEnumerable<Host> getAllHost(Func<Host, bool> predicate = null)
         {
             return dal.getAllHost(predicate);
         }
         public Host getHost(long key)
         {
-        return dal.getHost(key);
+            return dal.getHost(key);
         }
-    
 
-    #endregion
 
-    public void reservePlaces(Order order)
+        #endregion
+
+        public void reservePlaces(Order order)
         {
             HostingUnit unit = getHostingUnit(order.hostingUnitKey);
             GuestRequest request = getRequest(order.guestRequestKey);

@@ -28,10 +28,11 @@ namespace PLWPF
         public HostingUnit currentUnit;
         IBL bl;
 
-        public AddUnitWindow()
+        public AddUnitWindow(Host host)
         {
             vbImage = new Viewbox();
             currentUnit = new HostingUnit();
+            currentUnit.owner = host;
             InitializeComponent();
             this.DataContext = currentUnit;
            

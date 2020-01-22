@@ -13,7 +13,6 @@ namespace DS1
         public static List<GuestRequest> guestRequestList { get; set; }
         public static List<Order> orderList { get; set; }
         public static List<BankBranch> bankBranchList;
-
         public static List<Host> HostList { get; set; }
 
         public DataSource()
@@ -26,7 +25,42 @@ namespace DS1
             hostingUnitList = new List<HostingUnit>();
             guestRequestList = new List<GuestRequest>();
             orderList = new List<Order>();
-            HostList = new List<Host>();
+            HostList = new List<Host> {
+            new Host
+            {
+                hostKey=1,
+                privateName = "itshak",
+                familyName="bibas",
+                phoneNumber=123,
+                mailAddress="bib@gmail.com",
+                bankAccountNumber=123,
+                collectionClearance=true,
+                password="123",
+
+            },
+            new Host
+            {
+                hostKey=2,
+                privateName = "micka",
+                familyName="balensi",
+                phoneNumber=456,
+                mailAddress="micka@gmail.com",
+                bankAccountNumber=456,
+                collectionClearance=true,
+                password="456",
+            },
+            new Host
+            {
+                hostKey=3,
+                privateName = "chmoul",
+                familyName="illouz",
+                phoneNumber=789,
+                mailAddress="chmoul@gmail.com",
+                bankAccountNumber=789,
+                collectionClearance=false,
+                password="789",
+            }
+            };
             bankBranchList = new List<BankBranch>
 
             {

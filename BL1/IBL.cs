@@ -35,6 +35,7 @@ namespace BL1
         #endregion
         #region host
         void addHost(Host host);
+        Host checkParameters(Host host);
         Host getHost(long key);
         IEnumerable<Host> getAllHost(Func<Host, bool> predicate = null);
         #endregion

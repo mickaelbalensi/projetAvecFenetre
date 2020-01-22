@@ -25,9 +25,9 @@ namespace PLWPF
         IBL bl;
         public SubscriptionAsHost()
         {
-            InitializeComponent();
             currentHost = new Host();
-            this.details.DataContext = currentHost;
+            InitializeComponent();
+            this.DataContext = currentHost;
 
             bl = FactoryBL.getBL();
 

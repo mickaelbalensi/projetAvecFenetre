@@ -96,9 +96,10 @@ namespace PLWPF
             {              
                
                 long key = currentRequest.guestRequestKey;
+                sendMail(currentRequest.mailAddress, bl.getSuggestionList(key));
+
                 currentRequest = new GuestRequest();
                 DataContext = currentRequest;
-                sendMail(currentRequest.mailAddress, bl.getSuggestionList(key));
                 this.Close();
                 MessageBox.Show(ex.Message);               
             }
