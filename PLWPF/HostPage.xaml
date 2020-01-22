@@ -5,7 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="HostPage" Height="500" Width="500">
+        Title="HostPage" Height="562.316" Width="1099.353">
+    <Window.Background>
+        <ImageBrush ImageSource="Images/photo2.jpg"
+                    Stretch="UniformToFill">
+            <ImageBrush.RelativeTransform>
+                <TransformGroup>
+                    <ScaleTransform CenterX="5"/>
+                    <SkewTransform CenterX="5"/>
+                    <RotateTransform CenterX="5"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+
+            </ImageBrush.RelativeTransform>
+        </ImageBrush>
+    </Window.Background>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -13,13 +28,41 @@
         </Grid.RowDefinitions>
         <Button x:Name="butonAddUnit"
                 Content="Units"
-                Grid.Row="0" Click="butonAddUnit_Click"
-                FontSize="35">
+                Grid.Row="1" Click="butonAddUnit_Click"
+                FontSize="35" Margin="826,64.6,155.8,144.8">
         </Button>
         <Button x:Name="Order"
                 Content="Orders"
                  Grid.Row="1" Click="Order_Click"
-                FontSize="35">
+                FontSize="35" Margin="826,147.6,155.8,68.8">
         </Button>
+
+        <!--#region button hidden-->
+        <Button x:Name="AddUnit"
+               Grid.Row="1"
+                Visibility="Hidden"
+                Content="Add unit" Click="AddUnit_Click" Margin="91,64.6,875.8,170.8" 
+                />
+        <Button x:Name="UpdateUnit"
+                Visibility="Hidden"
+               Grid.Row="1"
+                Content="Update unit" Click="UpdateUnit_Click" Margin="91,118.6,875.8,116.8" 
+                />
+        <Button x:Name="DeleteUnit"
+                Visibility="Hidden"
+                Content="Delete unit" Click="DeleteUnit_Click" Margin="91,167.6,875.8,68.8" Grid.Row="1" 
+                />
+        <Button x:Name="AddOrder"
+               Grid.Row="1"
+                Visibility="Hidden"
+                Content="Add order" Click="AddOrder_Click" Margin="281,118.6,685.8,116.8" 
+                />
+        <Button x:Name="UpdateOrder"
+                Visibility="Hidden"
+               Grid.Row="1"
+                Content="Update Order" Click="UpdateOrder_Click" Margin="281,166.6,685.8,68.8" 
+                />
+
+        <!--#endregion-->
     </Grid>
 </Window>

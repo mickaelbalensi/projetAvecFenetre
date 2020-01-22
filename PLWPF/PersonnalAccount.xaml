@@ -5,49 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="PersonnalAccount" Height="202.302" Width="558.504">
-    <Grid Margin="-3,-18,58,-3.333" HorizontalAlignment="Right" Width="435" Height="192" VerticalAlignment="Top">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="19*"/>
-            <RowDefinition Height="45*"/>
-            <RowDefinition Height="64*"/>
+        Title="PersonnalAccount" Height="585.902" Width="496.904">
+    <Window.Resources>
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="Images/login.jpg"
+                    Stretch="UniformToFill">
+            <ImageBrush.RelativeTransform>
+                <TransformGroup>
+                    <ScaleTransform CenterX="5"/>
+                    <SkewTransform CenterX="5"/>
+                    <RotateTransform CenterX="5"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+
+            </ImageBrush.RelativeTransform>
+        </ImageBrush>
+    </Window.Background>
+    <Grid Margin="0,84,77.4,0" HorizontalAlignment="Right" Width="323" Height="349" VerticalAlignment="Top">
+        <!--<Grid.RowDefinitions>
             <RowDefinition Height="0*"/>
-            <RowDefinition Height="64*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
+        </Grid.RowDefinitions>-->
+        <!--Style="{StaticResource LabelStyle}"-->
+
+        <!--<Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto" MinWidth="102"/>
             <ColumnDefinition Width="auto" MinWidth="334.667"/>
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="0*"/>
-        </Grid.ColumnDefinitions>
-        <Label Content="ID"
-                   Grid.Column="0"
-                   Grid.Row="0"
-                   Margin="15,15,12,14" Grid.RowSpan="2"/>
+        </Grid.ColumnDefinitions>-->
         <TextBox 
                 x:Name="hostKeyBox"
-                   Grid.Column="1"
-                   Grid.Row="1"
-                   Margin="17.6,2.8,101.8,14" 
-                   Text="{Binding hostKey, Mode=TwoWay}"
+                   Margin="91,99,58,216" 
+                   FontSize="18"
+                   Text="{Binding hostKey, Mode=TwoWay}" RenderTransformOrigin="0.5,0.5"
                 />
-        <Label Content="password"
-                   Grid.Column="0"
-                   Grid.Row="2"
-                   Margin="15,16,1,2"/>
         <TextBox 
                 x:Name="Password"
-                   Grid.Column="1"
-                   Grid.Row="2"
-                   Margin="18,16,101.667,24" 
+                   FontSize="18"
+                   Margin="91,174,58,146" 
                     Text="{Binding password, Mode=TwoWay}"
                 />
+        <CheckBox Name="rememberMe" Margin="46,299,261,34" RenderTransformOrigin="1.064,1.567"/>
         <Button x:Name="buttonRequest"
-                Content="Connect to your account" 
-                Grid.Row="4"
-                Grid.ColumnSpan="2"
-                Margin="0,3,0,0" HorizontalAlignment="Left" Width="435" Click="buttonPersonnal_Click">
+                Content="LogIn"
+                Margin="41,232,0,64" HorizontalAlignment="Left" Width="251" Click="buttonPersonnal_Click" Background="#FF358FA7">
             <Button.Style>
                 <Style>
                     <Style.Triggers>

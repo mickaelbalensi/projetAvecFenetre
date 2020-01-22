@@ -30,18 +30,52 @@ namespace PLWPF
 
         private void butonAddUnit_Click(object sender, RoutedEventArgs e)
         {
-            Window unitPage = new UnitPage(currentHost);
-            unitPage.Show();
+            AddUnit.Visibility = Visibility.Visible;
+            UpdateUnit.Visibility = Visibility.Visible;
+            DeleteUnit.Visibility = Visibility.Visible;
+            //Window unitPage = new UnitPage(currentHost);
+            //unitPage.Show();
         }
 
         private void Order_Click(object sender, RoutedEventArgs e)
         {
-            Window orderPage = new OrderPage();
-            orderPage.Show();
+            AddOrder.Visibility = Visibility.Visible;
+            UpdateOrder.Visibility = Visibility.Visible;
+            //Window orderPage = new OrderPage();
+            //orderPage.Show();
         }
 
-        private void butonDeleteUnit_Click(object sender, RoutedEventArgs e)
+
+        private void AddUnit_Click(object sender, RoutedEventArgs e)
         {
+            Window addUnitWindow = new AddUnitWindow(currentHost);
+            addUnitWindow.Show();
+        }
+
+        private void UpdateUnit_Click(object sender, RoutedEventArgs e)
+        {
+            Window updateUnit = new UpdateUnit();
+            updateUnit.Show();
+
+        }
+
+        private void DeleteUnit_Click(object sender, RoutedEventArgs e)
+        {
+            Window deleteUnit = new DeleteUnit();
+            deleteUnit.Show();
+
+        }
+
+        private void AddOrder_Click(object sender, RoutedEventArgs e)
+        {
+            Window addOrder = new AddOrderWindow();
+            addOrder.Show();
+        }
+
+        private void UpdateOrder_Click(object sender, RoutedEventArgs e)
+        {
+            Window updateOrder = new UpdateOrder();
+            updateOrder.Show();
 
         }
     }
