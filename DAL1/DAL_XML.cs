@@ -460,11 +460,8 @@ namespace DAL1
         public void addRequest(GuestRequest guest)
         {
             //if a such guestRequest already exists
-            if (getAllGuestRequest(x => x.guestRequestKey == guest.guestRequestKey).FirstOrDefault() != null)
+            if (getAllGuestRequest(x => x.guestRequestKey == guest.guestRequestKey).FirstOrDefault() != null) 
                 throw new Exception("A guestRequest with the same key already exists.");
-
-            if (guest.guestRequestKey == 0)
-                throw new Exception("Please select a valid key for the guestRequest (not 0)");
 
             guestRequestCount = (from g in configRoot.Elements()
                                  where g.Name== "guestRequestCount"
@@ -524,9 +521,6 @@ namespace DAL1
             //if a such HostingUnit already exists
             if (getAllHostingUnit(x => x.hostingUnitKey == unit.hostingUnitKey).FirstOrDefault() != null)
                 throw new Exception("A HostingUnit with the same key already exists.");
-
-//            if (unit.hostingUnitKey == 0)
- //               throw new Exception("Please select a valid key for the HostingUnit (not 0)");
 
             hostingUnitCount = (from g in configRoot.Elements()
                                 where g.Name== "hostingUnitCount"

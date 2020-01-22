@@ -35,7 +35,7 @@ namespace PLWPF
             
             if (currentRequest == null)
                 currentRequest = new GuestRequest {
-                    guestRequestKey = Configuration.guestRequestCount + 1
+                    //guestRequestKey = Configuration.guestRequestCount + 1
                 };
             InitializeComponent();
             this.DataContext = currentRequest;
