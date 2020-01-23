@@ -239,9 +239,11 @@ namespace BL1
 
         public Host checkParameters(Host host)
         {
-            Host h=HostList.FirstOrDefault(ho => ho.hostKey == host.hostKey);
-            if (h==null)
-                throw new Exception("Wrong Id or password");
+            Host h = HostList.FirstOrDefault(ho => ho.hostKey == host.hostKey);
+            if (h == null)
+                throw new Exception("Wrong ID !");
+            if (host.password != h.password)
+                throw new Exception("Wrong password !");
             return h;
         }
 
@@ -332,6 +334,7 @@ namespace BL1
                 dal.updateOrder(orders);
             }
             order.status = OrderStatus.reserved;
+            reservePlaces(order);
             dal.updateOrder(order);     
         }
         

@@ -11,6 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BE1;
+using BL1;
+
 
 namespace PLWPF
 {
@@ -19,9 +22,43 @@ namespace PLWPF
     /// </summary>
     public partial class UpdateUnit : Window
     {
-        public UpdateUnit()
+        public HostingUnit currentUnit;
+        IBL bl;
+        public UpdateUnit(Host host)
         {
             InitializeComponent();
+            if (currentUnit == null)
+                currentUnit = new HostingUnit();
+                {
+                    //guestRequestKey = Configuration.guestRequestCount + 1
+                };
+            InitializeComponent();
+            this.DataContext = currentUnit;
+            currentUnit.owner = host;
+            //  InitializeComponent();
+            // currentRequest = new GuestRequest();
+            bl = FactoryBL.getBL();
+            UnitsDetails.ItemsSource = bl.getAllHostingUnit(x => currentUnit.owner.hostKey == host.hostKey);
+            UnitsDetails.Visibility = Visibility.Visible;
+        }
+
+        private void OnSelectedItemChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+
+
+        }
+
+        private void UpdateUnit_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                bl.updateHostingUnit(currentUnit);
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
     }
 }

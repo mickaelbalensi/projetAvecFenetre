@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="HostPage" Height="562.316" Width="1099.353">
     <Window.Background>
-        <ImageBrush ImageSource="Images/photo2.jpg"
+        <ImageBrush ImageSource="Images/photo4.jpg"
                     Stretch="UniformToFill">
             <ImageBrush.RelativeTransform>
                 <TransformGroup>
@@ -27,15 +27,11 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Button x:Name="butonAddUnit"
-                Content="Units"
-                Grid.Row="1" Click="butonAddUnit_Click"
-                FontSize="35" Margin="826,64.6,155.8,144.8">
-        </Button>
+                Content="Units" Click="butonAddUnit_Click"
+                FontSize="35" Margin="74,201,907.667,0" Height="50" VerticalAlignment="Top"/>
         <Button x:Name="Order"
-                Content="Orders"
-                 Grid.Row="1" Click="Order_Click"
-                FontSize="35" Margin="826,147.6,155.8,68.8">
-        </Button>
+                Content="Orders" Click="Order_Click"
+                FontSize="35" Margin="281,201,700.667,15.667" RenderTransformOrigin="-1.609,0.978"/>
 
         <!--#region button hidden-->
         <Button x:Name="AddUnit"
@@ -62,7 +58,12 @@
                Grid.Row="1"
                 Content="Update Order" Click="UpdateOrder_Click" Margin="281,166.6,685.8,68.8" 
                 />
-
+        <Button x:Name="logout"
+                Visibility="visible"
+               Grid.Row="1"
+                Content="Log out" Click="logout_Click" Margin="876,166.333,59.667,58.667" 
+                />
         <!--#endregion-->
     </Grid>
+  
 </Window>

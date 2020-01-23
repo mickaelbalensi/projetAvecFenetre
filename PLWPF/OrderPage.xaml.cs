@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BE1;
+using BL1;
 
 namespace PLWPF
 {
@@ -19,6 +21,7 @@ namespace PLWPF
     /// </summary>
     public partial class OrderPage : Window
     {
+        public Host host;
         public OrderPage()
         {
             InitializeComponent();
@@ -27,7 +30,7 @@ namespace PLWPF
 
         private void UpdateRequest_Click(object sender, RoutedEventArgs e)
         {
-            Window updateOrder = new UpdateOrder();
+            Window updateOrder = new UpdateOrder(host);
             updateOrder.Show();
         }
 

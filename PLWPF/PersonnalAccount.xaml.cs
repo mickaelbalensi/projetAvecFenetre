@@ -37,16 +37,20 @@ namespace PLWPF
         private void buttonPersonnal_Click(object sender, RoutedEventArgs e)
         {
             try
-            {
-                currentHost=bl.checkParameters(currentHost);
+            {               
+                currentHost =bl.checkParameters(currentHost);
                 Window hostPage = new HostPage(currentHost);
                 hostPage.Show();
                 this.Close();
             }
             catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
 
             }
         }
+
+       
+
     }
 }

@@ -23,10 +23,23 @@ namespace PLWPF
     public partial class UpdateOrder : Window
     {
         public Order currentOrder { get; set; }
+        public HostingUnit currentUnit;
+        public List<Order> ordersLists;
         IBL bl;
-        public UpdateOrder()
+        public UpdateOrder(Host host)
         {
             InitializeComponent();
+            foreach( HostingUnit unit in  bl.getAllHostingUnit((x=> currentUnit.owner.hostKey == host.hostKey)))
+            {
+                foreach( Order orders in bl.getAllOrder(x => x.hostingUnitKey == unit.hostingUnitKey))
+                {
+                    ordersLists.Add(orders);
+                }
+            }
+            OrderDetails.ItemsSource = ordersLists;
+
+
+          //OrderDetails.ItemsSource=bl.getAllOrder(currentOrder.hostingUnitKey==)
         }
 
         private void ButtonOrder_Click(object sender, RoutedEventArgs e)

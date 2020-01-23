@@ -605,7 +605,7 @@ namespace DAL1
             orderRoot.Save(orderPath);
 
             XElement toRemove = (from x in configRoot.Elements()
-                                 where x.Name == "orderKey"
+                                 where x.Name == "orderCount"
                                  select x).FirstOrDefault();
             toRemove.Remove();
 

@@ -33,6 +33,7 @@ namespace PLWPF
             AddUnit.Visibility = Visibility.Visible;
             UpdateUnit.Visibility = Visibility.Visible;
             DeleteUnit.Visibility = Visibility.Visible;
+
             //Window unitPage = new UnitPage(currentHost);
             //unitPage.Show();
         }
@@ -49,12 +50,13 @@ namespace PLWPF
         private void AddUnit_Click(object sender, RoutedEventArgs e)
         {
             Window addUnitWindow = new AddUnitWindow(currentHost);
+
             addUnitWindow.Show();
         }
 
         private void UpdateUnit_Click(object sender, RoutedEventArgs e)
         {
-            Window updateUnit = new UpdateUnit();
+            Window updateUnit = new UpdateUnit(currentHost);
             updateUnit.Show();
 
         }
@@ -72,11 +74,17 @@ namespace PLWPF
             addOrder.Show();
         }
 
+        private void logout_Click(object sender, RoutedEventArgs e)
+        {
+            Window mainWindow = new MainWindow();
+            mainWindow.Show();
+
+        }
+
         private void UpdateOrder_Click(object sender, RoutedEventArgs e)
         {
-            Window updateOrder = new UpdateOrder();
+            Window updateOrder = new UpdateOrder(currentHost);
             updateOrder.Show();
-
         }
     }
 }

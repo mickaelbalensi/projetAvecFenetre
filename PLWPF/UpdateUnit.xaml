@@ -5,8 +5,215 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="UpdateUnit" Height="450" Width="800">
-    <Grid>
-        
+         Title="UpdateUnit" Height="508.795" Width="1523.762">
+    <Grid x:Name="UnitControlGrid" Margin="10,10,-6.667,0" Height="403" VerticalAlignment="Top">
+        <!--#region ligne et colonne-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="181"/>
+            <ColumnDefinition Width="356"/>
+        </Grid.ColumnDefinitions>
+        <!--#endregion-->
+        <Label Content="Update unit"
+               Grid.Row="0"
+               Margin="141,0,36,0"
+               FontSize="30"/>
+        <Grid x:Name="details"
+              Grid.Row="1" Grid.Column="0" Margin="0,0,65.667,-0.333" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <!--#region ligne et colonne-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="181"/>
+                <ColumnDefinition Width="356"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="51*"/>
+                <RowDefinition Height="52*"/>
+                <RowDefinition Height="52*"/>
+                <RowDefinition Height="52*"/>
+                <RowDefinition Height="52*"/>
+                <RowDefinition Height="55*"/>
+                <RowDefinition Height="50*"/>
+            </Grid.RowDefinitions>
+            <Label x:Name="UnitKey"
+                   Content="Enter the hosting unit key "
+                   FontSize="15"
+                   Grid.Column="0"
+                   Grid.Row="0" Margin="0,10,1.333,42.667" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2"/>
+            <TextBox x:Name="unitKeyBox"
+                     Grid.Row="0"
+                     Margin="9.667,14,127.333,0" Grid.Column="1"
+                     Text="{Binding hostingUnitKey, Mode=TwoWay}" RenderTransformOrigin="0.5,0.5" Height="28" VerticalAlignment="Top"
+                     >
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="0.091"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <Label x:Name="nameHotel"
+                   Content="Name Hotel"
+                   FontSize="15"
+                   Grid.Column="0"
+                   Grid.Row="1" Margin="0,15.333,1.333,42.667" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2"/>
+            <TextBox x:Name="NameHotelBox"
+                     Grid.Row="1"
+                     Margin="8.667,18.333,127.333,3.667" Grid.Column="1" RenderTransformOrigin="0.5,0.5"
+                     >
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <Label x:Name="nameError"
+                       Foreground="Red"
+                    Content="Your name hotel can't be numbers !"
+                       Visibility="Hidden"
+                       Grid.Column="1"
+                       Margin="11.667,25.333,13.333,42.667"
+                       Grid.Row="1" Grid.RowSpan="2">
+            </Label>
+            <Label x:Name="Adultsplaces"
+                Content="Adults places"
+                   Grid.Row="2"
+                   Grid.Column="0" Margin="0,10.333,4.333,0.667"
+                   />
+            <TextBox x:Name="AdultsplacesBbox"
+                     Grid.Row="2" Margin="8.667,14.333,313.333,0" Grid.Column="1"
+                      Text="{Binding adultPlaces, Mode=TwoWay}" Height="28" VerticalAlignment="Top"                     
+                    />
+            <Label x:Name="adultError"
+                       Foreground="Red"
+                    Content="Your number of adults must be numbers"
+                       Visibility="Hidden"
+                       Grid.Column="1"
+                       Margin="11.667,25.333,13.333,42.667"
+                       Grid.Row="1" Grid.RowSpan="2">
+            </Label>
+            <Label x:Name="Childrenplaces"
+                Content="Children places"
+                   Grid.Row="3"
+                   Grid.Column="0" Margin="0,0.333,1.333,9.667"
+                   />
+            <TextBox x:Name="ChildrenplacesBox"
+                     Grid.Row="3" Margin="0,0,314.333,24.667" HorizontalAlignment="Right" Width="33" Height="21" VerticalAlignment="Bottom"
+                      Text="{Binding childrenPlaces, Mode=TwoWay}" Grid.Column="1" RenderTransformOrigin="0.5,0.5"
+                     >
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <Label x:Name="childrenError"
+                       Foreground="Red"
+                    Content="Your number of children must be numbers !"
+                       Visibility="Hidden"
+                       Grid.Column="1"
+                       Margin="11.667,24.333,13.333,51.667"
+                       Grid.Row="3" Grid.RowSpan="2">
+            </Label>
+            <Label Content="TypeArea :"
+                   Grid.Column="0"
+                   Grid.Row="4"
+                   Margin="15,15.333,13.333,41.333" Grid.RowSpan="2"/>
+            <ComboBox 
+                   x:Name="AreaComboBox"                   
+                   Grid.Column="1"               
+                   Grid.Row="4"
+                   SelectedValue="{Binding TypeAreaOfTheCountry, Mode=TwoWay}"
+                   Margin="16.667,14.667,216.333,16"
+                />
+            <Label Content="Type Of Unit :"
+                   Grid.Column="0"
+                   Grid.Row="5"
+                   Margin="15,15.333,13.333,8.333"/>
+            <ComboBox 
+                   x:Name="UnitComboBox"                   
+                   Grid.Column="1"               
+                   Grid.Row="5"
+                   SelectedItem="{Binding TypeOfHostingUnit, Mode=TwoWay}"
+                   Margin="16.667,15,0,13.333"
+                HorizontalAlignment="Left" Width="123"
+                />
+            <Label Content="Enter the links for&#xD;&#xA; your unit'spictures :"
+                   Grid.Column="0"
+                   Grid.Row="6"
+                   Margin="15,1.667,13.333,0.333"/>
+            <TextBox 
+                   x:Name="unitPictures"                   
+                   Grid.Column="1"               
+                   Grid.Row="6"
+                   Text="{Binding uris, Mode=TwoWay}"
+                   Margin="19.667,15.667,0,10.333"
+                HorizontalAlignment="Left" Width="120" RenderTransformOrigin="0.5,0.5"
+                />
+            <TextBox 
+                   x:Name="unitPictures1"               
+                   Grid.Row="6"
+                   Text="{Binding uris, Mode=TwoWay}"
+                   Margin="0,16,65.333,10"
+                HorizontalAlignment="Right" Width="102" RenderTransformOrigin="0.5,0.5" Grid.Column="1"
+                >
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+        </Grid>
+        <Grid x:Name="DataGrid_grid" Grid.Column="1" HorizontalAlignment="Left" Margin="32,0,-967.333,42.667" Width="1292" Grid.RowSpan="2">
+            <DataGrid x:Name="UnitsDetails" 
+                      Visibility="Visible"
+                              IsReadOnly="True"
+                      AutoGenerateColumns="False" 
+                      AlternationCount="2"
+                      VerticalScrollBarVisibility="Auto"
+                      MaxHeight="500"
+                      HorizontalAlignment="Left"
+                      HorizontalContentAlignment="Center"
+                      MinRowHeight="30"
+                      VerticalContentAlignment="Center"  
+                      FontSize="16" 
+                      FontWeight="Bold"
+                      ColumnHeaderHeight="36"                     
+                      GridLinesVisibility="Horizontal" 
+                      SelectionChanged="OnSelectedItemChanged" 
+                      Margin="296,0,0,-165" Width="996" Height="475" VerticalAlignment="Top" 
+                              >
+                <DataGrid.Columns>
+                    <DataGridTextColumn  Header="HostingUnitKey" Width="*" Binding="{Binding HostingUnitKey}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Name" Width="*" Binding="{Binding hostingUnitName}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Children places" Width="*" Binding="{Binding childrenPlaces}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Adults places" Width="*" Binding="{Binding adultPlaces}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Type of unit" Width="*" Binding="{Binding typeOfUnit}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Location of the unit" Width="*" Binding="{Binding typeArea}" FontSize="14" FontWeight="Normal"/>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+        </Grid>
+        <Button x:Name="UpdateUnits"
+                Content="Update  your unit"
+                Grid.Row="2" RenderTransformOrigin="0.57,1.127" Margin="0,60.333,0,-60.333" HorizontalAlignment="Left" Width="473" Grid.ColumnSpan="2" Click="UpdateUnit_Click">
+        </Button>
     </Grid>
 </Window>
+
+    
