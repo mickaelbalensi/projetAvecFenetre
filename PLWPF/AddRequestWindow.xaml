@@ -8,77 +8,80 @@
         Title="AddRequestWindow" Height="506" Width="500">
     <ScrollViewer>
         <Grid x:Name="firstGrid" Margin="0,0,4.2,0">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50" />
-            <RowDefinition Height="800"/>
-            <RowDefinition Height="50"/>
-        </Grid.RowDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="800"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
 
-        <Label Content="Add New Guest Request"
+            <Label Content="Add New Guest Request"
                Grid.Row="0"
                Margin="78,0,73.133,6"
                FontSize="30" RenderTransformOrigin="0.705,0.659"
                />
-        <!--#region ligne 1-->
-        <Grid x:Name="requestDetailsGrid"
+            <!--#region ligne 1-->
+            <Grid x:Name="requestDetailsGrid"
               Grid.Row="1" Margin="-11,0,10.133,9" Grid.RowSpan="2">
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
 
-            </Grid.RowDefinitions>
-            <!--#region who-->
-            <Label Content="Who ?"
+                </Grid.RowDefinitions>
+                <!--#region who-->
+                <Label Content="Who ?"
                    Grid.Column="0"
                    Grid.Row="0"
                    Margin="16,10,16,0"
                    FontSize="20"
                          />
-            <Label Content="ID :"
+                <Label Content="Your ID is:"
                    Grid.Column="0"
                    Grid.Row="1"
                    Margin="15,15,15,10"/>
+                <!--Text="{Binding guestRequestKey, Mode=TwoWay}"-->
                 <TextBox 
                 x:Name="idBox"
-                   Text="{Binding guestRequestKey, Mode=TwoWay}"
+                   
                    Grid.Row="1"
+                   IsReadOnly="True"
                    Margin="15,10,0,20" Grid.Column="1"
                 HorizontalAlignment="Left" Width="59"                    
 />
-                <Label x:Name="idError"
+                <Label x:Name="familyError"
                        Foreground="Red"
-                    Content="Your ID isn't valid"
+                       Content="Please enter your family name only with letters "
                        Visibility="Hidden"
+                       FontStyle="Italic"
+                       FontSize="10"
                        Grid.Column="1"
-                       Margin="10,25,0,0"
-                       Grid.Row="1">
-                </Label>
+                       Margin="15.4,25.8,86.6,48.4"
+                       Grid.Row="2" Grid.RowSpan="2"/>
                 <Label Content="Family Name :"
                    Grid.Column="0"
                    Grid.Row="2"
                    Margin="15,15,15,10"/>
-            <TextBox 
+                <TextBox 
                 x:Name="familyTextBox"
                     Text="{Binding familyName, Mode=TwoWay}"
                    Grid.Row="2"
@@ -87,14 +90,16 @@
                 />
                 <Label x:Name="familyerror"
                        Foreground="Red"
-                    Content="Your family name  isn't valid"
+                        Content="Your family name  isn't valid"
                        Visibility="Hidden"
+                       FontSize="10"
+                     FontStyle="Italic"
                        Grid.Column="1"
                        Margin="10,25,0,0"
                        Grid.Row="2">
                 </Label>
 
-                    <Label Content="Private Name :"
+                <Label Content="Private Name :"
                    Grid.Column="0"
                    Grid.Row="3"
                    Margin="15,15,15,10" RenderTransformOrigin="0.5,0.507" />
@@ -107,7 +112,9 @@
                 <Label x:Name="privateerror"
                        Foreground="Red"
                     Content="Your private name  isn't valid"
+                     FontStyle="Italic"
                        Visibility="Hidden"
+                       FontSize="10"
                        Grid.Column="1"
                        Margin="10,25,0,0"
                        Grid.Row="3">
@@ -119,7 +126,7 @@
                   Grid.Column="0"
                    Grid.Row="4"
                    Margin="15,15,15,0"/>
-            <TextBox 
+                <TextBox 
                  x:Name="mailTextBox"
                    Text="{Binding mailAddress, Mode=TwoWay}"
                    Grid.Column="1"
@@ -138,29 +145,29 @@
                    Visibility="Hidden"
                    Margin="15,27,15,0"/>
                 <!--#endregion-->
-            <!--#region When-->
-            <Label Content="When ?"
+                <!--#region When-->
+                <Label Content="When ?"
                    Grid.Column="0"
                    Grid.Row="5"
                    Margin="15,15,15,0"         
                    />
 
-            <Label Content="Entry-Date :"
+                <Label Content="Entry-Date :"
                    Grid.Column="0"
                    Grid.Row="6"
                    Margin="15,15,15,0"/>
-            <DatePicker Name="EntryDateCalendar"
+                <DatePicker Name="EntryDateCalendar"
                    Grid.Column="1"
                    Grid.Row="6"
                    Margin="15,15,0,10"
                    SelectedDate="{Binding entryDate, Mode=TwoWay}"
                         HorizontalAlignment="Left" Width="269"
                 />
-            <Label Content="Release-Date :"
+                <Label Content="Release-Date :"
                    Grid.Column="0"
                    Grid.Row="7"
                    Margin="15,15,15,0"/>
-            <DatePicker Name="ReleaseDateCalendar"
+                <DatePicker Name="ReleaseDateCalendar"
                    Grid.Column="1"
                    Grid.Row="7"
                    Margin="15,16,0,10"
@@ -168,18 +175,18 @@
                    SelectedDate="{Binding releaseDate, Mode=TwoWay}"
                         HorizontalAlignment="Left" Width="269"
                 />
-            <!--#endregion-->
-            <!--#region person-->
-            <Label Content="How many ?"
+                <!--#endregion-->
+                <!--#region person-->
+                <Label Content="How many ?"
                    Grid.Column="0"
                    Grid.Row="8"
                    Margin="15,15,15,0"         
                    />
-            <Label Content="Adults :"
+                <Label Content="Adults :"
                    Grid.Column="0"
                    Grid.Row="9"
                    Margin="15,15,15,0" />
-            <TextBox 
+                <TextBox 
                  x:Name="AdultsTextBox"
                   Grid.Column="1"
                    Grid.Row="9"
@@ -189,7 +196,9 @@
                 />
                 <Label x:Name="adultserror"
                        Foreground="Red"
-                    Content="Your number of adults must be  numbers "
+                       Content="Your number of adults must be  numbers "
+                       FontStyle="Italic"
+                       FontSize="10"
                        Visibility="Hidden"
                        Grid.Column="1"
                        Margin="10,25,0,0"
@@ -200,7 +209,7 @@
                    Grid.Column="0"
                    Grid.Row="10"
                    Margin="15,15,15,0"/>
-            <TextBox 
+                <TextBox 
                   x:Name="ChildrenTextBox"
                   Grid.Column="1"
                    Grid.Row="10"
@@ -210,25 +219,27 @@
                 />
                 <Label x:Name="childrenerror"
                        Foreground="Red"
-                    Content="Your number of children must be  numbers "
+                        Content="Your number of children must be  numbers "
+                        FontStyle="Italic"
+                       FontSize="10"
                        Visibility="Hidden"
                        Grid.Column="10"
                        Margin="10,25,0,0"
                        Grid.Row="1">
                 </Label>
                 <!--#endregion-->
-            <!--#region where-->
-            <Label Content="Where ?"
+                <!--#region where-->
+                <Label Content="Where ?"
                    Grid.Column="0"
                    Grid.Row="11"
                    Margin="15,15,15,0"         
                    />
 
-            <Label Content="TypeArea :"
+                <Label Content="TypeArea :"
                    Grid.Column="0"
                    Grid.Row="12"
                    Margin="15,15,15,0"/>
-            <ComboBox 
+                <ComboBox 
                    x:Name="AreaComboBox"                   
                    Grid.Column="1"               
                    Grid.Row="12"
@@ -238,18 +249,18 @@
                 HorizontalAlignment="Left" Width="269"
                 />
 
-            <!--#endregion-->
-            <!--#region what-->
-            <Label Content="What ?"
+                <!--#endregion-->
+                <!--#region what-->
+                <Label Content="What ?"
                    Grid.Column="0"
                    Grid.Row="13"
                    Margin="15,15,15,0"         
                    />
-            <Label Content="Type Of Unit :"
+                <Label Content="Type Of Unit :"
                    Grid.Column="0"
                    Grid.Row="14"
                    Margin="15,15,15,0"/>
-            <ComboBox 
+                <ComboBox 
                    x:Name="UnitComboBox"                   
                    Grid.Column="1"               
                    Grid.Row="14"
@@ -257,7 +268,7 @@
                    Margin="15,15,0,14.667"
                 HorizontalAlignment="Left" Width="269"
                 />
-            <CheckBox 
+                <CheckBox 
                 x:Name="JacuzziCheckBox"
                 Content="Jacuzzi"
                    Grid.Column="0"
@@ -267,7 +278,7 @@
                    Margin="15"
                 />
 
-            <CheckBox  x:Name="PoolCheckBox"
+                <CheckBox  x:Name="PoolCheckBox"
                    Content="Pool"
                    Grid.Column="0"
                    Grid.Row="15"
@@ -276,7 +287,7 @@
                    IsThreeState="True"
                 />
 
-            <CheckBox x:Name="GardenCheckBox"
+                <CheckBox x:Name="GardenCheckBox"
                 Content="Garden"
                    Grid.Column="1"
                    Grid.Row="15"
@@ -286,7 +297,7 @@
                       HorizontalAlignment="Left" Width="74"
                 />
 
-            <CheckBox x:Name="ChildrenAttractionsCheckBox"
+                <CheckBox x:Name="ChildrenAttractionsCheckBox"
                 Content="ChildrenAttractions :"
                    Grid.Column="1"
                    Grid.Row="15"
@@ -295,7 +306,7 @@
                    IsThreeState="True"
                       HorizontalAlignment="Left" Width="134"
                 />
-            <CheckBox  x:Name="yesBox"
+                <CheckBox  x:Name="yesBox"
                    Content="Yes"
                    Grid.Column="1"
                    Grid.Row="15"
@@ -304,7 +315,7 @@
                    IsThreeState="True"
                    IsEnabled="False"
                 />
-            <CheckBox  x:Name="noBox"
+                <CheckBox  x:Name="noBox"
                    Content="No"
                    Grid.Column="1"
                    Grid.Row="15"
@@ -313,7 +324,7 @@
                    IsThreeState="True"
                    IsEnabled="False"
                />
-            <CheckBox  x:Name="optionalBox"
+                <CheckBox  x:Name="optionalBox"
                    Content="Optional"
                    Grid.Column="1"
                    Grid.Row="15"
@@ -323,16 +334,20 @@
                    IsEnabled="False"
                />
 
+                <!--#endregion-->
+            </Grid>
             <!--#endregion-->
-        </Grid>
-        <!--#endregion-->
 
-        <!--#region ligne 2-->
-        <Button x:Name="buttonRequest"
+            <!--#region ligne 2-->
+            <Button x:Name="buttonRequest"
                 Content="Add your request" 
                 Grid.Row="2"
                 Grid.ColumnSpan="2"
-                Margin="0,0,0,0" Grid.RowSpan="2" HorizontalAlignment="Left" Width="489" Click="buttonRequest_Click">
+                Margin="0,0,0,0" 
+                Grid.RowSpan="2" 
+                HorizontalAlignment="Left"
+                Width="489"
+                Click="buttonRequest_Click">
                 <Button.Style>
                     <Style>
                         <Style.Triggers>
@@ -371,8 +386,8 @@
                 </Button.Style>
             </Button>
 
-        <!--#endregion-->
-    </Grid>
+            <!--#endregion-->
+        </Grid>
     </ScrollViewer>
 
 </Window>

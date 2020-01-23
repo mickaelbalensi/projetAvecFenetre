@@ -33,6 +33,15 @@ namespace BL1
         //Order getOrder(long key);
 
         #endregion
+        #region configuration
+        long getGuestRequestCount();
+        long getHostingUnitCount();
+
+        long getOrderCount();
+        #endregion
+
+
+
         #region host
         void addHost(Host host);
         Host checkParameters(Host host);

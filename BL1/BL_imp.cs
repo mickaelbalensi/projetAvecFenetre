@@ -433,5 +433,20 @@ namespace BL1
 
         #endregion
 
+        #region configuration
+        public long getGuestRequestCount()
+        {
+            return dal.getGuestRequestCount();
+        }
+        public long getHostingUnitCount()
+        {
+            return dal.getHostingUnitCount();
+        }
+        public long getOrderCount()
+        {
+            return dal.getOrderCount();
+        }
+        #endregion
+
     }
 }

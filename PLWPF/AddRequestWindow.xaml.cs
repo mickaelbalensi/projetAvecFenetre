@@ -43,14 +43,16 @@ namespace PLWPF
           //  InitializeComponent();
            // currentRequest = new GuestRequest();
             bl = FactoryBL.getBL();
-
+            idBox.Text = bl.getGuestRequestCount().ToString();
             this.AreaComboBox.ItemsSource = Enum.GetValues(typeof(BE1.TypeAreaOfTheCountry));
             this.UnitComboBox.ItemsSource = Enum.GetValues(typeof(BE1.TypeOfHostingUnit));
+
+            //EntryDateCalendar.
             EntryDateCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.Now, DateTime.Parse("01/01/3000")));
-            EntryDateCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.Parse("01/01/1111"), DateTime.Parse("01/01/2000")));
+            //EntryDateCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.Parse("01/01/1111"), DateTime.Parse("01/01/2000")));
             EntryDateCalendar.SelectedDate = DateTime.Parse("01/01/2012");
             ReleaseDateCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.Now, DateTime.Parse("01/01/3000")));
-            ReleaseDateCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.Parse("01/01/1111"), DateTime.Parse("01/01/2000")));
+            //ReleaseDateCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.Parse("01/01/1111"), DateTime.Parse("01/01/2000")));
             ReleaseDateCalendar.SelectedDate = DateTime.Parse("01/01/2012");
             //EntryDateCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.Parse("01/01/1111"), DateTime.Parse("01/01/2000")));
             // EntryDateCalendar.SelectedDate = DateTime.Parse("01/01/2012");
@@ -80,14 +82,31 @@ namespace PLWPF
             try
             {
                 checkExceptions();
+
+
+
+
+
                 currentRequest.status = GuestRequestStatus.active;
                 currentRequest.registrationDate = DateTime.Now;
                 currentRequest.jacuzzi = JacuzziCheckBox.IsChecked == true ? Options.yes :  JacuzziCheckBox.IsChecked == false ? Options.no : Options.optional;
                 currentRequest.pool = PoolCheckBox.IsChecked == true ? Options.yes : PoolCheckBox.IsChecked == false ? Options.no : Options.optional;
                 currentRequest.garden = GardenCheckBox.IsChecked == true ? Options.yes : GardenCheckBox.IsChecked == false ? Options.no : Options.optional;
                 currentRequest.childrenAttractions = ChildrenAttractionsCheckBox.IsChecked == true ? Options.yes : ChildrenAttractionsCheckBox.IsChecked == false ? Options.no : Options.optional;
-                
-                
+                currentRequest.typeArea =
+                    AreaComboBox.SelectedIndex == 1 ? TypeAreaOfTheCountry.all :
+                    AreaComboBox.SelectedIndex == 2 ? TypeAreaOfTheCountry.north :
+                    AreaComboBox.SelectedIndex == 3 ? TypeAreaOfTheCountry.south :
+                    AreaComboBox.SelectedIndex == 4 ? TypeAreaOfTheCountry.center :
+                    TypeAreaOfTheCountry.jerusalem;
+                currentRequest.type =
+                    UnitComboBox.SelectedIndex == 1 ? TypeOfHostingUnit.all :
+                    UnitComboBox.SelectedIndex == 2 ? TypeOfHostingUnit.zimmer :
+                    UnitComboBox.SelectedIndex == 3 ? TypeOfHostingUnit.apartment :
+                    UnitComboBox.SelectedIndex == 4 ? TypeOfHostingUnit.roomOfHotel :
+                    TypeOfHostingUnit.tent;
+
+
                 bl.addRequest(currentRequest);
                 sendMail(currentRequest.mailAddress, bl.getSuggestionList(currentRequest.guestRequestKey));
                 //Window suggestion = new SuggestionWindow(key);
@@ -103,38 +122,51 @@ namespace PLWPF
         private void checkExceptions()
         {
             string family = familyTextBox.Text;
-            bool flag1 = false;
+            bool f1 = false;
+            bool f2 = false;
+            bool f3 = false;
+            bool f4 = false;
+            bool f5 = true;
             for (int i = 0; i < familyTextBox.Text.Count(); i++)
             {
                 if (family[i] < 65 || (family[i] > 90 && family[i] < 96) || family[i] > 123)
-                { familyerror.Visibility = Visibility.Visible; flag1 = true; }
+                { familyerror.Visibility = Visibility.Visible; f1 = true; }
             }
+            if (f1 == false)
+                familyerror.Visibility = Visibility.Hidden;
             for (int i = 0; i < privateTextBox.Text.Count(); i++)
             {
                 if (privateTextBox.Text[i] < 65 || (privateTextBox.Text[i] > 90 && privateTextBox.Text[i] < 96) || privateTextBox.Text[i] > 123)
-                { privateerror.Visibility = Visibility.Visible; flag1 = true; }
-
+                { privateerror.Visibility = Visibility.Visible; f2 = true; }
             }
+            if (f2 == false)
+                privateerror.Visibility = Visibility.Hidden;
+
             for (int i = 0; i < AdultsTextBox.Text.Count(); i++)
             {
                 if (AdultsTextBox.Text[i] < 48 || AdultsTextBox.Text[i] > 57)
-                { adultserror.Visibility = Visibility.Visible; flag1 = true; }
+                { adultserror.Visibility = Visibility.Visible; f3 = true; }
             }
+            if (f3 == false)
+                adultserror.Visibility = Visibility.Hidden;
             for (int i = 0; i < ChildrenTextBox.Text.Count(); i++)
             {
                 if (ChildrenTextBox.Text[i] < 48 || ChildrenTextBox.Text[i] > 57)
-                { childrenerror.Visibility = Visibility.Visible; flag1 = true; }
+                { childrenerror.Visibility = Visibility.Visible; f3 = true; }
             }
-            bool flag = false;
+            if (f4 == false)
+                childrenerror.Visibility = Visibility.Hidden;
             for (int i = 0; i < mailTextBox.Text.Count(); i++)
             {
                 if (mailTextBox.Text[i] == '@')
-                    flag = true;
+                    f5 = false;
             }
-                if (!flag)
-                { mailError.Visibility = Visibility.Visible; flag1 = true; }
-                
-            if (flag1) throw new Exception("please check your items and try again");
+             if (f5)
+                { mailError.Visibility = Visibility.Visible; }
+            if (f5 == false)
+                mailError.Visibility = Visibility.Hidden;
+
+            if (f1||f2||f3||f4||f5) throw new Exception("please check your items and try again");
                 
         }
         public void sendMail(string mail,List<HostingUnit>suggestionList)

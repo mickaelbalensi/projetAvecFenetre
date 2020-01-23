@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="506.063" Width="849.888">
     <Window.Background>
-        <ImageBrush ImageSource="Images/creer-virus.png"
+        <ImageBrush ImageSource="Images/photo6.jpg"
                     Stretch="UniformToFill">
             <ImageBrush.RelativeTransform>
                 <TransformGroup>
@@ -31,32 +31,28 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <!--boutton caché-->
+            
             <Button x:Name="addRequestButton"
                 Content="Guest"
                 Margin="111,289,224.4,-110.934"
                 FontSize="30"
                 Grid.Row="0" 
-                    Visibility="Hidden"
+                
                 Grid.Column="0"
                 Click="addRequestButton_Click"
                 />
-            <!--boutton caché-->
 
             <Button x:Name="PersonnalAccount"
                 Content="Host"
                 Margin="154.6,289,188,-110.934"
                 FontSize="30" 
-                    Visibility="Hidden"
                  Grid.Column="1"
                 Click="PersonnalAccount_Click"
                 />
         </Grid>
-        <!--boutton caché-->
 
         <Button x:Name="ConsultData"
               Content="Consult and manage data"
-                Visibility="Hidden"
               Grid.Row="1" Click="ConsultData_Click" Margin="319,54.6,368.2,132.8">
 
         </Button>

@@ -5,119 +5,126 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="AddUnitWindow" Height="429.333" Width="474.429">
-    <Grid x:Name="UnitControlGrid" Margin="0,0,3,-52.667" Height="400" VerticalAlignment="Top">
-        <!--#region ligne et colonne-->
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="33*"/>
-            <RowDefinition Height="37*"/>
-        </Grid.RowDefinitions>
-        <!--#endregion-->
-        <Label Content="ADD New Hosting Unit"
+        Title="AddUnitWindow" Height="494.933" Width="474.429">
+    <ScrollViewer>
+        <Grid x:Name="UnitControlGrid" Margin="0,0,3,-52.667" Height="400" VerticalAlignment="Top">
+            <!--#region ligne et colonne-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="33*"/>
+                <RowDefinition Height="37*"/>
+            </Grid.RowDefinitions>
+            <!--#endregion-->
+            <Label Content="ADD New Hosting Unit"
                Grid.Row="0"
                Margin="58,0,64,0"
                FontSize="30"/>
-        <Grid x:Name="details"
-              Grid.Row="1" HorizontalAlignment="Left" Width="465" Margin="0,0,0,50" Grid.RowSpan="2">
-            <!--#region ligne et colonne-->
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="3*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Label x:Name="nameHotel"
+            <Grid x:Name="details" HorizontalAlignment="Left" Width="465" Margin="0,50,-16.8,10" Grid.RowSpan="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Label x:Name="nameHotel"
                    Content="Name Hotel"
                    FontSize="15"
                    Grid.Column="0"
-                   Grid.Row="0" Margin="0,15,0,49" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2"/>
-            <TextBox x:Name="NameHotelBox"
+                   Grid.Row="0" Margin="0,8,0,6.8" RenderTransformOrigin="0.5,0.5"/>
+                <TextBox x:Name="NameHotelBox"
                      Grid.Row="0"
-                     Margin="7,15,167.333,10" Grid.Column="1"
+                     FontSize="18"
+                     Margin="7,11,166.8,13.8" Grid.Column="1"
                      Text="{Binding hostingUnitName, Mode=TwoWay}"
                      />
-            <Label x:Name="nameError"
+                <Label x:Name="nameError"
                        Foreground="Red"
                     Content="Your name hotel can't be numbers !"
                        Visibility="Hidden"
+                       FontSize="10"
+                       FontStyle="Italic"
                        Grid.Column="1"
-                       Margin="10,25,0,0"
-                       Grid.Row="0">
-            </Label>
-            <Label x:Name="Adultsplaces"
+                       Margin="7,35,166.8,38.6"
+                       Grid.Row="0" Grid.RowSpan="2">
+                </Label>
+                <Label x:Name="Adultsplaces"
                 Content="Adults places"
                    Grid.Row="1"
                    Grid.Column="0" Margin="0,10.333,0,0.333"
                    >
-            </Label>
-            <TextBox x:Name="AdultsplacesBbox"
+                </Label>
+                <TextBox x:Name="AdultsplacesBbox"
                      Grid.Row="1" Margin="7,10,312.333,0" Grid.Column="1"
                       Text="{Binding adultPlaces, Mode=TwoWay}" Height="16" VerticalAlignment="Top"                     
                     />
-            <Label x:Name="adultError"
+                <Label x:Name="adultError"
                        Foreground="Red"
                     Content="Your number of adults must be numbers"
                        Visibility="Hidden"
+                       FontSize="10"
+                       FontStyle="Italic"
                        Grid.Column="1"
-                       Margin="10,25,0,0"
-                       Grid.Row="1">
-            </Label>
-            <Label x:Name="Childrenplaces"
+                       Margin="0,27.2,162.8,46.4"
+                       Grid.Row="1" Grid.RowSpan="2">
+                </Label>
+                <Label x:Name="Childrenplaces"
                 Content="Children places"
                    Grid.Row="2"
                    Grid.Column="0"
                    >
-            </Label>
-            <TextBox x:Name="ChildrenplacesBox"
+                </Label>
+                <TextBox x:Name="ChildrenplacesBox"
                      Grid.Row="2" Margin="0,0,312.333,31"
                     Grid.Column="1" HorizontalAlignment="Right" Width="30" Height="15" VerticalAlignment="Bottom"
                       Text="{Binding childrenPlaces, Mode=TwoWay}"
                      />
-            <Label x:Name="childrenError"
+                <Label x:Name="childrenError"
                        Foreground="Red"
                     Content="Your number of children must be numbers !"
                        Visibility="Hidden"
                        Grid.Column="1"
+                       FontSize="10"
+                       FontStyle="Italic"
                        Margin="10,25,0,0"
                        Grid.Row="2">
-            </Label>
-            <Label Content="TypeArea :"
+                </Label>
+                <Label Content="TypeArea :"
                    Grid.Column="0"
                    Grid.Row="3"
                    Margin="15,15,15,0"/>
-            <ComboBox 
+                <ComboBox 
                    x:Name="AreaComboBox"                   
                    Grid.Column="1"               
                    Grid.Row="3"
                    SelectedValue="{Binding TypeAreaOfTheCountry, Mode=TwoWay}"
-                   Margin="15,15.333,0,15.333" 
+                   Margin="15,15.4,0,10.4" 
                 
                 HorizontalAlignment="Left" Width="269"
                 />
-            <Label Content="Type Of Unit :"
+                <Label Content="Type Of Unit :"
                    Grid.Column="0"
                    Grid.Row="4"
                    Margin="15,15,15,0"/>
-            <ComboBox 
+                <ComboBox 
                    x:Name="UnitComboBox"                   
                    Grid.Column="1"               
                    Grid.Row="4"
                    SelectedItem="{Binding TypeOfHostingUnit, Mode=TwoWay}"
-                   Margin="15,15,0,14.667"
+                   Margin="15,14.6,0,10.2"
                 HorizontalAlignment="Left" Width="269"
                 />
-            <Label Content="Enter the links for your unit'spictures :"
+                <Label Content="Enter the links &#xD;&#xA;for your pictures :"
                    Grid.Column="0"
                    Grid.Row="5"
-                   Margin="15,15,15,0"/>
-            <TextBox 
+                   Margin="15,0,0,0"/>
+                <TextBox 
                    x:Name="unitPictures"                   
                    Grid.Column="1"               
                    Grid.Row="5"
@@ -125,7 +132,7 @@
                    Margin="15,15,0,10"
                 HorizontalAlignment="Left" Width="130"
                 />
-            <TextBox 
+                <TextBox 
                    x:Name="unitPictures1"                   
                    Grid.Column="1"               
                    Grid.Row="5"
@@ -133,43 +140,79 @@
                    Margin="0,15,32.333,10"
                 HorizontalAlignment="Right" Width="122" RenderTransformOrigin="0.5,0.5"
                 >
-                <TextBox.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform ScaleX="-1"/>
-                        <SkewTransform/>
-                        <RotateTransform/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </TextBox.RenderTransform>
-            </TextBox>
-        </Grid>
+                    <TextBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="-1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBox.RenderTransform>
+                </TextBox>
+                <CheckBox 
+                x:Name="JacuzziCheckBox"
+                Content="Jacuzzi"
+                   Grid.Column="0"
+                   Grid.Row="6"
+                   IsChecked="False"
+                   Margin="15,15,31,15"
+                />
+
+                <CheckBox  x:Name="PoolCheckBox"
+                   Content="Pool"
+                   Grid.Column="0"
+                   Grid.Row="6"
+                   Margin="90,15,327.8,0"
+                   IsChecked="False"
+                   Grid.ColumnSpan="2"
+                />
+
+                <CheckBox x:Name="GardenCheckBox"
+                Content="Garden"
+                   Grid.Column="1"
+                   Grid.Row="6"
+                   Margin="39,15,0,15"
+                   IsChecked="False"
+                   RenderTransformOrigin="0.365,0.275"
+                      HorizontalAlignment="Left" Width="74"
+                />
+                <CheckBox x:Name="ChildrenAttractionsCheckBox"
+                Content="ChildrenAttractions"
+                   Grid.Column="1"
+                   Grid.Row="6"
+                   Margin="130,15,0,6"
+                   IsChecked="False"
+                      HorizontalAlignment="Left" Width="134"
+                />
+            </Grid>
 
 
-        <Button x:Name="buttonUnit"
+            <Button x:Name="buttonUnit"
                 Content="Add your unit" 
                 Grid.Row="2" HorizontalAlignment="Left" Width="465"
-                Click="butoun_addUnit" Margin="0,134.667,0,0">
-            <Button.Style>
-                <Style>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding ElementName=NameHotelBox, Path=Text}" Value="">
-                            <Setter Property="Button.IsEnabled" Value="False"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=AdultsplacesBbox, Path=Text}" Value="">
-                            <Setter Property="Button.IsEnabled" Value="False"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=ChildrenplacesBox, Path=Text}" Value="">
-                            <Setter Property="Button.IsEnabled" Value="False"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding ElementName=AreaComboBox, Path=SelectedValue}" Value="">
-                            <Setter Property="Button.IsEnabled" Value="False"/>
-                        </DataTrigger>
+                Click="butoun_addUnit" Margin="0,194.8,-16.8,-60">
+                <Button.Style>
+                    <Style>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=NameHotelBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=AdultsplacesBbox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=ChildrenplacesBox, Path=Text}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="False"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding ElementName=AreaComboBox, Path=SelectedValue}" Value="">
+                                <Setter Property="Button.IsEnabled" Value="False"/>
+                            </DataTrigger>
 
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
-        </Button>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
 
 
-    </Grid>
+        </Grid>
+    </ScrollViewer>
 </Window>

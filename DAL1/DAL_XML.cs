@@ -31,9 +31,9 @@ namespace DAL1
         XElement configRoot;
         string configPath = @"config.xml";
 
-        long orderCount;
         long guestRequestCount;
         long hostingUnitCount;
+        long orderCount;
 
         public DAL_XML()
         {
@@ -233,6 +233,13 @@ namespace DAL1
             return request;
         }
         XElement ConvertHostingUnitToXAML(HostingUnit unit) {
+            XElement uris = new XElement("uris");
+
+            foreach (string str in unit.uris)
+            {
+                XElement img = new XElement("img", str);
+                uris.Add(img);
+            }
 
             return
                 new XElement("HostingUnit",
@@ -247,7 +254,8 @@ namespace DAL1
                 new XElement("childrenAttractions", unit.childrenAttractions.ToString()),
                 new XElement("typeArea", unit.typeArea.ToString()),
                 new XElement("typeOfUnit", unit.typeOfUnit.ToString()),
-                new XElement("tempDiary", unit.tempDiary));
+                new XElement("tempDiary", unit.tempDiary),
+                uris);
         }
         HostingUnit ConvertXAMLToHostingUnit(XElement element)//vérifié, lire eara ds func
         {
@@ -313,6 +321,15 @@ namespace DAL1
             unit.tempDiary = (from hosting in element.Elements()
                               where hosting.Name == "tempDiary"
                               select (hosting.Value)).FirstOrDefault();
+            //recupérer les liens d'images
+            string uris = (from hosting in element.Elements()
+                           where hosting.Name == "img"
+                           select (hosting.Value)).FirstOrDefault();
+
+            //unit.uris= (from hosting in element.Elements()
+            //           where hosting.Name == "img"
+            //            select (hosting.Value)).FirstOrDefault();
+
 
             return unit;
         }
@@ -605,13 +622,13 @@ namespace DAL1
             orderRoot.Save(orderPath);
 
             XElement toRemove = (from x in configRoot.Elements()
-                                 where x.Name == "orderKey"
+                                 where x.Name == "orderCount"
                                  select x).FirstOrDefault();
             toRemove.Remove();
 
             orderCount++;
 
-            configRoot.Add(new XElement("orderKey", orderCount.ToString()));
+            configRoot.Add(new XElement("orderCount", orderCount.ToString()));
             configRoot.Save(configPath);
 
 
@@ -623,7 +640,7 @@ namespace DAL1
 
             //  remove the GuestRequest before updating it
             (from item in orderRoot.Elements()
-             where long.Parse(item.Element("Order").Element("orderKey").Value) == order.orderKey
+             where long.Parse(item/*.Element("Order").*/.Element("orderKey").Value) == order.orderKey
              select item).FirstOrDefault().Remove();
 
             //implement the update according to the demand
@@ -665,7 +682,29 @@ namespace DAL1
             throw new NotImplementedException();
         }
         #endregion
+        #region configuration
+        public long getGuestRequestCount()
+        {
+            return (from g in configRoot.Elements()
+                    where g.Name == "guestRequestCount"
+                    select long.Parse(g.Value)).FirstOrDefault(); ;
+        }
 
+        public long getHostingUnitCount()
+        {
+            return (from g in configRoot.Elements()
+                    where g.Name == "hostingUnitCount"
+                    select long.Parse(g.Value)).FirstOrDefault(); 
+        }
+
+        public long getOrderCount()
+        {
+            return (from x in configRoot.Elements()
+                    where x.Name == "orderCount"
+                    select long.Parse(x.Value)).FirstOrDefault();
+        }
+
+        #endregion
         //public void addHost(Host host)
         //{
         //    throw new NotImplementedException();

@@ -66,12 +66,12 @@ namespace BE1
 
         public HostingUnit()
         {
-            hostingUnitKey = Configuration.hostingUnitCount;
-            hostingUnitName = "";
-            countOrder = 0;
-            diary = new bool[12, 31];
-            adultPlaces = 0;
-            childrenPlaces = 0;
+            //hostingUnitKey = Configuration.hostingUnitCount;
+            //hostingUnitName = "";
+            //countOrder = 0;
+            //diary = new bool[12, 31];
+            //adultPlaces = 0;
+            //childrenPlaces = 0;
         }
         public override string ToString()
         {
