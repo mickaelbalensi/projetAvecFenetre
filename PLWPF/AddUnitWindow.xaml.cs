@@ -59,11 +59,24 @@ namespace PLWPF
             //sendmail.Show();
             try
             {
+                
                 checkExceptions();
-                //currentUnit.jacuzzi =  JacuzziCheckBox.IsChecked == true ? true : false;
-                //currentUnit.pool =  PoolCheckBox.IsChecked == true ? true : false;
-                //currentUnit.garden =  GardenCheckBox.IsChecked == true ? true : false;
-                //currentUnit.childrenAttractions =  ChildrenAttractionCheckBox.IsChecked == true ? true :false;
+                currentUnit.jacuzzi =  JacuzziCheckBox.IsChecked == true ? true : false;
+                currentUnit.pool =  PoolCheckBox.IsChecked == true ? true : false;
+                currentUnit.garden =  GardenCheckBox.IsChecked == true ? true : false;
+                currentUnit.childrenAttractions = ChildrenAttractionsCheckBox.IsChecked == true ? true :false;
+                currentUnit.typeArea =
+                    AreaComboBox.SelectedIndex == 1 ? TypeAreaOfTheCountry.all :
+                    AreaComboBox.SelectedIndex == 2 ? TypeAreaOfTheCountry.north :
+                    AreaComboBox.SelectedIndex == 3 ? TypeAreaOfTheCountry.south :
+                    AreaComboBox.SelectedIndex == 4 ? TypeAreaOfTheCountry.center :
+                    TypeAreaOfTheCountry.jerusalem;
+                currentUnit.typeOfUnit =
+                    UnitComboBox.SelectedIndex == 1 ? TypeOfHostingUnit.all :
+                    UnitComboBox.SelectedIndex == 2 ? TypeOfHostingUnit.zimmer :
+                    UnitComboBox.SelectedIndex == 3 ? TypeOfHostingUnit.apartment :
+                    UnitComboBox.SelectedIndex == 4 ? TypeOfHostingUnit.roomOfHotel :
+                    TypeOfHostingUnit.tent;
                 currentUnit.uris = new List<string>();
                 currentUnit.uris.Add(unitPictures.Text);
                 currentUnit.uris.Add(unitPictures1.Text);
@@ -79,10 +92,6 @@ namespace PLWPF
             }
         }
 
-        private void AdultsPlacesBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
         private Image CreateViewImage()
         {
             Image dynamicImage = new Image();
@@ -114,24 +123,33 @@ namespace PLWPF
         }
         private void checkExceptions()
         {
-                bool flag1 = false;
-                for (int i = 0; i < NameHotelBox.Text.Count(); i++)
-                {
-                    if (NameHotelBox.Text[i] < 65 || (NameHotelBox.Text[i] > 90 && NameHotelBox.Text[i] < 96) || NameHotelBox.Text[i] > 123)
-                    { nameError.Visibility = Visibility.Visible; flag1 = true; }
-                }
+            bool f1 = false;
+            bool f2 = false;
+            bool f3 = false;
+            for (int i = 0; i < NameHotelBox.Text.Count(); i++)
+            {
+                if (NameHotelBox.Text[i] < 65 || (NameHotelBox.Text[i] > 90 && NameHotelBox.Text[i] < 96) || NameHotelBox.Text[i] > 123)
+                { nameError.Visibility = Visibility.Visible; f1 = true; }
+            }
+            if (f1 == false)
+                nameError.Visibility = Visibility.Hidden;
+
             for (int i = 0; i < AdultsplacesBbox.Text.Count(); i++)
             {
                 if (AdultsplacesBbox.Text[i] < 48 || AdultsplacesBbox.Text[i] > 57)
-                { AdultsplacesBbox.Visibility = Visibility.Visible; flag1 = true; }
+                { adultError.Visibility = Visibility.Visible; f2 = true; }
             }
+            if (f2 == false)
+                adultError.Visibility = Visibility.Hidden;
             for (int i = 0; i < ChildrenplacesBox.Text.Count(); i++)
             {
                 if (ChildrenplacesBox.Text[i] < 48 || ChildrenplacesBox.Text[i] > 57)
-                { ChildrenplacesBox.Visibility = Visibility.Visible; flag1 = true; }
+                { childrenError.Visibility = Visibility.Visible; f3 = true; }
             }
+            if (f3 == false)
+                childrenError.Visibility = Visibility.Hidden;
 
-            if (flag1) throw new Exception("please check your items and try again");
+            if (f1||f2|f3) throw new Exception("please check your items and try again");
 
         }
     }

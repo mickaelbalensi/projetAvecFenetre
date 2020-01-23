@@ -36,15 +36,15 @@ namespace DAL1
        void addHost(Host host);
        Host getHost(long key);
        IEnumerable<Host> getAllHost(Func<Host, bool> predicate = null);
-            
-        
-        
-
-
-
 
         #endregion
-        //void addHost(Host host);
+        #region configuration
+        long getGuestRequestCount();
+        long getHostingUnitCount();
+
+        long getOrderCount();
+        #endregion
+
     }
 
 }

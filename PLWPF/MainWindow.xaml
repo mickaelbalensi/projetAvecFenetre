@@ -31,7 +31,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <!--boutton caché-->
+            
             <Button x:Name="addRequestButton"
                 Content="Guest"
                 Margin="111,289,224.4,-110.934"
@@ -41,7 +41,6 @@
                 Grid.Column="0"
                 Click="addRequestButton_Click"
                 />
-            <!--boutton caché-->
 
             <Button x:Name="PersonnalAccount"
                 Content="Host"
@@ -52,7 +51,6 @@
                 Click="PersonnalAccount_Click"
                 />
         </Grid>
-        <!--boutton caché-->
 
         <Button x:Name="ConsultData"
               Content="Consult and manage data"

@@ -183,5 +183,22 @@ namespace DAL1
 
             return bankBranchList;
         }
+
+        #region configuration
+        public long getGuestRequestCount()
+        {
+            return Configuration.guestRequestCount;
+        }
+        public long getHostingUnitCount()
+        {
+            return Configuration.hostingUnitCount;
+        }
+
+        public long getOrderCount()
+        {
+            return Configuration.orderCount;
+        }
+        #endregion
+
     }
 }
