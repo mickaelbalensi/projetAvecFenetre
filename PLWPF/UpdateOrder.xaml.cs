@@ -29,7 +29,7 @@ namespace PLWPF
         public UpdateOrder(Host host)
         {
             InitializeComponent();
-            foreach( HostingUnit unit in  bl.getAllHostingUnit((x=> currentUnit.owner.hostKey == host.hostKey)))
+            foreach( HostingUnit unit in  bl.getAllHostingUnit((x=> x.owner.hostKey == host.hostKey)))
             {
                 foreach( Order orders in bl.getAllOrder(x => x.hostingUnitKey == unit.hostingUnitKey))
                 {

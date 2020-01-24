@@ -25,6 +25,7 @@ namespace PLWPF
         public DataList()
         {
             InitializeComponent();
+            bl = FactoryBL.getBL();
         }
 
         private void RequestList_Click(object sender, RoutedEventArgs e)
@@ -45,7 +46,7 @@ namespace PLWPF
 
         private void OrdersList_Click(object sender, RoutedEventArgs e)
         {
-            orderDetails.ItemsSource = bl.getAllHostingUnit();
+            orderDetails.ItemsSource = bl.getAllOrder();
             orderDetails.Visibility = Visibility.Visible;
             unitDetails.Visibility = Visibility.Hidden;
             requestDetails.Visibility = Visibility.Hidden;

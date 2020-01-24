@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="DataList" Height="427.333" Width="1897.334">
+        Title="DataList" Height="427.333" Width="1585.016">
 
     <Grid Margin="0,0,1194.333,0">
         <Grid.ColumnDefinitions>
@@ -36,7 +36,7 @@
                 Grid.Row="3"
                 FontSize="30" Click="MoreOptions_Click" />
         </Grid>
-        <Grid x:Name="DataGridUnit" Grid.Column="1" HorizontalAlignment="Left" Margin="10.333,0,-792.333,3" Width="1130">
+        <Grid x:Name="DataGridUnit" Grid.Column="1" HorizontalAlignment="Left" Margin="10.6,0,-674.2,2.6" Width="906">
             <DataGrid x:Name="unitDetails" 
                       Visibility="Hidden"
                               IsReadOnly="True"
@@ -70,7 +70,7 @@
                 <RowDefinition Height="174*"/>
             </Grid.RowDefinitions>
             <DataGrid x:Name="requestDetails" 
-                      Visibility="Hidden"
+                      Visibility="Visible"
                               IsReadOnly="True"
                       AutoGenerateColumns="False" 
                       AlternationCount="2"
@@ -83,16 +83,16 @@
                       FontWeight="Bold"
                       ColumnHeaderHeight="36"                     
                       GridLinesVisibility="Horizontal" 
-                      Margin="0,-30,-1.333,0" Height="425" VerticalAlignment="Top" Grid.RowSpan="2" 
+                      Margin="0,-30,-717.666,-0.6" Height="425" VerticalAlignment="Top" Grid.RowSpan="2" 
                               >
                 <DataGrid.Columns>
-                    <DataGridTextColumn  Header="GuestRequestKey" Width="*" Binding="{Binding guestRequestkey}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="Private name" Width="*" Binding="{Binding privateName}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="Family name" Width="*" Binding="{Binding familyName}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="Children places" Width="*" Binding="{Binding childrenPlaces}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="Adults places" Width="*" Binding="{Binding adultPlaces}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="Type of unit" Width="*" Binding="{Binding typeOfUnit}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="Location of the unit" Width="*" Binding="{Binding typeArea}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn  Header="Key" Width="20" Binding="{Binding guestRequestkey}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="P name" Width="auto" Binding="{Binding privateName}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Fname" Width="auto" Binding="{Binding familyName}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="C.places" Width="70" Binding="{Binding childrenPlaces}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="A.places" Width="70" Binding="{Binding adultPlaces}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Type" Width="62" Binding="{Binding typeOfUnit}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Location" Width="75" Binding="{Binding typeArea}" FontSize="14" FontWeight="Normal"/>
 
                 </DataGrid.Columns>
 

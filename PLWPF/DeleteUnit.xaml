@@ -5,8 +5,92 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="DeleteUnit" Height="450" Width="800">
-    <Grid>
-        
+        Title="Delete an unit" Height="535.461" Width="943.856">
+    <Grid x:Name="UnitControlGrid" Margin="10,10,43.667,0" Height="403" VerticalAlignment="Top">
+        <!--#region ligne et colonne-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition Height="0*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="330.4"/>
+            <ColumnDefinition Width="387.2"/>
+        </Grid.ColumnDefinitions>
+        <!--#endregion-->
+        <Label Content="Delete an unit"
+               Grid.Row="0"
+               Margin="141,0,31.2,0.4"
+               FontSize="30"/>
+        <Grid x:Name="details" Grid.Column="0" Margin="0,50,-6.8,-46.8" Grid.RowSpan="4" Grid.ColumnSpan="2">
+            <!--#region ligne et colonne-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="181"/>
+                <ColumnDefinition Width="356"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="51*"/>
+                <RowDefinition Height="52*"/>
+                <RowDefinition Height="52*"/>
+                <RowDefinition Height="52*"/>
+                <RowDefinition Height="52*"/>
+                <RowDefinition Height="55*"/>
+                <RowDefinition Height="50*"/>
+            </Grid.RowDefinitions>
+            <Label x:Name="UnitKey"
+                   Content="Enter the hosting unit key "
+                   FontSize="15"
+                   Grid.Column="0"
+                   Grid.Row="0" Margin="0,10,1.333,42.667" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2"/>
+            <TextBox x:Name="unitKeyBox"
+                     Grid.Row="0"
+                     Margin="9.2,14,312.8,0" Grid.Column="1"
+                     Text="{Binding hostingUnitKey, Mode=TwoWay}" RenderTransformOrigin="0.5,0.5" Height="28" VerticalAlignment="Top"
+                     >
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="0.091"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+        </Grid>
+        <Grid x:Name="DataGrid_grid" Grid.Column="1" HorizontalAlignment="Left" Margin="36.8,0,-749.8,2.6" Width="1101" Grid.RowSpan="2">
+            <DataGrid x:Name="UnitsDetails" 
+                      Visibility="Visible"
+                      IsReadOnly="True"
+                      AutoGenerateColumns="False" 
+                      AlternationCount="2"
+                      VerticalScrollBarVisibility="Auto"
+                      MaxHeight="500"
+                      HorizontalContentAlignment="Center"
+                      MinRowHeight="30"
+                      VerticalContentAlignment="Center"  
+                      FontSize="16" 
+                      FontWeight="Bold"
+                      ColumnHeaderHeight="36"                     
+                      GridLinesVisibility="Horizontal"  
+                      Margin="0,0,542,-153" Height="504" VerticalAlignment="Top" 
+                              >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="hu.Key" Width="70" Binding="{Binding hostingUnitKey}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Name" Width="100" Binding="{Binding hostingUnitName}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Chi.plac." Width="80" Binding="{Binding childrenPlaces}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Adu.plac." Width="80" Binding="{Binding adultPlaces}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Type" Width="80" Binding="{Binding typeOfUnit}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Location" Width="150" Binding="{Binding typeArea}" FontSize="14" FontWeight="Normal"/>
+                </DataGrid.Columns>
+
+            </DataGrid>
+        </Grid>
+        <Button x:Name="DeletUnit"
+                Content="Delete your unit"
+                Grid.Row="3" RenderTransformOrigin="0.57,1.127" Margin="0,96.4,0,-94.8" HorizontalAlignment="Left" Width="367" Grid.ColumnSpan="2"  Height="48" VerticalAlignment="Top" Click="DeleteUnits_Click">
+        </Button>
     </Grid>
 </Window>
+
+    

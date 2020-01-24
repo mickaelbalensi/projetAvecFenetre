@@ -221,9 +221,23 @@ namespace BL1
             throw new Exception("your unit has been registred sucessfully");
         }
         public void deleteHostingUnit(HostingUnit unit) {
+            foreach (Order orders in getAllOrder(x => x.hostingUnitKey == unit.hostingUnitKey))
+            {
+                if (orders.status == OrderStatus.reserved || orders.status == OrderStatus.notYetAddressed || orders.status == OrderStatus.mailWasSent)
+                {
+                    throw new Exception("You can't delete this unit because it has been already proposed or reserved to a client ");
+                }
+            }
             dal.deleteHostingUnit(unit);
         }
-        public void updateHostingUnit(HostingUnit unit) {            
+        public void updateHostingUnit(HostingUnit unit) {
+            foreach (Order orders in getAllOrder(x => x.hostingUnitKey == unit.hostingUnitKey))
+            {
+                if (orders.status==OrderStatus.reserved || orders.status == OrderStatus.notYetAddressed || orders.status == OrderStatus.mailWasSent)
+                {
+                    throw new Exception("You can't update this unit because it has been already proposed or reserved to a client ");
+                }
+            }
             dal.updateHostingUnit(unit);
         }
         public IEnumerable<HostingUnit> getAllHostingUnit(Func<HostingUnit, bool> predicate = null)

@@ -79,7 +79,7 @@ namespace PLWPF
 
         private void buttonRequest_Click(object sender, RoutedEventArgs e)
         {
-            //try
+            try
             {
                 checkExceptions();
 
@@ -112,9 +112,9 @@ namespace PLWPF
                 //Window suggestion = new SuggestionWindow(key);
                 // this.Close();
             }
-             //catch (Exception ex)
+             catch (Exception ex)
             {              
-               // MessageBox.Show(ex.Message);
+               MessageBox.Show(ex.Message);
                 
 
             }
