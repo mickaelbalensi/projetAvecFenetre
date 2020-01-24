@@ -45,7 +45,8 @@ namespace PLWPF
         private void ButtonOrder_Click(object sender, RoutedEventArgs e)
         {
             try
-            {               
+            {         
+                
                 bl.updateOrder(currentOrder);
             }
             catch(Exception ex)

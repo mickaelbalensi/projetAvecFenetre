@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BE1;
+using BL1;
 
 namespace PLWPF
 {
@@ -19,6 +21,7 @@ namespace PLWPF
     /// </summary>
     public partial class DataList : Window
     {
+        IBL bl;
         public DataList()
         {
             InitializeComponent();
@@ -26,17 +29,26 @@ namespace PLWPF
 
         private void RequestList_Click(object sender, RoutedEventArgs e)
         {
-
+            requestDetails.ItemsSource = bl.getAllGuestRequest();
+            requestDetails.Visibility = Visibility.Visible;
+            unitDetails.Visibility = Visibility.Hidden;
+            orderDetails.Visibility = Visibility.Hidden;
         }
 
         private void UnitList_Click(object sender, RoutedEventArgs e)
         {
-
+            unitDetails.ItemsSource = bl.getAllHostingUnit();
+            unitDetails.Visibility = Visibility.Visible;
+            orderDetails.Visibility = Visibility.Hidden;
+            requestDetails.Visibility = Visibility.Hidden;
         }
 
         private void OrdersList_Click(object sender, RoutedEventArgs e)
         {
-
+            orderDetails.ItemsSource = bl.getAllHostingUnit();
+            orderDetails.Visibility = Visibility.Visible;
+            unitDetails.Visibility = Visibility.Hidden;
+            requestDetails.Visibility = Visibility.Hidden;
         }
 
         private void MoreOptions_Click(object sender, RoutedEventArgs e)

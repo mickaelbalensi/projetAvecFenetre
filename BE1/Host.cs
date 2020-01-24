@@ -20,18 +20,18 @@ namespace BE1
         public bool collectionClearance { get; set; }
         public string password { get; set; }
         //public static int  countHostingUnit { get; set; }// number of rooms he owns 
-        public Host()
-        {
-            hostKey = Configuration.hostCount;
-            privateName = "";
-            familyName = "";
-            phoneNumber = 000000000;
-            mailAddress = privateName + familyName + "@" + "gmail.com";
-            bankAccountNumber = 12345678;
-            collectionClearance = false;
-            //bankBranchDetails = new BankBranch();
-            //countHostingUnit = 0;
-        }
+        //public Host()
+        //{
+        //    hostKey = Configuration.hostCount;
+        //    privateName = "";
+        //    familyName = "";
+        //    phoneNumber = 000000000;
+        //    mailAddress = privateName + familyName + "@" + "gmail.com";
+        //    bankAccountNumber = 12345678;
+        //    collectionClearance = false;
+        //    //bankBranchDetails = new BankBranch();
+        //    //countHostingUnit = 0;
+        //}
         public override string ToString()
         {
             return "hostKey : " + hostKey + "\n" +

@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-         Title="UpdateUnit" Height="508.795" Width="1523.762">
-    <Grid x:Name="UnitControlGrid" Margin="10,10,-6.667,0" Height="403" VerticalAlignment="Top">
+         Title="UpdateUnit" Height="535.461" Width="1507.763">
+    <Grid x:Name="UnitControlGrid" Margin="10,10,43.667,0" Height="403" VerticalAlignment="Top">
         <!--#region ligne et colonne-->
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition/>
+            <RowDefinition Height="0*"/>
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -23,7 +24,7 @@
                Margin="141,0,36,0"
                FontSize="30"/>
         <Grid x:Name="details"
-              Grid.Row="1" Grid.Column="0" Margin="0,0,65.667,-0.333" Grid.RowSpan="2" Grid.ColumnSpan="2">
+              Grid.Row="1" Grid.Column="0" Margin="0,0,37.667,-46.333" Grid.RowSpan="3" Grid.ColumnSpan="2">
             <!--#region ligne et colonne-->
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="181"/>
@@ -178,7 +179,7 @@
                 </TextBox.RenderTransform>
             </TextBox>
         </Grid>
-        <Grid x:Name="DataGrid_grid" Grid.Column="1" HorizontalAlignment="Left" Margin="32,0,-967.333,42.667" Width="1292" Grid.RowSpan="2">
+        <Grid x:Name="DataGrid_grid" Grid.Column="1" HorizontalAlignment="Left" Margin="32,0,-967.333,2.667" Width="1292" Grid.RowSpan="2">
             <DataGrid x:Name="UnitsDetails" 
                       Visibility="Visible"
                               IsReadOnly="True"
@@ -195,7 +196,7 @@
                       ColumnHeaderHeight="36"                     
                       GridLinesVisibility="Horizontal" 
                       SelectionChanged="OnSelectedItemChanged" 
-                      Margin="296,0,0,-165" Width="996" Height="475" VerticalAlignment="Top" 
+                      Margin="296,0,0,-194" Width="986" Height="504" VerticalAlignment="Top" 
                               >
                 <DataGrid.Columns>
                     <DataGridTextColumn  Header="HostingUnitKey" Width="*" Binding="{Binding HostingUnitKey}" FontSize="14" FontWeight="Normal"/>
@@ -211,7 +212,7 @@
         </Grid>
         <Button x:Name="UpdateUnits"
                 Content="Update  your unit"
-                Grid.Row="2" RenderTransformOrigin="0.57,1.127" Margin="0,60.333,0,-60.333" HorizontalAlignment="Left" Width="473" Grid.ColumnSpan="2" Click="UpdateUnit_Click">
+                Grid.Row="3" RenderTransformOrigin="0.57,1.127" Margin="0,96.333,0,-94.333" HorizontalAlignment="Left" Width="501" Grid.ColumnSpan="2" Click="UpdateUnit_Click" Height="48" VerticalAlignment="Top">
         </Button>
     </Grid>
 </Window>

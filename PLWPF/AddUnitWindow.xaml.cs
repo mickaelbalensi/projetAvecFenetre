@@ -32,11 +32,11 @@ namespace PLWPF
         {
             vbImage = new Viewbox();
             currentUnit = new HostingUnit();
-            currentUnit.owner = host;
             InitializeComponent();
             this.DataContext = currentUnit;
            
             bl = FactoryBL.getBL();
+            currentUnit.owner = host;
             UnitControlGrid.Children.Add(vbImage);
             imageIndex = 0;
             vbImage.Width = 75;
@@ -61,21 +61,22 @@ namespace PLWPF
             {
                 
                 checkExceptions();
+                //currentUnit.hostingUnitKey = Configuration.hostingUnitCount++;
                 currentUnit.jacuzzi =  JacuzziCheckBox.IsChecked == true ? true : false;
                 currentUnit.pool =  PoolCheckBox.IsChecked == true ? true : false;
                 currentUnit.garden =  GardenCheckBox.IsChecked == true ? true : false;
                 currentUnit.childrenAttractions = ChildrenAttractionsCheckBox.IsChecked == true ? true :false;
                 currentUnit.typeArea =
-                    AreaComboBox.SelectedIndex == 1 ? TypeAreaOfTheCountry.all :
-                    AreaComboBox.SelectedIndex == 2 ? TypeAreaOfTheCountry.north :
-                    AreaComboBox.SelectedIndex == 3 ? TypeAreaOfTheCountry.south :
-                    AreaComboBox.SelectedIndex == 4 ? TypeAreaOfTheCountry.center :
+                    AreaComboBox.SelectedIndex == 0 ? TypeAreaOfTheCountry.all :
+                    AreaComboBox.SelectedIndex == 1 ? TypeAreaOfTheCountry.north :
+                    AreaComboBox.SelectedIndex == 2 ? TypeAreaOfTheCountry.south :
+                    AreaComboBox.SelectedIndex == 3 ? TypeAreaOfTheCountry.center :
                     TypeAreaOfTheCountry.jerusalem;
                 currentUnit.typeOfUnit =
-                    UnitComboBox.SelectedIndex == 1 ? TypeOfHostingUnit.all :
-                    UnitComboBox.SelectedIndex == 2 ? TypeOfHostingUnit.zimmer :
-                    UnitComboBox.SelectedIndex == 3 ? TypeOfHostingUnit.apartment :
-                    UnitComboBox.SelectedIndex == 4 ? TypeOfHostingUnit.roomOfHotel :
+                    UnitComboBox.SelectedIndex == 0 ? TypeOfHostingUnit.all :
+                    UnitComboBox.SelectedIndex == 1 ? TypeOfHostingUnit.zimmer :
+                    UnitComboBox.SelectedIndex == 2 ? TypeOfHostingUnit.apartment :
+                    UnitComboBox.SelectedIndex == 3 ? TypeOfHostingUnit.roomOfHotel :
                     TypeOfHostingUnit.tent;
                 currentUnit.uris = new List<string>();
                 currentUnit.uris.Add(unitPictures.Text);

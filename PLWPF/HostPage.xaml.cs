@@ -77,6 +77,7 @@ namespace PLWPF
         private void logout_Click(object sender, RoutedEventArgs e)
         {
             Window mainWindow = new MainWindow();
+            this.Close();
             mainWindow.Show();
 
         }

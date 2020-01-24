@@ -34,11 +34,11 @@ namespace PLWPF
                 };
             InitializeComponent();
             this.DataContext = currentUnit;
-            currentUnit.owner = host;
+            //currentUnit.owner.hostKey = host.hostKey;
             //  InitializeComponent();
             // currentRequest = new GuestRequest();
             bl = FactoryBL.getBL();
-            UnitsDetails.ItemsSource = bl.getAllHostingUnit(x => currentUnit.owner.hostKey == host.hostKey);
+            UnitsDetails.ItemsSource = bl.getAllHostingUnit(x => x.owner.hostKey == host.hostKey);
             UnitsDetails.Visibility = Visibility.Visible;
         }
 

@@ -86,24 +86,24 @@ namespace PLWPF
 
 
 
-
-                currentRequest.status = GuestRequestStatus.active;
+                currentRequest.guestRequestKey = Configuration.guestRequestCount++;
+                //currentRequest.status = GuestRequestStatus.active;
                 currentRequest.registrationDate = DateTime.Now;
                 currentRequest.jacuzzi = JacuzziCheckBox.IsChecked == true ? Options.yes :  JacuzziCheckBox.IsChecked == false ? Options.no : Options.optional;
                 currentRequest.pool = PoolCheckBox.IsChecked == true ? Options.yes : PoolCheckBox.IsChecked == false ? Options.no : Options.optional;
                 currentRequest.garden = GardenCheckBox.IsChecked == true ? Options.yes : GardenCheckBox.IsChecked == false ? Options.no : Options.optional;
                 currentRequest.childrenAttractions = ChildrenAttractionsCheckBox.IsChecked == true ? Options.yes : ChildrenAttractionsCheckBox.IsChecked == false ? Options.no : Options.optional;
                 currentRequest.typeArea =
-                    AreaComboBox.SelectedIndex == 1 ? TypeAreaOfTheCountry.all :
-                    AreaComboBox.SelectedIndex == 2 ? TypeAreaOfTheCountry.north :
-                    AreaComboBox.SelectedIndex == 3 ? TypeAreaOfTheCountry.south :
-                    AreaComboBox.SelectedIndex == 4 ? TypeAreaOfTheCountry.center :
+                    AreaComboBox.SelectedIndex == 0 ? TypeAreaOfTheCountry.all :
+                    AreaComboBox.SelectedIndex == 1 ? TypeAreaOfTheCountry.north :
+                    AreaComboBox.SelectedIndex == 2 ? TypeAreaOfTheCountry.south :
+                    AreaComboBox.SelectedIndex == 3 ? TypeAreaOfTheCountry.center :
                     TypeAreaOfTheCountry.jerusalem;
                 currentRequest.type =
-                    UnitComboBox.SelectedIndex == 1 ? TypeOfHostingUnit.all :
-                    UnitComboBox.SelectedIndex == 2 ? TypeOfHostingUnit.zimmer :
-                    UnitComboBox.SelectedIndex == 3 ? TypeOfHostingUnit.apartment :
-                    UnitComboBox.SelectedIndex == 4 ? TypeOfHostingUnit.roomOfHotel :
+                    UnitComboBox.SelectedIndex == 0 ? TypeOfHostingUnit.all :
+                    UnitComboBox.SelectedIndex == 1 ? TypeOfHostingUnit.zimmer :
+                    UnitComboBox.SelectedIndex == 2 ? TypeOfHostingUnit.apartment :
+                    UnitComboBox.SelectedIndex == 3 ? TypeOfHostingUnit.roomOfHotel :
                     TypeOfHostingUnit.tent;
 
 

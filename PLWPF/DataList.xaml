@@ -5,33 +5,126 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="DataList" Height="450" Width="800">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Button x:Name="RequestList"
+        Title="DataList" Height="427.333" Width="1897.334">
+
+    <Grid Margin="0,0,1194.333,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="ButtounOptions" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="15*" />
+                <RowDefinition Height="15*"/>
+                <RowDefinition Height="17*"/>
+                <RowDefinition Height="13*"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="RequestList"
                 Content="Requests list"
                 Grid.Row="0"
-                FontSize="30" Click="RequestList_Click">
-        </Button>
-        <Button x:Name="UnitList"
+                FontSize="30" Click="RequestList_Click" Margin="0,0,0,0.333" Height="99" VerticalAlignment="Bottom" >
+            </Button>
+            <Button x:Name="UnitList"
                 Content="Unit list"
-                Grid.Row="1"
-                FontSize="30" Click="UnitList_Click">
-        </Button>
-        <Button x:Name="OrdersList"
+                FontSize="30" Click="UnitList_Click"  Grid.Row="1" />
+            <Button x:Name="OrdersList"
                 Content="Orders list"
                 Grid.Row="2"
-                FontSize="30" Click="OrdersList_Click">
-        </Button>
-        <Button x:Name="MoreOptions"
+                FontSize="30" Click="OrdersList_Click"  />
+            <Button x:Name="MoreOptions"
                 Content="More options"
                 Grid.Row="3"
-                FontSize="30" Click="MoreOptions_Click">
-        </Button>
+                FontSize="30" Click="MoreOptions_Click" />
+        </Grid>
+        <Grid x:Name="DataGridUnit" Grid.Column="1" HorizontalAlignment="Left" Margin="10.333,0,-792.333,3" Width="1130">
+            <DataGrid x:Name="unitDetails" 
+                      Visibility="Hidden"
+                              IsReadOnly="True"
+                      AutoGenerateColumns="False" 
+                      AlternationCount="2"
+                      VerticalScrollBarVisibility="Auto"
+                      MaxHeight="500"
+                      HorizontalContentAlignment="Center"
+                      MinRowHeight="30"
+                      VerticalContentAlignment="Center"  
+                      FontSize="16" 
+                      FontWeight="Bold"
+                      ColumnHeaderHeight="36"                     
+                      GridLinesVisibility="Horizontal" 
+                              >
+                <DataGrid.Columns>
+                    <DataGridTextColumn  Header="Order key" Width="*" Binding="{Binding HostingUnitKey}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Name" Width="*" Binding="{Binding hostingUnitName}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Children places" Width="*" Binding="{Binding childrenPlaces}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Adults places" Width="*" Binding="{Binding adultPlaces}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Type of unit" Width="*" Binding="{Binding typeOfUnit}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Location of the unit" Width="*" Binding="{Binding typeArea}" FontSize="14" FontWeight="Normal"/>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+        </Grid>
+        <Grid x:Name="DataGridRequest" Grid.Column="1" Margin="10.333,0,41.333,3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="221*"/>
+                <RowDefinition Height="174*"/>
+            </Grid.RowDefinitions>
+            <DataGrid x:Name="requestDetails" 
+                      Visibility="Hidden"
+                              IsReadOnly="True"
+                      AutoGenerateColumns="False" 
+                      AlternationCount="2"
+                      VerticalScrollBarVisibility="Auto"
+                      MaxHeight="500"
+                      HorizontalContentAlignment="Center"
+                      MinRowHeight="30"
+                      VerticalContentAlignment="Center"  
+                      FontSize="16" 
+                      FontWeight="Bold"
+                      ColumnHeaderHeight="36"                     
+                      GridLinesVisibility="Horizontal" 
+                      Margin="0,-30,-1.333,0" Height="425" VerticalAlignment="Top" Grid.RowSpan="2" 
+                              >
+                <DataGrid.Columns>
+                    <DataGridTextColumn  Header="GuestRequestKey" Width="*" Binding="{Binding guestRequestkey}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Private name" Width="*" Binding="{Binding privateName}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Family name" Width="*" Binding="{Binding familyName}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Children places" Width="*" Binding="{Binding childrenPlaces}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Adults places" Width="*" Binding="{Binding adultPlaces}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Type of unit" Width="*" Binding="{Binding typeOfUnit}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Location of the unit" Width="*" Binding="{Binding typeArea}" FontSize="14" FontWeight="Normal"/>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+        </Grid>
+        <Grid x:Name="DataGrid_grid" Grid.Column="1" HorizontalAlignment="Left" Margin="10.333,0,-301.333,0" Width="639">
+            <DataGrid x:Name="orderDetails" 
+                      Visibility="Hidden"
+                              IsReadOnly="True"
+                      AutoGenerateColumns="False" 
+                      AlternationCount="2"
+                      VerticalScrollBarVisibility="Auto"
+                      MaxHeight="500"
+                      HorizontalAlignment="Left"
+                      HorizontalContentAlignment="Center"
+                      MinRowHeight="30"
+                      VerticalContentAlignment="Center"  
+                      FontSize="16" 
+                      FontWeight="Bold"
+                      ColumnHeaderHeight="36"                     
+                      GridLinesVisibility="Horizontal" 
+                      Margin="10,0,0,-45.667" Width="610" Height="401" VerticalAlignment="Top" 
+                              >
+                <DataGrid.Columns>
+                    <DataGridTextColumn  Header="Order key" Width="*" Binding="{Binding orderKey}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="HostingUnit key" Width="*" Binding="{Binding hostingUnitKey}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="GuestRequest key" Width="*" Binding="{Binding guestRequestKey}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Order status" Width="*" Binding="{Binding status}" FontSize="14" FontWeight="Normal"/>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+        </Grid>
     </Grid>
 </Window>

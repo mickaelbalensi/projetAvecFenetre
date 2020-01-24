@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BE1;
 using DAL1;
 using System.Threading;
+using DS1;
 
 
 namespace BL1
@@ -32,6 +33,7 @@ namespace BL1
                 bankAccountNumber=123,
                 collectionClearance=true,
                 password="123",
+               
 
             },
             new Host
@@ -172,7 +174,7 @@ namespace BL1
         }
 
         public IEnumerable<GuestRequest> getAllGuestRequest(Func<GuestRequest, bool> predicate = null)
-        {
+        {           
             return dal.getAllGuestRequest(predicate);
         }
         public bool isRoomFree(HostingUnit unit, GuestRequest request)
@@ -314,7 +316,7 @@ namespace BL1
                     
                     dal.addOrder(new Order
                     {
-                        orderKey = Configuration.orderCount++,
+                        //orderKey = Configuration.orderCount++,
                         hostingUnitKey = unit.hostingUnitKey,
                         guestRequestKey = request.guestRequestKey,
                         status = OrderStatus.notYetAddressed,

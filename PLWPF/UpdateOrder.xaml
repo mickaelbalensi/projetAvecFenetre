@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="UpdateOrder" Height="500" Width="800">
+        Title="UpdateOrder" Height="500" Width="1136.706">
     <Grid x:Name="UnitControlGrid" Margin="10,10,-6.667,0" Height="403" VerticalAlignment="Top">
         <!--#region ligne et colonne-->
         <Grid.RowDefinitions>
@@ -58,7 +58,7 @@
                 </TextBox.RenderTransform>
             </TextBox>
         </Grid>
-        <Grid x:Name="DataGrid_grid" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,-967.333,42.667" Width="1314" Grid.RowSpan="2">
+        <Grid x:Name="DataGrid_grid" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,-588.333,42.667" Width="935" Grid.RowSpan="2">
             <DataGrid x:Name="OrderDetails" 
                       Visibility="Visible"
                               IsReadOnly="True"
@@ -74,7 +74,7 @@
                       FontWeight="Bold"
                       ColumnHeaderHeight="36"                     
                       GridLinesVisibility="Horizontal" 
-                      Margin="296,0,0,-152" Width="996" Height="462" VerticalAlignment="Top" 
+                      Margin="296,0,0,-152" Width="636" Height="462" VerticalAlignment="Top" 
                               >
                 <DataGrid.Columns>
                     <DataGridTextColumn  Header="Order key" Width="*" Binding="{Binding orderKey}" FontSize="14" FontWeight="Normal"/>
@@ -88,7 +88,7 @@
         </Grid>
         <Button x:Name="UpdateUnits"
                 Content="Update your order"
-                Grid.Row="2" RenderTransformOrigin="0.57,1.127" Margin="0,60.333,0,-60.333" HorizontalAlignment="Left" Width="473" Grid.ColumnSpan="2" >
+                Grid.Row="2" RenderTransformOrigin="0.57,1.127" Margin="0,60.333,0,-60.333" HorizontalAlignment="Left" Width="490" Grid.ColumnSpan="2" >
         </Button>
     </Grid>
 </Window>
