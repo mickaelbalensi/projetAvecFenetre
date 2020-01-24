@@ -33,6 +33,7 @@ namespace PLWPF
             AddUnit.Visibility = Visibility.Visible;
             UpdateUnit.Visibility = Visibility.Visible;
             DeleteUnit.Visibility = Visibility.Visible;
+            butonAddUnit.Visibility = Visibility.Hidden;
 
             //Window unitPage = new UnitPage(currentHost);
             //unitPage.Show();
@@ -42,6 +43,7 @@ namespace PLWPF
         {
             AddOrder.Visibility = Visibility.Visible;
             UpdateOrder.Visibility = Visibility.Visible;
+            Order.Visibility = Visibility.Hidden;
             //Window orderPage = new OrderPage();
             //orderPage.Show();
         }

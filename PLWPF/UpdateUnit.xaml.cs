@@ -29,9 +29,6 @@ namespace PLWPF
             InitializeComponent();
             if (currentUnit == null)
                 currentUnit = new HostingUnit();
-                {
-                    //guestRequestKey = Configuration.guestRequestCount + 1
-                };
             InitializeComponent();
             this.DataContext = currentUnit;
             //currentUnit.owner.hostKey = host.hostKey;

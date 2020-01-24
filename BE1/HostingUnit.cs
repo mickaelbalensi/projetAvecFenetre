@@ -19,12 +19,45 @@ namespace BE1
         public bool garden { get; set; }
         public bool pool { get; set; }
         public bool childrenAttractions { get; set; }
-        public List<string> uris { get; set; }
         public TypeAreaOfTheCountry typeArea { get; set; }
         public TypeOfHostingUnit typeOfUnit { get; set; }
 
         //number of order the room received
         public int countOrder { get; set; }
+        public List<string> uris { get; set; }
+        public string tempUris{
+            get
+            {
+                if (uris.Count == 0)
+                    return null;
+
+                string result = "";
+                int sizeA = uris.Count;
+                result += "" + sizeA ;
+
+                for (int i = 0; i < sizeA; i++)
+                        result += "," + uris[i];
+
+                return result;
+            }
+            set
+            {
+                if (value != null && value.Length > 0)
+                {
+                    string[] values = value.Split(',');
+
+                    int sizeA = int.Parse(values[0]);
+                    uris = new List<string>();
+
+                    int index = 1;
+
+                    for (int i = 0; i < sizeA; i++)
+                        uris.Add(values[index++]);
+                }
+
+            }
+        }
+
         public bool[,] diary { get; set; }
         public string tempDiary
         {
