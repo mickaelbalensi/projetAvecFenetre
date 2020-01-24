@@ -79,9 +79,11 @@ namespace PLWPF
                     UnitComboBox.SelectedIndex == 3 ? TypeOfHostingUnit.roomOfHotel :
                     TypeOfHostingUnit.tent;
                 currentUnit.uris = new List<string>();
-                if(unitPictures.Text!="") currentUnit.uris.Add(unitPictures.Text);
+                currentUnit.diary = new bool[12, 31];
+                if (unitPictures.Text!="") currentUnit.uris.Add(unitPictures.Text);
                 if (unitPictures1.Text != "") 
                     currentUnit.uris.Add(unitPictures1.Text);
+                
                 bl.addHostingUnit(currentUnit);
                 currentUnit = new HostingUnit();
                 this.DataContext = currentUnit;
@@ -154,6 +156,8 @@ namespace PLWPF
             if (f1||f2|f3) throw new Exception("please check your items and try again");
 
         }
+
+
 
     }
 }

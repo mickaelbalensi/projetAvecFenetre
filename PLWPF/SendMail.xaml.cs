@@ -15,6 +15,8 @@ using System.Net.Mail;
 using Outlook = Microsoft.Office.Interop.Outlook;
 using System.Net;
 using System.Net.Mime;
+using BE1;
+using BL1;
 
 namespace PLWPF
 {
@@ -23,8 +25,10 @@ namespace PLWPF
     /// </summary>
     public partial class SendMail : Window
     {
-        public SendMail()
+        public HostingUnit currentUnit;
+        public SendMail(HostingUnit unit)
         {
+            currentUnit = new HostingUnit();
             InitializeComponent();
         }
 
@@ -32,7 +36,7 @@ namespace PLWPF
         {
             Outlook.Application App = new Outlook.Application();
             Outlook.MailItem msg = (Outlook.MailItem)App.CreateItem(Outlook.OlItemType.olMailItem);
-            //msg.HTMLBody = ("<img src=\"" +  +"\"></img>");
+            msg.HTMLBody = ("<img src=\"" + currentUnit.uris[0] +"\"></img>");
             //msg.HTMLBbody = namehotel;
             msg.Subject = "sujet";
             Outlook.Recipients recips = (Outlook.Recipients)msg.Recipients;

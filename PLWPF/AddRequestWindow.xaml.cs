@@ -108,7 +108,7 @@ namespace PLWPF
 
 
                 bl.addRequest(currentRequest);
-                sendMail(currentRequest.mailAddress, bl.getSuggestionList(currentRequest.guestRequestKey));
+                sendMail(currentRequest, bl.getSuggestionList(currentRequest.guestRequestKey));
                 //Window suggestion = new SuggestionWindow(key);
                 // this.Close();
             }
@@ -169,7 +169,7 @@ namespace PLWPF
             if (f1||f2||f3||f4||f5) throw new Exception("please check your items and try again");
                 
         }
-        public void sendMail(string mail,List<HostingUnit>suggestionList)
+        public void sendMail(GuestRequest request ,List<HostingUnit>suggestionList)
         {
             int count = 0;
             foreach (HostingUnit unit in suggestionList)
@@ -178,12 +178,11 @@ namespace PLWPF
                 string unitName = unit.hostingUnitName;
                 Outlook.Application App = new Outlook.Application();
                 Outlook.MailItem msg = (Outlook.MailItem)App.CreateItem(Outlook.OlItemType.olMailItem);
-
-                msg.HTMLBody = unitName;
-
+                msg.HTMLBody = ("<img src=\"" + unit.uris[0] + "\"></img>");
+                msg.HTMLBody = unitName ;
                 msg.Subject = "Choose this room !!!!!";
                 Outlook.Recipients recips = (Outlook.Recipients)msg.Recipients;
-                Outlook.Recipient recip = (Outlook.Recipient)recips.Add("bibasitshak@gmail.com");
+                Outlook.Recipient recip = (Outlook.Recipient)recips.Add(request.mailAddress);
                 recip.Resolve();
                 msg.Send();
                 recips = null;
