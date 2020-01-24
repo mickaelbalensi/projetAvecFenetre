@@ -45,7 +45,7 @@ namespace DAL1
                 || !File.Exists(bankBranchPath))
                 CreateFiles();
             else
-                CreateFiles();
+                LoadData();
         }
 
         private void CreateFiles()
@@ -233,13 +233,13 @@ namespace DAL1
             return request;
         }
         XElement ConvertHostingUnitToXAML(HostingUnit unit) {
-            XElement uris = new XElement("uris");
+            //XElement uris = new XElement("uris");
 
-            foreach (string str in unit.uris)
-            {
-                XElement img = new XElement("img", str);
-                uris.Add(img);
-            }
+            //foreach (string str in unit.uris)
+            //{
+            //    XElement img = new XElement("img", str);
+            //    uris.Add(img);
+            //}
 
             return
                 new XElement("HostingUnit",
@@ -255,7 +255,7 @@ namespace DAL1
                 new XElement("typeArea", unit.typeArea.ToString()),
                 new XElement("typeOfUnit", unit.typeOfUnit.ToString()),
                 new XElement("tempDiary", unit.tempDiary),
-                uris);
+                new XElement("tempUris", unit.tempUris));
         }
         HostingUnit ConvertXAMLToHostingUnit(XElement element)//vérifié, lire eara ds func
         {
@@ -269,7 +269,7 @@ namespace DAL1
                                     where hosting.Name == "hostingUnitName"
                                     select (hosting.Value)).FirstOrDefault();
 
-            unit.owner = ConvertXAMLToHost(element);//attention type du param
+            unit.owner = ConvertXAMLToHost(element.Element("owner").Element("Host"));//attention type du param
                 
             unit.adultPlaces = (from hosting in element.Elements()
                                 where hosting.Name == "adultPlaces"
@@ -300,8 +300,7 @@ namespace DAL1
                                select hosting.Value).FirstOrDefault();
 
             unit.typeArea =
-                typeArea == "all" ?
-                TypeAreaOfTheCountry.all :
+                typeArea == "all" ? TypeAreaOfTheCountry.all :
                 typeArea == "north" ? TypeAreaOfTheCountry.north :
                 typeArea == "south" ? TypeAreaOfTheCountry.south :
                 typeArea == "center" ? TypeAreaOfTheCountry.center :
@@ -322,9 +321,9 @@ namespace DAL1
                               where hosting.Name == "tempDiary"
                               select (hosting.Value)).FirstOrDefault();
             //recupérer les liens d'images
-            string uris = (from hosting in element.Elements()
-                           where hosting.Name == "img"
-                           select (hosting.Value)).FirstOrDefault();
+            unit.tempUris = (from hosting in element.Elements()
+                           where hosting.Name == "tempUris"
+                             select (hosting.Value)).FirstOrDefault();
 
             //unit.uris= (from hosting in element.Elements()
             //           where hosting.Name == "img"
@@ -377,7 +376,7 @@ namespace DAL1
                                       select long.Parse(ost.Value)).FirstOrDefault();
 
             host.collectionClearance = (from ost in element.Elements()
-                                        where ost.Name=="hostKey"
+                                        where ost.Name== "collectionClearance"
                                         select bool.Parse(ost.Value)).FirstOrDefault();
 
             return host;
@@ -595,10 +594,12 @@ namespace DAL1
                 return from item in hostingUnitRoot.Elements()
                        select ConvertXAMLToHostingUnit(item);
             }
-            return from item in hostingUnitRoot.Elements()
-                   let hos = ConvertXAMLToHostingUnit(item)
-                   where predicate(hos)
-                   select hos;
+            var variable= from item in hostingUnitRoot.Elements()
+                          let hos = ConvertXAMLToHostingUnit(item)
+                          where predicate(hos)
+                          select hos;
+
+            return variable;
         }
 
 
@@ -663,24 +664,6 @@ namespace DAL1
         {
             return getAllOrder().FirstOrDefault(x=> x.orderKey==key);
         }
-
-        public void addHost(Host host)
-        {
-            throw new NotImplementedException();
-        }
-
-
-
-
-        public Host getHost(long key)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Host> getAllHost(Func<Host, bool> predicate = null)
-        {
-            throw new NotImplementedException();
-        }
         #endregion
         #region configuration
         public long getGuestRequestCount()
@@ -705,12 +688,46 @@ namespace DAL1
         }
 
         #endregion
-        //public void addHost(Host host)
-        //{
-        //    throw new NotImplementedException();
-        //}
 
 
+        #region host
+        public void addHost(Host host)
+        {
+            //if a such HostingUnit already exists
+            //if (getAllHost(x => x.hostKey == host.hostKey).FirstOrDefault() != null)
+            //    throw new Exception("An Host with the same key already exists.");
+
+            //hostingUnitCount = (from g in configRoot.Elements()
+            //                    where g.Name == "hostingUnitCount"
+            //                    select long.Parse(g.Value)).FirstOrDefault();
+
+            //host.hostKey = hostingUnitCount;
+
+            hostRoot.Add(ConvertHostToXAML(host));
+            hostRoot.Save(hostPath);
+
+            //XElement toRemove = (from x in configRoot.Elements()
+            //                     where x.Name == "hostingUnitCount"
+            //                     select x).FirstOrDefault();
+            //toRemove.Remove();
+
+            //hostingUnitCount++;
+            //configRoot.Add(new XElement("hostingUnitCount", hostingUnitCount.ToString()));
+            //configRoot.Save(configPath);
+        }
+
+
+        public Host getHost(long key)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Host> getAllHost(Func<Host, bool> predicate = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
 
 
 

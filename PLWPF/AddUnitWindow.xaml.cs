@@ -66,20 +66,21 @@ namespace PLWPF
                 currentUnit.garden =  GardenCheckBox.IsChecked == true ? true : false;
                 currentUnit.childrenAttractions = ChildrenAttractionsCheckBox.IsChecked == true ? true :false;
                 currentUnit.typeArea =
-                    AreaComboBox.SelectedIndex == 1 ? TypeAreaOfTheCountry.all :
-                    AreaComboBox.SelectedIndex == 2 ? TypeAreaOfTheCountry.north :
-                    AreaComboBox.SelectedIndex == 3 ? TypeAreaOfTheCountry.south :
-                    AreaComboBox.SelectedIndex == 4 ? TypeAreaOfTheCountry.center :
+                    AreaComboBox.SelectedIndex == 0 ? TypeAreaOfTheCountry.all :
+                    AreaComboBox.SelectedIndex == 1 ? TypeAreaOfTheCountry.north :
+                    AreaComboBox.SelectedIndex == 2 ? TypeAreaOfTheCountry.south :
+                    AreaComboBox.SelectedIndex == 3 ? TypeAreaOfTheCountry.center :
                     TypeAreaOfTheCountry.jerusalem;
                 currentUnit.typeOfUnit =
-                    UnitComboBox.SelectedIndex == 1 ? TypeOfHostingUnit.all :
-                    UnitComboBox.SelectedIndex == 2 ? TypeOfHostingUnit.zimmer :
-                    UnitComboBox.SelectedIndex == 3 ? TypeOfHostingUnit.apartment :
-                    UnitComboBox.SelectedIndex == 4 ? TypeOfHostingUnit.roomOfHotel :
+                    UnitComboBox.SelectedIndex == 0 ? TypeOfHostingUnit.all :
+                    UnitComboBox.SelectedIndex == 1 ? TypeOfHostingUnit.zimmer :
+                    UnitComboBox.SelectedIndex == 2 ? TypeOfHostingUnit.apartment :
+                    UnitComboBox.SelectedIndex == 3 ? TypeOfHostingUnit.roomOfHotel :
                     TypeOfHostingUnit.tent;
                 currentUnit.uris = new List<string>();
-                currentUnit.uris.Add(unitPictures.Text);
-                currentUnit.uris.Add(unitPictures1.Text);
+                if(unitPictures.Text!="") currentUnit.uris.Add(unitPictures.Text);
+                if (unitPictures1.Text != "") 
+                    currentUnit.uris.Add(unitPictures1.Text);
                 bl.addHostingUnit(currentUnit);
                 currentUnit = new HostingUnit();
                 this.DataContext = currentUnit;
@@ -152,5 +153,6 @@ namespace PLWPF
             if (f1||f2|f3) throw new Exception("please check your items and try again");
 
         }
+
     }
 }

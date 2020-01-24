@@ -57,7 +57,10 @@ namespace BL1
                 password="789",
             }
             };
-
+            for(int i = 0; i < 3; i++)
+            {
+                dal.addHost(HostList[i]);
+            }
             //dal = new Dal_imp();
             //initList();
 
