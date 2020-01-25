@@ -63,6 +63,7 @@ namespace BL1
             //{
             //    dal.addHost(HostList[i]);
             //}
+
             //dal = new Dal_imp();
             //initList();
 
