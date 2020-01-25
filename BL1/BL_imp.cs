@@ -248,7 +248,7 @@ namespace BL1
         public IEnumerable<IGrouping<int, GuestRequest>> groupRequestByNumOfperson()
         {
             return from request in getAllGuestRequest()
-                   group request by request.adults + request.children;
+                   group request by (request.adults + request.children);
         }
         #endregion
         #region host
@@ -413,7 +413,7 @@ namespace BL1
         public IEnumerable<IGrouping<TypeAreaOfTheCountry, HostingUnit>> groupUnitByAreaList(bool flag)
         {
             return from unit in getAllHostingUnit()
-                   group unit.Copy() by unit.typeArea;
+                   group unit.Copy() by unit.typeArea ;
         }
 
         public List<HostingUnit> getSuggestionList(long guestRequestKey)
