@@ -86,13 +86,13 @@ namespace PLWPF
 
 
 
-                currentRequest.guestRequestKey = Configuration.guestRequestCount++;
+                currentRequest.guestRequestKey = long.Parse(idBox.Text);
                 //currentRequest.status = GuestRequestStatus.active;
                 currentRequest.registrationDate = DateTime.Now;
-                currentRequest.jacuzzi = JacuzziCheckBox.IsChecked == true ? Options.yes :  JacuzziCheckBox.IsChecked == false ? Options.no : Options.optional;
-                currentRequest.pool = PoolCheckBox.IsChecked == true ? Options.yes : PoolCheckBox.IsChecked == false ? Options.no : Options.optional;
-                currentRequest.garden = GardenCheckBox.IsChecked == true ? Options.yes : GardenCheckBox.IsChecked == false ? Options.no : Options.optional;
-                currentRequest.childrenAttractions = ChildrenAttractionsCheckBox.IsChecked == true ? Options.yes : ChildrenAttractionsCheckBox.IsChecked == false ? Options.no : Options.optional;
+                currentRequest.jacuzzi = JacuzziCheckBox.IsChecked == true ? Options.yes :  JacuzziCheckBox.IsChecked == false ? Options.optional : Options.no;
+                currentRequest.pool = PoolCheckBox.IsChecked == true ? Options.yes : PoolCheckBox.IsChecked == false ? Options.optional : Options.no;
+                currentRequest.garden = GardenCheckBox.IsChecked == true ? Options.yes : GardenCheckBox.IsChecked == false ? Options.optional : Options.no;
+                currentRequest.childrenAttractions = ChildrenAttractionsCheckBox.IsChecked == true ? Options.yes : ChildrenAttractionsCheckBox.IsChecked == false ? Options.optional : Options.no;
                 currentRequest.typeArea =
                     AreaComboBox.SelectedIndex == 0 ? TypeAreaOfTheCountry.all :
                     AreaComboBox.SelectedIndex == 1 ? TypeAreaOfTheCountry.north :
@@ -178,8 +178,10 @@ namespace PLWPF
                 string unitName = unit.hostingUnitName;
                 Outlook.Application App = new Outlook.Application();
                 Outlook.MailItem msg = (Outlook.MailItem)App.CreateItem(Outlook.OlItemType.olMailItem);
-               //msg.HTMLBody = ("<img src=\"" + unit.uris[0] + "\"></img>"/*+ unit.ToString()*/);
-                msg.HTMLBody =unit.ToString() ;
+                //msg.HTMLBody = ("<img src=\"" + unit.uris[0] + "\"></img>"/*+ unit.ToString()*/);
+                //
+                msg.HTMLBody = ("<p><img src=\"http://www.voyagercacher.com/images/voyages-cacher/1389-11635.jpg\" alt=\"hotel\" width=\"400\" height=\"265\" /></p>< p >< img src = \"https://r-cf.bstatic.com/images/hotel/max1024x768/122/122205831.jpg\" alt = \"\" width = \"400\" height = \"265\" /></ p >        < p > Decription de l'hotel :</p>            < p > Ths hotel is in...</ p >               < p > It contains... places of Adults and ...&nbsp;< span style = \"font-size: 0.9em;\" > places of </ span >< span style = \"font-size: 0.9em;\" > &nbsp; children </ span ></ p >                              < p > there are...</ p > ");
+                // msg.HTMLBody=unit.ToString() ;
                 msg.Subject = "Choose this room !!!!!";
                 Outlook.Recipients recips = (Outlook.Recipients)msg.Recipients;
                 Outlook.Recipient recip = (Outlook.Recipient)recips.Add(request.mailAddress);

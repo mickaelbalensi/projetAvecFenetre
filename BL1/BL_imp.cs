@@ -257,12 +257,13 @@ namespace BL1
             dal.addHost(host);
         }
 
-        public Host checkParameters(Host host)
+        //        public Host checkParameters(Host host)
+        public Host checkParameters(long key, string pwd)
         {
-            Host h = HostList.FirstOrDefault(ho => ho.hostKey == host.hostKey);
+            Host h = HostList.FirstOrDefault(ho => ho.hostKey == key);
             if (h == null)
                 throw new Exception("Wrong ID !");
-            if (host.password != h.password)
+            if (pwd != h.password)
                 throw new Exception("Wrong password !");
             return h;
         }
@@ -348,6 +349,7 @@ namespace BL1
 
         public void updateOrder(Order order)
         {
+
             foreach (Order orders in getAllOrder(x => x.guestRequestKey == order.guestRequestKey))
             {
                 orders.status = OrderStatus.expired;

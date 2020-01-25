@@ -5,32 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="DataList" Height="427.333" Width="865.567">
+        Title="DataList" Height="427.333" Width="816.367">
 
     <Grid Margin="0,0,1194.333,0">
 
 
-        <Grid x:Name="ButtounOptions" Grid.RowSpan="3">
+        <Grid x:Name="ButtounOptions" Margin="0,0,-805,-0.4">
 
             <Button x:Name="RequestList"
                 Content="Requests list"
-                FontSize="30" Click="RequestList_Click" Margin="569,0,-858,301" Height="95" VerticalAlignment="Bottom" RenderTransformOrigin="0.693,0.625" />
+                FontSize="30" Click="RequestList_Click" Margin="629,0,10,303" Height="95" VerticalAlignment="Bottom" RenderTransformOrigin="0.693,0.625" />
             <Button x:Name="UnitList"
                 Content="Unit list"
-                FontSize="30" Click="UnitList_Click" Margin="569,97,-859,203" RenderTransformOrigin="1.169,0.207" />
+                FontSize="30" Click="UnitList_Click" Margin="629,98,10,203" RenderTransformOrigin="1.169,0.207" />
             <Button x:Name="OrdersList"
                 Content="Orders list"
-                FontSize="30" Click="OrdersList_Click" Margin="569,195,-859,101"  />
+                FontSize="30" Click="OrdersList_Click" Margin="629,198,10,99"  />
             <Button x:Name="MoreOptions"
                 Content="More options"
-                FontSize="30" Click="MoreOptions_Click" Margin="569,297,-859,-1" />
+                FontSize="30" Click="MoreOptions_Click" Margin="629,303,10,0" />
         </Grid>
-        <Grid x:Name="DataGridUnit" HorizontalAlignment="Left" Margin="127,26,-555,-23" Width="428">
+        <Grid x:Name="DataGridUnit" HorizontalAlignment="Left" Margin="5,26,-626,-0.4" Width="621">
             <DataGrid x:Name="unitDetails" 
                       Visibility="Visible"
                       IsReadOnly="True"                    
                       FontSize="16" 
-                      FontWeight="Bold" Margin="-121,-23,0,22" HorizontalAlignment="Left" Width="539"
+                      FontWeight="Bold" Margin="1,-22,-63,0" HorizontalAlignment="Left" Width="612"
                       
                               >
                 <DataGrid.Columns>
@@ -58,25 +58,17 @@
 
         
         -->
-        <Grid x:Name="DataGridRequest" Margin="9,0,-11,3" RenderTransformOrigin="0.5,0.5">
-            <Grid.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleX="-1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Grid.RenderTransform>
+        <Grid x:Name="DataGridRequest" Margin="11,0,-626,2.6" RenderTransformOrigin="0.5,0.5">
 
             <DataGrid x:Name="requestDetails" 
                       Visibility="Hidden"
                       IsReadOnly="True"
                       FontSize="16" 
-                      FontWeight="Bold" Margin="-557,4,2,14" RenderTransformOrigin="0.5,0.5" SelectionChanged="requestDetails_SelectionChanged"
+                      FontWeight="Bold" Margin="3,11,9,7" RenderTransformOrigin="0.5,0.5" SelectionChanged="requestDetails_SelectionChanged"
                               >
                 <DataGrid.RenderTransform>
                     <TransformGroup>
-                        <ScaleTransform ScaleX="-1"/>
+                        <ScaleTransform/>
                         <SkewTransform/>
                         <RotateTransform Angle="359.974"/>
                         <TranslateTransform/>
@@ -95,7 +87,7 @@
 
             </DataGrid>
         </Grid>
-        <Grid x:Name="DataGrid_grid" HorizontalAlignment="Left" Margin="560,0,-858,0" Width="298">
+        <Grid x:Name="DataGrid_grid" HorizontalAlignment="Left" Margin="5,0,-626,-0.4" Width="621">
             <DataGrid x:Name="orderDetails" 
                       Visibility="Hidden"
                               IsReadOnly="True"
@@ -111,7 +103,7 @@
                       FontWeight="Bold"
                       ColumnHeaderHeight="36"                     
                       GridLinesVisibility="Horizontal" 
-                      Margin="-607,-3,0,0" Width="560" Height="401" VerticalAlignment="Top" 
+                      Margin="0,10,0,0" Width="611" Height="378" VerticalAlignment="Top" 
                               >
                 <DataGrid.Columns>
                     <DataGridTextColumn  Header="Order key" Width="auto" Binding="{Binding orderKey}" FontSize="14" FontWeight="Normal"/>

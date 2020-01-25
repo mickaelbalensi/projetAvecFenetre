@@ -73,9 +73,9 @@ namespace DAL1
                 new XElement("orderCount", "1"),
                 new XElement("hostingUnitCount", "1"),
                 new XElement("guestRequestCount", "1"));
-            //String path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            String path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
-            configRoot.Save(/*path +*/ configPath);
+            configRoot.Save(path + configPath);
 
             DownloadBankBranch();
         }
