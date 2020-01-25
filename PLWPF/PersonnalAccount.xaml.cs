@@ -29,7 +29,7 @@ namespace PLWPF
             if (currentHost == null)
                 currentHost = new Host();
             InitializeComponent();
-            this.DataContext = currentHost;
+            //this.DataContext = currentHost;
 
             bl = FactoryBL.getBL();
         }
@@ -37,8 +37,10 @@ namespace PLWPF
         private void buttonPersonnal_Click(object sender, RoutedEventArgs e)
         {
             try
-            {               
-                currentHost =bl.checkParameters(currentHost);
+            {
+                long id = long.Parse(hostKeyBox.Text);
+                string pwd = Password.Password;
+                currentHost =bl.checkParameters(id,pwd);
                 Window hostPage = new HostPage(currentHost);
                 hostPage.Show();
                 this.Close();

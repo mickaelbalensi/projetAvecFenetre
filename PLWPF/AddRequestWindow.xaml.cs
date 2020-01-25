@@ -86,13 +86,13 @@ namespace PLWPF
 
 
 
-                currentRequest.guestRequestKey = Configuration.guestRequestCount++;
+                currentRequest.guestRequestKey = long.Parse(idBox.Text);
                 //currentRequest.status = GuestRequestStatus.active;
                 currentRequest.registrationDate = DateTime.Now;
-                currentRequest.jacuzzi = JacuzziCheckBox.IsChecked == true ? Options.yes :  JacuzziCheckBox.IsChecked == false ? Options.no : Options.optional;
-                currentRequest.pool = PoolCheckBox.IsChecked == true ? Options.yes : PoolCheckBox.IsChecked == false ? Options.no : Options.optional;
-                currentRequest.garden = GardenCheckBox.IsChecked == true ? Options.yes : GardenCheckBox.IsChecked == false ? Options.no : Options.optional;
-                currentRequest.childrenAttractions = ChildrenAttractionsCheckBox.IsChecked == true ? Options.yes : ChildrenAttractionsCheckBox.IsChecked == false ? Options.no : Options.optional;
+                currentRequest.jacuzzi = JacuzziCheckBox.IsChecked == true ? Options.yes :  JacuzziCheckBox.IsChecked == false ? Options.optional : Options.no;
+                currentRequest.pool = PoolCheckBox.IsChecked == true ? Options.yes : PoolCheckBox.IsChecked == false ? Options.optional : Options.no;
+                currentRequest.garden = GardenCheckBox.IsChecked == true ? Options.yes : GardenCheckBox.IsChecked == false ? Options.optional : Options.no;
+                currentRequest.childrenAttractions = ChildrenAttractionsCheckBox.IsChecked == true ? Options.yes : ChildrenAttractionsCheckBox.IsChecked == false ? Options.optional : Options.no;
                 currentRequest.typeArea =
                     AreaComboBox.SelectedIndex == 0 ? TypeAreaOfTheCountry.all :
                     AreaComboBox.SelectedIndex == 1 ? TypeAreaOfTheCountry.north :

@@ -31,6 +31,10 @@ namespace PLWPF
             InitializeComponent();
             bl = FactoryBL.getBL();
             ordersLists = new List<Order>();
+            if (currentOrder == null)
+                currentOrder = new Order();
+
+            DataContext = currentOrder;
             foreach ( HostingUnit unit in  bl.getAllHostingUnit((x=> x.owner.hostKey == host.hostKey)))
             {
                 foreach( Order orders in bl.getAllOrder(x => x.hostingUnitKey == unit.hostingUnitKey))
@@ -46,15 +50,17 @@ namespace PLWPF
 
         private void ButtonOrder_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {                        
+           // try
+            {
+                int currentKey =int.Parse(unitKeyBox.Text);
+                currentOrder = bl.getOrder(currentKey);
                 bl.updateOrder(currentOrder);
                 MessageBox.Show("Your order has been updated you have know a new client in your unit");
                 this.Close();
             }
-            catch(Exception ex)
+            //catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+              //  MessageBox.Show(ex.Message);
             }
         }
 

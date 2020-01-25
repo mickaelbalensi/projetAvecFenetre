@@ -30,7 +30,7 @@ namespace BL1
         void addOrder(GuestRequest request);
         void updateOrder(Order order);
         IEnumerable<Order> getAllOrder(Func<Order, bool> predicate = null);
-        //Order getOrder(long key);
+        Order getOrder(long key);
 
         #endregion
         #region configuration
@@ -44,7 +44,7 @@ namespace BL1
 
         #region host
         void addHost(Host host);
-        Host checkParameters(Host host);
+        Host checkParameters(long key, string pwd);
         Host getHost(long key);
         IEnumerable<Host> getAllHost(Func<Host, bool> predicate = null);
         #endregion

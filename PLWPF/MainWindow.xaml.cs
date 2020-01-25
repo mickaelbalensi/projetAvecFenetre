@@ -36,7 +36,8 @@ namespace PLWPF
         private void PersonnalAccount_Click(object sender, RoutedEventArgs e)
         {
             Window login = new PersonnalAccount();
-            login.Show();              
+            login.Show();
+            this.Close();
         }
 
         private void addOrderButton_Click(object sender, RoutedEventArgs e)

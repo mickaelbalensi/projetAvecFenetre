@@ -58,7 +58,7 @@
                 </TextBox.RenderTransform>
             </TextBox>
         </Grid>
-        <Grid x:Name="DataGrid_grid" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,-588.333,42.667" Width="935" Grid.RowSpan="2">
+        <Grid x:Name="DataGrid_grid" Grid.Column="1" HorizontalAlignment="Left" Margin="296.4,0,-588.6,-60.8" Width="649" Grid.RowSpan="3">
             <DataGrid x:Name="OrderDetails" 
                       Visibility="Visible"
                               IsReadOnly="True"
@@ -74,7 +74,7 @@
                       FontWeight="Bold"
                       ColumnHeaderHeight="36"                     
                       GridLinesVisibility="Horizontal" 
-                      Margin="296,0,0,-151.067" Width="639" Height="462" VerticalAlignment="Top" 
+                      Margin="10,0,0,0" Width="639" Height="462" VerticalAlignment="Top" 
                               >
                 <DataGrid.Columns>
                     <DataGridTextColumn  Header="Order key" Width="*" Binding="{Binding orderKey}" FontSize="14" FontWeight="Normal"/>
@@ -88,7 +88,12 @@
         </Grid>
         <Button x:Name="UpdateUnits"
                 Content="Update your order"
-                Grid.Row="2" RenderTransformOrigin="0.57,1.127" Margin="0,60.333,0,-60.333" HorizontalAlignment="Left" Width="490" Grid.ColumnSpan="2" >
-        </Button>
+                Grid.Row="2" 
+                RenderTransformOrigin="0.57,1.127" 
+                Margin="0,60.333,0,-60.333"
+                HorizontalAlignment="Left" 
+                Width="490" 
+                Grid.ColumnSpan="2" Click="ButtonOrder_Click" />
+
     </Grid>
 </Window>

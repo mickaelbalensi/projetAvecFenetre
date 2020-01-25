@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="AddRequestWindow" Height="506" Width="500">
+        Title="AddRequestWindow" Height="600" Width="542">
     <ScrollViewer>
         <Grid x:Name="firstGrid" Margin="0,0,4.2,0">
             <Grid.RowDefinitions>
@@ -275,7 +275,7 @@
                    Grid.Row="15"
                    IsChecked="False"
                    IsThreeState="True"
-                   Margin="15"
+                   Margin="15,14.8,51.6,14.8"
                 />
 
                 <CheckBox  x:Name="PoolCheckBox"
@@ -310,28 +310,28 @@
                    Content="Yes"
                    Grid.Column="1"
                    Grid.Row="15"
-                   Margin="257,3,46,27"
+                   Margin="228.4,2.8,47.6,26.8"
                    IsChecked="True"
                    IsThreeState="True"
                    IsEnabled="False"
                 />
-                <CheckBox  x:Name="noBox"
-                   Content="No"
+                <CheckBox  x:Name="optionBox"
+                   Content="Optional"
                    Grid.Column="1"
                    Grid.Row="15"
-                   Margin="257,18,46,12"
+                   Margin="228.4,19.8,60.6,9.8"
                    IsChecked="False"
                    IsThreeState="True"
                    IsEnabled="False"
                />
-                <CheckBox  x:Name="optionalBox"
-                   Content="Optional"
+                <CheckBox  x:Name="noBox"
+                   Content="No"
                    Grid.Column="1"
                    Grid.Row="15"
-                   Margin="257,34,10,0"
+                   Margin="229.4,35.8,30.6,39.4"
                    IsChecked="{x:Null}"
                    IsThreeState="True"
-                   IsEnabled="False"
+                   IsEnabled="False" Grid.RowSpan="2"
                />
 
                 <!--#endregion-->

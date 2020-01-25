@@ -52,15 +52,15 @@ namespace PLWPF
 
         private void UpdateUnit_Click(object sender, RoutedEventArgs e)
         {
-            //try
+            try
             {
                 bl.updateHostingUnit(currentUnit);
                 MessageBox.Show("your unit has been sucessfully updated");
                 this.Close();
             }
-            //catch (Exception ex)
+            catch (Exception ex)
             {
-                //throw new Exception(ex.Message);
+               MessageBox.Show(ex.Message);
             }
         }
     }
