@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.IO;
+using System.Net;
 
 namespace DAL1
 {
@@ -31,6 +32,8 @@ namespace DAL1
         XElement configRoot;
         string configPath = @"config.xml";
 
+        const string xmlLocalPath = @"atm.xml"; 
+
         long guestRequestCount;
         long hostingUnitCount;
         long orderCount;
@@ -53,8 +56,8 @@ namespace DAL1
             guestRequestRoot = new XElement("Request");
             guestRequestRoot.Save(guestRequestPath);
 
-            hostRoot = new XElement("Host");
-            hostRoot.Save(hostPath);
+            //hostRoot = new XElement("Host");
+            //hostRoot.Save(hostPath);
 
             hostingUnitRoot = new XElement("HostingUnit");
             hostingUnitRoot.Save(hostingUnitPath);
@@ -70,9 +73,11 @@ namespace DAL1
                 new XElement("orderCount", "1"),
                 new XElement("hostingUnitCount", "1"),
                 new XElement("guestRequestCount", "1"));
-            String path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            //String path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
-            configRoot.Save(path + configPath);
+            configRoot.Save(/*path +*/ configPath);
+
+            DownloadBankBranch();
         }
 
         private void LoadData()
@@ -381,48 +386,103 @@ namespace DAL1
 
             return host;
         }
-        XElement ConvertBankBranchToXAML(BankBranch bank)
-        {
-            return 
-                new XElement("BankBranch",
-                new XElement("bankNumber", bank.bankNumber.ToString()),
-                new XElement("bankName",bank.bankName),
-                new XElement("branchNumber",bank.branchNumber.ToString()),
-                new XElement("branchAddress", bank.branchAddress),
-                new XElement("branchCity",bank.branchCity));
-        }
+        //XElement ConvertBankBranchToXAML(BankBranch bank)
+        //{
+        //    return 
+        //        new XElement("BankBranch",
+        //        new XElement("bankNumber", bank.bankNumber.ToString()),
+        //        new XElement("bankName",bank.bankName),
+        //        new XElement("branchNumber",bank.branchNumber.ToString()),
+        //        new XElement("branchAddress", bank.branchAddress),
+        //        new XElement("branchCity",bank.branchCity));
+        //}
+        //BankBranch ConvertXAMLToBankBranch(XElement element)
+        //{
+        //    BankBranch branch = new BankBranch();
+
+        //    string bankNumber = (from bank in element.Elements()
+        //                         where bank.Name=="bankNumber"
+        //                         select bank.Value).FirstOrDefault();
+
+        //    branch.bankNumber =
+        //        bankNumber == "bankHapoalim" ? Bank.bankHapoalim :
+        //        bankNumber == "bankLeumi" ? Bank.bankLeumi :
+        //        bankNumber == "BNP" ? Bank.BNP :
+        //        Bank.HSBC;
+
+        //    branch.bankName = (from bank in element.Elements()
+        //                       where bank.Name== "bankName"
+        //                       select bank.Value).FirstOrDefault();
+
+        //    branch.branchNumber = (from bank in element.Elements()
+        //                           where bank.Name== "branchNumber"
+        //                           select int.Parse(bank.Value)).FirstOrDefault();
+
+        //    branch.branchAddress = (from bank in element.Elements()
+        //                            where bank.Name=="branchNumber"
+        //                            select bank.Value).FirstOrDefault();
+
+        //    branch.branchCity = (from bank in element.Elements()
+        //                         where bank.Name=="branchCity"
+        //                         select bank.Value).FirstOrDefault();
+
+        //    return branch;
+        //}
         BankBranch ConvertXAMLToBankBranch(XElement element)
         {
             BankBranch branch = new BankBranch();
 
-            string bankNumber = (from bank in element.Elements()
-                                 where bank.Name=="bankNumber"
-                                 select bank.Value).FirstOrDefault();
-
-            branch.bankNumber =
-                bankNumber == "bankHapoalim" ? Bank.bankHapoalim :
-                bankNumber == "bankLeumi" ? Bank.bankLeumi :
-                bankNumber == "BNP" ? Bank.BNP :
-                Bank.HSBC;
+            branch.bankCode = (from bank in element.Elements()
+                               where bank.Name== "קוד_בנק"
+                               select int.Parse(bank.Value)).FirstOrDefault();
 
             branch.bankName = (from bank in element.Elements()
-                               where bank.Name== "bankName"
-                               select bank.Value).FirstOrDefault();
+                             where bank.Name == "שם_בנק"
+                             select (bank.Value)).FirstOrDefault();
 
-            branch.branchNumber = (from bank in element.Elements()
-                                   where bank.Name== "branchNumber"
-                                   select int.Parse(bank.Value)).FirstOrDefault();
+            branch.branchCode = (from bank in element.Elements()
+                                 where bank.Name == "קוד_סניף"
+                                 select int.Parse(bank.Value)).FirstOrDefault();
 
-            branch.branchAddress = (from bank in element.Elements()
-                                    where bank.Name=="branchNumber"
-                                    select bank.Value).FirstOrDefault();
+            branch.ATMaddress = (from bank in element.Elements()
+                                 where bank.Name == "כתובת_ה-ATM"
+                                 select (bank.Value)).FirstOrDefault();
 
-            branch.branchCity = (from bank in element.Elements()
-                                 where bank.Name=="branchCity"
-                                 select bank.Value).FirstOrDefault();
+            branch.village = (from bank in element.Elements()
+                              where bank.Name == "ישוב"
+                              select (bank.Value)).FirstOrDefault();
+
+            string amala= (from bank in element.Elements()
+                           where bank.Name == "עמלה"
+                           select (bank.Value)).FirstOrDefault();
+
+            branch.commission = amala == "לא" ? false : true;
+
+            branch.ATMtype = (from bank in element.Elements()
+                              where bank.Name == "ATMtype"
+                              select (bank.Value)).FirstOrDefault();
+
+            branch.LocationOfATMrelativeToBranch = (from bank in element.Elements()
+                             where bank.Name == "מיקום_ה-ATM_ביחס_לסניף"
+                             select (bank.Value)).FirstOrDefault();
+
+            string accesshandicap = (from bank in element.Elements()
+                               where bank.Name == "גישה_לנכים"
+                               select (bank.Value)).FirstOrDefault();
+
+            branch.accesshandicap = accesshandicap == "לא" ? false : true;
+
+            branch.CoordinateX = (from bank in element.Elements()
+                                   where bank.Name == "קואורדינטת_X"
+                                   select float.Parse(bank.Value)).FirstOrDefault();
+
+            branch.CoordinateY = (from bank in element.Elements()
+                                   where bank.Name == "קואורדינטת_Y"
+                                   select float.Parse(bank.Value)).FirstOrDefault();
 
             return branch;
         }
+
         XElement ConvertOrderToXAML(Order order)
         {
             return
@@ -469,6 +529,26 @@ namespace DAL1
                                select DateTime.Parse(ord.Value)).FirstOrDefault();
 
             return order;
+        }
+
+        void DownloadBankBranch()
+        {
+            WebClient wc = new WebClient();
+            try
+            {
+                string xmlServerPath =
+               @"http://www.boi.org.il/he/BankingSupervision/BanksAndBranchLocations/Lists/BoiBankBranchesDocs/atm.xml";
+                wc.DownloadFile(xmlServerPath, xmlLocalPath);
+            }
+            catch (Exception)
+            {
+                string xmlServerPath = @"http://www.jct.ac.il/~coshri/atm.xml";
+                wc.DownloadFile(xmlServerPath, xmlLocalPath);
+            }
+            finally
+            {
+                wc.Dispose();
+            }
         }
 
         #endregion
