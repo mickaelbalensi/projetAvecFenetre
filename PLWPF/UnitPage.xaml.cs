@@ -40,7 +40,7 @@ namespace PLWPF
 
         private void DeleteUnit_Click(object sender, RoutedEventArgs e)
         {
-            Window deleteUnit = new DeleteUnit();
+            Window deleteUnit = new DeleteUnit(currentHost);
             deleteUnit.Show();
         }
     }

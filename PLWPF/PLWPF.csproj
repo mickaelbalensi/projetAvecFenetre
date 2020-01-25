@@ -68,6 +68,9 @@
     <Compile Include="DeleteUnit.xaml.cs">
       <DependentUpon>DeleteUnit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GroupingWindow.xaml.cs">
+      <DependentUpon>GroupingWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GroupWindow.xaml.cs">
       <DependentUpon>GroupWindow.xaml</DependentUpon>
     </Compile>
@@ -135,6 +138,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DeleteUnit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GroupingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

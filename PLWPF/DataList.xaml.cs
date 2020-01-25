@@ -56,5 +56,10 @@ namespace PLWPF
         {
 
         }
+
+        private void requestDetails_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

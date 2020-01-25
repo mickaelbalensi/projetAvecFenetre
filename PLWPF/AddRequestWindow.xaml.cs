@@ -171,15 +171,15 @@ namespace PLWPF
         }
         public void sendMail(GuestRequest request ,List<HostingUnit>suggestionList)
         {
-            int count = 0;
+            bool flag = false;
             foreach (HostingUnit unit in suggestionList)
             {
-                count++;
+                flag = true;
                 string unitName = unit.hostingUnitName;
                 Outlook.Application App = new Outlook.Application();
                 Outlook.MailItem msg = (Outlook.MailItem)App.CreateItem(Outlook.OlItemType.olMailItem);
-                msg.HTMLBody = ("<img src=\"" + unit.uris[0] + "\"></img>");
-                msg.HTMLBody = unitName ;
+               //msg.HTMLBody = ("<img src=\"" + unit.uris[0] + "\"></img>"/*+ unit.ToString()*/);
+                msg.HTMLBody =unit.ToString() ;
                 msg.Subject = "Choose this room !!!!!";
                 Outlook.Recipients recips = (Outlook.Recipients)msg.Recipients;
                 Outlook.Recipient recip = (Outlook.Recipient)recips.Add(request.mailAddress);
@@ -187,14 +187,16 @@ namespace PLWPF
                 msg.Send();
                 recips = null;
                 recip = null;
-                App = null;
-                MessageBox.Show("Your request has been registred, check your mail to look at your options");
-                this.Close();
+                App = null;            
                 currentRequest = new GuestRequest();
                 DataContext = currentRequest;
             }
-            if (count == 0) throw new Exception("sorry there is no available room try others options");
-
+            if (!flag) throw new Exception("sorry there is no available room try others options");
+            else
+            {
+                MessageBox.Show("Your request has been registred, check your mail to look at your options");
+                this.Close();
+            }
             //throw new Exception("Your request has been registred, check your mail to look at your options");
         }
 

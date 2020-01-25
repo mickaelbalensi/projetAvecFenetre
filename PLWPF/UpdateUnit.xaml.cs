@@ -30,6 +30,9 @@ namespace PLWPF
             if (currentUnit == null)
                 currentUnit = new HostingUnit();
             InitializeComponent();
+            this.AreaComboBox.ItemsSource = Enum.GetValues(typeof(BE1.TypeAreaOfTheCountry));
+            this.UnitComboBox.ItemsSource = Enum.GetValues(typeof(BE1.TypeOfHostingUnit));
+            currentUnit.owner = host;
             this.DataContext = currentUnit;
             //currentUnit.owner.hostKey = host.hostKey;
             //  InitializeComponent();
@@ -37,6 +40,7 @@ namespace PLWPF
             bl = FactoryBL.getBL();
             UnitsDetails.ItemsSource = bl.getAllHostingUnit(x => x.owner.hostKey == host.hostKey);
             UnitsDetails.Visibility = Visibility.Visible;
+          
         }
 
         private void OnSelectedItemChanged(object sender, SelectionChangedEventArgs e)
@@ -48,13 +52,15 @@ namespace PLWPF
 
         private void UpdateUnit_Click(object sender, RoutedEventArgs e)
         {
-            try
+            //try
             {
                 bl.updateHostingUnit(currentUnit);
+                MessageBox.Show("your unit has been sucessfully updated");
+                this.Close();
             }
-            catch (Exception ex)
+            //catch (Exception ex)
             {
-
+                //throw new Exception(ex.Message);
             }
         }
     }

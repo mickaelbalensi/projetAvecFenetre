@@ -28,11 +28,11 @@ namespace BE1
         public string tempUris{
             get
             {
-                if (uris.Count == 0)
+                //if (uris.Count() == 0)
                     return null;
 
                 string result = "";
-                int sizeA = uris.Count;
+                int sizeA = uris.Count();
                 result += "" + sizeA ;
 
                 for (int i = 0; i < sizeA; i++)

@@ -47,9 +47,10 @@ namespace PLWPF
         private void ButtonOrder_Click(object sender, RoutedEventArgs e)
         {
             try
-            {         
-                
+            {                        
                 bl.updateOrder(currentOrder);
+                MessageBox.Show("Your order has been updated you have know a new client in your unit");
+                this.Close();
             }
             catch(Exception ex)
             {

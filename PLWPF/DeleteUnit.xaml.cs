@@ -23,11 +23,13 @@ namespace PLWPF
     {
         public HostingUnit currentUnit;
         IBL bl;
-        public DeleteUnit()
+        public DeleteUnit(Host host)
         {
             InitializeComponent();
             currentUnit = new HostingUnit();
             this.DataContext = currentUnit;
+            bl = FactoryBL.getBL();
+            UnitsDetails.ItemsSource = bl.getAllHostingUnit(x => x.owner.hostKey == host.hostKey);
         }
 
         private void DeleteUnits_Click(object sender, RoutedEventArgs e)
@@ -35,6 +37,7 @@ namespace PLWPF
             try
             {
                 bl.deleteHostingUnit(currentUnit);
+                MessageBox.Show("Your unit has been sucessfully deleted");
             }
             catch (Exception ex)
             {

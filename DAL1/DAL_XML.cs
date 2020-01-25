@@ -41,7 +41,7 @@ namespace DAL1
                 || !File.Exists(hostPath)
                 || !File.Exists(hostingUnitPath)
                 || !File.Exists(orderPath)
-                || !File.Exists(configPath) 
+                || !File.Exists(configPath)
                 || !File.Exists(bankBranchPath))
                 CreateFiles();
             else
@@ -567,8 +567,8 @@ namespace DAL1
                 throw new Exception("There is no such HostingUnit.");
 
             //  remove the HostingUnit before updating it
-            (from item in guestRequestRoot.Elements()
-             where long.Parse(item.Element("HostingUnit").Element("hostingUnitKey").Value) == unit.hostingUnitKey
+            (from item in hostingUnitRoot.Elements()
+             where long.Parse(item./*Element("HostingUnit").*/Element("hostingUnitKey").Value) == unit.hostingUnitKey
              select item).FirstOrDefault().Remove();
 
             //implement the update according to the demand

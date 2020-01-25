@@ -5,52 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="DataList" Height="427.333" Width="1585.016">
+        Title="DataList" Height="427.333" Width="865.567">
 
     <Grid Margin="0,0,1194.333,0">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid x:Name="ButtounOptions" Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="15*" />
-                <RowDefinition Height="15*"/>
-                <RowDefinition Height="17*"/>
-                <RowDefinition Height="13*"/>
-            </Grid.RowDefinitions>
+
+
+        <Grid x:Name="ButtounOptions" Grid.RowSpan="3">
+
             <Button x:Name="RequestList"
                 Content="Requests list"
-                Grid.Row="0"
-                FontSize="30" Click="RequestList_Click" Margin="0,0,0,0.333" Height="99" VerticalAlignment="Bottom" >
-            </Button>
+                FontSize="30" Click="RequestList_Click" Margin="569,0,-858,301" Height="95" VerticalAlignment="Bottom" RenderTransformOrigin="0.693,0.625" />
             <Button x:Name="UnitList"
                 Content="Unit list"
-                FontSize="30" Click="UnitList_Click"  Grid.Row="1" />
+                FontSize="30" Click="UnitList_Click" Margin="569,97,-859,203" RenderTransformOrigin="1.169,0.207" />
             <Button x:Name="OrdersList"
                 Content="Orders list"
-                Grid.Row="2"
-                FontSize="30" Click="OrdersList_Click"  />
+                FontSize="30" Click="OrdersList_Click" Margin="569,195,-859,101"  />
             <Button x:Name="MoreOptions"
                 Content="More options"
-                Grid.Row="3"
-                FontSize="30" Click="MoreOptions_Click" />
+                FontSize="30" Click="MoreOptions_Click" Margin="569,297,-859,-1" />
         </Grid>
-        <Grid x:Name="DataGridUnit" Grid.Column="1" HorizontalAlignment="Left" Margin="10.6,0,-674.2,2.6" Width="906">
+        <Grid x:Name="DataGridUnit" HorizontalAlignment="Left" Margin="127,26,-555,-23" Width="428">
             <DataGrid x:Name="unitDetails" 
-                      Visibility="Hidden"
-                              IsReadOnly="True"
-                      AutoGenerateColumns="False" 
-                      AlternationCount="2"
-                      VerticalScrollBarVisibility="Auto"
-                      MaxHeight="500"
-                      HorizontalContentAlignment="Center"
-                      MinRowHeight="30"
-                      VerticalContentAlignment="Center"  
+                      Visibility="Visible"
+                      IsReadOnly="True"                    
                       FontSize="16" 
-                      FontWeight="Bold"
-                      ColumnHeaderHeight="36"                     
-                      GridLinesVisibility="Horizontal" 
+                      FontWeight="Bold" Margin="-121,-23,0,22" HorizontalAlignment="Left" Width="539"
+                      
                               >
                 <DataGrid.Columns>
                     <DataGridTextColumn  Header="Order key" Width="*" Binding="{Binding HostingUnitKey}" FontSize="14" FontWeight="Normal"/>
@@ -64,27 +45,43 @@
 
             </DataGrid>
         </Grid>
-        <Grid x:Name="DataGridRequest" Grid.Column="1" Margin="10.333,0,41.333,3">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="221*"/>
-                <RowDefinition Height="174*"/>
-            </Grid.RowDefinitions>
-            <DataGrid x:Name="requestDetails" 
-                      Visibility="Visible"
-                              IsReadOnly="True"
-                      AutoGenerateColumns="False" 
+        <!--AutoGenerateColumns="False" 
                       AlternationCount="2"
                       VerticalScrollBarVisibility="Auto"
                       MaxHeight="500"
                       HorizontalContentAlignment="Center"
                       MinRowHeight="30"
-                      VerticalContentAlignment="Center"  
-                      FontSize="16" 
-                      FontWeight="Bold"
+                      VerticalContentAlignment="Center"
                       ColumnHeaderHeight="36"                     
                       GridLinesVisibility="Horizontal" 
-                      Margin="0,-30,-717.666,-0.6" Height="425" VerticalAlignment="Top" Grid.RowSpan="2" 
+                      Margin="0,-10,-48.667,0" Height="395" VerticalAlignment="Top" 
+
+        
+        -->
+        <Grid x:Name="DataGridRequest" Margin="9,0,-11,3" RenderTransformOrigin="0.5,0.5">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+
+            <DataGrid x:Name="requestDetails" 
+                      Visibility="Hidden"
+                      IsReadOnly="True"
+                      FontSize="16" 
+                      FontWeight="Bold" Margin="-557,4,2,14" RenderTransformOrigin="0.5,0.5" SelectionChanged="requestDetails_SelectionChanged"
                               >
+                <DataGrid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="359.974"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </DataGrid.RenderTransform>
                 <DataGrid.Columns>
                     <DataGridTextColumn  Header="Key" Width="20" Binding="{Binding guestRequestkey}" FontSize="14" FontWeight="Normal"/>
                     <DataGridTextColumn Header="P name" Width="auto" Binding="{Binding privateName}" FontSize="14" FontWeight="Normal"/>
@@ -98,7 +95,7 @@
 
             </DataGrid>
         </Grid>
-        <Grid x:Name="DataGrid_grid" Grid.Column="1" HorizontalAlignment="Left" Margin="10.333,0,-301.333,0" Width="639">
+        <Grid x:Name="DataGrid_grid" HorizontalAlignment="Left" Margin="560,0,-858,0" Width="298">
             <DataGrid x:Name="orderDetails" 
                       Visibility="Hidden"
                               IsReadOnly="True"
@@ -114,13 +111,13 @@
                       FontWeight="Bold"
                       ColumnHeaderHeight="36"                     
                       GridLinesVisibility="Horizontal" 
-                      Margin="10,0,0,-45.667" Width="610" Height="401" VerticalAlignment="Top" 
+                      Margin="-607,-3,0,0" Width="560" Height="401" VerticalAlignment="Top" 
                               >
                 <DataGrid.Columns>
-                    <DataGridTextColumn  Header="Order key" Width="*" Binding="{Binding orderKey}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="HostingUnit key" Width="*" Binding="{Binding hostingUnitKey}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="GuestRequest key" Width="*" Binding="{Binding guestRequestKey}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="Order status" Width="*" Binding="{Binding status}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn  Header="Order key" Width="auto" Binding="{Binding orderKey}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="HostingUnit key" Width="auto" Binding="{Binding hostingUnitKey}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="GuestRequest key" Width="auto" Binding="{Binding guestRequestKey}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Order status" Width="auto" Binding="{Binding status}" FontSize="14" FontWeight="Normal"/>
 
                 </DataGrid.Columns>
 
