@@ -90,6 +90,7 @@ namespace DAL1
                 orderRoot = XElement.Load(orderPath);
                 bankBranchRoot = XElement.Load(bankBranchPath);
                 configRoot = XElement.Load(configPath);
+
             }
             catch
             {

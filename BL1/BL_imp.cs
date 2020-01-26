@@ -61,10 +61,10 @@ namespace BL1
                 password="789",
             }
             };
-            //for(int i = 0; i < 3; i++)
-            //{
-            //    dal.addHost(HostList[i]);
-            //}
+            for(int i = 0; i < 3; i++)
+            {
+                dal.addHost(HostList[i]);
+            }
 
             //dal = new Dal_imp();
            // initList();
@@ -348,14 +348,15 @@ namespace BL1
 
         public void updateOrder(Order order)
         {
-            foreach (Order orders in dal.getAllOrder())
+            List<Order> listToUpdate = new List<Order>();
+            foreach (Order orders in getAllOrder(x => x.guestRequestKey == order.guestRequestKey))
             {
-                if (orders.guestRequestKey == order.guestRequestKey)
-                {
-                    orders.status = OrderStatus.expired;
-                    dal.updateOrder(orders);
-                }
+                orders.status = OrderStatus.expired;
+                listToUpdate.Add(orders);
             }
+            for (int i=0;i< listToUpdate.Count;i++)
+                dal.updateOrder(listToUpdate[i]);
+
             order.status = OrderStatus.reserved;
             reservePlaces(order);
             dal.updateOrder(order);     
@@ -421,18 +422,15 @@ namespace BL1
 
         public List<HostingUnit> getSuggestionList(long guestRequestKey)
         {
+            int c = 0;
             List<HostingUnit> listSuggestion = new List<HostingUnit>();
-            Func<Order, bool> predicate = order =>
+            foreach (Order order in getAllOrder())
             {
-                bool b1 = order.guestRequestKey == guestRequestKey;
-                return b1;
-            };
-
-            foreach (Order order in dal.getAllOrder(predicate))
-            {
+                if (guestRequestKey == order.guestRequestKey)
+                {
                     order.status = OrderStatus.mailWasSent;
-                    dal.updateOrder(order);
-                    listSuggestion.Add(getHostingUnit(order.hostingUnitKey));                
+                    listSuggestion.Add(getHostingUnit(order.hostingUnitKey));
+                }
             }
             return listSuggestion;
         }

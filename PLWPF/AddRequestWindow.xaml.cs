@@ -28,20 +28,21 @@ namespace PLWPF
     {
         public GuestRequest currentRequest { get; set; }
         IBL bl;
-        
+
 
         public AddRequestWindow()
         {
-            
+
             if (currentRequest == null)
-                currentRequest = new GuestRequest {
+                currentRequest = new GuestRequest
+                {
                     //guestRequestKey = Configuration.guestRequestCount + 1
                 };
             InitializeComponent();
             this.DataContext = currentRequest;
 
-          //  InitializeComponent();
-           // currentRequest = new GuestRequest();
+            //  InitializeComponent();
+            // currentRequest = new GuestRequest();
             bl = FactoryBL.getBL();
             idBox.Text = bl.getGuestRequestCount().ToString();
             this.AreaComboBox.ItemsSource = Enum.GetValues(typeof(BE1.TypeAreaOfTheCountry));
@@ -86,7 +87,7 @@ namespace PLWPF
                 currentRequest.guestRequestKey = long.Parse(idBox.Text);
                 //currentRequest.status = GuestRequestStatus.active;
                 currentRequest.registrationDate = DateTime.Now;
-                currentRequest.jacuzzi = JacuzziCheckBox.IsChecked == true ? Options.yes :  JacuzziCheckBox.IsChecked == false ? Options.optional : Options.no;
+                currentRequest.jacuzzi = JacuzziCheckBox.IsChecked == true ? Options.yes : JacuzziCheckBox.IsChecked == false ? Options.optional : Options.no;
                 currentRequest.pool = PoolCheckBox.IsChecked == true ? Options.yes : PoolCheckBox.IsChecked == false ? Options.optional : Options.no;
                 currentRequest.garden = GardenCheckBox.IsChecked == true ? Options.yes : GardenCheckBox.IsChecked == false ? Options.optional : Options.no;
                 currentRequest.childrenAttractions = ChildrenAttractionsCheckBox.IsChecked == true ? Options.yes : ChildrenAttractionsCheckBox.IsChecked == false ? Options.optional : Options.no;
@@ -105,14 +106,15 @@ namespace PLWPF
 
 
                 bl.addRequest(currentRequest);
-                sendMail(currentRequest, bl.getSuggestionList(currentRequest.guestRequestKey));
+                bl.getSuggestionList(currentRequest.guestRequestKey);
+                //sendMail(currentRequest, bl.getSuggestionList(currentRequest.guestRequestKey));
                 //Window suggestion = new SuggestionWindow(key);
                 // this.Close();
             }
-             catch (Exception ex)
-            {              
-               MessageBox.Show(ex.Message);
-                
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+
 
             }
         }
@@ -158,46 +160,75 @@ namespace PLWPF
                 if (mailTextBox.Text[i] == '@')
                     f5 = false;
             }
-             if (f5)
-                { mailError.Visibility = Visibility.Visible; }
+            if (f5)
+            { mailError.Visibility = Visibility.Visible; }
             if (f5 == false)
                 mailError.Visibility = Visibility.Hidden;
 
-            if (f1||f2||f3||f4||f5) throw new Exception("please check your items and try again");
-                
+            if (f1 || f2 || f3 || f4 || f5) throw new Exception("please check your items and try again");
+
         }
-        public void sendMail(GuestRequest request ,List<HostingUnit>suggestionList)
+        public void sendMail(GuestRequest request, List<HostingUnit> suggestionList)
         {
             bool flag = false;
             foreach (HostingUnit unit in suggestionList)
             {
                 flag = true;
                 string unitName = unit.hostingUnitName;
-                Outlook.Application App = new Outlook.Application();
-                Outlook.MailItem msg = (Outlook.MailItem)App.CreateItem(Outlook.OlItemType.olMailItem);
-                //msg.HTMLBody = ("<img src=\"" + unit.uris[0] + "\"></img>"/*+ unit.ToString()*/);
-                //
-                msg.HTMLBody = ("<p><img src=\"http://www.voyagercacher.com/images/voyages-cacher/1389-11635.jpg\" alt=\"hotel\" width=\"400\" height=\"265\" /></p>< p >< img src = \"https://r-cf.bstatic.com/images/hotel/max1024x768/122/122205831.jpg\" alt = \"\" width = \"400\" height = \"265\" /></ p >        < p > Decription de l'hotel :</p>            < p > Ths hotel is in...</ p >               < p > It contains... places of Adults and ...&nbsp;< span style = \"font-size: 0.9em;\" > places of </ span >< span style = \"font-size: 0.9em;\" > &nbsp; children </ span ></ p >                              < p > there are...</ p > ");
-                // msg.HTMLBody=unit.ToString() ;
-                msg.Subject = "Choose this room !!!!!";
-                Outlook.Recipients recips = (Outlook.Recipients)msg.Recipients;
-                Outlook.Recipient recip = (Outlook.Recipient)recips.Add(request.mailAddress);
-                recip.Resolve();
-                msg.Send();
-                recips = null;
-                recip = null;
-                App = null;            
-                currentRequest = new GuestRequest();
-                DataContext = currentRequest;
-            }
-            if (!flag) throw new Exception("sorry there is no available room try others options");
-            else
-            {
-                MessageBox.Show("Your request has been registred, check your mail to look at your options");
-                this.Close();
-            }
-            //throw new Exception("Your request has been registred, check your mail to look at your options");
-        }
 
+                MailMessage mail = new MailMessage();
+                mail.To.Add(request.mailAddress);
+                mail.From = new MailAddress("mickaelbalensi2652@gmail.com");
+                mail.Subject = "mailSubject";
+                mail.Body = request.ToString() + "<img src=\"" + unit.tempUris[0] + "\"></img>";
+                //+ "<img src=\"" + unit.tempUris[1] + "\"></img>"
+                mail.IsBodyHtml = true;
+
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+               // smtp.Host = "smtp.gmail.com";
+                //smtp.Port = 587;
+                smtp.Credentials = new System.Net.NetworkCredential("mickaelbalensi2652@gmail.com","gm61352+");
+                smtp.EnableSsl = true;
+                try
+                {
+                    smtp.Send(mail);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+
+
+
+
+
+                //    Outlook.Application App = new Outlook.Application();
+                //    Outlook.MailItem msg = (Outlook.MailItem)App.CreateItem(Outlook.OlItemType.olMailItem);
+                //    //msg.HTMLBody = ("<img src=\"" + unit.uris[0] + "\"></img>"/*+ unit.ToString()*/);
+                //    //
+                //    msg.HTMLBody = ("<p><img src=\"http://www.voyagercacher.com/images/voyages-cacher/1389-11635.jpg\" alt=\"hotel\" width=\"400\" height=\"265\" /></p>< p >< img src = \"https://r-cf.bstatic.com/images/hotel/max1024x768/122/122205831.jpg\" alt = \"\" width = \"400\" height = \"265\" /></ p >        < p > Decription de l'hotel :</p>            < p > Ths hotel is in...</ p >               < p > It contains... places of Adults and ...&nbsp;< span style = \"font-size: 0.9em;\" > places of </ span >< span style = \"font-size: 0.9em;\" > &nbsp; children </ span ></ p >                              < p > there are...</ p > ");
+                //    // msg.HTMLBody=unit.ToString() ;
+                //    msg.Subject = "Choose this room !!!!!";
+                //    Outlook.Recipients recips = (Outlook.Recipients)msg.Recipients;
+                //    Outlook.Recipient recip = (Outlook.Recipient)recips.Add(request.mailAddress);
+                //    recip.Resolve();
+                //    msg.Send();
+                //    recips = null;
+                //    recip = null;
+                //    App = null;            
+                //    currentRequest = new GuestRequest();
+                //    DataContext = currentRequest;
+                //}
+                //if (!flag) throw new Exception("sorry there is no available room try others options");
+                //else
+                //{
+                //    MessageBox.Show("Your request has been registred, check your mail to look at your options");
+                //    this.Close();
+                //}
+                //throw new Exception("Your request has been registred, check your mail to look at your options");
+            }
+
+        }
     }
 }
