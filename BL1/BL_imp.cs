@@ -59,10 +59,10 @@ namespace BL1
                 password="789",
             }
             };
-            //for(int i = 0; i < 3; i++)
-            //{
-            //    dal.addHost(HostList[i]);
-            //}
+            for(int i = 0; i < 3; i++)
+            {
+                dal.addHost(HostList[i]);
+            }
 
             //dal = new Dal_imp();
             //initList();
@@ -349,12 +349,15 @@ namespace BL1
 
         public void updateOrder(Order order)
         {
-
+            List<Order> listToUpdate = new List<Order>();
             foreach (Order orders in getAllOrder(x => x.guestRequestKey == order.guestRequestKey))
             {
                 orders.status = OrderStatus.expired;
-                dal.updateOrder(orders);
+                listToUpdate.Add(orders);
             }
+            for (int i=0;i< listToUpdate.Count;i++)
+                dal.updateOrder(listToUpdate[i]);
+
             order.status = OrderStatus.reserved;
             reservePlaces(order);
             dal.updateOrder(order);     
@@ -420,15 +423,21 @@ namespace BL1
 
         public List<HostingUnit> getSuggestionList(long guestRequestKey)
         {
+            int c = 0;
             List<HostingUnit> listSuggestion = new List<HostingUnit>();
-            foreach (Order order in getAllOrder())
+            List<Order> listToUpdate = new List<Order>();
+            foreach (Order order in getAllOrder(x=> x.guestRequestKey== guestRequestKey))
             {
-                if (guestRequestKey == order.guestRequestKey)
                 {
                     order.status = OrderStatus.mailWasSent;
+                    listToUpdate.Add(order);
+                  //  dal.updateOrder(order);
                     listSuggestion.Add(getHostingUnit(order.hostingUnitKey));
                 }
             }
+
+            for (int i = 0; i < listToUpdate.Count; i++)
+                dal.updateOrder(listToUpdate[i]);
             return listSuggestion;
         }
         

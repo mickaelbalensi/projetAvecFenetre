@@ -69,7 +69,7 @@
                       Visibility="Hidden"
                       IsReadOnly="True"
                       FontSize="16" 
-                      FontWeight="Bold" Margin="4,4,2.333,14" RenderTransformOrigin="0.5,0.5" SelectionChanged="requestDetails_SelectionChanged"
+                      FontWeight="Bold" Margin="4,4,2.333,14" RenderTransformOrigin="0.5,0.5" 
                               >
                 <DataGrid.RenderTransform>
                     <TransformGroup>
@@ -106,7 +106,7 @@
                       Visibility="Hidden"
                       IsReadOnly="True"
                       FontSize="16" 
-                      FontWeight="Bold" Margin="-557,4,2,14" RenderTransformOrigin="0.5,0.5" SelectionChanged="requestDetails_SelectionChanged"
+                      FontWeight="Bold" Margin="-557,4,2,14" RenderTransformOrigin="0.5,0.5" 
                               >
                 <DataGrid.RenderTransform>
                     <TransformGroup>
@@ -143,7 +143,7 @@
                       Visibility="Hidden"
                       IsReadOnly="True"
                       FontSize="16" 
-                      FontWeight="Bold" Margin="-557,4,2,14" RenderTransformOrigin="0.5,0.5" SelectionChanged="requestDetails_SelectionChanged"
+                      FontWeight="Bold" Margin="-557,4,2,14" RenderTransformOrigin="0.5,0.5" 
                               >
                 <DataGrid.RenderTransform>
                     <TransformGroup>
@@ -180,7 +180,7 @@
                       Visibility="Hidden"
                       IsReadOnly="True"
                       FontSize="16" 
-                      FontWeight="Bold" Margin="-557,4,2,14" RenderTransformOrigin="0.5,0.5" SelectionChanged="requestDetails_SelectionChanged"
+                      FontWeight="Bold" Margin="-557,4,2,14" RenderTransformOrigin="0.5,0.5" 
                               >
                 <DataGrid.RenderTransform>
                     <TransformGroup>

@@ -28,11 +28,11 @@ namespace BE1
         public string tempUris{
             get
             {
-                //if (uris.Count() == 0)
+                if (uris.Count == 0)
                     return null;
 
                 string result = "";
-                int sizeA = uris.Count();
+                int sizeA = uris.Count;
                 result += "" + sizeA ;
 
                 for (int i = 0; i < sizeA; i++)
@@ -47,7 +47,6 @@ namespace BE1
                     string[] values = value.Split(',');
 
                     int sizeA = int.Parse(values[0]);
-                    uris = new List<string>();
 
                     int index = 1;
 
@@ -99,6 +98,7 @@ namespace BE1
 
         public HostingUnit()
         {
+            uris = new List<string>();
             //hostingUnitKey = Configuration.hostingUnitCount;
             //hostingUnitName = "";
             //countOrder = 0;

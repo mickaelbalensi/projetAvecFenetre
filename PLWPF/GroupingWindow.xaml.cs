@@ -37,7 +37,7 @@ namespace PLWPF
         {
             try
             {
-                requestDetails.ItemsSource = bl.getAllGuestRequest(x=>x.adults + x.children < int.Parse(personBox.Text) )
+                requestDetails.ItemsSource = bl.getAllGuestRequest(x => x.adults + x.children < int.Parse(personBox.Text));
             }
             catch (Exception ex)
             {
@@ -49,7 +49,7 @@ namespace PLWPF
         {
             try
             {
-                requestDetails.ItemsSource = bl.getAllGuestRequest(x => x.adults + x.children < int.Parse(personBox.Text))
+                requestDetails.ItemsSource = bl.getAllGuestRequest(x => x.adults + x.children < int.Parse(personBox.Text));
             }
             catch (Exception ex)
             {
@@ -61,7 +61,7 @@ namespace PLWPF
         {
             try
             {
-                requestDetails.ItemsSource = bl.getAllGuestRequest(x => x.adults + x.children < int.Parse(personBox.Text))
+                requestDetails.ItemsSource = bl.getAllGuestRequest(x => x.adults + x.children < int.Parse(personBox.Text));
             }
             catch (Exception ex)
             {
@@ -73,7 +73,7 @@ namespace PLWPF
         {
             try
             {
-                requestDetails.ItemsSource = bl.getAllGuestRequest(x => x.adults + x.children < int.Parse(personBox.Text))
+                requestDetails.ItemsSource = bl.getAllGuestRequest(x => x.adults + x.children < int.Parse(personBox.Text));
             }
             catch (Exception ex)
             {
