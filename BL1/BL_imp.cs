@@ -296,6 +296,8 @@ namespace BL1
                 if (firstDay == 31) { firstMonth++; firstDay = 0; }//if we got to the end of the month               //
             }
             dal.updateHostingUnit(unit);
+            order.status = OrderStatus.reserved;
+            dal.updateOrder(order);
         }
         public int cashMoneyFromHost(HostingUnit unit)
         {
@@ -355,11 +357,8 @@ namespace BL1
                 listToUpdate.Add(orders);
             }
             for (int i=0;i< listToUpdate.Count;i++)
-                dal.updateOrder(listToUpdate[i]);
-
-            order.status = OrderStatus.reserved;
-            reservePlaces(order);
-            dal.updateOrder(order);     
+                dal.updateOrder(listToUpdate[i]);          
+            reservePlaces(order);     
         }
         
         public IEnumerable<Order> getAllOrder(Func<Order, bool> predicate = null)
@@ -424,14 +423,18 @@ namespace BL1
         {
             int c = 0;
             List<HostingUnit> listSuggestion = new List<HostingUnit>();
+            List<Order> helpList = new List<Order>();
             foreach (Order order in getAllOrder())
             {
                 if (guestRequestKey == order.guestRequestKey)
                 {
                     order.status = OrderStatus.mailWasSent;
+                    helpList.Add(order);
                     listSuggestion.Add(getHostingUnit(order.hostingUnitKey));
                 }
             }
+            for (int i = 0; i < helpList.Count; i++)
+                dal.updateOrder(helpList[i]);
             return listSuggestion;
         }
         
