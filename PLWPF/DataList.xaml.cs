@@ -54,7 +54,8 @@ namespace PLWPF
 
         private void MoreOptions_Click(object sender, RoutedEventArgs e)
         {
-
+            GroupingWindow gw = new GroupingWindow();
+            gw.Show();
         }
 
         private void requestDetails_SelectionChanged(object sender, SelectionChangedEventArgs e)

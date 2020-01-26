@@ -18,6 +18,8 @@ namespace BL1
         // DAL1.IDAL dal = FactoryDal.GetDal();
         DAL1.IDAL dal;
         public List<Host> HostList;
+        public List<GuestRequest> guestRequestList;
+        public List<HostingUnit> unitList;
         public BL_imp()
         {
             dal = FactoryDal.Instance;
@@ -65,7 +67,7 @@ namespace BL1
             //}
 
             //dal = new Dal_imp();
-            //initList();
+           // initList();
 
         }
 
@@ -73,32 +75,25 @@ namespace BL1
         #region essai 
         void initList()
         {
-            GuestRequest request1 = new GuestRequest
+            guestRequestList = new List<GuestRequest> {
+            new GuestRequest
             {
-                guestRequestKey = 123,
-                entryDate = DateTime.Parse("11.12.88"),
-                releaseDate = DateTime.Parse("25.12.88"),
-                privateName = "ron",
-                familyName = "Bibas",
-                mailAddress = "bibasitshak@gmail.com",
-                status = GuestRequestStatus.transactionClosed,
+                guestRequestKey=123,
+                privateName = "itshak",
+                familyName="bibas",
+                mailAddress="bib@gmail.com",
+                status = GuestRequestStatus.active,
                 jacuzzi = Options.yes,
-                garden = Options.yes,
+                garden = Options.optional,
                 childrenAttractions = Options.yes,
-                adults = 1,
-                children = 0,
-            };
+                adults = 10,
+                children = 12,
 
-            try
-            {
-                this.addRequest(request1.Copy());
-            }
-            catch (Exception)
-            {
-                this.updateRequest(request1.Copy());
-            }
+            },
 
-            GuestRequest request2 = new GuestRequest
+
+
+            new GuestRequest
             {
                 guestRequestKey = 124,
                 entryDate = DateTime.Parse("08.10.88"),
@@ -112,20 +107,8 @@ namespace BL1
                 childrenAttractions = Options.yes,
                 adults = 2,
                 children = 10,
-
-
-            };
-
-            try
-            {
-                this.addRequest(request2.Copy());
-            }
-            catch (Exception)
-            {
-                this.updateRequest(request2.Copy());
-            }
-
-            GuestRequest request3 = new GuestRequest
+            },
+            new GuestRequest
             {
                 guestRequestKey = 125,
                 entryDate = DateTime.Parse("11.12.88"),
@@ -141,17 +124,11 @@ namespace BL1
                 children = 15,
 
 
+            },
             };
 
-            try
-            {
-                this.addRequest(request3.Copy());
-            }
-            catch (Exception)
-            {
-                this.updateRequest(request3.Copy());
-            }
-            HostingUnit s4 = new HostingUnit
+            unitList = new List<HostingUnit> {
+            new HostingUnit
             {
                 hostingUnitKey = 1234,
                 adultPlaces = 2,
@@ -162,7 +139,28 @@ namespace BL1
                 childrenAttractions = true,
                 pool = true,
 
+            },
+            new HostingUnit
+            {
+                hostingUnitKey = 12,
+                adultPlaces = 34,
+                childrenPlaces = 150,
+                hostingUnitName = "le palace",
+                jacuzzi = true,
+                garden = true,
+                childrenAttractions = true,
+                pool = true,
+
+            },
             };
+            for (int i = 0; i < 3; i++)
+                {
+                    dal.addRequest(guestRequestList[i]);
+                }
+            for (int i = 0; i < 2; i++)
+            {
+                dal.addHostingUnit(unitList[i]);
+            }
 
         }
         #endregion
@@ -250,6 +248,7 @@ namespace BL1
             return from request in getAllGuestRequest()
                    group request by (request.adults + request.children);
         }
+
         #endregion
         #region host
         public void addHost(Host host)
@@ -349,11 +348,13 @@ namespace BL1
 
         public void updateOrder(Order order)
         {
-
-            foreach (Order orders in getAllOrder(x => x.guestRequestKey == order.guestRequestKey))
+            foreach (Order orders in dal.getAllOrder())
             {
-                orders.status = OrderStatus.expired;
-                dal.updateOrder(orders);
+                if (orders.guestRequestKey == order.guestRequestKey)
+                {
+                    orders.status = OrderStatus.expired;
+                    dal.updateOrder(orders);
+                }
             }
             order.status = OrderStatus.reserved;
             reservePlaces(order);
@@ -421,13 +422,17 @@ namespace BL1
         public List<HostingUnit> getSuggestionList(long guestRequestKey)
         {
             List<HostingUnit> listSuggestion = new List<HostingUnit>();
-            foreach (Order order in getAllOrder())
+            Func<Order, bool> predicate = order =>
             {
-                if (guestRequestKey == order.guestRequestKey)
-                {
+                bool b1 = order.guestRequestKey == guestRequestKey;
+                return b1;
+            };
+
+            foreach (Order order in dal.getAllOrder(predicate))
+            {
                     order.status = OrderStatus.mailWasSent;
-                    listSuggestion.Add(getHostingUnit(order.hostingUnitKey));
-                }
+                    dal.updateOrder(order);
+                    listSuggestion.Add(getHostingUnit(order.hostingUnitKey));                
             }
             return listSuggestion;
         }
@@ -447,14 +452,12 @@ namespace BL1
         {
            return dal.getOrder(key);
         }
-
-        /*      public IEnumerable<IGrouping<TypeAreaOfTheCountry, GuestRequest>> groupRequestByAreaList()
+            public IEnumerable<IGrouping<TypeAreaOfTheCountry, GuestRequest>> groupRequestByAreaList()
               {
-                  return from request in getAllGuestRequest()
-                         group request by request.area into areagroup;
-                  //                   select new { area = areagroup.Key, request = areagroup };
-
-              }*/
+            return from request in getAllGuestRequest()
+                   let req = request.ToString()
+                   group request by request.typeArea;
+              }
 
         #endregion
 

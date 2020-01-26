@@ -5,10 +5,48 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="GroupingWindow" Height="450" Width="800">
-    <Grid Margin="0,0,0.333,0.667">
+        Title="GroupingWindow" Height="1252.286" Width="603.429">
 
-        <ComboBox 
+    <ScrollViewer Grid.Row="1" Margin="0,0,3.667,-0.333">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button 
+                        Content="Group request by area" Width="125" RenderTransformOrigin="0.152,0.744" Click="requestByArea_Click"
+                        />
+                <Button Width="222" Content="group request by numbers of tourists" Height="83" VerticalAlignment="Top" Click="requestBynumbers_Click"/>
+
+                <Button  Click="hostByunit_click"
+                        
+                  Content=  "Group hosts by units " Height="83" VerticalAlignment="Top"/>
+                <Button Height="81" Margin="0,0,0,-0.333" VerticalAlignment="Top" Click="unitByarea_click" 
+   
+                    Content ="Group units by area"/>
+
+            </StackPanel>
+            <ContentControl Width="auto" 
+                            x:Name="page" 
+                            Margin="10" 
+                            Grid.Row="1" 
+                            BorderBrush="Gray" 
+                            BorderThickness="5"
+                            HorizontalAlignment="Center"/>
+        </Grid>
+
+
+    </ScrollViewer>
+</Window>
+
+
+
+
+
+
+<!--<ComboBox 
                    x:Name="AreaComboBox"
                    SelectedValue="{Binding TypeAreaOfTheCountry, Mode=TwoWay}"
                    Margin="0,0,0,376.667"                   
@@ -53,160 +91,16 @@
         <Button x:Name="UnitByArea"
                 Content="List of units by area " Margin="0,335,564.333,35.667" RenderTransformOrigin="0.5,0.5" Click="UnitByArea_Click"
                 />
+            
 
-
-        <Grid x:Name="DataGridRequest" Margin="238,0,-11,3" RenderTransformOrigin="0.5,0.5">
-            <Grid.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleX="-1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Grid.RenderTransform>
-
-            <DataGrid x:Name="requestDetails" 
-                      Visibility="Hidden"
-                      IsReadOnly="True"
-                      FontSize="16" 
-                      FontWeight="Bold" Margin="4,4,2.333,14" RenderTransformOrigin="0.5,0.5" SelectionChanged="requestDetails_SelectionChanged"
-                              >
-                <DataGrid.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform ScaleX="-1"/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="359.974"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </DataGrid.RenderTransform>
-                <DataGrid.Columns>
-                    <DataGridTextColumn  Header="Key" Width="20" Binding="{Binding guestRequestkey}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="P name" Width="auto" Binding="{Binding privateName}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="Fname" Width="auto" Binding="{Binding familyName}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="C.places" Width="70" Binding="{Binding childrenPlaces}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="A.places" Width="70" Binding="{Binding adultPlaces}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="Type" Width="62" Binding="{Binding typeOfUnit}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="Location" Width="75" Binding="{Binding typeArea}" FontSize="14" FontWeight="Normal"/>
-
-                </DataGrid.Columns>
-
-            </DataGrid>
-        </Grid>
-        <Grid x:Name="DataGridRequestByArea" Margin="9,0,-11,3" RenderTransformOrigin="0.5,0.5">
-            <Grid.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleX="-1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Grid.RenderTransform>
-
-            <DataGrid x:Name="requestDetailsArea" 
-                      Visibility="Hidden"
-                      IsReadOnly="True"
-                      FontSize="16" 
-                      FontWeight="Bold" Margin="-557,4,2,14" RenderTransformOrigin="0.5,0.5" SelectionChanged="requestDetails_SelectionChanged"
-                              >
-                <DataGrid.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform ScaleX="-1"/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="359.974"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </DataGrid.RenderTransform>
-                <DataGrid.Columns>
-                    <DataGridTextColumn  Header="Key" Width="20" Binding="{Binding guestRequestkey}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="P name" Width="auto" Binding="{Binding privateName}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="Fname" Width="auto" Binding="{Binding familyName}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="C.places" Width="70" Binding="{Binding childrenPlaces}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="A.places" Width="70" Binding="{Binding adultPlaces}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="Type" Width="62" Binding="{Binding typeOfUnit}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="Location" Width="75" Binding="{Binding typeArea}" FontSize="14" FontWeight="Normal"/>
-
-                </DataGrid.Columns>
-
-            </DataGrid>
-        </Grid>
-        <Grid x:Name="DataGridHost" Margin="9,0,-11,3" RenderTransformOrigin="0.5,0.5">
-            <Grid.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleX="-1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Grid.RenderTransform>
-
-            <DataGrid x:Name="HostDetails" 
-                      Visibility="Hidden"
-                      IsReadOnly="True"
-                      FontSize="16" 
-                      FontWeight="Bold" Margin="-557,4,2,14" RenderTransformOrigin="0.5,0.5" SelectionChanged="requestDetails_SelectionChanged"
-                              >
-                <DataGrid.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform ScaleX="-1"/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="359.974"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </DataGrid.RenderTransform>
-                <DataGrid.Columns>
-                    <DataGridTextColumn  Header="Key" Width="20" Binding="{Binding hostKey}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="P name" Width="auto" Binding="{Binding privateName}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="Fname" Width="auto" Binding="{Binding familyName}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="C.places" Width="70" Binding="{Binding phoneNumber}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="A.places" Width="70" Binding="{Binding mailAddress}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="Type" Width="62" Binding="{Binding bankBranchDetails}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="Location" Width="75" Binding="{Binding bankAccountNumber}" FontSize="14" FontWeight="Normal"/>
-
-                </DataGrid.Columns>
-
-            </DataGrid>
-        </Grid>
-        <Grid x:Name="DataGridArea" Margin="9,0,-11,3" RenderTransformOrigin="0.5,0.5">
-            <Grid.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform ScaleX="-1"/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Grid.RenderTransform>
-
-            <DataGrid x:Name="AreaDetails" 
-                      Visibility="Hidden"
-                      IsReadOnly="True"
-                      FontSize="16" 
-                      FontWeight="Bold" Margin="-557,4,2,14" RenderTransformOrigin="0.5,0.5" SelectionChanged="requestDetails_SelectionChanged"
-                              >
-                <DataGrid.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform ScaleX="-1"/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="359.974"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </DataGrid.RenderTransform>
-                <DataGrid.Columns>
-                    <DataGridTextColumn  Header="Key" Width="20" Binding="{Binding hostingUnitKey}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="P name" Width="auto" Binding="{Binding hostingUnitName}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="Fname" Width="auto" Binding="{Binding adultPlaces}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="C.places" Width="70" Binding="{Binding childrenPlaces}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="A.places" Width="70" Binding="{Binding adultPlaces}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="Type" Width="62" Binding="{Binding typeArea}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="Location" Width="75" Binding="{Binding typeOfUnit}" FontSize="14" FontWeight="Normal"/>
-
-                </DataGrid.Columns>
-
-            </DataGrid>
-        </Grid>
+        
+        
+       
+        
     </Grid>
     
     
-</Window>
+</Window>-->
 
 
     

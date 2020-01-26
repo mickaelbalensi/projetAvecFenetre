@@ -156,25 +156,25 @@
                    Grid.Column="0"
                    Grid.Row="6"
                    Margin="15,15,15,0"/>
-                <DatePicker Name="EntryDateCalendar"
-                   Grid.Column="1"
-                   Grid.Row="6"
-                   Margin="15,15,0,10"
-                   SelectedDate="{Binding entryDate, Mode=TwoWay}"
-                        HorizontalAlignment="Left" Width="269"
-                />
+                <DatePicker x:Name="EntryDateCalendar" 
+                        Grid.Row="6" 
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Margin="10" 
+                        FontSize="18" 
+                        SelectedDate="{Binding entryDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
+              
                 <Label Content="Release-Date :"
                    Grid.Column="0"
                    Grid.Row="7"
                    Margin="15,15,15,0"/>
-                <DatePicker Name="ReleaseDateCalendar"
-                   Grid.Column="1"
-                   Grid.Row="7"
-                   Margin="15,16,0,10"
-                   Visibility="{Binding ElementName=EntryDateCalendar, Path=SelectedDate}"
-                   SelectedDate="{Binding releaseDate, Mode=TwoWay}"
-                        HorizontalAlignment="Left" Width="269"
-                />
+                <DatePicker x:Name="ReleaseDateCalendar" 
+                        Grid.Row="7" 
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Margin="10" 
+                        FontSize="18" 
+                        SelectedDate="{Binding releaseDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" />
                 <!--#endregion-->
                 <!--#region person-->
                 <Label Content="How many ?"
@@ -391,3 +391,4 @@
     </ScrollViewer>
 
 </Window>
+    
