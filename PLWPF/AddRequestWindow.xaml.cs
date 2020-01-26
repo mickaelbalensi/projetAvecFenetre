@@ -34,61 +34,27 @@ namespace PLWPF
         {
 
             if (currentRequest == null)
-                currentRequest = new GuestRequest
-                {
-                    //guestRequestKey = Configuration.guestRequestCount + 1
-                };
+                currentRequest = new GuestRequest();
             InitializeComponent();
             this.DataContext = currentRequest;
 
-            //  InitializeComponent();
-            // currentRequest = new GuestRequest();
             bl = FactoryBL.getBL();
             idBox.Text = bl.getGuestRequestCount().ToString();
             this.AreaComboBox.ItemsSource = Enum.GetValues(typeof(BE1.TypeAreaOfTheCountry));
             this.UnitComboBox.ItemsSource = Enum.GetValues(typeof(BE1.TypeOfHostingUnit));
 
-            //EntryDateCalendar.
-            EntryDateCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.Now, DateTime.Parse("01/01/3000")));
-            //EntryDateCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.Parse("01/01/1111"), DateTime.Parse("01/01/2000")));
-            EntryDateCalendar.SelectedDate = DateTime.Parse("01/01/2012");
-            ReleaseDateCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.Now, DateTime.Parse("01/01/3000")));
-            //ReleaseDateCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.Parse("01/01/1111"), DateTime.Parse("01/01/2000")));
-            ReleaseDateCalendar.SelectedDate = DateTime.Parse("01/01/2012");
-            //EntryDateCalendar.BlackoutDates.Add(new CalendarDateRange(DateTime.Parse("01/01/1111"), DateTime.Parse("01/01/2000")));
-            // EntryDateCalendar.SelectedDate = DateTime.Parse("01/01/2012");
+            EntryDateCalendar.DisplayDateStart = DateTime.Now;
 
-            #region commentaire du calendar
-            //myCalendar = CreateCalendar();
-            //EntryDateCalendar.Child = null;
-            //EntryDateCalendar.Child = myCalendar;
-            #endregion
+            ReleaseDateCalendar.DisplayDateStart = DateTime.Now;
+
         }
-        #region commentaire du calendar
-        //private Calendar myCalendar;
-
-        //private Calendar CreateCalendar()
-        //{
-        //    Calendar MonthlyCalendar = new Calendar();
-        //    MonthlyCalendar.Name = "MonthlyCalendar";
-        //    MonthlyCalendar.DisplayMode = CalendarMode.Month;
-        //    MonthlyCalendar.SelectionMode = CalendarSelectionMode.SingleRange;
-        //    MonthlyCalendar.IsTodayHighlighted = true;
-        //    return MonthlyCalendar;
-        //}
-        #endregion
 
         private void buttonRequest_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 checkExceptions();
-
-
-
-
                 currentRequest.guestRequestKey = long.Parse(idBox.Text);
-                //currentRequest.status = GuestRequestStatus.active;
                 currentRequest.registrationDate = DateTime.Now;
                 currentRequest.jacuzzi = JacuzziCheckBox.IsChecked == true ? Options.yes : JacuzziCheckBox.IsChecked == false ? Options.optional : Options.no;
                 currentRequest.pool = PoolCheckBox.IsChecked == true ? Options.yes : PoolCheckBox.IsChecked == false ? Options.optional : Options.no;
@@ -106,13 +72,13 @@ namespace PLWPF
                     UnitComboBox.SelectedIndex == 2 ? TypeOfHostingUnit.apartment :
                     UnitComboBox.SelectedIndex == 3 ? TypeOfHostingUnit.roomOfHotel :
                     TypeOfHostingUnit.tent;
-
-
+                currentRequest.entryDate = EntryDateCalendar.SelectedDate.Value;
+                currentRequest.releaseDate = ReleaseDateCalendar.SelectedDate.Value;
                 bl.addRequest(currentRequest);
                 bl.getSuggestionList(currentRequest.guestRequestKey);
-                //sendMail(currentRequest, bl.getSuggestionList(currentRequest.guestRequestKey));
+                sendMail(currentRequest, bl.getSuggestionList(currentRequest.guestRequestKey));
                 //Window suggestion = new SuggestionWindow(key);
-                // this.Close();
+                 this.Close();
             }
             catch (Exception ex)
             {
@@ -178,7 +144,7 @@ namespace PLWPF
             {
                 flag = true;
                 string unitName = unit.hostingUnitName;
-
+                /*
                 MailMessage mail = new MailMessage();
                 mail.To.Add(request.mailAddress);
                 mail.From = new MailAddress("mickaelbalensi2652@gmail.com");
@@ -200,38 +166,34 @@ namespace PLWPF
                 {
                     MessageBox.Show(ex.Message);
                 }
+                */
+                Outlook.Application App = new Outlook.Application();
+                Outlook.MailItem msg = (Outlook.MailItem)App.CreateItem(Outlook.OlItemType.olMailItem);
 
-
-
-
-
-
-                //    Outlook.Application App = new Outlook.Application();
-                //    Outlook.MailItem msg = (Outlook.MailItem)App.CreateItem(Outlook.OlItemType.olMailItem);
-                //    //msg.HTMLBody = ("<img src=\"" + unit.uris[0] + "\"></img>"/*+ unit.ToString()*/);
-                //    //
-                //    msg.HTMLBody = ("<p><img src=\"http://www.voyagercacher.com/images/voyages-cacher/1389-11635.jpg\" alt=\"hotel\" width=\"400\" height=\"265\" /></p>< p >< img src = \"https://r-cf.bstatic.com/images/hotel/max1024x768/122/122205831.jpg\" alt = \"\" width = \"400\" height = \"265\" /></ p >        < p > Decription de l'hotel :</p>            < p > Ths hotel is in...</ p >               < p > It contains... places of Adults and ...&nbsp;< span style = \"font-size: 0.9em;\" > places of </ span >< span style = \"font-size: 0.9em;\" > &nbsp; children </ span ></ p >                              < p > there are...</ p > ");
-                //    // msg.HTMLBody=unit.ToString() ;
-                //    msg.Subject = "Choose this room !!!!!";
-                //    Outlook.Recipients recips = (Outlook.Recipients)msg.Recipients;
-                //    Outlook.Recipient recip = (Outlook.Recipient)recips.Add(request.mailAddress);
-                //    recip.Resolve();
-                //    msg.Send();
-                //    recips = null;
-                //    recip = null;
-                //    App = null;            
-                //    currentRequest = new GuestRequest();
-                //    DataContext = currentRequest;
-                //}
-                //if (!flag) throw new Exception("sorry there is no available room try others options");
-                //else
-                //{
-                //    MessageBox.Show("Your request has been registred, check your mail to look at your options");
-                //    this.Close();
-                //}
-                //throw new Exception("Your request has been registred, check your mail to look at your options");
+                //msg.HTMLBody = ("<img src=\"" + unit.uris[0] + "\"></img>"/*+ unit.ToString()*/);
+                string description= unit.ToString();
+                msg.HTMLBody = ("<p><img src=\"http://www.voyagercacher.com/images/voyages-cacher/1389-11635.jpg\" alt=\"hotel\" width=\"400\" height=\"265\" /></p>   < p >"+ description+"</p>  ");
+                // msg.HTMLBody=unit.ToString() ;
+                msg.Subject = unit.hostingUnitName;
+                Outlook.Recipients recips = (Outlook.Recipients)msg.Recipients;
+                Outlook.Recipient recip = (Outlook.Recipient)recips.Add(request.mailAddress);
+                recip.Resolve();
+                msg.Send();
+                recips = null;
+                recip = null;
+                App = null;            
+                currentRequest = new GuestRequest();
+                DataContext = currentRequest;
+                }
+                if (!flag) throw new Exception("sorry there is no available room try others options");
+                else
+                {
+                    MessageBox.Show("Your request has been registred, check your mail to look at your options");
+                    this.Close();
+                }
+                throw new Exception("Your request has been registred, check your mail to look at your options");
             }
 
         }
     }
-}
+

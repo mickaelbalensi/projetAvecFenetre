@@ -50,7 +50,6 @@ namespace DAL1
             else
                 LoadData();
         }
-
         private void CreateFiles()
         {
             guestRequestRoot = new XElement("Request");
@@ -79,7 +78,6 @@ namespace DAL1
 
             DownloadBankBranch();
         }
-
         private void LoadData()
         {
             try
@@ -239,13 +237,6 @@ namespace DAL1
             return request;
         }
         XElement ConvertHostingUnitToXAML(HostingUnit unit) {
-            //XElement uris = new XElement("uris");
-
-            //foreach (string str in unit.uris)
-            //{
-            //    XElement img = new XElement("img", str);
-            //    uris.Add(img);
-            //}
 
             return
                 new XElement("HostingUnit",
@@ -553,7 +544,6 @@ namespace DAL1
         }
 
         #endregion
-
         #region request region
         public void addRequest(GuestRequest guest)
         {
@@ -581,10 +571,6 @@ namespace DAL1
 
 
         }
-        //public GuestRequest getRequest(long key)
-        //{
-        //    throw new NotImplementedException();
-        //}
         public void updateRequest(GuestRequest guest)
         {
             if (getAllGuestRequest(x => x.guestRequestKey == guest.guestRequestKey).FirstOrDefault() == null)

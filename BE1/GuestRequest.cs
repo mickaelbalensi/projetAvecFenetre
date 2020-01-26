@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 //using DAL1;
 namespace BE1
 {
-    //changement nom en minuscule
     [Serializable]
     public class GuestRequest 
     {
@@ -16,13 +15,6 @@ namespace BE1
         public string privateName { get; set; }
         public string familyName { get; set; }
         public string mailAddress { get; set; }
-        //status
-
-
-        //faut il definir le satut de CustomerRequirementStatus 
-        //dans le champs directement plutot que ds le ctor
-        //car interdit d'utiliser ctor d'apres ennoncé
-
 
         public GuestRequestStatus status { get; set; }
         public DateTime registrationDate { get; set; }
@@ -30,7 +22,6 @@ namespace BE1
         public DateTime releaseDate { get; set; }
         public bool transactionSigned { get; set; }
         public TypeAreaOfTheCountry typeArea { get; set; }
-        //subArea
         public TypeOfHostingUnit type { get; set; }
         public int adults { get; set; }
         public int children { get; set; }
@@ -40,26 +31,8 @@ namespace BE1
         public Options childrenAttractions { get; set; }
 
 
-        //doit onn laisser le ctor, sinon attention au compte de Configuration.guestRequestCount++;
         public GuestRequest()
         {
-/*
-            guestRequestKey = Configuration.guestRequestCount;
-            privateName = "";
-            familyName = "";
-            mailAddress = "";
-            status = GuestRequestStatus.active;
-            registrationDate = new DateTime(2000, 1, 1);
-            entryDate = new DateTime(2000, 1, 1);
-            releaseDate = new DateTime(2000, 1, 1);
-            typeArea = TypeAreaOfTheCountry.all;
-            type = TypeOfHostingUnit.all;
-            adults = 1;
-            children = 0;
-            pool = Options.optional;
-            garden = Options.optional;
-            childrenAttractions = Options.optional;
-            */
 
         }
         public override string ToString()

@@ -21,10 +21,6 @@ namespace DAL1
                 return instance;
             }
         }
-        /*
-        public static IDAL GetDal()
-        {
-            return new DAL_XML();
-        }*/
+
     }
 }

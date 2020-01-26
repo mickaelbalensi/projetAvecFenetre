@@ -11,11 +11,8 @@ namespace BL1
     public interface IBL
     {
 
-        //request
         #region request
         void addRequest(GuestRequest request);
-        //GuestRequest getRequest(long key);
-
         void updateRequest(GuestRequest request);
         IEnumerable<GuestRequest> getAllGuestRequest(Func<GuestRequest, bool> predicate = null);
         #endregion
@@ -23,8 +20,9 @@ namespace BL1
         void addHostingUnit(HostingUnit unit);
         void updateHostingUnit(HostingUnit unit);
         void deleteHostingUnit(HostingUnit unit);
-        //HostingUnit getHostingUnit(long key);
         IEnumerable<HostingUnit> getAllHostingUnit(Func<HostingUnit, bool> predicate = null);
+        List<HostingUnit> getSuggestionList(long guestRequestKey);
+
         #endregion
         #region order
         void addOrder(GuestRequest request);
@@ -39,24 +37,12 @@ namespace BL1
 
         long getOrderCount();
         #endregion
-
-
-
         #region host
         void addHost(Host host);
         Host checkParameters(long key, string pwd);
         Host getHost(long key);
         IEnumerable<Host> getAllHost(Func<Host, bool> predicate = null);
         #endregion
-
-        List<HostingUnit> getSuggestionList(long guestRequestKey);
-
-
-
-        //       void printAllBranchesOfBank(BankBranch bank);
-
-
-
 
 
 

@@ -31,17 +31,11 @@ namespace BE1
 
         public BankBranch()
         {
-            //bankNumber = Bank.bankHapoalim;
-            //bankName = Bank.bankHapoalim.ToString();
-            //branchNumber = 0;
-            //branchAddress = "";
-            //branchCity = "";
         }
 
         public override string ToString()
         {
             return "";
-
         }
     }
 }

@@ -160,8 +160,7 @@
                    Grid.Column="1"
                    Grid.Row="6"
                    Margin="15,15,0,10"
-                   SelectedDate="{Binding entryDate, Mode=TwoWay}"
-                        HorizontalAlignment="Left" Width="269"
+                   HorizontalAlignment="Left" Width="269"
                 />
                 <Label Content="Release-Date :"
                    Grid.Column="0"
@@ -172,8 +171,7 @@
                    Grid.Row="7"
                    Margin="15,16,0,10"
                    Visibility="{Binding ElementName=EntryDateCalendar, Path=SelectedDate}"
-                   SelectedDate="{Binding releaseDate, Mode=TwoWay}"
-                        HorizontalAlignment="Left" Width="269"
+                   HorizontalAlignment="Left" Width="269"
                 />
                 <!--#endregion-->
                 <!--#region person-->

@@ -33,8 +33,6 @@ namespace BL1
                 bankAccountNumber=123,
                 collectionClearance=true,
                 password="123",
-               
-
             },
             new Host
             {
@@ -63,9 +61,6 @@ namespace BL1
             {
                 dal.addHost(HostList[i]);
             }
-
-            //dal = new Dal_imp();
-            //initList();
 
         }
 
@@ -280,39 +275,6 @@ namespace BL1
 
 
         #endregion
-
-        public void reservePlaces(Order order)
-        {
-            HostingUnit unit = getHostingUnit(order.hostingUnitKey);
-            GuestRequest request = getRequest(order.guestRequestKey);
-            int firstDay = request.entryDate.Day;
-            int firstMonth = request.entryDate.Month;
-            int lastDay = request.entryDate.Day;
-            int lastMonth = request.entryDate.Month;
-            firstDay -= 1;
-            firstMonth -= 1;
-            while (firstDay != lastDay || firstMonth != lastMonth)
-            {
-                unit.diary[firstMonth, firstDay++]=true;
-                if (firstDay == 31) { firstMonth++; firstDay = 0; }//if we got to the end of the month               //
-            }
-            dal.updateHostingUnit(unit);
-        }
-        public int cashMoneyFromHost(HostingUnit unit)
-        {
-            int sum = 0;
-            int month = 0;
-            int day = 0;
-            while (month != 11 || day!= 30)
-            {
-                if (unit.diary[month, day++])//if one's of the day is already taken 
-                    sum += 10;
-                if (day == 31) { day++; day = 0; }//if we got to the end of the month               //
-            }
-            return sum;
-        }
-        
-
         #region order
         public void addOrder(GuestRequest request)
         {
@@ -370,6 +332,37 @@ namespace BL1
 
         #endregion
         #region functions
+        public void reservePlaces(Order order)
+        {
+            HostingUnit unit = getHostingUnit(order.hostingUnitKey);
+            GuestRequest request = getRequest(order.guestRequestKey);
+            int firstDay = request.entryDate.Day;
+            int firstMonth = request.entryDate.Month;
+            int lastDay = request.entryDate.Day;
+            int lastMonth = request.entryDate.Month;
+            firstDay -= 1;
+            firstMonth -= 1;
+            while (firstDay != lastDay || firstMonth != lastMonth)
+            {
+                unit.diary[firstMonth, firstDay++] = true;
+                if (firstDay == 31) { firstMonth++; firstDay = 0; }//if we got to the end of the month               //
+            }
+            dal.updateHostingUnit(unit);
+        }
+        public int cashMoneyFromHost(HostingUnit unit)
+        {
+            int sum = 0;
+            int month = 0;
+            int day = 0;
+            while (month != 11 || day != 30)
+            {
+                if (unit.diary[month, day++])//if one's of the day is already taken 
+                    sum += 10;
+                if (day == 31) { day++; day = 0; }//if we got to the end of the month               //
+            }
+            return sum;
+        }
+
 
         public IEnumerable<HostingUnit> getFreeUnitList(DateTime entrydate, DateTime releasedate)
         {
@@ -466,7 +459,6 @@ namespace BL1
               }*/
 
         #endregion
-
         #region configuration
         public long getGuestRequestCount()
         {
