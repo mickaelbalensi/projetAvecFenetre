@@ -33,52 +33,28 @@ namespace PLWPF
         }
 
 
-        private void requestBynumbers_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                requestDetails.ItemsSource = bl.getAllGuestRequest(x => x.adults + x.children < int.Parse(personBox.Text));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+       
 
         private void requestByArea_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                requestDetails.ItemsSource = bl.getAllGuestRequest(x => x.adults + x.children < int.Parse(personBox.Text));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            GroupRequestByAreaWindow grb = new GroupRequestByAreaWindow();
+            grb.source = App.bl.groupRequestByAreaList();
+            this.page.Content = grb;
         }
 
-        private void hostByUnits_Click(object sender, RoutedEventArgs e)
+        private void requestBynumbers_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                requestDetails.ItemsSource = bl.getAllGuestRequest(x => x.adults + x.children < int.Parse(personBox.Text));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+
         }
 
-        private void UnitByArea_Click(object sender, RoutedEventArgs e)
+        private void hostByunit_click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                requestDetails.ItemsSource = bl.getAllGuestRequest(x => x.adults + x.children < int.Parse(personBox.Text));
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+
+        }
+
+        private void unitByarea_click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

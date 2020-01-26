@@ -71,6 +71,9 @@
     <Compile Include="GroupingWindow.xaml.cs">
       <DependentUpon>GroupingWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GroupRequestByAreaWindow.xaml.cs">
+      <DependentUpon>GroupRequestByAreaWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GroupWindow.xaml.cs">
       <DependentUpon>GroupWindow.xaml</DependentUpon>
     </Compile>
@@ -142,6 +145,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GroupingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GroupRequestByAreaWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

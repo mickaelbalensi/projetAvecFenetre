@@ -76,9 +76,9 @@ namespace PLWPF
                 currentRequest.releaseDate = ReleaseDateCalendar.SelectedDate.Value;
                 bl.addRequest(currentRequest);
                 bl.getSuggestionList(currentRequest.guestRequestKey);
-                sendMail(currentRequest, bl.getSuggestionList(currentRequest.guestRequestKey));
+                //sendMail(currentRequest, bl.getSuggestionList(currentRequest.guestRequestKey));
                 //Window suggestion = new SuggestionWindow(key);
-                 this.Close();
+                // this.Close();
             }
             catch (Exception ex)
             {
@@ -137,10 +137,10 @@ namespace PLWPF
             if (f1 || f2 || f3 || f4 || f5) throw new Exception("please check your items and try again");
 
         }
-        public void sendMail(GuestRequest request, List<HostingUnit> suggestionList)
+        public void sendMail(GuestRequest request)
         {
             bool flag = false;
-            foreach (HostingUnit unit in suggestionList)
+            foreach (HostingUnit unit in bl.getSuggestionList(currentRequest.guestRequestKey))
             {
                 flag = true;
                 string unitName = unit.hostingUnitName;
@@ -154,10 +154,11 @@ namespace PLWPF
                 mail.IsBodyHtml = true;
 
                 SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-               // smtp.Host = "smtp.gmail.com";
+                // smtp.Host = "smtp.gmail.com";
                 //smtp.Port = 587;
-                smtp.Credentials = new System.Net.NetworkCredential("mickaelbalensi2652@gmail.com","gm61352+");
+                smtp.Credentials = new System.Net.NetworkCredential("mickaelbalensi2652@gmail.com", "gm61352+");
                 smtp.EnableSsl = true;
+            
                 try
                 {
                     smtp.Send(mail);

@@ -48,15 +48,15 @@ namespace DAL1
                 || !File.Exists(bankBranchPath))
                 CreateFiles();
             else
-                LoadData();
+                CreateFiles();
         }
         private void CreateFiles()
         {
             guestRequestRoot = new XElement("Request");
             guestRequestRoot.Save(guestRequestPath);
 
-            //hostRoot = new XElement("Host");
-            //hostRoot.Save(hostPath);
+            hostRoot = new XElement("Host");
+            hostRoot.Save(hostPath);
 
             hostingUnitRoot = new XElement("HostingUnit");
             hostingUnitRoot.Save(hostingUnitPath);
@@ -645,7 +645,7 @@ namespace DAL1
         public void deleteHostingUnit(HostingUnit unit)
         {
             XElement toRemove = (from item in hostingUnitRoot.Elements()
-                                 where long.Parse(item.Element("HostingUnit").Element("hostingUnitKey").Value) == unit.hostingUnitKey
+                                 where long.Parse(item.Element("hostingUnitKey").Value) == unit.hostingUnitKey
                                  select item).FirstOrDefault();
 
             if (toRemove == null)
@@ -722,10 +722,11 @@ namespace DAL1
                 return from item in orderRoot.Elements()
                        select ConvertXAMLToOrder(item);
             }
-            return from item in orderRoot.Elements()
+            var variable= from item in orderRoot.Elements()
                    let ord = ConvertXAMLToOrder(item)
                    where predicate(ord)
                    select ord;
+            return variable;
         }
         public Order getOrder(long key)
         {

@@ -16,15 +16,15 @@ namespace BE1
         public DateTime createDate { get; set; }
         public DateTime orderDate { get; set; }
 
-        public Order()
-        {
-            hostingUnitKey = 00000000;
-            guestRequestKey = 00000000;
-            orderKey = 00000000;
-            status = OrderStatus.notYetAddressed;
-            createDate = new DateTime(2000, 1, 1);
-            orderDate = new DateTime(2000, 1, 1);
-        }
+        //public Order()
+        //{
+        //    hostingUnitKey = 00000000;
+        //    guestRequestKey = 00000000;
+        //    orderKey = 00000000;
+        //    status = OrderStatus.notYetAddressed;
+        //    createDate = new DateTime(2000, 1, 1);
+        //    orderDate = new DateTime(2000, 1, 1);
+        //}
         public override string ToString()
         {
             return "hostingUnitKey : " + hostingUnitKey + "\n" +
