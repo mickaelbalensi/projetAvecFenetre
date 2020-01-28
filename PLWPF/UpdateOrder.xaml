@@ -77,10 +77,10 @@
                       Margin="10,0,0,0" Width="639" Height="462" VerticalAlignment="Top" 
                               >
                 <DataGrid.Columns>
-                    <DataGridTextColumn  Header="Order key" Width="*" Binding="{Binding orderKey}" FontSize="14" FontWeight="Normal"/>
+                    <!--<DataGridTextColumn  Header="Order key" Width="*" Binding="{Binding orderKey}" FontSize="14" FontWeight="Normal"/>
                     <DataGridTextColumn Header="HostingUnit key" Width="*" Binding="{Binding hostingUnitKey}" FontSize="14" FontWeight="Normal"/>
                     <DataGridTextColumn Header="GuestRequest key" Width="*" Binding="{Binding guestRequestKey}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="Order status" Width="*" Binding="{Binding status}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Order status" Width="*" Binding="{Binding status}" FontSize="14" FontWeight="Normal"/>-->
 
                 </DataGrid.Columns>
 

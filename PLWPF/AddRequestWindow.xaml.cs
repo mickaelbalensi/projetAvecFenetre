@@ -75,8 +75,7 @@ namespace PLWPF
                 currentRequest.entryDate = EntryDateCalendar.SelectedDate.Value;
                 currentRequest.releaseDate = ReleaseDateCalendar.SelectedDate.Value;
                 bl.addRequest(currentRequest);
-                bl.getSuggestionList(currentRequest.guestRequestKey);
-                //sendMail(currentRequest, bl.getSuggestionList(currentRequest.guestRequestKey));
+                sendMail(currentRequest);
                 //Window suggestion = new SuggestionWindow(key);
                 // this.Close();
             }

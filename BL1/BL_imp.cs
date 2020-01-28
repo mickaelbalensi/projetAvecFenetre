@@ -179,10 +179,12 @@ namespace BL1
 
             int firstDay = request.entryDate.Day;
             int firstMonth = request.entryDate.Month;
-            int lastDay = request.entryDate.Day;
-            int lastMonth = request.entryDate.Month;
+            int lastDay = request.releaseDate.Day;
+            int lastMonth = request.releaseDate.Month;
             firstDay -= 1;
             firstMonth -= 1;
+            lastDay -= 1;
+            lastMonth -= 1;
             while (firstDay != lastDay || firstMonth != lastMonth)
             {
                 if (unit.diary[firstMonth, firstDay++])//if one's of the day is already taken 
@@ -190,7 +192,6 @@ namespace BL1
                 if (firstDay == 31) { firstMonth++; firstDay = 0; }//if we got to the end of the month               //
             }
             return true;
-
         }
         public void checkDate(GuestRequest request)
         {
@@ -292,20 +293,22 @@ namespace BL1
         //    }
         //    dal.updateHostingUnit(unit);
         //}
-        //public int cashMoneyFromHost(HostingUnit unit)
-        //{
-        //    int sum = 0;
-        //    int month = 0;
-        //    int day = 0;
-        //    while (month != 11 || day!= 30)
-        //    {
-        //        if (unit.diary[month, day++])//if one's of the day is already taken 
-        //            sum += 10;
-        //        if (day == 31) { day++; day = 0; }//if we got to the end of the month               //
-        //    }
-        //    return sum;
-        //}
-        
+        public int cashMoneyFromHost(Order order)
+        {
+            HostingUnit unit=getHostingUnit(order.hostingUnitKey);
+            GuestRequest request = getRequest(order.guestRequestKey);
+            int sum = 0;
+            int month = 0;
+            int day = 0;
+            while (month != 11 || day != 30)
+            {
+                if (unit.diary[month, day++])//if one's of the day is already taken 
+                    sum += 10;
+                if (day == 31) { day++; day = 0; }//if we got to the end of the month               //
+            }
+            return sum;
+        }
+
 
         #region order
         public void addOrder(GuestRequest request)
@@ -321,23 +324,21 @@ namespace BL1
                 bool b7 = (request.typeArea == TypeAreaOfTheCountry.all) ? true : request.typeArea == unit.typeArea;
                 return b1 && b2 && b3 && b4 && b5 && b6 && b7;
             };
-
             foreach (HostingUnit unit in getAllHostingUnit(predicate))
             {
                 if (isRoomFree(unit, request))//check if the room is free 
                 {
-                    
+
                     dal.addOrder(new Order
                     {
                         //orderKey = Configuration.orderCount++,
                         hostingUnitKey = unit.hostingUnitKey,
                         guestRequestKey = request.guestRequestKey,
                         status = OrderStatus.notYetAddressed,
-                        createDate = request.entryDate
-                    }.Copy()); 
+                        createDate = request.entryDate,
+                    }.Copy());
                 }
-            }
-
+            }         
         }
 
 
@@ -346,16 +347,19 @@ namespace BL1
             List<Order> listToUpdate = new List<Order>();
             foreach (Order orders in getAllOrder(x => x.guestRequestKey == order.guestRequestKey))
             {
-                orders.status = OrderStatus.expired;
-                listToUpdate.Add(orders);
+                if (orders.orderKey != order.orderKey)
+                {
+                    orders.status = OrderStatus.expired;
+                    reservePlaces(order, false);                   
+                    //listToUpdate.Add(orders);
+                }
             }
-            for (int i=0;i< listToUpdate.Count;i++)
-                dal.updateOrder(listToUpdate[i]);  
+            //for (int i=0;i< listToUpdate.Count;i++)
+               // dal.updateOrder(listToUpdate[i]);  
             
-            reservePlaces(order);
+            reservePlaces(order,true);
             order.status = OrderStatus.reserved;
             dal.updateOrder(order);
-
         }
         
         public IEnumerable<Order> getAllOrder(Func<Order, bool> predicate = null)
@@ -365,7 +369,7 @@ namespace BL1
 
         #endregion
         #region functions
-        public void reservePlaces(Order order)
+        public void reservePlaces(Order order, bool flag)
         {
             HostingUnit unit = getHostingUnit(order.hostingUnitKey);
             GuestRequest request = getRequest(order.guestRequestKey);
@@ -375,26 +379,39 @@ namespace BL1
             int lastMonth = request.entryDate.Month;
             firstDay -= 1;
             firstMonth -= 1;
+            lastDay -= 1;
+            lastMonth -= 1;
+            int sumAmala = 0;
+            int sumNbOfDays = 0;
             while (firstDay != lastDay || firstMonth != lastMonth)
             {
-                unit.diary[firstMonth, firstDay++] = true;
+                if (flag)
+                {
+                    unit.diary[firstMonth, firstDay] = true;
+                    sumAmala += 10;                   
+                }
+                sumNbOfDays += 1;
+                firstDay++;
                 if (firstDay == 31) { firstMonth++; firstDay = 0; }//if we got to the end of the month               //
             }
-            dal.updateHostingUnit(unit);
+            order.price = sumAmala;
+            order.numberOfDays = sumNbOfDays;
+            dal.updateOrder(order);
+            if (flag)dal.updateHostingUnit(unit);
         }
-        public int cashMoneyFromHost(HostingUnit unit)
-        {
-            int sum = 0;
-            int month = 0;
-            int day = 0;
-            while (month != 11 || day != 30)
-            {
-                if (unit.diary[month, day++])//if one's of the day is already taken 
-                    sum += 10;
-                if (day == 31) { day++; day = 0; }//if we got to the end of the month               //
-            }
-            return sum;
-        }
+        //public int cashMoneyFromHost(HostingUnit unit)
+        //{
+        //    int sum = 0;
+        //    int month = 0;
+        //    int day = 0;
+        //    while (month != 11 || day != 30)
+        //    {
+        //        if (unit.diary[month, day++])//if one's of the day is already taken 
+        //            sum += 10;
+        //        if (day == 31) { day++; day = 0; }//if we got to the end of the month               //
+        //    }
+        //    return sum;
+        //}
 
         public IEnumerable<HostingUnit> getFreeUnitList(DateTime entrydate, DateTime releasedate)
         {

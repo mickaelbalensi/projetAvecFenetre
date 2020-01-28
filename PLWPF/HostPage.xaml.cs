@@ -40,8 +40,7 @@ namespace PLWPF
         }
 
         private void Order_Click(object sender, RoutedEventArgs e)
-        {
-            AddOrder.Visibility = Visibility.Visible;
+        {           
             UpdateOrder.Visibility = Visibility.Visible;
             Order.Visibility = Visibility.Hidden;
             //Window orderPage = new OrderPage();

@@ -71,7 +71,8 @@ namespace DAL1
             configRoot = new XElement("configuration",
                 new XElement("orderCount", "1"),
                 new XElement("hostingUnitCount", "1"),
-                new XElement("guestRequestCount", "1"));
+                new XElement("guestRequestCount", "1"),
+                new XElement("amala","10"));
             String path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
             configRoot.Save(path + configPath);
@@ -484,6 +485,8 @@ namespace DAL1
                 new XElement("orderKey", order.orderKey.ToString()),
                 new XElement("status", order.status.ToString()),
                 new XElement("createDate", order.createDate.ToShortDateString()),
+                new XElement("price", order.price.ToString()),
+                new XElement("numberOfDays", order.numberOfDays.ToString()),
                 new XElement("orderDate", order.orderDate.ToShortDateString()));
         }
         Order ConvertXAMLToOrder(XElement element)
@@ -519,6 +522,15 @@ namespace DAL1
             order.orderDate = (from ord in element.Elements()
                                where ord.Name== "orderDate"
                                select DateTime.Parse(ord.Value)).FirstOrDefault();
+
+            order.price = (from ord in element.Elements()
+                               where ord.Name == "price"
+                               select long.Parse(ord.Value)).FirstOrDefault();
+            order.numberOfDays = (from ord in element.Elements()
+                               where ord.Name == "numberOfDays"
+                                  select long.Parse(ord.Value)).FirstOrDefault();
+
+
 
             return order;
         }
