@@ -12,29 +12,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Collections;
-
 namespace PLWPF
 {
-    /// <summary>
-    /// Logique d'interaction pour GroupRequestByAreaWindow.xaml
-    /// </summary>
-    public partial class GroupRequestByAreaWindow : UserControl
+    public partial class GroupRequestByArea : UserControl
     {
         private IEnumerable source;
         public IEnumerable Source
         {
-            get {
-                return source; 
+            get
+            {
+                return source;
             }
             set
             {
                 source = value;
-                this.listView.ItemsSource = source;
+               // this.listView.ItemsSource = source;
             }
         }
-        public GroupRequestByAreaWindow()
+        public GroupRequestByArea()
         {
-            InitializeComponent();
+           // InitializeComponent();
         }
+
     }
 }

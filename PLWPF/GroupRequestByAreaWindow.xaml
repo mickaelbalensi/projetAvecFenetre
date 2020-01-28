@@ -20,10 +20,12 @@
                HorizontalAlignment="Center"
                VerticalContentAlignment="Center"
                FontSize="25">
-            Group request according to their areas
+            Group unit according to their areas
         </Label>
 
-        <ListView Grid.Row="1" x:Name="listView" HorizontalAlignment="Center" 
+        <ListView Grid.Row="1"
+                  x:Name="listView"
+                  HorizontalAlignment="Center" 
                   BorderBrush="Black"
                   BorderThickness="3"
                   Margin="10">
@@ -37,7 +39,7 @@
                 <DataTemplate>
                     <Border BorderThickness="2" BorderBrush="Blue" Margin="5" Width="300">
                         <StackPanel>
-                            <TextBlock Text="{Binding Path=Key, StringFormat='Less than {0} months'}" FontSize="20" Foreground="Blue" TextAlignment="Center" Background="Gray"/>
+                            <TextBlock Text="{Binding Path=Key, StringFormat='the Area : {0}'}" FontSize="20" Foreground="Blue" TextAlignment="Center" Background="Gray"/>
                             <ListView ItemsSource="{Binding}" FontSize="16">
                                 <!--<ListView.ItemTemplate>
                                     <DataTemplate>

@@ -10,21 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Collections;
 
 namespace PLWPF
 {
     /// <summary>
-    /// Logique d'interaction pour GroupRequestByAreaWindow.xaml
+    /// Logique d'interaction pour GroupRequestByNumPerson.xaml
     /// </summary>
-    public partial class GroupRequestByAreaWindow : UserControl
+    public partial class GroupRequestByNumPerson : UserControl
     {
         private IEnumerable source;
         public IEnumerable Source
         {
-            get {
-                return source; 
+            get
+            {
+                return source;
             }
             set
             {
@@ -32,7 +34,8 @@ namespace PLWPF
                 this.listView.ItemsSource = source;
             }
         }
-        public GroupRequestByAreaWindow()
+
+        public GroupRequestByNumPerson()
         {
             InitializeComponent();
         }

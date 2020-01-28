@@ -6,7 +6,42 @@
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
         Title="GroupWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+
+    <Window.Background>
+        <ImageBrush ImageSource="Images/photo3.jpg"
+                    Stretch="UniformToFill">
+            <ImageBrush.RelativeTransform>
+                <TransformGroup>
+                    <ScaleTransform CenterX="5"/>
+                    <SkewTransform CenterX="5"/>
+                    <RotateTransform CenterX="5"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+
+
+
+
+
+
+
+
+
+            </ImageBrush.RelativeTransform>
+        </ImageBrush>
+    </Window.Background>
+    <ScrollViewer>
+        <Grid>
+            <Button x:Name="UnitByAreaList" Content="Group UnitByAreaList" HorizontalAlignment="Left" Margin="100,25,0,0" VerticalAlignment="Top" Width="121" Height="50" Click="UnitByAreaList_Click"/>
+            <Button x:Name="RequestByArea" Content="Group RequestByArea" HorizontalAlignment="Left" Margin="328,25,0,0" VerticalAlignment="Top" Width="129" Height="50" Click="RequestByArea_Click"/>
+            <Button x:Name="RequestByNumOfperson" Content="Group RequestByNumOfperson" HorizontalAlignment="Left" Margin="541,25,0,0" VerticalAlignment="Top" Width="173" Height="50" Click="RequestByNumOfperson_Click"/>
+
+            <ContentControl Width="579" 
+                            x:Name="page" 
+                            Margin="100,97,114.6,-5" 
+                            BorderBrush="Gray" 
+                            BorderThickness="5"
+                            HorizontalAlignment="Center"/>
+
+        </Grid>
+    </ScrollViewer>
 </Window>

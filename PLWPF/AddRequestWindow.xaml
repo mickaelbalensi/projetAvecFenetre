@@ -171,7 +171,7 @@
                    Grid.Row="7"
                    Margin="15,16,0,10"
                    Visibility="{Binding ElementName=EntryDateCalendar, Path=SelectedDate}"
-                   SelectedDate="{Binding releaseDate, Mode=TwoWay}"
+                   
                         HorizontalAlignment="Left" Width="269"
                 />
                 <!--#endregion-->

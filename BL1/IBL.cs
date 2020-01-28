@@ -44,7 +44,9 @@ namespace BL1
         IEnumerable<Host> getAllHost(Func<Host, bool> predicate = null);
         #endregion
 
-
+        IEnumerable<IGrouping<TypeAreaOfTheCountry, HostingUnit>> groupUnitByAreaList(bool flag);
+        IEnumerable<IGrouping<int, GuestRequest>> groupRequestByNumOfperson();
+        IEnumerable<IGrouping<TypeAreaOfTheCountry, GuestRequest>> groupRequestByAreaList();
 
     }
 }

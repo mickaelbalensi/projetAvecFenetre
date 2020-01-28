@@ -11,7 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using BE1;
+using BL1;
 namespace PLWPF
 {
     /// <summary>
@@ -19,9 +20,37 @@ namespace PLWPF
     /// </summary>
     public partial class GroupWindow : Window
     {
+        IBL bl;
         public GroupWindow()
         {
             InitializeComponent();
+            bl = FactoryBL.getBL();
+        }
+
+        private void UnitByAreaList_Click(object sender, RoutedEventArgs e)
+        {
+            GroupRequestByAreaWindow unit = new GroupRequestByAreaWindow();
+            unit.Source = bl.groupUnitByAreaList(true);
+            unit.Background = new RadialGradientBrush(Colors.White, Colors.LightGray);
+            this.page.Content = unit;
+
+        }
+
+        private void RequestByArea_Click(object sender, RoutedEventArgs e)
+        {
+            byArea request = new byArea();
+            request.Source = bl.groupRequestByAreaList();
+            request.Background = new RadialGradientBrush(Colors.White, Colors.LightGray);
+            this.page.Content = request;
+
+        }
+
+        private void RequestByNumOfperson_Click(object sender, RoutedEventArgs e)
+        {
+            GroupRequestByNumPerson request = new GroupRequestByNumPerson();
+            request.Source = bl.groupRequestByNumOfperson();
+            request.Background = new RadialGradientBrush(Colors.White, Colors.LightGray);
+            this.page.Content = request;
         }
     }
 }

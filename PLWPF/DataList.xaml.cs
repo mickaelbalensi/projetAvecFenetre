@@ -54,7 +54,7 @@ namespace PLWPF
 
         private void MoreOptions_Click(object sender, RoutedEventArgs e)
         {
-            GroupingWindow gw = new GroupingWindow();
+            GroupWindow gw = new GroupWindow();
             gw.Show();
         }
 
@@ -62,5 +62,15 @@ namespace PLWPF
         {
 
         }
+
+        //private void Button_Click(object sender, RoutedEventArgs e)
+        //{
+        //    {
+        //        GroupRequestByAreaWindow group = new GroupRequestByAreaWindow();
+        //        group.Source = bl.groupUnitByAreaList(true);
+        //        group.Background = new RadialGradientBrush(Colors.White, Colors.LightGray);
+        //        this.page.Content = group;
+        //    }
+        //}
     }
 }

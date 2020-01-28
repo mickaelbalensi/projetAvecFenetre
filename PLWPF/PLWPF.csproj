@@ -56,6 +56,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="byArea.xaml.cs">
+      <DependentUpon>byArea.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ConnectionPage.xaml.cs">
       <DependentUpon>ConnectionPage.xaml</DependentUpon>
     </Compile>
@@ -68,11 +71,18 @@
     <Compile Include="DeleteUnit.xaml.cs">
       <DependentUpon>DeleteUnit.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GroupByArea.xaml.cs">
+      <DependentUpon>GroupByArea.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GroupingWindow.xaml.cs">
       <DependentUpon>GroupingWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GroupRequestByArea.cs" />
     <Compile Include="GroupRequestByAreaWindow.xaml.cs">
       <DependentUpon>GroupRequestByAreaWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GroupRequestByNumPerson.xaml.cs">
+      <DependentUpon>GroupRequestByNumPerson.xaml</DependentUpon>
     </Compile>
     <Compile Include="GroupWindow.xaml.cs">
       <DependentUpon>GroupWindow.xaml</DependentUpon>
@@ -128,6 +138,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="byArea.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ConnectionPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -144,11 +158,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GroupByArea.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GroupingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GroupRequestByAreaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GroupRequestByNumPerson.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

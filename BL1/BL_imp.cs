@@ -59,10 +59,10 @@ namespace BL1
                 password="789",
             }
             };
-            for(int i = 0; i < 3; i++)
-            {
-                dal.addHost(HostList[i]);
-            }
+            //for(int i = 0; i < 3; i++)
+            //{
+            //    dal.addHost(HostList[i]);
+            //}
 
         }
 
@@ -241,7 +241,7 @@ namespace BL1
         public IEnumerable<IGrouping<int, GuestRequest>> groupRequestByNumOfperson()
         {
             return from request in getAllGuestRequest()
-                   group request by (request.adults + request.children);
+                   group request.Copy() by (request.adults + request.children);
         }
 
         #endregion
@@ -443,7 +443,7 @@ namespace BL1
         public IEnumerable<IGrouping<TypeAreaOfTheCountry, HostingUnit>> groupUnitByAreaList(bool flag)
         {
             return from unit in getAllHostingUnit()
-                   group unit.Copy() by unit.typeArea ;
+                   group unit.Copy() by unit.typeArea;
         }
 
         public List<HostingUnit> getSuggestionList(long guestRequestKey)
@@ -480,12 +480,12 @@ namespace BL1
         {
            return dal.getOrder(key);
         }
-            public IEnumerable<IGrouping<TypeAreaOfTheCountry, GuestRequest>> groupRequestByAreaList()
-              {
-            return from request in getAllGuestRequest()
-                   let req = request.ToString()
-                   group request by request.typeArea;
-              }
+        public IEnumerable<IGrouping<TypeAreaOfTheCountry, GuestRequest>> groupRequestByAreaList()
+          {
+        return from request in getAllGuestRequest()
+               //let req = request.ToString()
+               group request.Copy() by request.typeArea;
+          }
 
         #endregion
         #region configuration

@@ -38,7 +38,7 @@ namespace PLWPF
         private void requestByArea_Click(object sender, RoutedEventArgs e)
         {
             GroupRequestByAreaWindow grb = new GroupRequestByAreaWindow();
-            grb.source = App.bl.groupRequestByAreaList();
+            grb.Source = App.bl.groupRequestByAreaList();
             this.page.Content = grb;
         }
 
