@@ -96,7 +96,6 @@
                    Margin="10,229,803.2,155.8" RenderTransformOrigin="0.454,0.466"/>
         <TextBox 
                  x:Name="pnoneNumberBox"
-                   Text="{Binding phoneNumber, Mode=TwoWay}"
                    Margin="145,227,0,162.8"  
                 RenderTransformOrigin="0.5,0.5" 
                 HorizontalAlignment="Left" Width="140"
@@ -112,7 +111,7 @@
         <Label Content="Enter a password:"
                   Grid.Column="0"
                    Margin="10,267,803.2,115.8"/>
-        <PasswordBox 
+        <PasswordBox
                  x:Name="passwordBox"
                    Margin="145,267,0,126.8"  
                 RenderTransformOrigin="0.5,0.5" 
@@ -128,7 +127,7 @@
                 HorizontalAlignment="Left" Width="140"
                 />
         <Label x:Name="passwordError"
-                    Content="It's don't the same password"
+                    Content="It's not the same password !"
                    FontStyle="Italic"
                    FontSize="10"
                    Foreground="Red"

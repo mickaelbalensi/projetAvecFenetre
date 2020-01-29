@@ -41,7 +41,7 @@
                             BorderBrush="Gray" 
                             BorderThickness="5"
                             HorizontalAlignment="Center"/>
-            <Button x:Name="Home" Content="Home" Margin="614,369,10,0.333" FontSize="25" Click="Home_Click"/>
+            <Button x:Name="Home" Content="Home" Margin="614,369,10,0.333" VerticalAlignment="Bottom" FontSize="25" Click="Home_Click"/>
             <Button x:Name="precedent" Margin="614,0,10,57.667" Height="53" VerticalAlignment="Bottom" Content="Precedent" FontSize="25" Click="precedent_Click"></Button>
 
         </Grid>

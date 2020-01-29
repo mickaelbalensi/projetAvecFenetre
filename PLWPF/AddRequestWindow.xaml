@@ -190,7 +190,6 @@
                   Grid.Column="1"
                    Grid.Row="9"
                    Margin="15,15,0,14" 
-                Text="{Binding adults, Mode=TwoWay}"
                 HorizontalAlignment="Left" Width="59"
                 />
                 <Label x:Name="adultserror"
@@ -213,7 +212,6 @@
                   Grid.Column="1"
                    Grid.Row="10"
                    Margin="15,16,0,15"
-                Text="{Binding children, Mode=TwoWay}" 
                 HorizontalAlignment="Left" Width="59"
                 />
                 <Label x:Name="childrenerror"

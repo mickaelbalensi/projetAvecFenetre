@@ -255,7 +255,7 @@ namespace BL1
         //        public Host checkParameters(Host host)
         public Host checkParameters(long key, string pwd)
         {
-            Host h = HostList.FirstOrDefault(ho => ho.hostKey == key);
+            Host h = getAllHost(ho => ho.hostKey == key).FirstOrDefault();
             if (h == null)
                 throw new Exception("Wrong ID !");
             if (pwd != h.password)
@@ -471,7 +471,7 @@ namespace BL1
         public IEnumerable<IGrouping<TypeAreaOfTheCountry, HostingUnit>> groupUnitByAreaList(bool flag)
         {
             return from unit in getAllHostingUnit()
-                   group unit.Copy() by unit.typeArea;
+                   group unit by unit.typeArea;
         }
 
         public List<HostingUnit> getSuggestionList(long guestRequestKey)
@@ -532,7 +532,7 @@ namespace BL1
 
         public long getHostCount()
         {
-            throw new NotImplementedException();
+            return dal.getHostCount();
         }
 
         #endregion

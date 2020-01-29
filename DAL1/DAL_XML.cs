@@ -49,7 +49,7 @@ namespace DAL1
                 || !File.Exists(bankBranchPath))
                 CreateFiles();
             else
-                CreateFiles();
+                LoadData();
         }
         private void CreateFiles()
         {
@@ -343,6 +343,7 @@ namespace DAL1
                 new XElement("familyName", host.familyName),
                 new XElement("phoneNumber", host.phoneNumber.ToString()),
                 new XElement("mailAddress", host.mailAddress),
+                 new XElement("password", host.password),
                 new XElement("bankBranchDetails", ConvertBankBranchToXAML(host.bankBranchDetails)),
                 new XElement("bankAccountNumber", host.bankAccountNumber.ToString()),
                 new XElement("collectionClearance", host.collectionClearance.ToString()));
@@ -369,6 +370,10 @@ namespace DAL1
 
             host.mailAddress = (from ost in element.Elements()
                                 where ost.Name=="mailAddress"
+                                select (ost.Value)).FirstOrDefault();
+         
+            host.password = (from ost in element.Elements()
+                                where ost.Name == "password"
                                 select (ost.Value)).FirstOrDefault();
 
             host.bankBranchDetails = ConvertXAMLToBankBranch(element.Element("bankBranchDetails").Element("BankBranch"));
@@ -816,7 +821,17 @@ namespace DAL1
 
         public IEnumerable<Host> getAllHost(Func<Host, bool> predicate = null)
         {
-            throw new NotImplementedException();
+            if (predicate == null)
+            {
+                return from item in hostRoot.Elements()
+                       select ConvertXAMLToHost(item);
+            }
+            var variable = from item in hostRoot.Elements()
+                           let hos = ConvertXAMLToHost(item)
+                           where predicate(hos)
+                           select hos;
+
+            return variable;
         }
         public IEnumerable<BankBranch> getBankBranch(Func<BankBranch, bool> predicate = null)
         {
