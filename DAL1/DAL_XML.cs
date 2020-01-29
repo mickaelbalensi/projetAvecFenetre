@@ -785,8 +785,6 @@ namespace DAL1
 
 
         #endregion
-
-
         #region host
         public void addHost(Host host)
         {

@@ -181,8 +181,8 @@ namespace PLWPF
                 //Outlook.Application App = new Outlook.Application();
                 //Outlook.MailItem msg = (Outlook.MailItem)App.CreateItem(Outlook.OlItemType.olMailItem);
                 ////msg.HTMLBody = ("<img src=\"" + unit.uris[0] + "\"></img>"/*+ unit.ToString()*/);
-                //string description= unit.ToString();
-                //msg.HTMLBody = ("<p><img src=\"http://www.voyagercacher.com/images/voyages-cacher/1389-11635.jpg\" alt=\"hotel\" width=\"400\" height=\"265\" /></p>   < p >"+ description+"</p>  ");
+                //string description = unit.ToString();
+                //msg.HTMLBody = ("<p><img src=\"http://www.voyagercacher.com/images/voyages-cacher/1389-11635.jpg\" alt=\"hotel\" width=\"400\" height=\"265\" /></p>   < p >" + description + "</p>  ");
                 //// msg.HTMLBody=unit.ToString() ;
                 //msg.Subject = unit.hostingUnitName;
                 //Outlook.Recipients recips = (Outlook.Recipients)msg.Recipients;
