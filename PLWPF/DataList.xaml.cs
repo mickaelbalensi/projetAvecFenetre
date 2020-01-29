@@ -56,6 +56,7 @@ namespace PLWPF
         {
             GroupWindow gw = new GroupWindow();
             gw.Show();
+            this.Close();
         }
 
         private void requestDetails_SelectionChanged(object sender, SelectionChangedEventArgs e)

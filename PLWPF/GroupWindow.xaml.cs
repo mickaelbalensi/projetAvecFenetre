@@ -52,5 +52,19 @@ namespace PLWPF
             request.Background = new RadialGradientBrush(Colors.White, Colors.LightGray);
             this.page.Content = request;
         }
+
+        private void precedent_Click(object sender, RoutedEventArgs e)
+        {
+            DataList dataList = new DataList();
+            this.Close();
+            dataList.Show();
+        }
+
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            this.Close();
+            main.Show();
+        }
     }
 }

@@ -12,6 +12,8 @@ namespace BE1
         public long hostingUnitKey { get; set; }
         public long guestRequestKey { get; set; }
         public long orderKey { get; set; }
+        public long price { get; set; }
+        public long numberOfDays { get; set; }
         public OrderStatus status { get; set; }
         public DateTime createDate { get; set; }
         public DateTime orderDate { get; set; }
@@ -32,7 +34,9 @@ namespace BE1
                 "orderKey : " + orderKey + "\n" +
                 "status : " + status + "\n" +
                 "createDate : " + createDate + "\n" +
-                "orderDate : " + orderDate + "\n";
+                "orderDate : " + orderDate + "\n"+
+                "price : " + price + "\n"+
+                "numberOfDays : " + numberOfDays + "\n";
         }
     }
 }

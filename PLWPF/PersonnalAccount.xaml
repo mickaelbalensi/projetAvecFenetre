@@ -83,6 +83,8 @@
                 </Style>
             </Button.Style>
         </Button>
-
+        <Button
+            x:Name="Home" Content="Home" Margin="250,427,-67,-116">
+        </Button>
     </Grid>
 </Window>
