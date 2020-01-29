@@ -34,8 +34,7 @@ namespace PLWPF
                 currentBranch = new BankBranch();
             this.DataContext = currentHost;
             bl = FactoryBL.getBL();
-            idBox.Text = bl.getGuestRequestCount().ToString();
-
+            idBox.Text = bl.getHostCount().ToString();
         }
 
         private void SignIn_Click(object sender, RoutedEventArgs e)
@@ -61,7 +60,7 @@ namespace PLWPF
 
                 currentHost.bankBranchDetails = currentBranch;
                 //currentHost.hostKey = long.Parse(idBox.Text);
-                currentHost.password = passwordBox.Password;
+                //currentHost.password = passwordBox.Password;
                 currentHost.bankAccountNumber = long.Parse(accountNumberBox.Text);
                 currentHost.collectionClearance = collecionClearanceCheck.IsChecked == true ? true : false;
 
@@ -132,7 +131,7 @@ namespace PLWPF
             if (f4)
                 phoneError.Visibility = Visibility.Hidden;
 
-            string password = passwordBox.Password;
+            string password = passwordBox.Text;
             string confirmPassword= password2Box.Password;
             if (password.Length != confirmPassword.Length)
                 f5 = false;

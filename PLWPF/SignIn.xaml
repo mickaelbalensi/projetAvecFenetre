@@ -112,11 +112,12 @@
         <Label Content="Enter a password:"
                   Grid.Column="0"
                    Margin="10,267,803.2,115.8"/>
-        <PasswordBox 
+        <TextBox
                  x:Name="passwordBox"
                    Margin="145,267,0,126.8"  
                 RenderTransformOrigin="0.5,0.5" 
                 HorizontalAlignment="Left" Width="140"
+            Text="{Binding password, Mode=TwoWay}"
                 />
         <Label Content="Confirm your password:"
                   Grid.Column="0"
@@ -128,7 +129,7 @@
                 HorizontalAlignment="Left" Width="140"
                 />
         <Label x:Name="passwordError"
-                    Content="It's don't the same password"
+                    Content="It's not the same password !"
                    FontStyle="Italic"
                    FontSize="10"
                    Foreground="Red"

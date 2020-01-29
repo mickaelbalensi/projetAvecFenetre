@@ -30,9 +30,6 @@ namespace PLWPF
             Window addRequestWindow = new AddRequestWindow();
             addRequestWindow.Show();
         }
-
-
-
         private void PersonnalAccount_Click(object sender, RoutedEventArgs e)
         {
             Window login = new PersonnalAccount();
