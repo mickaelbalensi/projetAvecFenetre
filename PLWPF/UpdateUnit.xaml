@@ -6,6 +6,21 @@
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
          Title="UpdateUnit" Height="535.461" Width="1032.92">
+    <Window.Background>
+        <ImageBrush ImageSource="Images/fondSignIn.jpeg"
+                    Stretch="UniformToFill">
+            <ImageBrush.RelativeTransform>
+                <TransformGroup>
+                    <ScaleTransform CenterX="5"/>
+                    <SkewTransform CenterX="5"/>
+                    <RotateTransform CenterX="5"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+
+            </ImageBrush.RelativeTransform>
+        </ImageBrush>
+    </Window.Background>
+
     <Grid x:Name="UnitControlGrid" Margin="10,10,43.667,0" Height="403" VerticalAlignment="Top">
         <!--#region ligne et colonne-->
         <Grid.RowDefinitions>

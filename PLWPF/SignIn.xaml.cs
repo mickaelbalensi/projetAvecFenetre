@@ -75,7 +75,12 @@ namespace PLWPF
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                if (ex.Message=="Welcome dear new Host !!") this.Close();
+                if (ex.Message == "Welcome dear new Host !!")
+                {
+                    Window menu = new MainWindow();
+                    menu.Show();
+                    this.Close();
+                }
             }
         }
         private void Home_Click(object sender, RoutedEventArgs e)
@@ -139,7 +144,7 @@ namespace PLWPF
             if (f4)
                 phoneError.Visibility = Visibility.Hidden;
 
-            string password = passwordBox.Text;
+            string password = passwordBox.Password;
             string confirmPassword= password2Box.Password;
             if (password.Length != confirmPassword.Length)
                 f5 = false;

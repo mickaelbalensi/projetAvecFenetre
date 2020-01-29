@@ -143,7 +143,7 @@ namespace PLWPF
             bool flag = false;
             foreach (HostingUnit unit in bl.getSuggestionList(currentRequest.guestRequestKey))
             {
-                flag = true;
+                /*flag = true;
                 string unitName = unit.hostingUnitName;
                 
                 MailMessage mail = new MailMessage();
@@ -171,23 +171,23 @@ namespace PLWPF
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                }
+                }*/
                 //*/
-                //Outlook.Application App = new Outlook.Application();
-                //Outlook.MailItem msg = (Outlook.MailItem)App.CreateItem(Outlook.OlItemType.olMailItem);
+                Outlook.Application App = new Outlook.Application();
+                Outlook.MailItem msg = (Outlook.MailItem)App.CreateItem(Outlook.OlItemType.olMailItem);
 
-                ////msg.HTMLBody = ("<img src=\"" + unit.uris[0] + "\"></img>"/*+ unit.ToString()*/);
-                //string description= unit.ToString();
-                //msg.HTMLBody = ("<p><img src=\"http://www.voyagercacher.com/images/voyages-cacher/1389-11635.jpg\" alt=\"hotel\" width=\"400\" height=\"265\" /></p>   < p >"+ description+"</p>  ");
-                //// msg.HTMLBody=unit.ToString() ;
-                //msg.Subject = unit.hostingUnitName;
-                //Outlook.Recipients recips = (Outlook.Recipients)msg.Recipients;
-                //Outlook.Recipient recip = (Outlook.Recipient)recips.Add(request.mailAddress);
-                //recip.Resolve();
-                //msg.Send();
-                //recips = null;
-                //recip = null;
-                //App = null;            
+                //msg.HTMLBody = ("<img src=\"" + unit.uris[0] + "\"></img>"/*+ unit.ToString()*/);
+                string description= unit.ToString();
+                msg.HTMLBody = ("<p><img src=\"http://www.voyagercacher.com/images/voyages-cacher/1389-11635.jpg\" alt=\"hotel\" width=\"400\" height=\"265\" /></p>   < p >"+ description+"</p>  ");
+                // msg.HTMLBody=unit.ToString() ;
+                msg.Subject = unit.hostingUnitName;
+                Outlook.Recipients recips = (Outlook.Recipients)msg.Recipients;
+                Outlook.Recipient recip = (Outlook.Recipient)recips.Add(request.mailAddress);
+                recip.Resolve();
+                msg.Send();
+                recips = null;
+                recip = null;
+                App = null;            
                 currentRequest = new GuestRequest();
                 DataContext = currentRequest;
                 }
