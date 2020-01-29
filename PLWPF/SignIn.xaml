@@ -21,17 +21,17 @@
         </ImageBrush>
     </Window.Background>
     <Grid>
-        <Label Content="Sign In" FontSize="50" HorizontalAlignment="Left" Margin="28,-17,0,0" VerticalAlignment="Top" Height="79"/>
+        <Label Content="Sign Up" FontSize="50" HorizontalAlignment="Left" Margin="28,-17,0,0" VerticalAlignment="Top" Height="79"/>
         <!--#region nomPrenom-->
         <Label Content="Your Personnal Information" FontSize="20" HorizontalAlignment="Left" Margin="0,50,0,0" VerticalAlignment="Top"/>
-        <Label Content="Your ID is:"
+        <Label Content="Your ID is :"
                    Grid.Column="0"
-                   Margin="10,101,803.2,291.8"/>
+                   Margin="10,91,803.2,301.8"/>
         <!--Text="{Binding guestRequestKey, Mode=TwoWay}"-->
         <TextBox 
                 x:Name="idBox"
                    IsReadOnly="True"
-                   Margin="145,106,0,291.8"
+                   Margin="145,91,0,301.8"
                 HorizontalAlignment="Left" Width="31" RenderTransformOrigin="0.51,0.919"                    
 />
         <!--<Label x:Name="familyError"
@@ -45,11 +45,11 @@
                        Grid.Row="2" Grid.RowSpan="2"/>-->
         <Label Content="Family Name :"
                    Grid.Column="0"
-                   Margin="10,138,803.2,253.8"/>
+                   Margin="10,123,803.2,268.8"/>
         <TextBox 
                 x:Name="familyTextBox"
                     Text="{Binding familyName, Mode=TwoWay}"
-                   Margin="145,138,0,258.8"
+                   Margin="145,126,0,268.8"
                 HorizontalAlignment="Left" Width="140"
                 />
         <Label x:Name="familyerror"
@@ -61,11 +61,11 @@
                        Margin="292,121,469.2,276.8"/>
         <Label Content="Private Name :"
                    Grid.Column="0"
-                   Margin="10,172,803.2,224.8" RenderTransformOrigin="0.5,0.507" />
+                   Margin="10,156,803.2,229.8" RenderTransformOrigin="0.5,0.507" />
         <TextBox 
                 x:Name="privateTextBox"
                     Text="{Binding Path=privateName , Mode=TwoWay}"
-                   Margin="145,171,0,229.8" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="140" 
+                   Margin="145,161,0,229.8" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="140" 
                 />
         <Label x:Name="privateerror"
                        Foreground="Red"
@@ -76,11 +76,11 @@
                        Margin="292,149,469.2,248.8"/>
         <Label Content="Mail Address :"
                   Grid.Column="0"
-                   Margin="10,198,803.2,197.8"/>
+                   Margin="10,198,803.2,185.8"/>
         <TextBox 
                  x:Name="mailTextBox"
                    Text="{Binding mailAddress, Mode=TwoWay}"
-                   Margin="145,198,0,202.8"  
+                   Margin="145,198,0,197.8"  
                 RenderTransformOrigin="0.5,0.5" 
                 HorizontalAlignment="Left" Width="140"
                 />
@@ -93,11 +93,11 @@
                    Margin="292,173,469.2,224.8"/>
         <Label Content="Phone Number:"
                   Grid.Column="0"
-                   Margin="10,227,803.2,168.8" RenderTransformOrigin="0.454,0.466"/>
+                   Margin="10,229,803.2,155.8" RenderTransformOrigin="0.454,0.466"/>
         <TextBox 
                  x:Name="pnoneNumberBox"
                    Text="{Binding phoneNumber, Mode=TwoWay}"
-                   Margin="145,227,0,173.8"  
+                   Margin="145,227,0,162.8"  
                 RenderTransformOrigin="0.5,0.5" 
                 HorizontalAlignment="Left" Width="140"
                 />
@@ -111,19 +111,19 @@
 
         <Label Content="Enter a password:"
                   Grid.Column="0"
-                   Margin="10,256,803.2,139.8"/>
+                   Margin="10,267,803.2,115.8"/>
         <PasswordBox 
                  x:Name="passwordBox"
-                   Margin="145,254,0,144.8"  
+                   Margin="145,267,0,126.8"  
                 RenderTransformOrigin="0.5,0.5" 
                 HorizontalAlignment="Left" Width="140"
                 />
         <Label Content="Confirm your password:"
                   Grid.Column="0"
-                   Margin="10,285,798.2,110.8"/>
+                   Margin="10,303,798.2,81.8"/>
         <PasswordBox 
                  x:Name="password2Box"
-                   Margin="145,285,0,110.8"  
+                   Margin="145,303,0,84.8"  
                 RenderTransformOrigin="0.5,0.5" 
                 HorizontalAlignment="Left" Width="140"
                 />
@@ -140,10 +140,10 @@
         <Label Content="Your Bank's Information" FontSize="20" HorizontalAlignment="Left" Margin="479,50,0,0" VerticalAlignment="Top"/>
         <Label Content="Bank's Code :"
                    Grid.Column="0"
-                   Margin="474,109,339.2,282.8"/>
+                   Margin="474,102,339.2,280.8"/>
         <TextBox 
                 x:Name="bankCodeBox"
-                Margin="609,109,0,289.8"
+                Margin="609,102,0,289.8"
                 HorizontalAlignment="Left" Width="40" RenderTransformOrigin="0.495,0.369"
                 />
         <Label x:Name="bankCodeError"
@@ -155,10 +155,10 @@
                        Margin="712,125,49.2,272.8"/>
         <Label Content="Branch's Code:"
                    Grid.Column="0"
-                   Margin="474,143,339.2,253.8" RenderTransformOrigin="0.5,0.507" />
+                   Margin="474,143,339.2,248.8" RenderTransformOrigin="0.5,0.507" />
         <TextBox 
                 x:Name="branchCodeBox"
-                   Margin="609,142,0,258.8" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40" 
+                   Margin="609,142,0,252.8" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40" 
                 />
         <Label x:Name="branchCodeError"
                        Foreground="Red"
@@ -169,11 +169,11 @@
                        Margin="712,149,79.2,248.8"/>
         <Label Content="Account Number :"
                   Grid.Column="0"
-                   Margin="474,177,339.2,218.8"/>
+                   Margin="474,177,339.2,209.8"/>
         <TextBox 
                 x:Name="accountNumberBox"
                 Text="{Binding bankAccountNumber, Mode=TwoWay}"
-                Margin="609,177,0,223.8"  
+                Margin="609,176,0,214.8"  
                 RenderTransformOrigin="0.5,0.5" 
                 HorizontalAlignment="Left" Width="89"
                 />
@@ -184,9 +184,10 @@
                    Foreground="Red"
                    Visibility="Hidden"
                    Margin="712,171,49.2,226.8"/>
-        <CheckBox x:Name="collecionClearanceCheck" Content="collection Clerance" Margin="479,215,305.2,173.8" Checked="collecionClearanceCheck_Checked"/>
+        <CheckBox x:Name="collecionClearanceCheck" Content="collection Clerance" Margin="479,215,305.2,173.8" />
         <Button Content="Sign In" HorizontalAlignment="Left" Margin="698,303,0,0" VerticalAlignment="Top" Width="75" Click="SignIn_Click"/>
 
+        <Button x:Name="Home" Content="Home" Margin="839,23,37.2,375.8" Click="Home_Click"/>
 
 
         <!--#endregion-->

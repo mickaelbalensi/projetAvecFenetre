@@ -74,7 +74,7 @@ namespace DAL1
                 new XElement("orderCount", "1"),
                 new XElement("hostingUnitCount", "1"),
                 new XElement("guestRequestCount", "1"),
-                new XElement("hostCount", "1")
+                new XElement("hostCount", "1"),
                 new XElement("amala","10"));
             String path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 

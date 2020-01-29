@@ -11,7 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using BE1;
+using BL1;
 namespace PLWPF
 {
     /// <summary>
@@ -19,9 +20,32 @@ namespace PLWPF
     /// </summary>
     public partial class confirmBank : Window
     {
-        public confirmBank()
+        public BankBranch currentBranch;
+        public confirmBank(BankBranch branch)
         {
             InitializeComponent();
+            if (currentBranch == null)
+            {
+                currentBranch = new BankBranch();
+                currentBranch = branch;
+            }
+            this.DataContext = currentBranch;
+
         }
+
+        private void No_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Change again Bank's informations");
+            this.Close();
+        }
+
+        private void Yes_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        
+
+
     }
 }

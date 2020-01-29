@@ -51,7 +51,7 @@
                 Click="PersonnalAccount_Click"
                 />
             <Button x:Name="SignIn"
-                Content="Sign In"
+                Content="Sign Up"
                 Margin="250.6,289,95,-110.934"
                 FontSize="20" 
                 Visibility="visible"

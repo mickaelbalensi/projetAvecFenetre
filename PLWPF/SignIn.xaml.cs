@@ -46,6 +46,19 @@ namespace PLWPF
                 currentBranch = bl.checkBanckBranch(int.Parse(bankCodeBox.Text), int.Parse(branchCodeBox.Text));
                 if (currentBranch == null)
                     throw new Exception("this Bank doesn't exist");
+                Window confirmBank = new confirmBank(currentBranch);
+                confirmBank.Show();
+                MessageBoxResult result=
+                MessageBox.Show("Do you confirm that it is your bank branch ?", "Confirmation Bank's Information",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Question,
+                    MessageBoxResult.Yes,
+                    MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
+                confirmBank.Close();
+
+                if (result== MessageBoxResult.No)
+                    throw new Exception("Change again Bank's informations");
+
                 currentHost.bankBranchDetails = currentBranch;
                 //currentHost.hostKey = long.Parse(idBox.Text);
                 currentHost.password = passwordBox.Password;
@@ -53,11 +66,20 @@ namespace PLWPF
                 currentHost.collectionClearance = collecionClearanceCheck.IsChecked == true ? true : false;
 
                 bl.addHost(currentHost);
+                throw new Exception("Welcome dear new Host !!");
+                this.Close();
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
+            Window menu = new MainWindow();
+            menu.Show();
+            this.Close();
         }
 
         private void checkExceptions()
@@ -168,9 +190,5 @@ namespace PLWPF
 
         }
 
-        private void collecionClearanceCheck_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

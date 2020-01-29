@@ -5,56 +5,75 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="confirmBank" Height="370.8" Width="355.2">
+        Title="confirmBank" Height="380.4" Width="364">
     <Grid>
+        <Label Content="Bank's Informations" FontSize="20" HorizontalAlignment="Left" Margin="19,19,0,0" VerticalAlignment="Top" Width="240"/>
+
         <Label Content="Bank's Code :"
                    Grid.Column="0"
                    Margin="19,72,246.8,236.6"/>
         <TextBox 
                 x:Name="BankCodeBox"
-                    Text="{Binding familyName, Mode=TwoWay}"
-                   Margin="145,72,0,241.6"
-                HorizontalAlignment="Left" Width="140"
+                    Text="{Binding bankCode, Mode=OneWay}"
+                   Margin="145,72,0,241.2"
+                IsReadOnly="True"
+                HorizontalAlignment="Left" Width="172"
                 />
         <Label Content="Bank's Name :"
                    Grid.Column="0"
                    Margin="19,105,225.8,207.6" RenderTransformOrigin="0.5,0.507" />
         <TextBox 
                 x:Name="BankNameBox"
-                    Text="{Binding Path=privateName , Mode=TwoWay}"
-                   Margin="145,105,0,207.6" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="140" 
+                    Text="{Binding bankName , Mode=OneWay}"
+                IsReadOnly="True"
+                  Margin="145,105,0,207.2" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="172" 
                 />
         <Label Content="Branch's Code :"
                   Grid.Column="0"
                    Margin="19,139,216.8,178.6"/>
         <TextBox 
                  x:Name="BranchCodeBox"
-                   Text="{Binding mailAddress, Mode=TwoWay}"
-                   Margin="145,139,0,173.6"  
-                RenderTransformOrigin="0.5,0.5" 
-                HorizontalAlignment="Left" Width="140"
+                   Text="{Binding branchCode, Mode=TwoWay}"
+                   Margin="145,139,0,178.2"  
+                IsReadOnly="True"
+               RenderTransformOrigin="0.5,0.5" 
+                HorizontalAlignment="Left" Width="172"
                 />
-        <Label Content="ATM Address:"
+        <Label Content="ATM Address :"
                   Grid.Column="0"
-                   Margin="10,227,674.6,169" RenderTransformOrigin="0.454,0.466"/>
+                   Margin="19,173,216.8,144.6" RenderTransformOrigin="0.454,0.466"/>
         <TextBox 
-                 x:Name="pnoneNumberBox"
-                   Text="{Binding phoneNumber, Mode=TwoWay}"
-                   Margin="145,227,0,173.8"  
+                 x:Name="ATMaddressBox"
+                   Text="{Binding ATMaddress, Mode=OneWay}"
+                   Margin="145,173,0,144.2"  
+                IsReadOnly="True"
                 RenderTransformOrigin="0.5,0.5" 
-                HorizontalAlignment="Left" Width="140"/>
+                HorizontalAlignment="Left" Width="172"/>
 
         <Label Content="Branch's City :"
                   Grid.Column="0"
-                   Margin="10,251,674.6,145" RenderTransformOrigin="0.454,0.466"/>
+                   Margin="19,202,216.8,110.6" RenderTransformOrigin="0.454,0.466"/>
 
         <TextBox 
-                 x:Name="rBox"
-                   Text="{Binding phoneNumber, Mode=TwoWay}"
-                   Margin="145,255,0,145"  
+                 x:Name="BranchCityBox"
+                   Text="{Binding branchCity, Mode=OneWay}"
+                   Margin="145,202,0,110.2"  
+                IsReadOnly="True"
                 RenderTransformOrigin="0.5,0.5" 
-                HorizontalAlignment="Left" Width="140"
+                HorizontalAlignment="Left" Width="172"
                 />
+        <Label Content="Do you confirm that it is your bank branch ?"
+                  Grid.Column="0"
+                   Margin="53,262,50.6,50.2" RenderTransformOrigin="0.454,0.466"
+               Visibility="Hidden"
+             
+               />
+        <Button Content="No" HorizontalAlignment="Left" Margin="57,301,0,0" VerticalAlignment="Top" Width="75"
+                BorderBrush="AliceBlue" Click="No_Click" Visibility="Hidden"
+/>
+        <Button Content="Yes" HorizontalAlignment="Left" Margin="210,301,0,0" VerticalAlignment="Top" Width="75" Click="Yes_Click"
+                              Visibility="Hidden"
+ />
 
     </Grid>
 </Window>

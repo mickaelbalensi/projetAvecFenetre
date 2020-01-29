@@ -52,7 +52,11 @@ namespace PLWPF
             }
         }
 
-       
-
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
+            Window menu = new MainWindow();
+            menu.Show();
+            this.Close();
+        }
     }
 }
