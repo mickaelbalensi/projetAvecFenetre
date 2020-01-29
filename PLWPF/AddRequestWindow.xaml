@@ -6,6 +6,22 @@
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
         Title="AddRequestWindow" Height="600" Width="542">
+    <Window.Background>
+        <ImageBrush ImageSource="Images/fondSignIn.jpeg"
+                    Stretch="UniformToFill">
+            <ImageBrush.RelativeTransform>
+                <TransformGroup>
+                    <ScaleTransform CenterX="5"/>
+                    <SkewTransform CenterX="5"/>
+                    <RotateTransform CenterX="5"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+
+            </ImageBrush.RelativeTransform>
+        </ImageBrush>
+    </Window.Background>
+
+
     <ScrollViewer>
         <Grid x:Name="firstGrid" Margin="0,0,4.2,0">
             <Grid.RowDefinitions>
@@ -190,7 +206,6 @@
                   Grid.Column="1"
                    Grid.Row="9"
                    Margin="15,15,0,14" 
-                Text="{Binding adults, Mode=TwoWay}"
                 HorizontalAlignment="Left" Width="59"
                 />
                 <Label x:Name="adultserror"
@@ -213,7 +228,6 @@
                   Grid.Column="1"
                    Grid.Row="10"
                    Margin="15,16,0,15"
-                Text="{Binding children, Mode=TwoWay}" 
                 HorizontalAlignment="Left" Width="59"
                 />
                 <Label x:Name="childrenerror"

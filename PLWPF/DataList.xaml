@@ -6,6 +6,20 @@
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
         Title="DataList" Height="427.333" Width="816.367">
+    <Window.Background>
+        <ImageBrush ImageSource="Images/fondSignIn.jpeg"
+                    Stretch="UniformToFill">
+            <ImageBrush.RelativeTransform>
+                <TransformGroup>
+                    <ScaleTransform CenterX="5"/>
+                    <SkewTransform CenterX="5"/>
+                    <RotateTransform CenterX="5"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+
+            </ImageBrush.RelativeTransform>
+        </ImageBrush>
+    </Window.Background>
 
     <Grid Margin="0,0,1194.333,0">
 
@@ -25,13 +39,13 @@
                 FontSize="30" Click="MoreOptions_Click" Margin="629,303,10,0" />
         </Grid>
         <Grid x:Name="DataGridUnit" HorizontalAlignment="Left" Margin="5,26,-626,-0.4" Width="621">
+
             <DataGrid x:Name="unitDetails" 
                       Visibility="Visible"
                       IsReadOnly="True"                    
                       FontSize="16" 
-                      FontWeight="Bold" Margin="1,-22,-63,0" HorizontalAlignment="Left" Width="612"
-                      
-                              >
+                      FontWeight="Bold" Margin="1,-22,-63,0" HorizontalAlignment="Left" Width="612">
+                
                 <DataGrid.Columns>
                     <!--<DataGridTextColumn  Header="Order key" Width="*" Binding="{Binding HostingUnitKey}" FontSize="14" FontWeight="Normal"/>
                     <DataGridTextColumn Header="Name" Width="*" Binding="{Binding hostingUnitName}" FontSize="14" FontWeight="Normal"/>

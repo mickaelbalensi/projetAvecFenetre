@@ -104,7 +104,19 @@ namespace BE1
                 "HostingUnitKey : " + hostingUnitKey + "\n" +
                       "HostingUnitName : " + hostingUnitName + "\n" +
                       "Adultplaces : " + adultPlaces + "\n" +
-                      "Childrenplaces : " + childrenPlaces + "\n";
+                      "Childrenplaces : " + childrenPlaces.ToString() + "\n" +
+                      "jacuzzi : " + jacuzzi.ToString() + "\n" +
+                      "garden : " + garden.ToString() + "\n" +
+                      "pool : " + pool.ToString() + "\n" +
+                      "childrenAttractions : " + childrenAttractions.ToString() + "\n" +
+                      "typeArea : " + typeArea.ToString() + "\n" +
+                      "typeOfUnit : " + typeOfUnit.ToString() + "\n";
         }
+
+        /*        
+*/
+
+
+
     }
 }

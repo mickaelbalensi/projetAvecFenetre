@@ -37,7 +37,21 @@ namespace BE1
         }
         public override string ToString()
         {
-            return string.Format("");
+            return "GuestRequestKey : " + guestRequestKey + "\n" +
+                  "privateName : " + privateName + "\n" +
+                  "familyName : " + familyName + "\n" +
+                  "mailAddress : " + mailAddress + "\n" +
+                  "entryDate : " + entryDate.ToShortDateString() + "\n" +
+                  "releaseDate : " + releaseDate.ToShortDateString() + "\n" +
+                  "typeArea : " + typeArea.ToString() + "\n" +
+                  "type : " + type.ToString() + "\n" +
+                  "adults : " + adults.ToString() + "\n" +
+                  "children : " + children.ToString() + "\n" +
+                  "pool : " + pool.ToString() + "\n" +
+                  "jacuzzi : " + jacuzzi.ToString() + "\n" +
+                  "garden : " + garden.ToString() + "\n" +
+                  "childrenAttractions : " + childrenAttractions.ToString() + "\n";
+                  
         }
 
 

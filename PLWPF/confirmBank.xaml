@@ -6,6 +6,21 @@
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
         Title="confirmBank" Height="380.4" Width="364">
+    <Window.Background>
+        <ImageBrush ImageSource="Images/fondSignIn.jpeg"
+                    Stretch="UniformToFill">
+            <ImageBrush.RelativeTransform>
+                <TransformGroup>
+                    <ScaleTransform CenterX="5"/>
+                    <SkewTransform CenterX="5"/>
+                    <RotateTransform CenterX="5"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+
+            </ImageBrush.RelativeTransform>
+        </ImageBrush>
+    </Window.Background>
+
     <Grid>
         <Label Content="Bank's Informations" FontSize="20" HorizontalAlignment="Left" Margin="19,19,0,0" VerticalAlignment="Top" Width="240"/>
 

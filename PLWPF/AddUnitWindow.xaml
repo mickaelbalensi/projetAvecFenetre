@@ -6,6 +6,21 @@
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
         Title="AddUnitWindow" Height="494.933" Width="474.429">
+    <Window.Background>
+        <ImageBrush ImageSource="Images/fondSignIn.jpeg"
+                    Stretch="UniformToFill">
+            <ImageBrush.RelativeTransform>
+                <TransformGroup>
+                    <ScaleTransform CenterX="5"/>
+                    <SkewTransform CenterX="5"/>
+                    <RotateTransform CenterX="5"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+
+            </ImageBrush.RelativeTransform>
+        </ImageBrush>
+    </Window.Background>
+
     <ScrollViewer>
         <Grid x:Name="UnitControlGrid" Margin="0,0,3,-52.667" Height="400" VerticalAlignment="Top">
             <!--#region ligne et colonne-->

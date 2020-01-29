@@ -37,6 +37,7 @@ namespace PLWPF
             idBox.Text = bl.getHostCount().ToString();
         }
 
+
         private void SignIn_Click(object sender, RoutedEventArgs e)
         {
             try {
@@ -45,7 +46,8 @@ namespace PLWPF
                 currentBranch = bl.checkBanckBranch(int.Parse(bankCodeBox.Text), int.Parse(branchCodeBox.Text));
                 if (currentBranch == null)
                     throw new Exception("this Bank doesn't exist");
-                Window confirmBank = new confirmBank(currentBranch);
+
+                confirmBank confirmBank = new confirmBank(currentBranch);
                 confirmBank.Show();
                 MessageBoxResult result=
                 MessageBox.Show("Do you confirm that it is your bank branch ?", "Confirmation Bank's Information",
@@ -60,18 +62,25 @@ namespace PLWPF
 
                 currentHost.bankBranchDetails = currentBranch;
                 //currentHost.hostKey = long.Parse(idBox.Text);
-                //currentHost.password = passwordBox.Password;
+                currentHost.phoneNumber = long.Parse(pnoneNumberBox.Text);
+                currentHost.password = passwordBox.Password;
                 currentHost.bankAccountNumber = long.Parse(accountNumberBox.Text);
                 currentHost.collectionClearance = collecionClearanceCheck.IsChecked == true ? true : false;
 
                 bl.addHost(currentHost);
                 throw new Exception("Welcome dear new Host !!");
-                this.Close();
+                
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                if (ex.Message == "Welcome dear new Host !!")
+                {
+                    Window menu = new MainWindow();
+                    menu.Show();
+                    this.Close();
+                }
             }
         }
         private void Home_Click(object sender, RoutedEventArgs e)
@@ -120,6 +129,10 @@ namespace PLWPF
             else
                 mailError.Visibility = Visibility.Hidden;
 
+
+            if (pnoneNumberBox.Text.Count() < 9 || pnoneNumberBox.Text.Count() > 10)
+                f4 = false;
+            else
             for (int i = 0; i < pnoneNumberBox.Text.Count(); i++)
             {
                 if (pnoneNumberBox.Text[i] < 48 || pnoneNumberBox.Text[i] > 57)
@@ -131,7 +144,7 @@ namespace PLWPF
             if (f4)
                 phoneError.Visibility = Visibility.Hidden;
 
-            string password = passwordBox.Text;
+            string password = passwordBox.Password;
             string confirmPassword= password2Box.Password;
             if (password.Length != confirmPassword.Length)
                 f5 = false;
