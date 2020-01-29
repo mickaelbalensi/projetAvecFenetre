@@ -26,7 +26,7 @@ namespace BL1
         #endregion
         #region order
         void addOrder(GuestRequest request);
-        void updateOrder(Order order);
+        void updateOrder(Order order,Host host);
         IEnumerable<Order> getAllOrder(Func<Order, bool> predicate = null);
         Order getOrder(long key);
 

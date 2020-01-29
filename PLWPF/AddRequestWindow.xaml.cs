@@ -143,42 +143,42 @@ namespace PLWPF
             bool flag = false;
             foreach (HostingUnit unit in bl.getSuggestionList(currentRequest.guestRequestKey))
             {
-                /*flag = true;
+                flag = true;
                 string unitName = unit.hostingUnitName;
-                
-                //MailMessage mail = new MailMessage();
-                //mail.To.Add(request.mailAddress);
-                //mail.From = new MailAddress("mickaelbalensi2652@gmail.com");
-                //mail.Subject = "mailSubject";
-                //if (unit.uris.Count != 0)
-                //    mail.Body = request.ToString() + "<img src=\"" + unit.tempUris[0] + "\"></img>";
-                //else
-                //    mail.Body = request.ToString();
 
-                ////+ "<img src=\"" + unit.tempUris[1] + "\"></img>"
-                //mail.IsBodyHtml = true;
+                MailMessage mail = new MailMessage();
+                mail.To.Add(request.mailAddress);
+                mail.From = new MailAddress("bibasitshak@gmail.com");
+                mail.Subject = "mailSubject";
+                if (unit.uris.Count != 0)
+                    mail.Body = request.ToString() + "<img src=\"" + unit.tempUris[0] + "\"></img>";
+                else
+                    mail.Body = request.ToString();
 
-                //SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-                //// smtp.Host = "smtp.gmail.com";
-                ////smtp.Port = 587;
-                //smtp.Credentials = new System.Net.NetworkCredential("bibasitshak@gmail.com", "Lui261004");
-                //smtp.EnableSsl = true;
-            
-                //try
-                //{
-                //    smtp.Send(mail);
-                //}
-                //catch (Exception ex)
-                //{
-                //    MessageBox.Show(ex.Message);
-                //}
-                //*/
-                Outlook.Application App = new Outlook.Application();
-                Outlook.MailItem msg = (Outlook.MailItem)App.CreateItem(Outlook.OlItemType.olMailItem);
+                //+ "<img src=\"" + unit.tempUris[1] + "\"></img>"
+                mail.IsBodyHtml = true;
+
+                SmtpClient smtp = new SmtpClient();
+                // smtp.Host = "smtp.gmail.com";
+                //smtp.Port = 587;
+                smtp.Credentials = new System.Net.NetworkCredential("bibasitshak@gmail.com", "Lui261004");
+                smtp.EnableSsl = true;
+
+                try
+                {
+                    smtp.Send(mail);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                //Outlook.Application App = new Outlook.Application();
+                //Outlook.MailItem msg = (Outlook.MailItem)App.CreateItem(Outlook.OlItemType.olMailItem);
 
                 ////msg.HTMLBody = ("<img src=\"" + unit.uris[0] + "\"></img>"/*+ unit.ToString()*/);
-                //string description= unit.ToString();
-                //msg.HTMLBody = ("<p><img src=\"http://www.voyagercacher.com/images/voyages-cacher/1389-11635.jpg\" alt=\"hotel\" width=\"400\" height=\"265\" /></p>   < p >"+ description+"</p>  ");
+                //string description = unit.ToString();
+                //msg.HTMLBody = ("<p><img src=\"http://www.voyagercacher.com/images/voyages-cacher/1389-11635.jpg\" alt=\"hotel\" width=\"400\" height=\"265\" /></p>   < p >" + description + "</p>  ");
                 //// msg.HTMLBody=unit.ToString() ;
                 //msg.Subject = unit.hostingUnitName;
                 //Outlook.Recipients recips = (Outlook.Recipients)msg.Recipients;
@@ -187,7 +187,7 @@ namespace PLWPF
                 //msg.Send();
                 //recips = null;
                 //recip = null;
-                //App = null;            
+                //App = null;
                 currentRequest = new GuestRequest();
                 DataContext = currentRequest;
                 }

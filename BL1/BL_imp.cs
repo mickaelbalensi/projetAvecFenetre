@@ -149,9 +149,9 @@ namespace BL1
             },
             };
             for (int i = 0; i < 3; i++)
-                {
-                    dal.addRequest(guestRequestList[i]);
-                }
+            {
+                dal.addRequest(guestRequestList[i]);
+            }
             for (int i = 0; i < 2; i++)
             {
                 dal.addHostingUnit(unitList[i]);
@@ -168,7 +168,7 @@ namespace BL1
         {
             checkDate(request);
             dal.addRequest(request.Copy());
-            addOrder(request.Copy());          
+            addOrder(request.Copy());
         }
         public void updateRequest(GuestRequest request) {
             dal.updateRequest(request);
@@ -178,9 +178,9 @@ namespace BL1
         /// </summary>
         /// <param name="predicate"></param>
         /// <returns></returns>
-        
+
         public IEnumerable<GuestRequest> getAllGuestRequest(Func<GuestRequest, bool> predicate = null)
-        {           
+        {
             return dal.getAllGuestRequest(predicate);
         }
         /// <summary>
@@ -189,7 +189,7 @@ namespace BL1
         /// <param name="unit"></param>
         /// <param name="request"></param>
         /// <returns></returns>
-        public bool isRoomFree(HostingUnit unit, GuestRequest request,ref int sum)
+        public bool isRoomFree(HostingUnit unit, GuestRequest request, ref int sum)
         {
 
             int firstDay = request.entryDate.Day;
@@ -261,7 +261,7 @@ namespace BL1
         public void updateHostingUnit(HostingUnit unit) {
             foreach (Order orders in getAllOrder(x => x.hostingUnitKey == unit.hostingUnitKey))
             {
-                if (orders.status==OrderStatus.reserved || orders.status == OrderStatus.notYetAddressed || orders.status == OrderStatus.mailWasSent)
+                if (orders.status == OrderStatus.reserved || orders.status == OrderStatus.notYetAddressed || orders.status == OrderStatus.mailWasSent)
                 {
                     throw new Exception("You can't update this unit because it has been already proposed or reserved to a client ");
                 }
@@ -326,11 +326,11 @@ namespace BL1
         /// <returns></returns>
         public BankBranch checkBanckBranch(int BankCode, int BranchCode)
         {
-            var branch =dal.getBankBranch(x => (x.bankCode == BankCode) && (x.branchCode == BranchCode)).FirstOrDefault();
+            var branch = dal.getBankBranch(x => (x.bankCode == BankCode) && (x.branchCode == BranchCode)).FirstOrDefault();
             return branch;
         }
 
-        public IEnumerable <BankBranch>  getBankBranch(Func<BankBranch, bool> predicate = null)
+        public IEnumerable<BankBranch> getBankBranch(Func<BankBranch, bool> predicate = null)
         {
             return dal.getBankBranch(predicate);
         }
@@ -392,7 +392,7 @@ namespace BL1
             foreach (HostingUnit unit in getAllHostingUnit(predicate))
             {
                 int nbOfDays = 0;
-                if (isRoomFree(unit, request,ref nbOfDays))//check if the room is free 
+                if (isRoomFree(unit, request, ref nbOfDays))//check if the room is free 
                 {
 
                     dal.addOrder(new Order
@@ -404,34 +404,41 @@ namespace BL1
                         createDate = request.entryDate,
                         numberOfDays = nbOfDays,
                         price = nbOfDays * 10
-                    }.Copy()) ;
+                    }.Copy());
                 }
-            }         
+            }
         }
         /// <summary>
         /// to pass from mail was sent to reserve or expired 
         /// </summary>
         /// <param name="order"></param>
 
-        public void updateOrder(Order order)
+        public void updateOrder(Order order,Host host)
         {
             List<Order> listToUpdate = new List<Order>();
-            foreach (Order orders in getAllOrder(x => x.guestRequestKey == order.guestRequestKey))
+            List<Order> helpList = new List<Order>();
+            foreach (Order orders in getAllOrder())
             {
-                if (orders.orderKey != order.orderKey)
+                helpList.Add(orders);
+            }
+
+            for (int i=0;i<helpList.Count;i++)
+            {
+                HostingUnit unit = getHostingUnit(helpList[i].hostingUnitKey);
+                if (helpList[i].hostingUnitKey == order.hostingUnitKey && helpList[i].orderKey != order.orderKey && host.hostKey==unit.owner.hostKey )
                 {
-                    orders.status = OrderStatus.expired;
-                    reservePlaces(order, false);                   
-                    //listToUpdate.Add(orders);
+                    helpList[i].status = OrderStatus.expired;
+                    dal.updateOrder(helpList[i]);
                 }
             }
-            //for (int i=0;i< listToUpdate.Count;i++)
-               // dal.updateOrder(listToUpdate[i]);  
-            
-            reservePlaces(order,true);
             order.status = OrderStatus.reserved;
             dal.updateOrder(order);
+
         }
+        //for (int i=0;i< listToUpdate.Count;i++)
+        // dal.updateOrder(listToUpdate[i]);  
+
+        
         
         public IEnumerable<Order> getAllOrder(Func<Order, bool> predicate = null)
         {

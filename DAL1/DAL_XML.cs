@@ -49,7 +49,7 @@ namespace DAL1
                 || !File.Exists(bankBranchPath))
                 CreateFiles();
             else
-                CreateFiles();
+                LoadData();
         }
         private void CreateFiles()
         {
@@ -785,8 +785,6 @@ namespace DAL1
 
 
         #endregion
-
-
         #region host
         public void addHost(Host host)
         {

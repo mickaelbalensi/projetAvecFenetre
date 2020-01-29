@@ -25,6 +25,7 @@ namespace PLWPF
         public Order currentOrder { get; set; }
         public HostingUnit currentUnit;
         public List<Order> ordersLists;
+        public Host currentHost = new Host();
         IBL bl;
         public UpdateOrder(Host host)
         {
@@ -42,7 +43,8 @@ namespace PLWPF
                     ordersLists.Add(orders);
                 }
             }           
-            OrderDetails.ItemsSource = ordersLists;       
+            OrderDetails.ItemsSource = bl.getAllOrder();
+            currentHost = host;
         }
 
         private void ButtonOrder_Click(object sender, RoutedEventArgs e)
@@ -51,7 +53,7 @@ namespace PLWPF
             {
                 int currentKey =int.Parse(unitKeyBox.Text);
                 currentOrder = bl.getOrder(currentKey);
-                bl.updateOrder(currentOrder);
+                bl.updateOrder(currentOrder,currentHost);
                 MessageBox.Show("Your order has been updated you have know a new client in your unit");
                 this.Close();
             }
