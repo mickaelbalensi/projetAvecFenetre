@@ -273,6 +273,19 @@ namespace BL1
         }
 
 
+        public BankBranch checkBanckBranch(int BankCode, int BranchCode)
+        {
+            var branch =dal.getBankBranch(x => (x.bankCode == BankCode) && (x.branchCode == BranchCode)).FirstOrDefault();
+            return branch;
+        }
+
+        public IEnumerable <BankBranch>  getBankBranch(Func<BankBranch, bool> predicate = null)
+        {
+            return dal.getBankBranch(predicate);
+        }
+
+
+
         #endregion
 
         //public void reservePlaces(Order order)
@@ -305,7 +318,7 @@ namespace BL1
         //    }
         //    return sum;
         //}
-        
+
 
         #region order
         public void addOrder(GuestRequest request)
@@ -501,6 +514,12 @@ namespace BL1
         {
             return dal.getOrderCount();
         }
+
+        public long getHostCount()
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
 
     }

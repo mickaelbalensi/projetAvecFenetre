@@ -40,6 +40,13 @@ namespace PLWPF
             this.Close();
         }
 
+        private void SignIn_Click(object sender, RoutedEventArgs e)
+        {
+            Window signIn = new SignIn();
+            signIn.Show();
+            this.Close();
+        }
+
         private void addOrderButton_Click(object sender, RoutedEventArgs e)
         {
             Window  orderPage = new OrderPage();

@@ -37,6 +37,7 @@ namespace DAL1
         long guestRequestCount;
         long hostingUnitCount;
         long orderCount;
+        long hostCount;
 
         public DAL_XML()
         {
@@ -48,7 +49,7 @@ namespace DAL1
                 || !File.Exists(bankBranchPath))
                 CreateFiles();
             else
-                LoadData();
+                CreateFiles();
         }
         private void CreateFiles()
         {
@@ -64,14 +65,16 @@ namespace DAL1
             orderRoot = new XElement("Order");
             orderRoot.Save(orderPath);
 
-            bankBranchRoot = new XElement("BankBranch");
-            bankBranchRoot.Save(bankBranchPath);
+            //bankBranchRoot = new XElement("BankBranch");
+            //bankBranchRoot.Save(xmlLocalPath);
+            bankBranchRoot = XElement.Load(xmlLocalPath);
 
 
             configRoot = new XElement("configuration",
                 new XElement("orderCount", "1"),
                 new XElement("hostingUnitCount", "1"),
-                new XElement("guestRequestCount", "1"));
+                new XElement("guestRequestCount", "1"),
+                new XElement("hostCount", "1"));
             String path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
             configRoot.Save(path + configPath);
@@ -86,8 +89,9 @@ namespace DAL1
                 hostRoot = XElement.Load(hostPath);
                 hostingUnitRoot = XElement.Load(hostingUnitPath);
                 orderRoot = XElement.Load(orderPath);
-                bankBranchRoot = XElement.Load(bankBranchPath);
+                bankBranchRoot = XElement.Load(xmlLocalPath);
                 configRoot = XElement.Load(configPath);
+
 
             }
             catch
@@ -338,7 +342,7 @@ namespace DAL1
                 new XElement("familyName", host.familyName),
                 new XElement("phoneNumber", host.phoneNumber.ToString()),
                 new XElement("mailAddress", host.mailAddress),
-                //new XElement("bankBranchDetails", ConvertBankBranchToXAML(host.bankBranchDetails)),
+                new XElement("bankBranchDetails", ConvertBankBranchToXAML(host.bankBranchDetails)),
                 new XElement("bankAccountNumber", host.bankAccountNumber.ToString()),
                 new XElement("collectionClearance", host.collectionClearance.ToString()));
         }
@@ -366,7 +370,7 @@ namespace DAL1
                                 where ost.Name=="mailAddress"
                                 select (ost.Value)).FirstOrDefault();
 
-            //host.bankBranchDetails = ConvertXAMLToBankBranch(element);
+            host.bankBranchDetails = ConvertXAMLToBankBranch(element.Element("bankBranchDetails").Element("BankBranch"));
 
             host.bankAccountNumber = (from ost in element.Elements()
                                       where ost.Name== "bankAccountNumber"
@@ -378,16 +382,16 @@ namespace DAL1
 
             return host;
         }
-        //XElement ConvertBankBranchToXAML(BankBranch bank)
-        //{
-        //    return 
-        //        new XElement("BankBranch",
-        //        new XElement("bankNumber", bank.bankNumber.ToString()),
-        //        new XElement("bankName",bank.bankName),
-        //        new XElement("branchNumber",bank.branchNumber.ToString()),
-        //        new XElement("branchAddress", bank.branchAddress),
-        //        new XElement("branchCity",bank.branchCity));
-        //}
+        XElement ConvertBankBranchToXAML(BankBranch bank)
+        {
+            return 
+                new XElement("BankBranch",
+                new XElement("bankCode", bank.bankCode.ToString()),
+                new XElement("bankName",bank.bankName),
+                new XElement("branchCode",bank.branchCode.ToString()),
+                new XElement("ATMaddress", bank.ATMaddress),
+                new XElement("branchCity",bank.branchCity));
+        }
         //BankBranch ConvertXAMLToBankBranch(XElement element)
         //{
         //    BankBranch branch = new BankBranch();
@@ -420,6 +424,7 @@ namespace DAL1
 
         //    return branch;
         //}
+    
         BankBranch ConvertXAMLToBankBranch(XElement element)
         {
             BankBranch branch = new BankBranch();
@@ -440,11 +445,11 @@ namespace DAL1
                                  where bank.Name == "כתובת_ה-ATM"
                                  select (bank.Value)).FirstOrDefault();
 
-            branch.village = (from bank in element.Elements()
+            branch.branchCity = (from bank in element.Elements()
                               where bank.Name == "ישוב"
                               select (bank.Value)).FirstOrDefault();
 
-            string amala= (from bank in element.Elements()
+            /*string amala= (from bank in element.Elements()
                            where bank.Name == "עמלה"
                            select (bank.Value)).FirstOrDefault();
 
@@ -471,7 +476,7 @@ namespace DAL1
             branch.CoordinateY = (from bank in element.Elements()
                                    where bank.Name == "קואורדינטת_Y"
                                    select float.Parse(bank.Value)).FirstOrDefault();
-
+                */
             return branch;
         }
 
@@ -754,6 +759,13 @@ namespace DAL1
                     where x.Name == "orderCount"
                     select long.Parse(x.Value)).FirstOrDefault();
         }
+        public long getHostCount()
+        {
+            return (from x in configRoot.Elements()
+                    where x.Name == "hostCount"
+                    select long.Parse(x.Value)).FirstOrDefault();
+        }
+
 
         #endregion
 
@@ -765,23 +777,23 @@ namespace DAL1
             //if (getAllHost(x => x.hostKey == host.hostKey).FirstOrDefault() != null)
             //    throw new Exception("An Host with the same key already exists.");
 
-            //hostingUnitCount = (from g in configRoot.Elements()
-            //                    where g.Name == "hostingUnitCount"
-            //                    select long.Parse(g.Value)).FirstOrDefault();
+            hostCount = (from g in configRoot.Elements()
+                         where g.Name == "hostCount"
+                         select long.Parse(g.Value)).FirstOrDefault();
 
-            //host.hostKey = hostingUnitCount;
+            host.hostKey = hostCount;
 
             hostRoot.Add(ConvertHostToXAML(host));
             hostRoot.Save(hostPath);
 
-            //XElement toRemove = (from x in configRoot.Elements()
-            //                     where x.Name == "hostingUnitCount"
-            //                     select x).FirstOrDefault();
-            //toRemove.Remove();
+            XElement toRemove = (from x in configRoot.Elements()
+                                 where x.Name == "hostCount"
+                                 select x).FirstOrDefault();
+            toRemove.Remove();
 
-            //hostingUnitCount++;
-            //configRoot.Add(new XElement("hostingUnitCount", hostingUnitCount.ToString()));
-            //configRoot.Save(configPath);
+            hostCount++;
+            configRoot.Add(new XElement("hostCount", hostCount.ToString()));
+            configRoot.Save(configPath);
         }
 
 
@@ -793,6 +805,14 @@ namespace DAL1
         public IEnumerable<Host> getAllHost(Func<Host, bool> predicate = null)
         {
             throw new NotImplementedException();
+        }
+        public IEnumerable<BankBranch> getBankBranch(Func<BankBranch, bool> predicate = null)
+        {
+            var variable = from item in bankBranchRoot.Elements()
+                           let ord = ConvertXAMLToBankBranch(item)
+                           where predicate(ord)
+                           select ord;
+            return variable;
         }
 
         #endregion

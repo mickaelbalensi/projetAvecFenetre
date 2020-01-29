@@ -59,6 +59,9 @@
     <Compile Include="byArea.xaml.cs">
       <DependentUpon>byArea.xaml</DependentUpon>
     </Compile>
+    <Compile Include="confirmBank.xaml.cs">
+      <DependentUpon>confirmBank.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ConnectionPage.xaml.cs">
       <DependentUpon>ConnectionPage.xaml</DependentUpon>
     </Compile>
@@ -105,6 +108,9 @@
     <Compile Include="SendMail.xaml.cs">
       <DependentUpon>SendMail.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SignIn.xaml.cs">
+      <DependentUpon>SignIn.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SubscriptionAsHost.xaml.cs">
       <DependentUpon>SubscriptionAsHost.xaml</DependentUpon>
     </Compile>
@@ -139,6 +145,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="byArea.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="confirmBank.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -223,6 +233,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SignIn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SubscriptionAsHost.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -295,6 +309,7 @@
     <Resource Include="Images\photo4.jpg" />
     <Resource Include="Images\login.jpg" />
     <Resource Include="Images\creer-virus.png" />
+    <Resource Include="Images\fondSignIn.jpeg" />
     <Content Include="Images\photo5.jfif" />
     <Resource Include="Images\photo6.jpg" />
   </ItemGroup>

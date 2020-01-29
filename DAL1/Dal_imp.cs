@@ -198,6 +198,16 @@ namespace DAL1
         {
             return Configuration.orderCount;
         }
+
+        public IEnumerable<BankBranch> getBankBranch(Func<BankBranch, bool> predicate = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public long getHostCount()
+        {
+            throw new NotImplementedException();
+        }
         #endregion
 
     }

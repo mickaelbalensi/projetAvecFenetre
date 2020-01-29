@@ -35,13 +35,14 @@ namespace DAL1
         #region host
        void addHost(Host host);
        Host getHost(long key);
-       IEnumerable<Host> getAllHost(Func<Host, bool> predicate = null);
+        IEnumerable<BankBranch> getBankBranch(Func<BankBranch, bool> predicate = null);
+        IEnumerable<Host> getAllHost(Func<Host, bool> predicate = null);
 
         #endregion
         #region configuration
         long getGuestRequestCount();
         long getHostingUnitCount();
-
+        long getHostCount();
         long getOrderCount();
         #endregion
 

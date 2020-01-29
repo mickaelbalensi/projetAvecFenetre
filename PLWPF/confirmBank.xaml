@@ -1,0 +1,60 @@
+﻿<Window x:Class="PLWPF.confirmBank"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d"
+        Title="confirmBank" Height="370.8" Width="355.2">
+    <Grid>
+        <Label Content="Bank's Code :"
+                   Grid.Column="0"
+                   Margin="19,72,246.8,236.6"/>
+        <TextBox 
+                x:Name="BankCodeBox"
+                    Text="{Binding familyName, Mode=TwoWay}"
+                   Margin="145,72,0,241.6"
+                HorizontalAlignment="Left" Width="140"
+                />
+        <Label Content="Bank's Name :"
+                   Grid.Column="0"
+                   Margin="19,105,225.8,207.6" RenderTransformOrigin="0.5,0.507" />
+        <TextBox 
+                x:Name="BankNameBox"
+                    Text="{Binding Path=privateName , Mode=TwoWay}"
+                   Margin="145,105,0,207.6" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="140" 
+                />
+        <Label Content="Branch's Code :"
+                  Grid.Column="0"
+                   Margin="19,139,216.8,178.6"/>
+        <TextBox 
+                 x:Name="BranchCodeBox"
+                   Text="{Binding mailAddress, Mode=TwoWay}"
+                   Margin="145,139,0,173.6"  
+                RenderTransformOrigin="0.5,0.5" 
+                HorizontalAlignment="Left" Width="140"
+                />
+        <Label Content="ATM Address:"
+                  Grid.Column="0"
+                   Margin="10,227,674.6,169" RenderTransformOrigin="0.454,0.466"/>
+        <TextBox 
+                 x:Name="pnoneNumberBox"
+                   Text="{Binding phoneNumber, Mode=TwoWay}"
+                   Margin="145,227,0,173.8"  
+                RenderTransformOrigin="0.5,0.5" 
+                HorizontalAlignment="Left" Width="140"/>
+
+        <Label Content="Branch's City :"
+                  Grid.Column="0"
+                   Margin="10,251,674.6,145" RenderTransformOrigin="0.454,0.466"/>
+
+        <TextBox 
+                 x:Name="rBox"
+                   Text="{Binding phoneNumber, Mode=TwoWay}"
+                   Margin="145,255,0,145"  
+                RenderTransformOrigin="0.5,0.5" 
+                HorizontalAlignment="Left" Width="140"
+                />
+
+    </Grid>
+</Window>

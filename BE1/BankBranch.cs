@@ -15,13 +15,13 @@ namespace BE1
         public string bankName { get; set; }
         public int branchCode { get; set; }
         public string ATMaddress { get; set; }
-        public string village { get; set; }
-        public bool commission { get; set; }
-        public string ATMtype { get; set; }
-        public string LocationOfATMrelativeToBranch {  get; set; }
-        public bool accesshandicap { get; set; }
-        public float CoordinateX { get; set; }
-        public float CoordinateY { get; set; }
+        public string branchCity { get; set; }
+        //public bool commission { get; set; }
+        //public string ATMtype { get; set; }
+        //public string LocationOfATMrelativeToBranch {  get; set; }
+        //public bool accesshandicap { get; set; }
+        //public float CoordinateX { get; set; }
+        //public float CoordinateY { get; set; }
 
 //public Bank bankNumber { get; set; }
 //    //    public string bankName { get; set; }

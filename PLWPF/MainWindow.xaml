@@ -43,12 +43,20 @@
                 />
 
             <Button x:Name="PersonnalAccount"
-                Content="Host"
-                Margin="154.6,289,188,-110.934"
-                FontSize="30" 
+                Content="Log In"
+                Margin="154.6,289,191,-110.934"
+                FontSize="20" 
                     Visibility="visible"
                  Grid.Column="1"
                 Click="PersonnalAccount_Click"
+                />
+            <Button x:Name="SignIn"
+                Content="Sign In"
+                Margin="250.6,289,95,-110.934"
+                FontSize="20" 
+                Visibility="visible"
+                Grid.Column="1"
+                Click="SignIn_Click"
                 />
         </Grid>
 

@@ -1,0 +1,194 @@
+﻿<Window x:Class="PLWPF.SignIn"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PLWPF"
+        mc:Ignorable="d"
+        Title="SignIn" Height="454" Width="949.6">
+    <Window.Background>
+        <ImageBrush ImageSource="Images/fondSignIn.jpeg"
+                    Stretch="UniformToFill">
+            <ImageBrush.RelativeTransform>
+                <TransformGroup>
+                    <ScaleTransform CenterX="5"/>
+                    <SkewTransform CenterX="5"/>
+                    <RotateTransform CenterX="5"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+
+            </ImageBrush.RelativeTransform>
+        </ImageBrush>
+    </Window.Background>
+    <Grid>
+        <Label Content="Sign In" FontSize="50" HorizontalAlignment="Left" Margin="28,-17,0,0" VerticalAlignment="Top" Height="79"/>
+        <!--#region nomPrenom-->
+        <Label Content="Your Personnal Information" FontSize="20" HorizontalAlignment="Left" Margin="0,50,0,0" VerticalAlignment="Top"/>
+        <Label Content="Your ID is:"
+                   Grid.Column="0"
+                   Margin="10,101,803.2,291.8"/>
+        <!--Text="{Binding guestRequestKey, Mode=TwoWay}"-->
+        <TextBox 
+                x:Name="idBox"
+                   IsReadOnly="True"
+                   Margin="145,106,0,291.8"
+                HorizontalAlignment="Left" Width="31" RenderTransformOrigin="0.51,0.919"                    
+/>
+        <!--<Label x:Name="familyError"
+                       Foreground="Red"
+                       Content="Please enter your family name only with letters "
+                       Visibility="Hidden"
+                       FontStyle="Italic"
+                       FontSize="10"
+                       Grid.Column="1"
+                       Margin="15.4,25.8,86.6,48.4"
+                       Grid.Row="2" Grid.RowSpan="2"/>-->
+        <Label Content="Family Name :"
+                   Grid.Column="0"
+                   Margin="10,138,803.2,253.8"/>
+        <TextBox 
+                x:Name="familyTextBox"
+                    Text="{Binding familyName, Mode=TwoWay}"
+                   Margin="145,138,0,258.8"
+                HorizontalAlignment="Left" Width="140"
+                />
+        <Label x:Name="familyerror"
+                       Foreground="Red"
+                        Content="It must content just letters"
+                       Visibility="Hidden"
+                       FontSize="10"
+                     FontStyle="Italic"
+                       Margin="292,121,469.2,276.8"/>
+        <Label Content="Private Name :"
+                   Grid.Column="0"
+                   Margin="10,172,803.2,224.8" RenderTransformOrigin="0.5,0.507" />
+        <TextBox 
+                x:Name="privateTextBox"
+                    Text="{Binding Path=privateName , Mode=TwoWay}"
+                   Margin="145,171,0,229.8" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="140" 
+                />
+        <Label x:Name="privateerror"
+                       Foreground="Red"
+                    Content="It must content just letters"
+                     FontStyle="Italic"
+                       Visibility="Hidden"
+                       FontSize="10"
+                       Margin="292,149,469.2,248.8"/>
+        <Label Content="Mail Address :"
+                  Grid.Column="0"
+                   Margin="10,198,803.2,197.8"/>
+        <TextBox 
+                 x:Name="mailTextBox"
+                   Text="{Binding mailAddress, Mode=TwoWay}"
+                   Margin="145,198,0,202.8"  
+                RenderTransformOrigin="0.5,0.5" 
+                HorizontalAlignment="Left" Width="140"
+                />
+        <Label x:Name="mailError"
+                    Content="Your Address must content @"
+                   FontStyle="Italic"
+                   FontSize="10"
+                   Foreground="Red"
+                   Visibility="Hidden"
+                   Margin="292,173,469.2,224.8"/>
+        <Label Content="Phone Number:"
+                  Grid.Column="0"
+                   Margin="10,227,803.2,168.8" RenderTransformOrigin="0.454,0.466"/>
+        <TextBox 
+                 x:Name="pnoneNumberBox"
+                   Text="{Binding phoneNumber, Mode=TwoWay}"
+                   Margin="145,227,0,173.8"  
+                RenderTransformOrigin="0.5,0.5" 
+                HorizontalAlignment="Left" Width="140"
+                />
+        <Label x:Name="phoneError"
+                    Content="It must content just digits"
+                   FontStyle="Italic"
+                   FontSize="10"
+                   Foreground="Red"
+                   Visibility="Hidden"
+                   Margin="292,197,469.2,200.8"/>
+
+        <Label Content="Enter a password:"
+                  Grid.Column="0"
+                   Margin="10,256,803.2,139.8"/>
+        <PasswordBox 
+                 x:Name="passwordBox"
+                   Margin="145,254,0,144.8"  
+                RenderTransformOrigin="0.5,0.5" 
+                HorizontalAlignment="Left" Width="140"
+                />
+        <Label Content="Confirm your password:"
+                  Grid.Column="0"
+                   Margin="10,285,798.2,110.8"/>
+        <PasswordBox 
+                 x:Name="password2Box"
+                   Margin="145,285,0,110.8"  
+                RenderTransformOrigin="0.5,0.5" 
+                HorizontalAlignment="Left" Width="140"
+                />
+        <Label x:Name="passwordError"
+                    Content="It's don't the same password"
+                   FontStyle="Italic"
+                   FontSize="10"
+                   Foreground="Red"
+                   Visibility="Hidden"
+                   Margin="292,247,469.2,150.8"/>
+
+        <!--#endregion-->
+        <!--#region infoBank-->
+        <Label Content="Your Bank's Information" FontSize="20" HorizontalAlignment="Left" Margin="479,50,0,0" VerticalAlignment="Top"/>
+        <Label Content="Bank's Code :"
+                   Grid.Column="0"
+                   Margin="474,109,339.2,282.8"/>
+        <TextBox 
+                x:Name="bankCodeBox"
+                Margin="609,109,0,289.8"
+                HorizontalAlignment="Left" Width="40" RenderTransformOrigin="0.495,0.369"
+                />
+        <Label x:Name="bankCodeError"
+                       Foreground="Red"
+                        Content="The code must content just digits"
+                       Visibility="Hidden"
+                       FontSize="10"
+                     FontStyle="Italic"
+                       Margin="712,125,49.2,272.8"/>
+        <Label Content="Branch's Code:"
+                   Grid.Column="0"
+                   Margin="474,143,339.2,253.8" RenderTransformOrigin="0.5,0.507" />
+        <TextBox 
+                x:Name="branchCodeBox"
+                   Margin="609,142,0,258.8" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="40" 
+                />
+        <Label x:Name="branchCodeError"
+                       Foreground="Red"
+                    Content="The code must content just digits"
+                     FontStyle="Italic"
+                       Visibility="Hidden"
+                       FontSize="10"
+                       Margin="712,149,79.2,248.8"/>
+        <Label Content="Account Number :"
+                  Grid.Column="0"
+                   Margin="474,177,339.2,218.8"/>
+        <TextBox 
+                x:Name="accountNumberBox"
+                Text="{Binding bankAccountNumber, Mode=TwoWay}"
+                Margin="609,177,0,223.8"  
+                RenderTransformOrigin="0.5,0.5" 
+                HorizontalAlignment="Left" Width="89"
+                />
+        <Label x:Name="accountNumberError"
+                    Content="The code must content just digits"
+                   FontStyle="Italic"
+                   FontSize="10"
+                   Foreground="Red"
+                   Visibility="Hidden"
+                   Margin="712,171,49.2,226.8"/>
+        <CheckBox x:Name="collecionClearanceCheck" Content="collection Clerance" Margin="479,215,305.2,173.8" Checked="collecionClearanceCheck_Checked"/>
+        <Button Content="Sign In" HorizontalAlignment="Left" Margin="698,303,0,0" VerticalAlignment="Top" Width="75" Click="SignIn_Click"/>
+
+
+
+        <!--#endregion-->
+    </Grid>
+</Window>

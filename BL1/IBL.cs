@@ -34,7 +34,7 @@ namespace BL1
         #region configuration
         long getGuestRequestCount();
         long getHostingUnitCount();
-
+        long getHostCount();
         long getOrderCount();
         #endregion
         #region host
@@ -42,6 +42,9 @@ namespace BL1
         Host checkParameters(long key, string pwd);
         Host getHost(long key);
         IEnumerable<Host> getAllHost(Func<Host, bool> predicate = null);
+        IEnumerable<BankBranch> getBankBranch(Func<BankBranch, bool> predicate = null);
+        BankBranch checkBanckBranch(int BankCode, int BranchCode);
+
         #endregion
 
         IEnumerable<IGrouping<TypeAreaOfTheCountry, HostingUnit>> groupUnitByAreaList(bool flag);
