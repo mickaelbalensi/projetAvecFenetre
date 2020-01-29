@@ -139,7 +139,7 @@ namespace PLWPF
             if (f4)
                 phoneError.Visibility = Visibility.Hidden;
 
-            string password = passwordBox.Password;
+            string password = passwordBox.Text;
             string confirmPassword= password2Box.Password;
             if (password.Length != confirmPassword.Length)
                 f5 = false;

@@ -174,7 +174,7 @@ namespace BL1
         {           
             return dal.getAllGuestRequest(predicate);
         }
-        public bool isRoomFree(HostingUnit unit, GuestRequest request)
+        public bool isRoomFree(HostingUnit unit, GuestRequest request,ref int sum)
         {
 
             int firstDay = request.entryDate.Day;
@@ -189,6 +189,7 @@ namespace BL1
             {
                 if (unit.diary[firstMonth, firstDay++])//if one's of the day is already taken 
                     return false;
+                sum++;
                 if (firstDay == 31) { firstMonth++; firstDay = 0; }//if we got to the end of the month               //
             }
             return true;
@@ -337,7 +338,8 @@ namespace BL1
             };
             foreach (HostingUnit unit in getAllHostingUnit(predicate))
             {
-                if (isRoomFree(unit, request))//check if the room is free 
+                int nbOfDays = 0;
+                if (isRoomFree(unit, request,ref nbOfDays))//check if the room is free 
                 {
 
                     dal.addOrder(new Order
@@ -347,7 +349,9 @@ namespace BL1
                         guestRequestKey = request.guestRequestKey,
                         status = OrderStatus.notYetAddressed,
                         createDate = request.entryDate,
-                    }.Copy());
+                        numberOfDays = nbOfDays,
+                        price = nbOfDays * 10
+                    }.Copy()) ;
                 }
             }         
         }
@@ -392,21 +396,16 @@ namespace BL1
             firstMonth -= 1;
             lastDay -= 1;
             lastMonth -= 1;
-            int sumAmala = 0;
-            int sumNbOfDays = 0;
             while (firstDay != lastDay || firstMonth != lastMonth)
             {
                 if (flag)
                 {
-                    unit.diary[firstMonth, firstDay] = true;
-                    sumAmala += 10;                   
+                    unit.diary[firstMonth, firstDay] = true;                                    
                 }
-                sumNbOfDays += 1;
+               
                 firstDay++;
                 if (firstDay == 31) { firstMonth++; firstDay = 0; }//if we got to the end of the month               //
             }
-            order.price = sumAmala;
-            order.numberOfDays = sumNbOfDays;
             dal.updateOrder(order);
             if (flag)dal.updateHostingUnit(unit);
         }
@@ -424,17 +423,18 @@ namespace BL1
         //    return sum;
         //}
 
-        public IEnumerable<HostingUnit> getFreeUnitList(DateTime entrydate, DateTime releasedate)
-        {
-            GuestRequest request = new GuestRequest
-            {
-                entryDate = entrydate,
-                releaseDate = releasedate,
-            };
-            return from unit in getAllHostingUnit()
-                   where isRoomFree(unit, request)
-                   select unit.Copy();
-        }
+        //public IEnumerable<HostingUnit> getFreeUnitList(DateTime entrydate, DateTime releasedate)
+        //{
+        //    GuestRequest request = new GuestRequest
+        //    {
+        //        entryDate = entrydate,
+        //        releaseDate = releasedate,
+        //    };
+        //    return from unit in getAllHostingUnit()
+        //           where isRoomFree(unit, request,)
+        //           select unit.Copy();
+        //    return null;
+        //}
         public int numOrderForGuestRequest(GuestRequest request)
         {
             Func<Order, bool> predicate = order =>

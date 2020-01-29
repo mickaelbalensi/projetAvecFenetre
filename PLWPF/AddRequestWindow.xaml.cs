@@ -86,8 +86,6 @@ namespace PLWPF
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-
-
             }
         }
         private void checkExceptions()
@@ -152,14 +150,18 @@ namespace PLWPF
                 mail.To.Add(request.mailAddress);
                 mail.From = new MailAddress("mickaelbalensi2652@gmail.com");
                 mail.Subject = "mailSubject";
-                mail.Body = request.ToString() + "<img src=\"" + unit.tempUris[0] + "\"></img>";
+                if (unit.uris.Count != 0)
+                    mail.Body = request.ToString() + "<img src=\"" + unit.tempUris[0] + "\"></img>";
+                else
+                    mail.Body = request.ToString();
+
                 //+ "<img src=\"" + unit.tempUris[1] + "\"></img>"
                 mail.IsBodyHtml = true;
 
                 SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
                 // smtp.Host = "smtp.gmail.com";
                 //smtp.Port = 587;
-                smtp.Credentials = new System.Net.NetworkCredential("mickaelbalensi2652@gmail.com", "gm61352+");
+                smtp.Credentials = new System.Net.NetworkCredential("bibasitshak@gmail.com", "Lui261004");
                 smtp.EnableSsl = true;
             
                 try
