@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace BE1
 {
@@ -18,6 +19,7 @@ namespace BE1
         public BankBranch bankBranchDetails { get; set; }
         public long bankAccountNumber { get; set; }
         public bool collectionClearance { get; set; }
+        [XmlIgnore]
         public string password { get; set; }
         public override string ToString()
         {

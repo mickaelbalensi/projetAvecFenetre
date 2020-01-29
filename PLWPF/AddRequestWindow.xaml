@@ -41,7 +41,8 @@
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="337*"/>
+                    <ColumnDefinition Width="38*"/>
                 </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
@@ -68,20 +69,20 @@
                 <Label Content="Who ?"
                    Grid.Column="0"
                    Grid.Row="0"
-                   Margin="16,10,16,0"
-                   FontSize="20"
+                   Margin="16,10,15.6,48.6"
+                   FontSize="20" Grid.RowSpan="2"
                          />
                 <Label Content="Your ID is:"
                    Grid.Column="0"
                    Grid.Row="1"
-                   Margin="15,15,15,10"/>
+                   Margin="15,15.2,14.6,9.6"/>
                 <!--Text="{Binding guestRequestKey, Mode=TwoWay}"-->
                 <TextBox 
                 x:Name="idBox"
                    
                    Grid.Row="1"
                    IsReadOnly="True"
-                   Margin="15,10,0,20" Grid.Column="1"
+                   Margin="15.4,10.2,0,19.6" Grid.Column="1"
                 HorizontalAlignment="Left" Width="59"                    
 />
                 <Label x:Name="familyError"
@@ -91,17 +92,17 @@
                        FontStyle="Italic"
                        FontSize="10"
                        Grid.Column="1"
-                       Margin="15.4,25.8,86.6,48.4"
+                       Margin="15.4,25.4,49.1,48.4"
                        Grid.Row="2" Grid.RowSpan="2"/>
                 <Label Content="Family Name :"
                    Grid.Column="0"
                    Grid.Row="2"
-                   Margin="15,15,15,10"/>
+                   Margin="15,15.4,14.6,10.2"/>
                 <TextBox 
                 x:Name="familyTextBox"
                     Text="{Binding familyName, Mode=TwoWay}"
                    Grid.Row="2"
-                   Margin="15,10,0,20" Grid.Column="1"
+                   Margin="15.4,10.4,0,19.2" Grid.Column="1"
                 HorizontalAlignment="Left" Width="269"
                 />
                 <Label x:Name="familyerror"
@@ -111,19 +112,19 @@
                        FontSize="10"
                      FontStyle="Italic"
                        Grid.Column="1"
-                       Margin="10,25,0,0"
-                       Grid.Row="2">
+                       Margin="10.4,25.4,0,0.2"
+                       Grid.Row="2" Grid.ColumnSpan="2">
                 </Label>
 
                 <Label Content="Private Name :"
                    Grid.Column="0"
                    Grid.Row="3"
-                   Margin="15,15,15,10" RenderTransformOrigin="0.5,0.507" />
+                   Margin="15,14.8,14.6,9.4" RenderTransformOrigin="0.5,0.507" />
                 <TextBox 
                 x:Name="privateTextBox"
                     Text="{Binding Path=privateName , Mode=TwoWay}"
                    Grid.Row="3"
-                   Margin="14,15.333,0,15" Grid.Column="1" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="270" 
+                   Margin="14.4,15.8,0,14.4" Grid.Column="1" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Width="270" 
                 />
                 <Label x:Name="privateerror"
                        Foreground="Red"
@@ -132,8 +133,8 @@
                        Visibility="Hidden"
                        FontSize="10"
                        Grid.Column="1"
-                       Margin="10,25,0,0"
-                       Grid.Row="3">
+                       Margin="10.4,24.8,0,49"
+                       Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="2">
                 </Label>
 
 
@@ -141,13 +142,13 @@
                 <Label Content="Mail Address :"
                   Grid.Column="0"
                    Grid.Row="4"
-                   Margin="15,15,15,0"/>
+                   Margin="15,15.6,14.6,0"/>
                 <TextBox 
                  x:Name="mailTextBox"
                    Text="{Binding mailAddress, Mode=TwoWay}"
                    Grid.Column="1"
                    Grid.Row="4"
-                   Margin="14,15.333,0,15"  
+                   Margin="14.4,15.6,0,14"  
                 RenderTransformOrigin="0.5,0.5" 
                 HorizontalAlignment="Left" Width="270"
                 />
@@ -159,33 +160,33 @@
                    FontSize="10"
                    Foreground="Red"
                    Visibility="Hidden"
-                   Margin="15,27,15,0"/>
+                   Margin="15.4,27.6,15,0" Grid.ColumnSpan="2"/>
                 <!--#endregion-->
                 <!--#region When-->
                 <Label Content="When ?"
                    Grid.Column="0"
                    Grid.Row="5"
-                   Margin="15,15,15,0"         
+                   Margin="15,15,14.6,49.2" Grid.RowSpan="2"         
                    />
 
                 <Label Content="Entry-Date :"
                    Grid.Column="0"
                    Grid.Row="6"
-                   Margin="15,15,15,0"/>
+                   Margin="15,15.4,14.6,48.8" Grid.RowSpan="2"/>
                 <DatePicker Name="EntryDateCalendar"
                    Grid.Column="1"
                    Grid.Row="6"
-                   Margin="15,15,0,10"
+                   Margin="15.4,15.4,0,9.2"
                    HorizontalAlignment="Left" Width="269"
                 />
                 <Label Content="Release-Date :"
                    Grid.Column="0"
                    Grid.Row="7"
-                   Margin="15,15,15,0"/>
+                   Margin="15,15.8,14.6,49.4" Grid.RowSpan="2"/>
                 <DatePicker Name="ReleaseDateCalendar"
                    Grid.Column="1"
                    Grid.Row="7"
-                   Margin="15,16,0,10"
+                   Margin="15.4,16.8,0,9.8"
                    Visibility="{Binding ElementName=EntryDateCalendar, Path=SelectedDate}"
                    
                         HorizontalAlignment="Left" Width="269"
@@ -195,17 +196,17 @@
                 <Label Content="How many ?"
                    Grid.Column="0"
                    Grid.Row="8"
-                   Margin="15,15,15,0"         
+                   Margin="15,15.2,14.6,49" Grid.RowSpan="2"         
                    />
                 <Label Content="Adults :"
                    Grid.Column="0"
                    Grid.Row="9"
-                   Margin="15,15,15,0" />
+                   Margin="15,15.6,14.6,0" />
                 <TextBox 
                  x:Name="AdultsTextBox"
                   Grid.Column="1"
                    Grid.Row="9"
-                   Margin="15,15,0,14" 
+                   Margin="15.4,14.6,0,14" 
                 HorizontalAlignment="Left" Width="59"
                 />
                 <Label x:Name="adultserror"
@@ -215,19 +216,19 @@
                        FontSize="10"
                        Visibility="Hidden"
                        Grid.Column="1"
-                       Margin="10,25,0,0"
-                       Grid.Row="9">
+                       Margin="10.4,25.6,0,0"
+                       Grid.Row="9" Grid.ColumnSpan="2">
                 </Label>
 
                 <Label Content="Children :"
                    Grid.Column="0"
                    Grid.Row="10"
-                   Margin="15,15,15,0"/>
+                   Margin="15,15,14.6,49.2" Grid.RowSpan="2"/>
                 <TextBox 
                   x:Name="ChildrenTextBox"
                   Grid.Column="1"
                    Grid.Row="10"
-                   Margin="15,16,0,15"
+                   Margin="15.4,16,0,14.6"
                 HorizontalAlignment="Left" Width="59"
                 />
                 <Label x:Name="childrenerror"
@@ -236,28 +237,28 @@
                         FontStyle="Italic"
                        FontSize="10"
                        Visibility="Hidden"
-                       Grid.Column="10"
-                       Margin="10,25,0,0"
-                       Grid.Row="1">
+                       Grid.Column="1"
+                       Margin="10.4,25.2,0,49.2"
+                       Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2">
                 </Label>
                 <!--#endregion-->
                 <!--#region where-->
                 <Label Content="Where ?"
                    Grid.Column="0"
                    Grid.Row="11"
-                   Margin="15,15,15,0"         
+                   Margin="15,15.4,14.6,48.8" Grid.RowSpan="2"         
                    />
 
                 <Label Content="TypeArea :"
                    Grid.Column="0"
                    Grid.Row="12"
-                   Margin="15,15,15,0"/>
+                   Margin="15,15.8,14.6,49.4" Grid.RowSpan="2"/>
                 <ComboBox 
                    x:Name="AreaComboBox"                   
                    Grid.Column="1"               
                    Grid.Row="12"
                    SelectedValue="{Binding TypeAreaOfTheCountry, Mode=TwoWay}"
-                   Margin="15,15.333,0,15.333" 
+                   Margin="15.4,15.8,0,14.8" 
                 
                 HorizontalAlignment="Left" Width="269"
                 />
@@ -267,18 +268,18 @@
                 <Label Content="What ?"
                    Grid.Column="0"
                    Grid.Row="13"
-                   Margin="15,15,15,0"         
+                   Margin="15,15.2,14.6,49" Grid.RowSpan="2"         
                    />
                 <Label Content="Type Of Unit :"
                    Grid.Column="0"
                    Grid.Row="14"
-                   Margin="15,15,15,0"/>
+                   Margin="15,15.6,14.6,0"/>
                 <ComboBox 
                    x:Name="UnitComboBox"                   
                    Grid.Column="1"               
                    Grid.Row="14"
                    SelectedItem="{Binding TypeOfHostingUnit, Mode=TwoWay}"
-                   Margin="15,15,0,14.667"
+                   Margin="15.4,15.6,0,14"
                 HorizontalAlignment="Left" Width="269"
                 />
                 <CheckBox 
@@ -288,23 +289,23 @@
                    Grid.Row="15"
                    IsChecked="False"
                    IsThreeState="True"
-                   Margin="15,14.8,51.6,14.8"
+                   Margin="15,15,51.6,14.6"
                 />
 
                 <CheckBox  x:Name="PoolCheckBox"
                    Content="Pool"
                    Grid.Column="0"
                    Grid.Row="15"
-                   Margin="90,15,10,0"
+                   Margin="90,15,9.6,49.2"
                    IsChecked="False"
-                   IsThreeState="True"
+                   IsThreeState="True" Grid.RowSpan="2"
                 />
 
                 <CheckBox x:Name="GardenCheckBox"
                 Content="Garden"
                    Grid.Column="1"
                    Grid.Row="15"
-                   Margin="0,15"
+                   Margin="0.4,15,0,14.6"
                    IsChecked="False"
                    IsThreeState="True" RenderTransformOrigin="0.365,0.275"
                       HorizontalAlignment="Left" Width="74"
@@ -314,7 +315,7 @@
                 Content="ChildrenAttractions :"
                    Grid.Column="1"
                    Grid.Row="15"
-                   Margin="79,15,0,6"
+                   Margin="79.4,15,0,5.6"
                    IsChecked="False"
                    IsThreeState="True"
                       HorizontalAlignment="Left" Width="134"
@@ -323,7 +324,7 @@
                    Content="Yes"
                    Grid.Column="1"
                    Grid.Row="15"
-                   Margin="228.4,2.8,47.6,26.8"
+                   Margin="228.4,3,10.1,26.6"
                    IsChecked="True"
                    IsThreeState="True"
                    IsEnabled="False"
@@ -332,7 +333,7 @@
                    Content="Optional"
                    Grid.Column="1"
                    Grid.Row="15"
-                   Margin="228.4,19.8,60.6,9.8"
+                   Margin="228.4,20,23.1,9.6"
                    IsChecked="False"
                    IsThreeState="True"
                    IsEnabled="False"
@@ -341,10 +342,10 @@
                    Content="No"
                    Grid.Column="1"
                    Grid.Row="15"
-                   Margin="229.4,35.8,30.6,39.4"
+                   Margin="229.4,36,31,39.2"
                    IsChecked="{x:Null}"
                    IsThreeState="True"
-                   IsEnabled="False" Grid.RowSpan="2"
+                   IsEnabled="False" Grid.RowSpan="2" Grid.ColumnSpan="2"
                />
 
                 <!--#endregion-->
@@ -398,6 +399,7 @@
                     </Style>
                 </Button.Style>
             </Button>
+            <Button Content="mail" HorizontalAlignment="Left" Margin="447,28,-7,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
 
             <!--#endregion-->
         </Grid>

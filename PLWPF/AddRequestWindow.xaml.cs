@@ -143,39 +143,43 @@ namespace PLWPF
             bool flag = false;
             foreach (HostingUnit unit in bl.getSuggestionList(currentRequest.guestRequestKey))
             {
-                /*flag = true;
+                flag = true;
                 string unitName = unit.hostingUnitName;
-                
-                //MailMessage mail = new MailMessage();
-                //mail.To.Add(request.mailAddress);
-                //mail.From = new MailAddress("mickaelbalensi2652@gmail.com");
-                //mail.Subject = "mailSubject";
-                //if (unit.uris.Count != 0)
-                //    mail.Body = request.ToString() + "<img src=\"" + unit.tempUris[0] + "\"></img>";
-                //else
-                //    mail.Body = request.ToString();
+                MailMessage mail = new MailMessage();
+                mail.To.Add(request.mailAddress);
+                mail.From = new MailAddress("mickaelbalensi2652@gmail.com");
+                mail.Subject = "Welcome to"+unit.hostingUnitName;
+                if (unit.uris.Count != 0)
+                {
+                    if (unit.uris.Count == 2)
+                        mail.Body = "<img src=\"" + unit.uris[0] + "\"></img>";
+                    else
+                        mail.Body = "<img src=\"" + unit.uris[0] + "\"></img>";
+                }
+                else
+                    mail.Body = unit.ToString();
 
-                ////+ "<img src=\"" + unit.tempUris[1] + "\"></img>"
-                //mail.IsBodyHtml = true;
 
-                //SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-                //// smtp.Host = "smtp.gmail.com";
-                ////smtp.Port = 587;
-                //smtp.Credentials = new System.Net.NetworkCredential("bibasitshak@gmail.com", "Lui261004");
-                //smtp.EnableSsl = true;
-            
-                //try
-                //{
-                //    smtp.Send(mail);
-                //}
-                //catch (Exception ex)
-                //{
-                //    MessageBox.Show(ex.Message);
-                //}
-                //*/
-                Outlook.Application App = new Outlook.Application();
-                Outlook.MailItem msg = (Outlook.MailItem)App.CreateItem(Outlook.OlItemType.olMailItem);
+                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+                smtp.Credentials = new System.Net.NetworkCredential("mickaelbalensi2652@gmail.com", "gm61352+");
+                smtp.EnableSsl = true;
 
+                try
+                {
+                    smtp.Send(mail);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+
+                currentRequest = new GuestRequest();
+                DataContext = currentRequest; 
+            }
+
+               
+                //Outlook.Application App = new Outlook.Application();
+                //Outlook.MailItem msg = (Outlook.MailItem)App.CreateItem(Outlook.OlItemType.olMailItem);
                 ////msg.HTMLBody = ("<img src=\"" + unit.uris[0] + "\"></img>"/*+ unit.ToString()*/);
                 //string description= unit.ToString();
                 //msg.HTMLBody = ("<p><img src=\"http://www.voyagercacher.com/images/voyages-cacher/1389-11635.jpg\" alt=\"hotel\" width=\"400\" height=\"265\" /></p>   < p >"+ description+"</p>  ");
@@ -188,18 +192,85 @@ namespace PLWPF
                 //recips = null;
                 //recip = null;
                 //App = null;            
-                currentRequest = new GuestRequest();
-                DataContext = currentRequest;
-                }
-                if (!flag) throw new Exception("sorry there is no available room try others options");
-                else
-                {
-                    MessageBox.Show("Your request has been registred, check your mail to look at your options");
-                    this.Close();
-                }
-                throw new Exception("Your request has been registred, check your mail to look at your options");
+            
+            if (!flag) throw new Exception("sorry there is no available room try others options");
+            else
+            {
+                MessageBox.Show("Your request has been registred, check your mail to look at your options");
+                this.Close();
             }
+            throw new Exception("Your request has been registred, check your mail to look at your options");
+
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Mail(currentRequest);
+        }
+        public void Mail(GuestRequest request)
+        {
+            MailMessage mail = new MailMessage();
+            mail.To.Add("bibasitshak@gmail.com");
+            mail.From = new MailAddress("mickaelbalensi2652@gmail.com");
+            mail.Subject = "Welcome to ";
+            mail.Body = "<img src=\"http://www.voyagercacher.com/images/voyages-cacher/1389-11635.jpg\"></img> bonsoir";
+            mail.IsBodyHtml = true;
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+            // smtp.Host = "smtp.gmail.com";
+            //smtp.Port = 587;
+            smtp.Credentials = new System.Net.NetworkCredential("mickaelbalensi2652@gmail.com", "gm61352+");
+            smtp.EnableSsl = true;
+            smtp.Send(mail);
+
+            MailMessage mail2 = new MailMessage();
+            mail2.To.Add("bibasitshak@gmail.com");
+            mail2.From = new MailAddress("mickaelbalensi2652@gmail.com");
+            mail2.Subject = "Welcome to ";
+            string str= "http://www.voyagercacher.com/images/voyages-cacher/1389-11635.jpg";
+            mail2.Body = "bonjoour <img src=\""+str+"\"></img>";
+            mail2.IsBodyHtml = true;
+            SmtpClient smtp2 = new SmtpClient("smtp.gmail.com", 587);
+            // smtp.Host = "smtp.gmail.com";
+            //smtp.Port = 587;
+            smtp2.Credentials = new System.Net.NetworkCredential("mickaelbalensi2652@gmail.com", "gm61352+");
+            smtp2.EnableSsl = true;
+            smtp2.Send(mail2);
+
+            MailMessage mail3 = new MailMessage();
+            mail3.To.Add("bibasitshak@gmail.com");
+            mail3.From = new MailAddress("mickaelbalensi2652@gmail.com");
+            mail3.Subject = "Welcome to ";
+            string str2 = "http://www.voyagercacher.com/images/voyages-cacher/1389-11635.jpg";
+            string str3= "<img src=\""+str2+"\"></img>";
+            mail3.Body = str3+str3;
+            mail3.IsBodyHtml = true;
+            SmtpClient smtp3 = new SmtpClient("smtp.gmail.com", 587);
+            // smtp.Host = "smtp.gmail.com";
+            //smtp.Port = 587;
+            smtp3.Credentials = new System.Net.NetworkCredential("mickaelbalensi2652@gmail.com", "gm61352+");
+            smtp3.EnableSsl = true;
+            smtp3.Send(mail3);
+
+            MailMessage mail4 = new MailMessage();
+            mail4.To.Add("bibasitshak@gmail.com");
+            mail4.From = new MailAddress("mickaelbalensi2652@gmail.com");
+            mail4.Subject = "Welcome to ";
+            
+            mail4.Body = "<img src=\"http://www.voyagercacher.com/images/voyages-cacher/1389-11635.jpg\"></img>" +
+                "<img src=\"http://www.voyagercacher.com/images/voyages-cacher/1389-11635.jpg\"></img>";
+            mail4.IsBodyHtml = true;
+            SmtpClient smtp4 = new SmtpClient("smtp.gmail.com", 587);
+            // smtp.Host = "smtp.gmail.com";
+            //smtp.Port = 587;
+            smtp4.Credentials = new System.Net.NetworkCredential("mickaelbalensi2652@gmail.com", "gm61352+");
+            smtp4.EnableSsl = true;
+            smtp4.Send(mail4);
+
+
+        }
+
+
     }
+}
 
