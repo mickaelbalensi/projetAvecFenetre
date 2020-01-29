@@ -160,6 +160,10 @@ namespace BL1
         }
         #endregion
         #region request 
+        /// <summary>
+        /// to add my request and check immediatlty if there is any room possible threw the addOrder
+        /// </summary>
+        /// <param name="request"></param>
         public void addRequest(GuestRequest request)
         {
             checkDate(request);
@@ -169,11 +173,22 @@ namespace BL1
         public void updateRequest(GuestRequest request) {
             dal.updateRequest(request);
         }
-
+        /// <summary>
+        /// to get all my request 
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
+        
         public IEnumerable<GuestRequest> getAllGuestRequest(Func<GuestRequest, bool> predicate = null)
         {           
             return dal.getAllGuestRequest(predicate);
         }
+        /// <summary>
+        /// to propose an order we must check is all the days of the room are free
+        /// </summary>
+        /// <param name="unit"></param>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public bool isRoomFree(HostingUnit unit, GuestRequest request,ref int sum)
         {
 
@@ -194,6 +209,11 @@ namespace BL1
             }
             return true;
         }
+
+        /// <summary>
+        /// check if the release date>entrydate
+        /// </summary>
+        /// <param name="request"></param>
         public void checkDate(GuestRequest request)
         {
             if (request.entryDate > request.releaseDate)
@@ -211,11 +231,19 @@ namespace BL1
         #region unit 
 
         //hostingUnit
-
+        //hostingUnit
+        /// <summary>
+        /// to add an unit to my list
+        /// </summary>
+        /// <param name="unit"></param>
         public void addHostingUnit(HostingUnit unit) {
             dal.addHostingUnit(unit);
             throw new Exception("your unit has been registred sucessfully");
         }
+        /// <summary>
+        /// to delete an unit 
+        /// </summary>
+        /// <param name="unit"></param>
         public void deleteHostingUnit(HostingUnit unit) {
             foreach (Order orders in getAllOrder(x => x.hostingUnitKey == unit.hostingUnitKey))
             {
@@ -226,6 +254,10 @@ namespace BL1
             }
             dal.deleteHostingUnit(unit);
         }
+        /// <summary>
+        /// to update an unit 
+        /// </summary>
+        /// <param name="unit"></param>
         public void updateHostingUnit(HostingUnit unit) {
             foreach (Order orders in getAllOrder(x => x.hostingUnitKey == unit.hostingUnitKey))
             {
@@ -236,6 +268,11 @@ namespace BL1
             }
             dal.updateHostingUnit(unit);
         }
+        /// <summary>
+        /// same function that getAllGuestRequest but for hostingUnit
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <returns></returns>
         public IEnumerable<HostingUnit> getAllHostingUnit(Func<HostingUnit, bool> predicate = null)
         {
             return dal.getAllHostingUnit(predicate);
@@ -253,7 +290,14 @@ namespace BL1
             dal.addHost(host);
         }
 
-        //        public Host checkParameters(Host host)
+        //    
+        //public Host checkParameters(Host host)
+        /// <summary>
+        /// to check if the passsword and the id of the host are goods 
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="pwd"></param>
+        /// <returns></returns>
         public Host checkParameters(long key, string pwd)
         {
             Host h = getAllHost(ho => ho.hostKey == key).FirstOrDefault();
@@ -274,7 +318,12 @@ namespace BL1
             return dal.getHost(key);
         }
 
-
+        /// <summary>
+        /// to check if the host does have an account number
+        /// </summary>
+        /// <param name="BankCode"></param>
+        /// <param name="BranchCode"></param>
+        /// <returns></returns>
         public BankBranch checkBanckBranch(int BankCode, int BranchCode)
         {
             var branch =dal.getBankBranch(x => (x.bankCode == BankCode) && (x.branchCode == BranchCode)).FirstOrDefault();
@@ -323,6 +372,10 @@ namespace BL1
 
 
         #region order
+        /// <summary>
+        /// if there is a unit which does correspond to the request we create a new order therefore we check several parameters as if there is a jacuzzi or if it's free
+        /// </summary>
+        /// <param name="request"></param>
         public void addOrder(GuestRequest request)
         {
             Func<HostingUnit, bool> predicate = unit =>
@@ -355,7 +408,10 @@ namespace BL1
                 }
             }         
         }
-
+        /// <summary>
+        /// to pass from mail was sent to reserve or expired 
+        /// </summary>
+        /// <param name="order"></param>
 
         public void updateOrder(Order order)
         {
@@ -384,6 +440,11 @@ namespace BL1
 
         #endregion
         #region functions
+        /// <summary>
+        /// to lock places for the client so another one wont be able to have acces during the same period 
+        /// </summary>
+        /// <param name="order"></param>
+        /// <param name="flag"></param>
         public void reservePlaces(Order order, bool flag)
         {
             HostingUnit unit = getHostingUnit(order.hostingUnitKey);

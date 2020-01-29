@@ -35,17 +35,14 @@ namespace PLWPF
                 currentOrder = new Order();
 
             DataContext = currentOrder;
-            foreach ( HostingUnit unit in  bl.getAllHostingUnit((x=> x.owner.hostKey == host.hostKey)))
+            foreach (HostingUnit unit in bl.getAllHostingUnit((x => x.owner.hostKey == host.hostKey)))
             {
-                foreach( Order orders in bl.getAllOrder(x => x.hostingUnitKey == unit.hostingUnitKey))
+                foreach (Order orders in bl.getAllOrder(x => x.hostingUnitKey == unit.hostingUnitKey))
                 {
                     ordersLists.Add(orders);
                 }
-            }
-            OrderDetails.ItemsSource = ordersLists;
-
-
-          //OrderDetails.ItemsSource=bl.getAllOrder(currentOrder.hostingUnitKey==)
+            }           
+            OrderDetails.ItemsSource = ordersLists;       
         }
 
         private void ButtonOrder_Click(object sender, RoutedEventArgs e)

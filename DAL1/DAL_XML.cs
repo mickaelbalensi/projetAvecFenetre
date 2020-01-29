@@ -49,7 +49,7 @@ namespace DAL1
                 || !File.Exists(bankBranchPath))
                 CreateFiles();
             else
-                LoadData();
+                CreateFiles();
         }
         private void CreateFiles()
         {

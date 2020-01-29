@@ -76,13 +76,12 @@
                       GridLinesVisibility="Horizontal" 
                       Margin="10,0,0,0" Width="639" Height="462" VerticalAlignment="Top" 
                               >
-                <DataGrid.Columns>
-                    <!--<DataGridTextColumn  Header="Order key" Width="*" Binding="{Binding orderKey}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="HostingUnit key" Width="*" Binding="{Binding hostingUnitKey}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="GuestRequest key" Width="*" Binding="{Binding guestRequestKey}" FontSize="14" FontWeight="Normal"/>
-                    <DataGridTextColumn Header="Order status" Width="*" Binding="{Binding status}" FontSize="14" FontWeight="Normal"/>-->
-
-                </DataGrid.Columns>
+                <DataGridTextColumn Header="Order key" Width="auto" Binding="{Binding orderKey}" FontSize="14" FontWeight="Normal"/>
+                <DataGridTextColumn Header="HostingUnit key" Width="auto" Binding="{Binding hostingUnitKey}" FontSize="14" FontWeight="Normal"/>
+                <DataGridTextColumn Header="GuestRequest key" Width="auto" Binding="{Binding guestRequestKey}" FontSize="14" FontWeight="Normal"/>
+                <DataGridTextColumn Header="Order status" Width="auto" Binding="{Binding status}" FontSize="14" FontWeight="Normal"/>
+                <DataGridTextColumn Header="Order NbOfDays" Width="auto" Binding="{Binding numberOfDays}" FontSize="14" FontWeight="Normal"/>
+                <DataGridTextColumn Header="Order price" Width="auto" Binding="{Binding price}" FontSize="14" FontWeight="Normal"/>
 
             </DataGrid>
         </Grid>
