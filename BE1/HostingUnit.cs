@@ -110,7 +110,8 @@ namespace BE1
                       "pool : " + pool.ToString() + "\n" +
                       "childrenAttractions : " + childrenAttractions.ToString() + "\n" +
                       "typeArea : " + typeArea.ToString() + "\n" +
-                      "typeOfUnit : " + typeOfUnit.ToString() + "\n";
+                      "typeOfUnit : " + typeOfUnit.ToString() + "\n"+
+                      "phoneNumber : " + owner.phoneNumber.ToString();
         }
 
         /*        

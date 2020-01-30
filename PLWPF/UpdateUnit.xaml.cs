@@ -30,10 +30,10 @@ namespace PLWPF
             if (currentUnit == null)
                 currentUnit = new HostingUnit();
             InitializeComponent();
+            this.DataContext = currentUnit;
             this.AreaComboBox.ItemsSource = Enum.GetValues(typeof(BE1.TypeAreaOfTheCountry));
             this.UnitComboBox.ItemsSource = Enum.GetValues(typeof(BE1.TypeOfHostingUnit));
             currentUnit.owner = host;
-            this.DataContext = currentUnit;
             //currentUnit.owner.hostKey = host.hostKey;
             //  InitializeComponent();
             // currentRequest = new GuestRequest();
