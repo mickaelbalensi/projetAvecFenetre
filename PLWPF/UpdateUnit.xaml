@@ -114,12 +114,12 @@
                    Grid.Column="0" Margin="0,0.333,1.333,9.667"
                    />
             <TextBox x:Name="ChildrenplacesBox"
-                     Grid.Row="3" Margin="0,0,314.333,28.667" HorizontalAlignment="Right" Width="33" Height="23" VerticalAlignment="Bottom"
+                     Grid.Row="3" Margin="0,0,315.333,17.667" HorizontalAlignment="Right" Width="31" Height="28" VerticalAlignment="Bottom"
                       Text="{Binding childrenPlaces, Mode=TwoWay}" Grid.Column="1" RenderTransformOrigin="0.5,0.5"
                      >
                 <TextBox.RenderTransform>
                     <TransformGroup>
-                        <ScaleTransform ScaleX="-1" ScaleY="-1"/>
+                        <ScaleTransform ScaleY="-1"/>
                         <SkewTransform/>
                         <RotateTransform/>
                         <TranslateTransform/>
@@ -224,6 +224,9 @@
                 Content="Update  your unit"
                 Grid.Row="3" RenderTransformOrigin="0.57,1.127" Margin="0,96.333,0,-94.333" HorizontalAlignment="Left" Width="501" Grid.ColumnSpan="2" Click="UpdateUnit_Click" Height="48" VerticalAlignment="Top">
         </Button>
+        <Label Content="be carefull to fulfill all the items even those you don't want to change" Foreground="red" Grid.ColumnSpan="2" Margin="0,0,156.667,0">
+
+        </Label>
     </Grid>
 </Window>
 

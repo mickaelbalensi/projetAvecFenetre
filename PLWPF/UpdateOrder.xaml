@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PLWPF"
         mc:Ignorable="d"
-        Title="UpdateOrder" Height="500" Width="1136.706">
+        Title="UpdateOrder" Height="503.082" Width="1133.625">
     <Window.Background>
         <ImageBrush ImageSource="Images/fondSignIn.jpeg"
                     Stretch="UniformToFill">
@@ -23,7 +23,7 @@
 
 
 
-    <Grid x:Name="UnitControlGrid" Margin="10,10,-6.667,0" Height="403" VerticalAlignment="Top">
+    <Grid x:Name="UnitControlGrid" Margin="10,10,60,0" Height="403" VerticalAlignment="Top">
         <!--#region ligne et colonne-->
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -31,20 +31,20 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="181"/>
-            <ColumnDefinition Width="356"/>
+            <ColumnDefinition Width="179.333"/>
+            <ColumnDefinition Width="494"/>
         </Grid.ColumnDefinitions>
         <!--#endregion-->
         <Label Content="Update unit"
                Grid.Row="0"
-               Margin="141,0,36,0"
+               Margin="141,0,30,0"
                FontSize="30"/>
         <Grid x:Name="details"
-              Grid.Row="1" Grid.Column="0" Margin="0,0,65.667,-0.333" Grid.RowSpan="2" Grid.ColumnSpan="2">
+              Grid.Row="1" Grid.Column="0" Margin="0,0,99.667,-0.333" Grid.RowSpan="2" Grid.ColumnSpan="2">
             <!--#region ligne et colonne-->
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="181"/>
-                <ColumnDefinition Width="356"/>
+                <ColumnDefinition Width="309.333"/>
+                <ColumnDefinition Width="228"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="51*"/>
@@ -56,26 +56,26 @@
                 <RowDefinition Height="50*"/>
             </Grid.RowDefinitions>
             <Label x:Name="UnitKey"
-                   Content="Enter the order key "
+                   Content="Enter the order key of the order to reserve "
                    FontSize="15"
                    Grid.Column="0"
-                   Grid.Row="0" Margin="0,10,1.333,42.667" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2"/>
+                   Grid.Row="0" Margin="0,10,1.333,43" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2"/>
             <TextBox x:Name="unitKeyBox"
                      Grid.Row="0"
-                     Margin="9.2,14,314.8,0" Grid.Column="1"
-                     Text="{Binding hostingUnitKey, Mode=TwoWay}" RenderTransformOrigin="0.5,0.5" Height="28" VerticalAlignment="Top"
+                     Margin="102.667,14,94.333,7.333" Grid.Column="1"
+                     Text="{Binding hostingUnitKey, Mode=TwoWay}" RenderTransformOrigin="0.897,0.615"
                      >
                 <TextBox.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
                         <SkewTransform/>
                         <RotateTransform Angle="0.091"/>
-                        <TranslateTransform/>
+                        <TranslateTransform X="-0.005" Y="0.056"/>
                     </TransformGroup>
                 </TextBox.RenderTransform>
             </TextBox>
         </Grid>
-        <Grid x:Name="DataGrid_grid" Grid.Column="1" HorizontalAlignment="Left" Margin="296.4,0,-588.6,-60.8" Width="649" Grid.RowSpan="3">
+        <Grid x:Name="DataGrid_grid" Grid.Column="1" HorizontalAlignment="Left" Margin="292,0,-446.333,-60.333" Width="649" Grid.RowSpan="3">
             <DataGrid x:Name="OrderDetails" 
                       Visibility="Visible"
                               IsReadOnly="True"
@@ -95,11 +95,11 @@
                               >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Order key" Width="auto" Binding="{Binding orderKey}" FontSize="14" FontWeight="Normal"/>
-                <DataGridTextColumn Header="HostingUnit key" Width="auto" Binding="{Binding hostingUnitKey}" FontSize="14" FontWeight="Normal"/>
-                <DataGridTextColumn Header="GuestRequest key" Width="auto" Binding="{Binding guestRequestKey}" FontSize="14" FontWeight="Normal"/>
-                <DataGridTextColumn Header="Order status" Width="auto" Binding="{Binding status}" FontSize="14" FontWeight="Normal"/>
-                <DataGridTextColumn Header="Order NbOfDays" Width="auto" Binding="{Binding numberOfDays}" FontSize="14" FontWeight="Normal"/>
-                <DataGridTextColumn Header="Order price" Width="auto" Binding="{Binding price}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="HostingUnit key" Width="auto" Binding="{Binding hostingUnitKey}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="GuestRequest key" Width="auto" Binding="{Binding guestRequestKey}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Order status" Width="auto" Binding="{Binding status}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Order NbOfDays" Width="auto" Binding="{Binding numberOfDays}" FontSize="14" FontWeight="Normal"/>
+                    <DataGridTextColumn Header="Order price" Width="auto" Binding="{Binding price}" FontSize="14" FontWeight="Normal"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
