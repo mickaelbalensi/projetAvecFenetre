@@ -54,6 +54,18 @@ namespace PLWPF
         {
             try
             {
+                currentUnit.typeArea =
+                    AreaComboBox.SelectedIndex == 0 ? TypeAreaOfTheCountry.all :
+                    AreaComboBox.SelectedIndex == 1 ? TypeAreaOfTheCountry.north :
+                    AreaComboBox.SelectedIndex == 2 ? TypeAreaOfTheCountry.south :
+                    AreaComboBox.SelectedIndex == 3 ? TypeAreaOfTheCountry.center :
+                    TypeAreaOfTheCountry.jerusalem;
+                currentUnit.typeOfUnit =
+                    UnitComboBox.SelectedIndex == 0 ? TypeOfHostingUnit.all :
+                    UnitComboBox.SelectedIndex == 1 ? TypeOfHostingUnit.zimmer :
+                    UnitComboBox.SelectedIndex == 2 ? TypeOfHostingUnit.apartment :
+                    UnitComboBox.SelectedIndex == 3 ? TypeOfHostingUnit.roomOfHotel :
+                    TypeOfHostingUnit.tent;
                 bl.updateHostingUnit(currentUnit);
                 MessageBox.Show("your unit has been sucessfully updated");
                 this.Close();
